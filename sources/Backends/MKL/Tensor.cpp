@@ -1261,8 +1261,8 @@ namespace cum
     	scalar_buff[0] = scalar;
 
     	dnnl::memory::desc scalar_desc {
-    		Shape(tensor.dims(), 1), dnnl_data_type(default_type),
-			tensor.dims() == 1 ? dnnl::memory::format_tag::x : dnnl::memory::format_tag::any
+    		Shape(tensor.rank(), 1), dnnl_data_type(default_type),
+			tensor.dims() == 1 ? dnnl::memory::format_tag::x : dnnl_format_tag(default_layout_from_rank(tensor.rank()))
     	};
 
     	dnnl::memory scalar_memory = dnnl::sycl_interop::make_memory(
@@ -1305,8 +1305,8 @@ namespace cum
     	scalar_buff[0] = scalar;
 
     	dnnl::memory::desc scalar_desc {
-    		Shape(tensor.dims(), 1), dnnl_data_type(default_type),
-			tensor.dims() == 1 ? dnnl::memory::format_tag::x : dnnl::memory::format_tag::any
+    		Shape(tensor.rank(), 1), dnnl_data_type(default_type),
+			tensor.dims() == 1 ? dnnl::memory::format_tag::x : dnnl_format_tag(default_layout_from_rank(tensor.rank()))
     	};
 
     	dnnl::memory scalar_memory = dnnl::sycl_interop::make_memory(
@@ -1456,6 +1456,29 @@ namespace cum
     {
 	    neural_primitives::div(*_memr_, *other._memr_, *_desc_, *other._desc_);
         return *this;
+    }
+
+	Tensor& Tensor::operator /= (const cumeric_t scalar)
+    {
+		cumeric_t* scalar_buff = memory::allocate(1);
+		scalar_buff[0] = scalar;
+
+		Descriptor scalar_descriptor(Shape(this->rank(), 1), this->type(), this->format());
+
+		Memory scalar_memory(scalar_descriptor, scalar_buff);
+
+		neural_primitives::div(
+			*memory(),
+			*this->memory(),
+			scalar_memory,
+			*this->descriptor(),
+			*this->descriptor(),
+			scalar_descriptor
+		);
+
+		memory::free(scalar_buff);
+
+		return *this;
     }
 
 	Tensor& Tensor::operator = (const Tensor& other)

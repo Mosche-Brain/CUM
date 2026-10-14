@@ -223,6 +223,7 @@ namespace cum
         Tensor& operator -= (const Tensor& other);
         Tensor& operator *= (const Tensor& other);
         Tensor& operator /= (const Tensor& other);
+        Tensor& operator /= (cumeric_t scalar);
 
 
 
