@@ -4,11 +4,11 @@
 
 #include <oneapi/mkl/blas.hpp>
 
-#include "internal/context.hpp"
+#include "../../../../../include/cum/detail/vendor/oneapi/context.hpp"
 
-#include "cum/LinearAlgebra/BLAS/level2.hpp"
+#include "cum/lara/BLAS/level2.hpp"
 
-#include "cum/LinearAlgebra/BLAS/types.hpp"
+#include "cum/lara/BLAS/types.hpp"
 
 namespace cum::blas
 {

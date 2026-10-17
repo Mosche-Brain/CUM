@@ -77,7 +77,7 @@ set(CUM_GENERATED_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
 set(CUM_PROJECT_NAME cum)
 
 set(CUM_THIRDPARTY_DIR
-    "${CMAKE_CURRENT_LIST_DIR}/../../thirdparty"
+    "${CMAKE_CURRENT_LIST_DIR}/thirdparty"
     CACHE PATH "CUM third-party dependency root"
 )
 set(CUM_ONEDNN_ROOT
@@ -86,6 +86,7 @@ set(CUM_ONEDNN_ROOT
 )
 set(CUM_ONEDNN_INSTALL_DIR
     "${CUM_ONEDNN_ROOT}/install"
+    # "/home/jaro/Libraries/oneDNN/" # for development
     CACHE PATH "oneDNN installation prefix"
 )
 
@@ -102,9 +103,13 @@ if(BUILD_C_BINDING)
     add_subdirectory(bindings/C)
 endif()
 
+option(BUILD_TESTS "Build CUM unit tests" ON)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
+
 if(BUILD_USE_MKL)
     add_executable(example examples/test.cpp)
     target_link_libraries(example PRIVATE cum::cum)
-    target_compile_options(example PRIVATE -fsycl)
-    target_link_options(example PRIVATE -fsycl)
 endif()

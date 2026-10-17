@@ -1,10 +1,10 @@
 #include <oneapi/mkl/blas.hpp>
 // #include <print>
 
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 #include "cum/LinearAlgebra.hpp"
 
-namespace cum::LinearAlgebra
+namespace cum::lara
 {
     void add(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, size_t N)
     {
@@ -455,7 +455,7 @@ namespace cum::LinearAlgebra
     {
         auto& q = internal::getQueue();
         cumeric_t max = 0;
-        LinearAlgebra::argmax(&max, v, N);
+        lara::argmax(&max, v, N);
         cumeric_t* temp = (cumeric_t*)calloc(N, sizeof(cumeric_t));
         scale(temp, internal::getOnes(), max, N);
         // q.submit([=](sycl::handler& h){
@@ -470,7 +470,7 @@ namespace cum::LinearAlgebra
     {
         auto& q = internal::getQueue();
         cumeric_t max = 0;
-        LinearAlgebra::argmax(&max, v, N);
+        lara::argmax(&max, v, N);
         cumeric_t* temp = (cumeric_t*)calloc(N, sizeof(cumeric_t));
         scale(temp, internal::getOnes(), max, N);
         // q.submit([=](sycl::handler& h){

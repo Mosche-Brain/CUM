@@ -7,7 +7,7 @@
 
 #include "cum/Core.hpp"
 
-namespace cum::LinearAlgebra
+namespace cum::lara
 {
     /* Matrix ---> Vector */
 

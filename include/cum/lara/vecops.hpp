@@ -9,24 +9,31 @@
 
 #include "BLAS/level1.hpp"
 
-namespace cum::LinearAlgebra
+namespace cum::lara
 {
     __event__ vadd(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, dim_t n);
     __event__ vadd(datatype dtype, void* r, const void* v, const void* u, dim_t n);
 
     __event__ vadd(cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vadd(datatype dtype, void* v, const void* u, dim_t n);
 
     __event__ vsub(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vsub(datatype dtype, void* r, const void* v, const void* u, dim_t n);
 
     __event__ vsub(cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vsub(datatype dtype, void* v, const void* u, dim_t n);
 
     __event__ vmul(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vmul(datatype dtype, void* r, const void* v, const void* u, dim_t n);
 
     __event__ vmul(cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vmul(datatype dtype, void* v, const void* u, dim_t n);
 
     __event__ vdiv(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vdiv(datatype dtype, void* r, const void* v, const void* u, dim_t n);
 
     __event__ vdiv(cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vdiv(datatype dtype, void* v, const void* u, dim_t n);
 }
 
 

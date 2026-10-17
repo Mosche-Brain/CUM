@@ -22,8 +22,9 @@
 #include "cum/neural_primitives/elementwise_diffs.hpp"
 #include "cum/neural_primitives/tensor_operations.hpp"
 #include "cum/detail/vendor/oneapi/conversion_helpers.hpp"
+#include "cum/detail/vendor/oneapi/dtype_dispatch.hpp"
 
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 
 #include "cum/Tensor.hpp"
@@ -216,7 +217,7 @@ namespace cum
 		sycl::event kernel_event;
 		void* data = tensor._data;
 
-		dispatch_datatype(tensor.type(), [&]<typename T>(){
+		internal::dispatch_sycl_datatype(tensor.type(), [&]<typename T>(){
 			kernel_event = internal::queue().submit([&](sycl::handler& cgh) {
 				cgh.depends_on(rng_event);
 				cgh.parallel_for(sycl::range<1>(count), [=](sycl::id<1> idx) {
@@ -242,7 +243,7 @@ namespace cum
 		const cumeric_t step = num == 1 ? cumeric_t(0) : (end - start) / static_cast<cumeric_t>(num - 1);
 
 
-		dispatch_datatype(tensor.type(), [&]<typename T>() -> void
+		internal::dispatch_sycl_datatype(tensor.type(), [&]<typename T>() -> void
 		{
 			internal::queue().submit([&](sycl::handler& cgh) -> void
 			{
@@ -1024,7 +1025,7 @@ namespace cum
 
 		// functions::various::fill(ptr, scalar, count);
 
-		dispatch_datatype(type(), [&]<typename T>()
+		internal::dispatch_sycl_datatype(type(), [&]<typename T>()
 		{
 			internal::queue().fill(
 				static_cast<T*>(ptr),
@@ -1554,7 +1555,7 @@ namespace cum
 
 		bool equal = true;
 
-		dispatch_datatype(A.type(), [&]<typename T>()
+		internal::dispatch_sycl_datatype(A.type(), [&]<typename T>()
 		{
 			const T* a = static_cast<const T*>(A.data());
 			const T* b = static_cast<const T*>(B.data());

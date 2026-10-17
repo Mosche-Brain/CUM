@@ -50,15 +50,15 @@ namespace cum
 {
     using float64 = double;
     using float32 = float;
-#if defined(SYCL_LANGUAGE_VERSION)
-    using float16 = sycl::half;
-    using bfloat16 = sycl::ext::oneapi::bfloat16;
-#elif defined(__STDCPP_FLOAT16_T__) && defined(__STDCPP_BFLOAT16_T__)
+// #if defined(SYCL_LANGUAGE_VERSION)
+    // using float16 = sycl::half;
+    // using bfloat16 = sycl::ext::oneapi::bfloat16;
+#if defined(__STDCPP_FLOAT16_T__) && defined(__STDCPP_BFLOAT16_T__)
     using float16 = std::float16_t;
     using bfloat16 = std::bfloat16_t;
 #else
-    struct float16 { uint16_t raw; };
-    struct bfloat16 { uint16_t raw; };
+    typedef struct { unsigned short raw; } float16;
+    typedef struct { unsigned short raw; } bfloat16;
 #endif
 
     using float8 = fp8_e4_3m_impl;

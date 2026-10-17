@@ -6,7 +6,7 @@
 
 #include <sycl/sycl.hpp>
 
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 namespace cum::runtime
 {

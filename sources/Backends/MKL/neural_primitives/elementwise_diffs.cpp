@@ -13,7 +13,7 @@
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
 #include "cum/detail/vendor/oneapi/opaque_types.hpp"
 
-#include "internal/context.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 #include "cum/neural_primitives/elementwise_diffs.hpp"
 

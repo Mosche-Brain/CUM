@@ -1,6 +1,6 @@
 #include "cum/cum.hpp"
 
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 void cum::cum(DEVICE device)
 {

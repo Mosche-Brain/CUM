@@ -2,14 +2,14 @@
 // Created by jaro on 8/2/26.
 //
 
-#include "internal/context.hpp"
-#include "cum/LinearAlgebra/BLAS/level1.hpp"
-#include "cum/LinearAlgebra/BLAS/level2.hpp"
-#include "cum/LinearAlgebra/BLAS/types.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
+#include "cum/lara/BLAS/level1.hpp"
+#include "cum/lara/BLAS/level2.hpp"
+#include "cum/lara/BLAS/types.hpp"
 
-#include "cum/LinearAlgebra/reductions.hpp"
+#include "cum/lara/reductions.hpp"
 
-namespace cum::LinearAlgebra
+namespace cum::lara
 {
     /* Matrix ---> Vector */
 

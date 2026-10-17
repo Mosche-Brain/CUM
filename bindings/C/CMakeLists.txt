@@ -13,10 +13,9 @@ target_include_directories(cum_C
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-if(TARGET cum::MKL)
-    target_link_libraries(cum_C PUBLIC cum::MKL)
-else()
-    target_link_libraries(cum_C PUBLIC cum::Core)
-endif()
+target_link_libraries(cum_C
+    PRIVATE
+        cum::cum
+)
 
 add_library(cum::C ALIAS cum_C)

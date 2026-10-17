@@ -6,12 +6,12 @@
 #include "cum/runtime.hpp"
 
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
-#include "internal/context.hpp"
-#include "cum/LinearAlgebra/BLAS/types.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
+#include "cum/lara/BLAS/types.hpp"
 
-#include "cum/LinearAlgebra/matops.hpp"
+#include "cum/lara/matops.hpp"
 
-namespace cum::LinearAlgebra
+namespace cum::lara
 {
 	__event__ mmul(cumeric_t* C, const cumeric_t* A, const cumeric_t* B, const dim_t m, const dim_t n, const dim_t k, __events__ depencies)
 	{

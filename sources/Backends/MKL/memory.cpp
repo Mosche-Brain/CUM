@@ -1,6 +1,6 @@
 #include <sycl/sycl.hpp>
 
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
 
 #include "cum/memory.hpp"
@@ -14,7 +14,7 @@ namespace cum::memory
 
     void* allocate(const dim_t size, const datatype dtype)
     {
-        dispatch_datatype(dtype, [&]<typename T>() -> void*
+        return dispatch_datatype(dtype, [&]<typename T>() -> void*
         {
             return sycl::malloc_shared<T>(size, internal::getQueue());
         });

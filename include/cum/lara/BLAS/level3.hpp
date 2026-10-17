@@ -6,7 +6,7 @@
 #define YANN_LEVEL3_HPP
 #include "cum/Core.hpp"
 
-#include "cum/LinearAlgebra/BLAS/types.hpp"
+#include "cum/lara/BLAS/types.hpp"
 
 namespace cum::blas
 {

@@ -3,7 +3,7 @@
 //
 #include "cum/Core.hpp"
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
-#include "internal/context.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
 #include "cum/memory.hpp"
 #include "cum/functions/hyperbolic.hpp"
 #include "cum/functions/linear_units.hpp"

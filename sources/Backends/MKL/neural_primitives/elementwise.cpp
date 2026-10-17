@@ -5,7 +5,7 @@
  * @date:   12 September 2026 16:48:50
  */
 
-#include "internal/context.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
 #include "cum/detail/vendor/oneapi/opaque_types.hpp"
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
 #include "cum/detail/vendor/oneapi/conversion_helpers.hpp"

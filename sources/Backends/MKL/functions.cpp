@@ -2,7 +2,7 @@
 #include "cum/LinearAlgebra.hpp"
 #include "cum/memory.hpp"
 
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 #include <oneapi/mkl/vm/buffer.hpp>
 #include <sycl/sycl.hpp>

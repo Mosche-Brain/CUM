@@ -4,7 +4,7 @@
 #include "cum/LinearAlgebra.hpp"
 #include "cum/functions/various.hpp"
 #include "cum/memory.hpp"
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 namespace cum
 {
@@ -37,72 +37,72 @@ namespace cum
 
     Vector& Vector::operator += (const Vector& other)
     {
-        LinearAlgebra::addInPlace(this->data_, other.data_, lenght_);
+        lara::addInPlace(this->data_, other.data_, lenght_);
         return *this;
     }
 
     Vector& Vector::operator += (Matrix& matrix)
     {
-        LinearAlgebra::addInPlace(this->data_, matrix.data(), lenght_);
+        lara::addInPlace(this->data_, matrix.data(), lenght_);
         return *this;
     }
 
     Vector& Vector::operator -=(const Vector& other)
     {
-        LinearAlgebra::subInPlace(this->data_, other.data_, lenght_);
+        lara::subInPlace(this->data_, other.data_, lenght_);
         return *this;
     }
 
     Vector& Vector::operator *= (const Vector& other)
     {
-        LinearAlgebra::cwiseProductInPlace(this->data_, other.data_, lenght_);
+        lara::cwiseProductInPlace(this->data_, other.data_, lenght_);
         return *this;                                                                                                                      
     }
 
     Vector& Vector::operator *= (const cumeric_t& scalar)
     {
-        LinearAlgebra::scaleInPlace(this->data_, scalar, lenght_);
+        lara::scaleInPlace(this->data_, scalar, lenght_);
         return *this;                                                                                                                      
     }
 
     Vector& Vector::operator /= (const Vector& other)
     {
-        LinearAlgebra::divInPlace (this->data_, other.data_, lenght_);
+        lara::divInPlace (this->data_, other.data_, lenght_);
         return *this;
     }
 
     Vector operator + (const Vector& v, const Vector& u)
     {
         Vector result(v.lenght_);
-        LinearAlgebra::add(result.data_, v.data_, u.data_, v.lenght_);
+        lara::add(result.data_, v.data_, u.data_, v.lenght_);
         return result;
     }
 
     Vector operator - (const Vector& v, const Vector& u)
     {
         Vector result(v.lenght_);
-        LinearAlgebra::sub(result.data_, v.data_, u.data_, v.lenght_);
+        lara::sub(result.data_, v.data_, u.data_, v.lenght_);
         return result;
     }
 
     Vector operator * (const Vector& v, const Vector& u)
     {
         Vector result(v.lenght_);
-        LinearAlgebra::cwiseProduct(result.data_, v.data_, u.data_, v.lenght_);
+        lara::cwiseProduct(result.data_, v.data_, u.data_, v.lenght_);
         return result;
     }
 
     Vector operator * (const Vector& v, const cumeric_t& scalar)
     {
         Vector result(v.lenght_);
-        LinearAlgebra::scaleInPlace(result.data_, scalar, v.lenght_);
+        lara::scaleInPlace(result.data_, scalar, v.lenght_);
         return result;
     }
 
     Vector operator / (const Vector& v, const Vector& u)
     {
         Vector result(v.lenght_);
-        LinearAlgebra::div(result.data_, v.data_, u.data_, v.lenght_);
+        lara::div(result.data_, v.data_, u.data_, v.lenght_);
         return result;
     }
 
@@ -122,20 +122,20 @@ namespace cum
     cumeric_t Vector::sum()
     {
         cumeric_t result;
-        LinearAlgebra::sum(result, data_, lenght_);
+        lara::sum(result, data_, lenght_);
         return result;
     }
 
     Vector Vector::normalize()
     {
         Vector result(lenght_);
-        LinearAlgebra::normalize(result.data_, data_, lenght_);
+        lara::normalize(result.data_, data_, lenght_);
         return result;
     }
 
     Vector& Vector::normalizeInPlace()
     {
-        LinearAlgebra::normalizeInPlace(data_, lenght_);
+        lara::normalizeInPlace(data_, lenght_);
         return *this;
     }
 

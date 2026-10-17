@@ -10,7 +10,7 @@
 #include <oneapi/dnnl/dnnl_sycl.hpp>
 #include <sycl/event.hpp>
 
-#include "internal/context.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
 #include "cum/detail/vendor/oneapi/opaque_types.hpp"

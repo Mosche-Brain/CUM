@@ -2,7 +2,7 @@
 
 #include "cum/Core.hpp"
 
-namespace cum::LinearAlgebra /* LATK */
+namespace cum::lara /* LATK */
 {
     void add(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, std::size_t N);
     void addInPlace(cumeric_t* v, const cumeric_t* u, std::size_t N);

@@ -6,9 +6,9 @@
 
 #include <cstdint>
 
-#include "cum/LinearAlgebra/BLAS/level1.hpp"
+#include "cum/lara/BLAS/level1.hpp"
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
-#include "internal/context.hpp"
+#include "../../../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 namespace cum::blas
 {

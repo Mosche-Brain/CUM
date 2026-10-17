@@ -1,15 +1,15 @@
 
 #include "cum/Core.hpp"
-#include "cum/LinearAlgebra/BLAS/level1.hpp"
-#include "cum/LinearAlgebra/matops.hpp"
-#include "cum/LinearAlgebra/vecops.hpp"
+#include "cum/lara/BLAS/level1.hpp"
+#include "cum/lara/matops.hpp"
+#include "cum/lara/vecops.hpp"
 #include "cum/LinearAlgebra.hpp"
 #include "cum/functions.hpp"
 #include "cum/functions/various.hpp"
 #include "cum/Vector.hpp"
 #include "cum/random.hpp"
 
-#include "internal/context.hpp"
+#include "../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 #include <oneapi/mkl/blas/usm.hpp>
 #include <stdexcept>
@@ -76,7 +76,7 @@ namespace cum
         //data_ = sycl::malloc_shared<cumeric_t>(rows * cols, internal::getQueue()); 
         //internal::getQueue().copy(elements.begin(), data_, rows * cols).wait();
     	data_ = memory::allocate(rows * cols);
-		memory::memcopy(data_, elements.begin(), rows * cols * sizeof(cumeric_t));
+		memory::memcopy(data_, elements.begin(), rows * cols * sizeof(cumeric_t)).wait();
 	}
 
 
@@ -295,20 +295,20 @@ namespace cum
     Matrix& Matrix::operator += (const Matrix& other)
     {
         //LinearAlgebra::matAddInPlace(this->data_, other.data_, this->rows_, this->cols_);
-		LinearAlgebra::vadd(this->data_, other.data_, rows_ * cols_);
+		lara::vadd(this->data_, other.data_, rows_ * cols_);
 		return *this;
     }
 
     Matrix& Matrix::operator += (const cumeric_t& scalar)
     {
-        LinearAlgebra::addInPlace(this->data_, scalar, rows_ * cols_);
+        lara::addInPlace(this->data_, scalar, rows_ * cols_);
 		
 		return *this;
     }
 
     Matrix& Matrix::operator -= (const Matrix& other)
     {
-        LinearAlgebra::matSubInPlace(this->data_, other.data_, this->rows_, this->cols_);
+        lara::matSubInPlace(this->data_, other.data_, this->rows_, this->cols_);
         return *this;
     }
 
@@ -319,7 +319,7 @@ namespace cum
             throw std::invalid_argument("In-place matrix multiplication dimension mismatch");
         }
 
-        LinearAlgebra::matMulInPlace(this->data_, other.data_, this->rows_, other.cols_, this->cols_);
+        lara::matMulInPlace(this->data_, other.data_, this->rows_, other.cols_, this->cols_);
         return *this;
     }
 
@@ -349,7 +349,7 @@ namespace cum
     {
         Matrix mat(A.rows_, A.cols_);
 
-		LinearAlgebra::vadd(mat.data_, A.data_, A.rows_ * A.cols_);
+		lara::vadd(mat.data_, A.data_, B.data_, A.rows_ * A.cols_).wait();
         //LinearAlgebra::matAdd(mat.data_, A.data_, B.data_, A.rows_, A.cols_);
         return mat;
     }
@@ -358,7 +358,7 @@ namespace cum
     {
         Matrix mat(A.rows_, A.cols_);
 
-		LinearAlgebra::vsub(mat.data_, A.data_, B.data_, A.rows_ * A.cols_);
+		lara::vsub(mat.data_, A.data_, B.data_, A.rows_ * A.cols_);
         //LinearAlgebra::matSub(mat.data_, A.data_, B.data_, A.rows_, A.cols_);
         return mat;
     }
@@ -372,7 +372,7 @@ namespace cum
 
         Matrix mat(A.rows_, B.cols_);
 
-        LinearAlgebra::mmul(mat.data_, A.data_, B.data_, A.rows_, B.cols_, A.cols_);
+        lara::mmul(mat.data_, A.data_, B.data_, A.rows_, B.cols_, A.cols_);
 		cum::runtime::sync();
         return mat;
     }
@@ -393,7 +393,7 @@ namespace cum
 		//runtime::sync();
         //internal::getQueue().memcpy(
         //    temp.data_, mat.data_, mat.size() * sizeof(cumeric_t)).wait();
-        LinearAlgebra::scaleInPlace(temp.data_, scalar, mat.size());
+        lara::scaleInPlace(temp.data_, scalar, mat.size());
 		//runtime::sync();
         return temp;
     }
@@ -419,7 +419,7 @@ namespace cum
     {
         Matrix mat(A.rows_, A.cols_);
 	
-        LinearAlgebra::div(mat.data_, A.data_, B.data_, A.rows_ * A.cols_);
+        lara::div(mat.data_, A.data_, B.data_, A.rows_ * A.cols_);
         return mat; 
     }
 
@@ -438,7 +438,7 @@ namespace cum
 	{
 		Matrix temp(mat.rows_, mat.cols_, scalar);
 
-		LinearAlgebra::div(temp.data_, temp.data_, mat.data_, temp.size());
+		lara::div(temp.data_, temp.data_, mat.data_, temp.size());
 
 		return temp;
 	}
@@ -460,7 +460,7 @@ namespace cum
     {
         Matrix temp(cols_, rows_);
         //LinearAlgebra::transpose(temp.data_, data_, rows_, cols_);
-		LinearAlgebra::mtrans(temp.data_, data_, rows_, cols_);
+		lara::mtrans(temp.data_, data_, rows_, cols_);
 		cum::runtime::sync();
 		return temp;
     }
@@ -468,7 +468,7 @@ namespace cum
     Matrix& Matrix::transposeInPlace()
     {
         //LinearAlgebra::transposeInPlace(data_, rows_, cols_);
-		LinearAlgebra::mtrans(data_, rows_, cols_);
+		lara::mtrans(data_, rows_, cols_);
 		cum::runtime::sync();
 		std::swap<dim_t>(cols_, rows_);
         return *this;
@@ -700,14 +700,14 @@ namespace cum
     {
         Matrix temp(rows_, cols_);
         //LinearAlgebra::cwiseProduct(temp.data_, data_, other.data_, rows_ * cols_);
-		LinearAlgebra::vmul(temp.data_, this->data_, other.data_, rows_ * cols_);
+		lara::vmul(temp.data_, this->data_, other.data_, rows_ * cols_);
 		return temp;
     }
 
     Matrix& Matrix::cwiseProductInPlace(const Matrix& other)
     {
         //LinearAlgebra::cwiseProductInPlace(data_, data_, rows_ * cols_);
-		LinearAlgebra::vmul(data_, other.data_, rows_ * cols_);
+		lara::vmul(data_, other.data_, rows_ * cols_);
 		return *this;
     }
 
@@ -733,28 +733,28 @@ namespace cum
     Matrix Matrix::colwiseSum()
     {
         Matrix temp(1, cols_);
-        LinearAlgebra::colwiseSum(temp.data_, data_, rows_, cols_);
+        lara::colwiseSum(temp.data_, data_, rows_, cols_);
         return temp;
     }
 
     Vector Matrix::colwiseSum2vec()
     {
         Vector temp(cols_);
-        LinearAlgebra::colwiseSum(temp.data(), data_, rows_, cols_);
+        lara::colwiseSum(temp.data(), data_, rows_, cols_);
         return temp;
     }
 
     Matrix Matrix::rowwiseSum()
     {
         Matrix temp(rows_, 1);
-        LinearAlgebra::rowwiseSum(temp.data_, data_, rows_, cols_);
+        lara::rowwiseSum(temp.data_, data_, rows_, cols_);
         return temp;
     }
 
     Vector Matrix::rowwiseSum2vec()
     {
         Vector temp(rows_);
-        LinearAlgebra::rowwiseSum(temp.data(), data_, rows_, cols_);
+        lara::rowwiseSum(temp.data(), data_, rows_, cols_);
         return temp;
     }
 
@@ -805,20 +805,20 @@ namespace cum
     cumeric_t Matrix::norm()
     {
         cumeric_t result;
-        LinearAlgebra::norm(result, data_, rows_ * cols_);
+        lara::norm(result, data_, rows_ * cols_);
         return result;
     }
 
     cumeric_t Matrix::sumAbs() const
     {
         cumeric_t result = 0;
-        cum::LinearAlgebra::asum(result, data_, rows_ * cols_);
+        cum::lara::asum(result, data_, rows_ * cols_);
         return result;
     }
     cumeric_t Matrix::sum() const
     {
         cumeric_t result = 0;
-        cum::LinearAlgebra::sum(result, data_, rows_ * cols_);
+        cum::lara::sum(result, data_, rows_ * cols_);
         return result;
     }
 
@@ -834,7 +834,7 @@ namespace cum
     cumeric_t Matrix::squaredNorm()
     {
         cumeric_t result;
-        LinearAlgebra::squaredNorm(result, data_, rows_ * cols_);
+        lara::squaredNorm(result, data_, rows_ * cols_);
         return result;
     }
 

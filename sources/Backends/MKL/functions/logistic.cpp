@@ -2,11 +2,11 @@
 
 #include "cum/Core.hpp"
 
-#include "cum/LinearAlgebra/BLAS/level1.hpp"
-#include "cum/LinearAlgebra/reductions.hpp"
+#include "cum/lara/BLAS/level1.hpp"
+#include "cum/lara/reductions.hpp"
 #include "cum/functions/exponential.hpp"
 
-#include "internal/context.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
 
 
@@ -48,7 +48,7 @@ namespace cum::functions::logistic
         exponential::exp(r, v, N);
         
         cumeric_t sum_exp_v = 0;
-        LinearAlgebra::sum(&sum_exp_v, r, N);
+        lara::sum(&sum_exp_v, r, N);
 
         return blas::scal(N, 1/sum_exp_v, r, 1);
         // sycl::event event = blas::scal(N, 1/sum_exp_v, r, 1);

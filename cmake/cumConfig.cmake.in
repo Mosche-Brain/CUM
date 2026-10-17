@@ -10,7 +10,13 @@ if(NOT @CUM_BUILD_SHARED@)
         find_dependency(MKL CONFIG)
         find_dependency(oneDPL CONFIG)
         if(NOT TARGET DNNL::dnnl)
-            find_dependency(dnnl CONFIG PATHS "@CUM_ONEDNN_INSTALL_DIR@/lib/cmake/dnnl" NO_DEFAULT_PATH)
+            find_dependency(dnnl CONFIG
+                PATHS
+                    "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@/cmake/dnnl"
+                    "@CUM_ONEDNN_INSTALL_DIR@/lib/cmake/dnnl"
+                    "@CUM_ONEDNN_INSTALL_DIR@/lib64/cmake/dnnl"
+                NO_DEFAULT_PATH
+            )
         endif()
     endif()
 endif()

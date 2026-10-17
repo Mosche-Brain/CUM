@@ -14,20 +14,18 @@ add_library(${CUM_PROJECT_NAME}::Core ALIAS ${CUM_PROJECT_NAME}_Core)
 set_target_properties(${CUM_PROJECT_NAME}_Core PROPERTIES EXPORT_NAME Core)
 
 if(BUILD_USE_MKL)
-    target_compile_definitions(${CUM_PROJECT_NAME}_Core PUBLIC BUILD_USE_MKL)
+    target_compile_definitions(${CUM_PROJECT_NAME}_Core PRIVATE BUILD_USE_MKL)
+    target_compile_options(${CUM_PROJECT_NAME}_Core PRIVATE
+            $<$<COMPILE_LANGUAGE:CXX>:-fsycl>)
 
     if(CUM_BUILD_SHARED)
-        target_compile_options(${CUM_PROJECT_NAME}_Core PRIVATE
-                $<$<COMPILE_LANGUAGE:CXX>:-fsycl>)
         target_link_options(${CUM_PROJECT_NAME}_Core PRIVATE -fsycl)
         set_target_properties(${CUM_PROJECT_NAME}_Core PROPERTIES
             INSTALL_RPATH "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}"
             INSTALL_RPATH_USE_LINK_PATH TRUE
         )
     else()
-        target_compile_options(${CUM_PROJECT_NAME}_Core PUBLIC
-                $<$<COMPILE_LANGUAGE:CXX>:-fsycl>)
-        target_link_options(${CUM_PROJECT_NAME}_Core PUBLIC -fsycl)
+        target_link_options(${CUM_PROJECT_NAME}_Core INTERFACE -fsycl)
     endif()
 
     add_subdirectory(Backends/MKL)
@@ -51,7 +49,10 @@ install(TARGETS ${CUM_PROJECT_NAME}_Core ${CUM_PROJECT_NAME}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-install(DIRECTORY ${CUM_SOURCE_DIR}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY ${CUM_SOURCE_DIR}/include/
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        PATTERN "detail/vendor" EXCLUDE
+)
 install(FILES ${CUM_GENERATED_INCLUDE_DIR}/cum/config.hpp
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/cum)
 

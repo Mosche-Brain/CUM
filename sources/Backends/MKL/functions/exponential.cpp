@@ -5,7 +5,7 @@
 #include "cum/Core.hpp"
 
 
-#include "internal/context.hpp"
+#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
 
 #include <oneapi/mkl/vm.hpp>
 #include <sycl/sycl.hpp>
