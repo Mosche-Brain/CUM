@@ -103,6 +103,14 @@ target_compile_options(${CUM_PROJECT_NAME}_MKL
     PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-fsycl>
 )
 
+find_library(CUM_UMF_LIBRARY
+    NAMES umf libumf.so.1
+    PATHS
+        "$ENV{UMF_ROOT}/lib"
+        "$ENV{ONEAPI_ROOT}/umf/latest/lib"
+        "/opt/intel/oneapi/umf/latest/lib"
+)
+
 target_link_libraries(${CUM_PROJECT_NAME}_MKL
     PUBLIC
         ${CUM_PROJECT_NAME}::Core
@@ -114,10 +122,26 @@ target_link_libraries(${CUM_PROJECT_NAME}_MKL
         DNNL::dnnl
 )
 
+if(CUM_UMF_LIBRARY)
+    get_filename_component(CUM_UMF_LIBRARY_DIR "${CUM_UMF_LIBRARY}" REALPATH)
+    get_filename_component(CUM_UMF_LIBRARY_DIR "${CUM_UMF_LIBRARY_DIR}" DIRECTORY)
+    target_link_libraries(${CUM_PROJECT_NAME}_MKL
+        PRIVATE
+            "-Wl,--push-state,--no-as-needed"
+            "${CUM_UMF_LIBRARY}"
+            "-Wl,--pop-state"
+    )
+endif()
+
 if(CUM_BUILD_SHARED)
     target_link_options(${CUM_PROJECT_NAME}_MKL PRIVATE -fsycl)
+    set(_cum_mkl_rpath "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}")
+    if(CUM_UMF_LIBRARY_DIR)
+        list(APPEND _cum_mkl_rpath "${CUM_UMF_LIBRARY_DIR}")
+    endif()
     set_target_properties(${CUM_PROJECT_NAME}_MKL PROPERTIES
-        INSTALL_RPATH "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}"
+        BUILD_RPATH "${CUM_UMF_LIBRARY_DIR}"
+        INSTALL_RPATH "${_cum_mkl_rpath}"
         INSTALL_RPATH_USE_LINK_PATH TRUE
     )
 else()
