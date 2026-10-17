@@ -12,6 +12,7 @@
 namespace cum::LinearAlgebra
 {
     __event__ vadd(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, dim_t n);
+    __event__ vadd(datatype dtype, void* r, const void* v, const void* u, dim_t n);
 
     __event__ vadd(cumeric_t* v, const cumeric_t* u, dim_t n);
 

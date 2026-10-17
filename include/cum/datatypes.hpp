@@ -170,4 +170,10 @@ namespace cum
         }
     }
 
+    template <typename T>
+    inline datatype type_tag()
+    {
+
+    }
+
 }

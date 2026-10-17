@@ -20,6 +20,11 @@ namespace cum::memory
         });
     }
 
+    uint8_t* allocate_bytes(const dim_t size)
+    {
+        return sycl::malloc_shared<uint8_t>(size, internal::getQueue());
+    }
+
     void free(void* chunk)
     {
         sycl::free(chunk, internal::getQueue());

@@ -20,31 +20,39 @@ namespace cum
     using __events__ = std::vector<std::reference_wrapper<__event__>>;
 
     using dim_t = std::int64_t;
-    using Shape = std::vector<cum::dim_t>;
-    using Dims = std::vector<cum::dim_t>;
+    using Shape = std::vector<dim_t>;
+    using Dims = std::vector<dim_t>;
 
 
-
+    template <typename T, typename F>
+    decltype(auto) invoke_or_ub(F&& f)
+    {
+        if constexpr (requires { std::forward<F>(f).template operator()<T>(); }) {
+            return std::forward<F>(f).template operator()<T>();
+        } else {
+            std::unreachable();
+        }
+    }
 
     template <typename F>
     decltype(auto) dispatch_datatype(datatype dt, F&& f)
     {
         switch (dt)
         {
-            case datatype::FP64: return f.template operator()<double>();
-            case datatype::FP32: return f.template operator()<float>();
-            case datatype::FP16: return f.template operator()<cum::float16>();
-            case datatype::BF16: return f.template operator()<cum::bfloat16>();
-            case datatype::FP8:  return f.template operator()<cum::float8>();
-            case datatype::S64:  return f.template operator()<std::int64_t>();
-            case datatype::S32:  return f.template operator()<std::int32_t>();
-            case datatype::S16:  return f.template operator()<std::int16_t>();
-            case datatype::S8:   return f.template operator()<std::int8_t>();
-            case datatype::U64:  return f.template operator()<std::uint64_t>();
-            case datatype::U32:  return f.template operator()<std::uint32_t>();
-            case datatype::U16:  return f.template operator()<std::uint16_t>();
-            case datatype::U8:   return f.template operator()<std::uint8_t>();
-            default:             return f.template operator()<cum::cumeric_t>();
+        case datatype::FP64: return invoke_or_ub<double>(std::forward<F>(f));
+        case datatype::FP32: return invoke_or_ub<float>(std::forward<F>(f));
+        case datatype::FP16: return invoke_or_ub<cum::float16>(std::forward<F>(f));
+        case datatype::BF16: return invoke_or_ub<cum::bfloat16>(std::forward<F>(f));
+        case datatype::FP8:  return invoke_or_ub<cum::float8>(std::forward<F>(f));
+        case datatype::S64:  return invoke_or_ub<std::int64_t>(std::forward<F>(f));
+        case datatype::S32:  return invoke_or_ub<std::int32_t>(std::forward<F>(f));
+        case datatype::S16:  return invoke_or_ub<std::int16_t>(std::forward<F>(f));
+        case datatype::S8:   return invoke_or_ub<std::int8_t>(std::forward<F>(f));
+        case datatype::U64:  return invoke_or_ub<std::uint64_t>(std::forward<F>(f));
+        case datatype::U32:  return invoke_or_ub<std::uint32_t>(std::forward<F>(f));
+        case datatype::U16:  return invoke_or_ub<std::uint16_t>(std::forward<F>(f));
+        case datatype::U8:   return invoke_or_ub<std::uint8_t>(std::forward<F>(f));
+        default:             return invoke_or_ub<cum::cumeric_t>(std::forward<F>(f));
         }
     }
 } // namespace cum

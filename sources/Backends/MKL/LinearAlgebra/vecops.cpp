@@ -78,4 +78,14 @@ namespace cum::LinearAlgebra
 		);
 		return detail::event_handler::create(std::move(event));
 	}
+
+	__event__ vadd(datatype dtype, void* r, const void* v, const void* u, const dim_t n)
+	{
+		sycl::event event = dispatch_datatype(dtype, [&]<typename T>() -> sycl::event {
+			return oneapi::mkl::vm::add(internal::getQueue(),
+				n, static_cast<const T*>(v), static_cast<const T*>(u), static_cast<T*>(r)
+			);
+		});
+		return detail::event_handler::create(std::move(event));
+	}
 }
