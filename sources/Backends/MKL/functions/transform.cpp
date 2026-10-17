@@ -11,21 +11,26 @@
 #include "cum/functions/linear_units.hpp"
 #include "cum/functions/various.hpp"
 
+#include "cum/detail/vendor/oneapi/dtype_dispatch.hpp"
 #include "cum/functions/transform.hpp"
 
 namespace cum::functions
 {
-    void transform(cumeric_t* r, const cumeric_t* v, const std::size_t N, const activation_t& activation)
+    void transform(datatype dtype, void* r, const void* v, const std::size_t N, const activation_t& activation)
     {
         if (activation.name != function_id::undefined)
         {
-            transform(r, v, N, activation.name);
+            transform(dtype, r, v, N, activation.name);
         }
         else if (activation.function != nullptr)
         {
-            #pragma omp parallel for
-            for (std::size_t i = 0; i < N; ++i)
-                r[i] = activation.function(v[i]);
+            internal::dispatch_sycl_datatype(dtype, [&]<typename SyclT>() {
+                auto* r_ptr = static_cast<SyclT*>(r);
+                auto* v_ptr = static_cast<const SyclT*>(v);
+                #pragma omp parallel for
+                for (std::size_t i = 0; i < N; ++i)
+                    r_ptr[i] = static_cast<SyclT>(activation.function(static_cast<cumeric_t>(static_cast<internal::math_compute_t<SyclT>>(v_ptr[i]))));
+            });
         }
         else
         {
@@ -33,17 +38,21 @@ namespace cum::functions
         }
     }
 
-    void transform_deriv(cumeric_t* r, const cumeric_t* v, const std::size_t N, const activation_t& activation)
+    void transform_deriv(datatype dtype, void* r, const void* v, const std::size_t N, const activation_t& activation)
     {
         if (activation.name != function_id::undefined)
         {
-            transform_deriv(r, v, N, activation.name);
+            transform_deriv(dtype, r, v, N, activation.name);
         }
         else if (activation.derivative != nullptr)
         {
-            #pragma omp parallel for
-            for (std::size_t i = 0; i < N; ++i)
-                r[i] = activation.derivative(v[i]);
+            internal::dispatch_sycl_datatype(dtype, [&]<typename SyclT>() {
+                auto* r_ptr = static_cast<SyclT*>(r);
+                auto* v_ptr = static_cast<const SyclT*>(v);
+                #pragma omp parallel for
+                for (std::size_t i = 0; i < N; ++i)
+                    r_ptr[i] = static_cast<SyclT>(activation.derivative(static_cast<cumeric_t>(static_cast<internal::math_compute_t<SyclT>>(v_ptr[i]))));
+            });
         }
         else
         {
@@ -51,253 +60,257 @@ namespace cum::functions
         }
     }
 
-    void transform(cumeric_t* r, const cumeric_t* v, const std::size_t N, const function_id activation)
+    void transform(datatype dtype, void* r, const void* v, const std::size_t N, const function_id activation)
     {
         switch (activation)
         {
             case function_id::linear:
             {
-                linear_units::identity(r, v, N);
+                linear_units::identity(dtype, r, v, static_cast<dim_t>(N));
                 break;
             }
             case function_id::relu:
             {
-                linear_units::relu(r, v, N);
+                linear_units::relu(dtype, r, v, static_cast<dim_t>(N));
                 break;
             }
             case function_id::leaky_relu:
             {
-                linear_units::leaky_relu(r, v, N);
+                linear_units::leaky_relu(dtype, r, v, static_cast<dim_t>(N));
                 break;
             }
             case function_id::gelu:
             {
-                linear_units::gelu(r, v, N);
+                linear_units::gelu(dtype, r, v, static_cast<dim_t>(N));
                 break;
             }
             case function_id::elu:
             {
-                linear_units::elu(r, v, N);
+                linear_units::elu(dtype, r, v, static_cast<dim_t>(N));
                 break;
             }
             case function_id::exp:
             {
-                exponential::exp(r, v, N);
+                exponential::exp(dtype, r, v, N);
                 break;
             }
             case function_id::exp2:
             {
-                exponential::exp2(r, v, N);
+                exponential::exp2(dtype, r, v, N);
                 break;
             }
             case function_id::exp10:
             {
-                exponential::exp10(r, v, N);
+                exponential::exp10(dtype, r, v, N);
                 break;
             }
             case function_id::log:
             {
-                exponential::log(r, v, N);
+                exponential::log(dtype, r, v, N);
                 break;
             }
             case function_id::log2:
             {
-                exponential::log2(r, v, N);
+                exponential::log2(dtype, r, v, N);
                 break;
             }
             case function_id::log10:
             {
-                exponential::log10(r, v, N);
+                exponential::log10(dtype, r, v, N);
                 break;
             }
             case function_id::sigmoid:
             {
-                logistic::sigmoid(r, v, N);
+                logistic::sigmoid(dtype, r, v, N);
                 break;
             }
             case function_id::sin:
             {
-                trigonometric::sin(r, v, N);
+                trigonometric::sin(dtype, r, v, N);
                 break;
             }
             case function_id::cos:
             {
-                trigonometric::cos(r, v, N);
+                trigonometric::cos(dtype, r, v, N);
                 break;
             }
             case function_id::tan:
             {
-                trigonometric::tan(r, v, N);
+                trigonometric::tan(dtype, r, v, N);
                 break;
             }
             case function_id::sinh:
             {
-                hyperbolic::sinh(r, v, N);
+                hyperbolic::sinh(dtype, r, v, N);
                 break;
             }
             case function_id::cosh:
             {
-                hyperbolic::cosh(r, v, N);
+                hyperbolic::cosh(dtype, r, v, N);
                 break;
             }
             case function_id::tanh:
             {
-                hyperbolic::tanh(r, v, N);
+                hyperbolic::tanh(dtype, r, v, N);
                 break;
             }
             case function_id::asin:
             {
-                cyclometric::asin(r, v, N);
+                cyclometric::asin(dtype, r, v, N);
                 break;
             }
             case function_id::acos:
             {
-                cyclometric::acos(r, v, N);
+                cyclometric::acos(dtype, r, v, N);
                 break;
             }
             case function_id::atan:
             {
-                cyclometric::atan(r, v, N);
+                cyclometric::atan(dtype, r, v, N);
                 break;
             }
             default:
             {
-                throw std::runtime_error("Unknown activation function (transform(cumeric_t*, const cumeric_t*, std::size_t, function_id))");
-
-                // if (func.derivative == nullptr)
-                //     break;
-                //
-                // #pragma omp parallel for
-                // for (std::int64_t i = 0; i < N; ++i)
-                //     r[i] = func.function(v[i]);
-                // std::cerr << "Unknown activation function" << std::endl;
+                throw std::runtime_error("Unknown activation function (transform(datatype, void*, const void*, std::size_t, function_id))");
             }
         }
+    }
+
+    void transform_deriv(datatype dtype, void* r, const void* v, const std::size_t N, const function_id activation)
+    {
+        switch (activation)
+        {
+            case function_id::linear:
+            {
+                linear_units::identity_deriv(dtype, r, v, static_cast<dim_t>(N));
+                break;
+            }
+            case function_id::relu:
+            {
+                linear_units::relu_deriv(dtype, r, v, static_cast<dim_t>(N));
+                break;
+            }
+            case function_id::leaky_relu:
+            {
+                linear_units::leaky_relu_deriv(dtype, r, v, static_cast<dim_t>(N));
+                break;
+            }
+            case function_id::gelu:
+            {
+                linear_units::gelu_deriv(dtype, r, v, static_cast<dim_t>(N));
+                break;
+            }
+            case function_id::elu:
+            {
+                linear_units::elu_deriv(dtype, r, v, static_cast<dim_t>(N));
+                break;
+            }
+            case function_id::exp:
+            {
+                exponential::exp_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::exp2:
+            {
+                exponential::exp2_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::exp10:
+            {
+                exponential::exp10_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::log:
+            {
+                exponential::log_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::log2:
+            {
+                exponential::log2_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::log10:
+            {
+                exponential::log10_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::sigmoid:
+            {
+                logistic::sigmoid_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::sin:
+            {
+                trigonometric::sin_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::cos:
+            {
+                trigonometric::cos_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::tan:
+            {
+                trigonometric::tan_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::sinh:
+            {
+                hyperbolic::sinh_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::cosh:
+            {
+                hyperbolic::cosh_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::tanh:
+            {
+                hyperbolic::tanh_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::asin:
+            {
+                cyclometric::asin_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::acos:
+            {
+                cyclometric::acos_deriv(dtype, r, v, N);
+                break;
+            }
+            case function_id::atan:
+            {
+                cyclometric::atan_deriv(dtype, r, v, N);
+                break;
+            }
+            default:
+            {
+                throw std::runtime_error("Unknown activation function (in transform_deriv(datatype, void*, const void*, std::size_t, function_id))");
+            }
+        }
+    }
+
+    void transform(cumeric_t* r, const cumeric_t* v, const std::size_t N, const activation_t& activation)
+    {
+        transform(default_type, r, v, N, activation);
+    }
+
+    void transform_deriv(cumeric_t* r, const cumeric_t* v, const std::size_t N, const activation_t& activation)
+    {
+        transform_deriv(default_type, r, v, N, activation);
+    }
+
+    void transform(cumeric_t* r, const cumeric_t* v, const std::size_t N, const function_id activation)
+    {
+        transform(default_type, r, v, N, activation);
     }
 
     void transform_deriv(cumeric_t* r, const cumeric_t* v, const std::size_t N, const function_id activation)
     {
-        switch (activation)
-        {
-            case function_id::linear:
-            {
-                linear_units::identity_deriv(r, v, N);
-                break;
-            }
-            case function_id::relu:
-            {
-                linear_units::relu_deriv(r, v, N);
-                break;
-            }
-            case function_id::leaky_relu:
-            {
-                linear_units::leaky_relu_deriv(r, v, N);
-                break;
-            }
-            case function_id::gelu:
-            {
-                linear_units::gelu_deriv(r, v, N);
-                break;
-            }
-            case function_id::elu:
-            {
-                linear_units::elu_deriv(r, v, N);
-                break;
-            }
-            case function_id::exp:
-            {
-                exponential::exp_deriv(r, v, N);
-                break;
-            }
-            case function_id::exp2:
-            {
-                exponential::exp2_deriv(r, v, N);
-                break;
-            }
-            case function_id::exp10:
-            {
-                exponential::exp10_deriv(r, v, N);
-                break;
-            }
-            case function_id::log:
-            {
-                exponential::log_deriv(r, v, N);
-                break;
-            }
-            case function_id::log2:
-            {
-                exponential::log2_deriv(r, v, N);
-                break;
-            }
-            case function_id::log10:
-            {
-                exponential::log10_deriv(r, v, N);
-                break;
-            }
-            case function_id::sigmoid:
-            {
-                logistic::sigmoid_deriv(r, v, N);
-                break;
-            }
-            case function_id::sin:
-            {
-                trigonometric::sin_deriv(r, v, N);
-                break;
-            }
-            case function_id::cos:
-            {
-                trigonometric::cos_deriv(r, v, N);
-                break;
-            }
-            case function_id::tan:
-            {
-                trigonometric::tan_deriv(r, v, N);
-                break;
-            }
-            case function_id::sinh:
-            {
-                hyperbolic::sinh_deriv(r, v, N);
-                break;
-            }
-            case function_id::cosh:
-            {
-                hyperbolic::cosh_deriv(r, v, N);
-                break;
-            }
-            case function_id::tanh:
-            {
-                hyperbolic::tanh_deriv(r, v, N);
-                break;
-            }
-            case function_id::asin:
-            {
-                cyclometric::asin_deriv(r, v, N);
-                break;
-            }
-            case function_id::acos:
-            {
-                cyclometric::acos_deriv(r, v, N);
-                break;
-            }
-            case function_id::atan:
-            {
-                cyclometric::atan_deriv(r, v, N);
-                break;
-            }
-            default:
-            {
-                throw std::runtime_error("Unknown activation function (in transform_deriv(cumeric_t*, const cumeric_t*, std::size_t, function_id))");
-                // Apply with naive loop
-                // if (activation == nullptr)
-                //     break;
-
-                // #pragma omp parallel for
-                // for (std::size_t i = 0; i < N; ++i)
-                    // r[i] = func.derivative(v[i]);
-                // std::cerr << "Unknown activation function" << std::endl;
-            }
-        }
+        transform_deriv(default_type, r, v, N, activation);
     }
 
-
 }
+

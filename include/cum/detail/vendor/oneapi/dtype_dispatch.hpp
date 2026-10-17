@@ -72,4 +72,52 @@ namespace cum::internal
         return detail::event_handler::create(std::move(event));
     }
 
+    template <typename SyclT>
+    using math_compute_t = std::conditional_t<std::is_same_v<SyclT, double>, double, float>;
+
+    template <typename MklCall, typename FallbackOp>
+    __event__ dispatch_vm_unary(
+        datatype dtype, void* r, const void* v, const std::size_t n,
+        MklCall&& mkl_call, FallbackOp&& fallback_op)
+    {
+        sycl::event event = dispatch_sycl_datatype(dtype, [&]<typename SyclT>() -> sycl::event {
+            auto& q = internal::getQueue();
+            auto* r_ptr = static_cast<SyclT*>(r);
+            auto* v_ptr = static_cast<const SyclT*>(v);
+            const auto dim_n = static_cast<dim_t>(n);
+
+            if constexpr (requires { mkl_call(q, dim_n, v_ptr, r_ptr); }) {
+                return mkl_call(q, dim_n, v_ptr, r_ptr);
+            }
+            else {
+                using ComputeT = math_compute_t<SyclT>;
+                return q.parallel_for(sycl::range<1>(n), [=](sycl::id<1> i) {
+                    r_ptr[i] = static_cast<SyclT>(fallback_op(static_cast<ComputeT>(v_ptr[i])));
+                });
+            }
+        });
+
+        return detail::event_handler::create(std::move(event));
+    }
+
+    template <typename Op>
+    __event__ dispatch_unary_math(
+        datatype dtype, void* r, const void* v, const std::size_t n,
+        Op&& op)
+    {
+        sycl::event event = dispatch_sycl_datatype(dtype, [&]<typename SyclT>() -> sycl::event {
+            auto& q = internal::getQueue();
+            auto* r_ptr = static_cast<SyclT*>(r);
+            auto* v_ptr = static_cast<const SyclT*>(v);
+            using ComputeT = math_compute_t<SyclT>;
+
+            return q.parallel_for(sycl::range<1>(n), [=](sycl::id<1> i) {
+                r_ptr[i] = static_cast<SyclT>(op(static_cast<ComputeT>(v_ptr[i])));
+            });
+        });
+
+        return detail::event_handler::create(std::move(event));
+    }
+
 } // namespace internal
+

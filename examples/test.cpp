@@ -1,13 +1,9 @@
 #include "cum/cum.hpp"
 #include "cum/Core.hpp"
-#include "cum/LinearAlgebra.hpp"
 #include "cum/Matrix.hpp"
 
 #include <cstdlib>
 #include <iostream>
-
-#define fsycl
-#include <sycl/sycl.hpp>
 
 #include <ctime>
 #include <unistd.h>

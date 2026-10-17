@@ -9,8 +9,12 @@ namespace cum::functions
 {
     void transform(cumeric_t* r, const cumeric_t* v, std::size_t N, function_id activation);
     void transform(cumeric_t* r, const cumeric_t* v, std::size_t N, const activation_t& activation);
+    void transform(datatype dtype, void* r, const void* v, std::size_t N, function_id activation);
+    void transform(datatype dtype, void* r, const void* v, std::size_t N, const activation_t& activation);
 
     void transform_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N, function_id activation);
     void transform_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N, const activation_t& activation);
+    void transform_deriv(datatype dtype, void* r, const void* v, std::size_t N, function_id activation);
+    void transform_deriv(datatype dtype, void* r, const void* v, std::size_t N, const activation_t& activation);
 
 }

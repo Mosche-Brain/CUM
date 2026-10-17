@@ -160,5 +160,5 @@ namespace cum::lara
 		);
 	}
 
-	
+
 }

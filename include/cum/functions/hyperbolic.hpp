@@ -23,12 +23,21 @@ namespace cum::functions::hyperbolic
 
     __event__ tanh(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ tanh_in_place(cumeric_t* v, std::size_t N);
+    __event__ tanh(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ tanh(datatype dtype, void* v, std::size_t N);
+    __event__ tanh_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ sinh(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ sinh_in_place(cumeric_t* v, std::size_t N);
+    __event__ sinh(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ sinh(datatype dtype, void* v, std::size_t N);
+    __event__ sinh_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ cosh(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ cosh_in_place(cumeric_t* v, std::size_t N);
+    __event__ cosh(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ cosh(datatype dtype, void* v, std::size_t N);
+    __event__ cosh_in_place(datatype dtype, void* v, std::size_t N);
 
     /* ========================== Derivatives ========================== */
 
@@ -42,14 +51,28 @@ namespace cum::functions::hyperbolic
     /* Parallel versions */
 
     __event__ tanh_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
+    __event__ tanh_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ tanh_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ tanh_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ tanh_deriv_in_place(datatype dtype, void* v, std::size_t N);
+
     __event__ tanh_deriv_from_result(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ tanh_deriv_from_result_in_place(cumeric_t* v, std::size_t N);
+    __event__ tanh_deriv_from_result(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ tanh_deriv_from_result(datatype dtype, void* v, std::size_t N);
+    __event__ tanh_deriv_from_result_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ sinh_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ sinh_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ sinh_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ sinh_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ sinh_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ cosh_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ cosh_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ cosh_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ cosh_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ cosh_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
 } // namespace cum::functions::hyperbolic
 

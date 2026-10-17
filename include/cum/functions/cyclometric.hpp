@@ -19,12 +19,21 @@ namespace cum::functions::cyclometric
 
     __event__ asin(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ asin_in_place(cumeric_t* v, std::size_t N);
+    __event__ asin(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ asin(datatype dtype, void* v, std::size_t N);
+    __event__ asin_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ acos(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ acos_in_place(cumeric_t* v, std::size_t N);
+    __event__ acos(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ acos(datatype dtype, void* v, std::size_t N);
+    __event__ acos_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ atan(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ atan_in_place(cumeric_t* v, std::size_t N);
+    __event__ atan(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ atan(datatype dtype, void* v, std::size_t N);
+    __event__ atan_in_place(datatype dtype, void* v, std::size_t N);
 
     /* ========================== Derivatives ========================== */
 
@@ -38,11 +47,21 @@ namespace cum::functions::cyclometric
 
     __event__ asin_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ asin_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ asin_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ asin_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ asin_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ acos_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ acos_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ acos_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ acos_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ acos_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ atan_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ atan_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ atan_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ atan_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ atan_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
 }
+

@@ -28,12 +28,39 @@ namespace cum::functions::exponential
 
     __event__ exp(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ exp_in_place(cumeric_t* v, std::size_t N);
+    __event__ exp(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ exp(datatype dtype, void* v, std::size_t N);
+    __event__ exp_in_place(datatype dtype, void* v, std::size_t N);
+
     __event__ exp2(cumeric_t* r, const cumeric_t* v, std::size_t N);
+    __event__ exp2_in_place(cumeric_t* v, std::size_t N);
+    __event__ exp2(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ exp2(datatype dtype, void* v, std::size_t N);
+    __event__ exp2_in_place(datatype dtype, void* v, std::size_t N);
+
     __event__ exp10(cumeric_t* r, const cumeric_t* v, std::size_t N);
+    __event__ exp10_in_place(cumeric_t* v, std::size_t N);
+    __event__ exp10(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ exp10(datatype dtype, void* v, std::size_t N);
+    __event__ exp10_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ log(cumeric_t* r, const cumeric_t* v, std::size_t N);   // base e
+    __event__ log_in_place(cumeric_t* v, std::size_t N);
+    __event__ log(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ log(datatype dtype, void* v, std::size_t N);
+    __event__ log_in_place(datatype dtype, void* v, std::size_t N);
+
     __event__ log2(cumeric_t* r, const cumeric_t* v, std::size_t N);
+    __event__ log2_in_place(cumeric_t* v, std::size_t N);
+    __event__ log2(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ log2(datatype dtype, void* v, std::size_t N);
+    __event__ log2_in_place(datatype dtype, void* v, std::size_t N);
+
     __event__ log10(cumeric_t* r, const cumeric_t* v, std::size_t N);
+    __event__ log10_in_place(cumeric_t* v, std::size_t N);
+    __event__ log10(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ log10(datatype dtype, void* v, std::size_t N);
+    __event__ log10_in_place(datatype dtype, void* v, std::size_t N);
 
     /* ========================== Derivatives ========================== */
 
@@ -56,20 +83,39 @@ namespace cum::functions::exponential
 
     __event__ exp_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ exp_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ exp_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ exp_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ exp_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ exp2_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ exp2_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ exp2_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ exp2_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ exp2_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ exp10_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ exp10_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ exp10_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ exp10_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ exp10_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ log_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ log_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ log_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ log_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ log_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ log2_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ log2_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ log2_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ log2_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ log2_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
     __event__ log10_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ log10_deriv_in_place(cumeric_t* v, std::size_t N);
+    __event__ log10_deriv(datatype dtype, void* r, const void* v, std::size_t N);
+    __event__ log10_deriv(datatype dtype, void* v, std::size_t N);
+    __event__ log10_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
 } // namespace cum::functions::exponential
+

@@ -4,7 +4,9 @@
 
 #include "cum/Core.hpp"
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
-#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
+#include "cum/detail/vendor/oneapi/context.hpp"
+#include "cum/detail/vendor/oneapi/dtype_dispatch.hpp"
+#include "cum/functions/hyperbolic.hpp"
 
 #include <oneapi/mkl/vm.hpp>
 #include <sycl/sycl.hpp>
@@ -33,41 +35,94 @@ namespace cum::functions::hyperbolic
 
     /* Parallel versions */
 
+    __event__ tanh(datatype dtype, void* r, const void* v, const std::size_t N)
+    {
+        return internal::dispatch_vm_unary(dtype, r, v, N,
+            [](auto& q, dim_t len, const auto* vp, auto* rp) -> decltype(oneapi::mkl::vm::tanh(q, len, vp, rp)) {
+                return oneapi::mkl::vm::tanh(q, len, vp, rp);
+            },
+            [](auto x) { return sycl::tanh(x); }
+        );
+    }
+
+    __event__ tanh(datatype dtype, void* v, const std::size_t N)
+    {
+        return tanh(dtype, v, v, N);
+    }
+
+    __event__ tanh_in_place(datatype dtype, void* v, const std::size_t N)
+    {
+        return tanh(dtype, v, v, N);
+    }
+
     __event__ tanh(cumeric_t* r, const cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::tanh(internal::getQueue(), N, v, r);
-        return detail::event_handler::create(std::move(event));
+        return tanh(default_type, r, v, N);
     }
 
     __event__ tanh_in_place(cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::tanh(internal::getQueue(), N, v, v);
-        return detail::event_handler::create(std::move(event));
+        return tanh(default_type, v, v, N);
+    }
+
+    __event__ sinh(datatype dtype, void* r, const void* v, const std::size_t N)
+    {
+        return internal::dispatch_vm_unary(dtype, r, v, N,
+            [](auto& q, dim_t len, const auto* vp, auto* rp) -> decltype(oneapi::mkl::vm::sinh(q, len, vp, rp)) {
+                return oneapi::mkl::vm::sinh(q, len, vp, rp);
+            },
+            [](auto x) { return sycl::sinh(x); }
+        );
+    }
+
+    __event__ sinh(datatype dtype, void* v, const std::size_t N)
+    {
+        return sinh(dtype, v, v, N);
+    }
+
+    __event__ sinh_in_place(datatype dtype, void* v, const std::size_t N)
+    {
+        return sinh(dtype, v, v, N);
     }
 
     __event__ sinh(cumeric_t* r, const cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::sinh(internal::getQueue(), N, v, r);
-        return detail::event_handler::create(std::move(event));
+        return sinh(default_type, r, v, N);
     }
 
     __event__ sinh_in_place(cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::sinh(internal::getQueue(), N, v, v);
-        return detail::event_handler::create(std::move(event));
-        return detail::event_handler::create(std::move(event));
+        return sinh(default_type, v, v, N);
+    }
+
+    __event__ cosh(datatype dtype, void* r, const void* v, const std::size_t N)
+    {
+        return internal::dispatch_vm_unary(dtype, r, v, N,
+            [](auto& q, dim_t len, const auto* vp, auto* rp) -> decltype(oneapi::mkl::vm::cosh(q, len, vp, rp)) {
+                return oneapi::mkl::vm::cosh(q, len, vp, rp);
+            },
+            [](auto x) { return sycl::cosh(x); }
+        );
+    }
+
+    __event__ cosh(datatype dtype, void* v, const std::size_t N)
+    {
+        return cosh(dtype, v, v, N);
+    }
+
+    __event__ cosh_in_place(datatype dtype, void* v, const std::size_t N)
+    {
+        return cosh(dtype, v, v, N);
     }
 
     __event__ cosh(cumeric_t* r, const cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::cosh(internal::getQueue(), N, v, r);
-        return detail::event_handler::create(std::move(event));
+        return cosh(default_type, r, v, N);
     }
 
     __event__ cosh_in_place(cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::cosh(internal::getQueue(), N, v, v);
-        return detail::event_handler::create(std::move(event));
+        return cosh(default_type, v, v, N);
     }
 
     /* ========================== It's Derivatives ========================== */
@@ -96,64 +151,111 @@ namespace cum::functions::hyperbolic
 
     /* Parallel versions */
 
+    __event__ tanh_deriv(datatype dtype, void* r, const void* v, const std::size_t N)
+    {
+        return internal::dispatch_unary_math(dtype, r, v, N, [](auto x) {
+            using T = decltype(x);
+            T t = sycl::tanh(x);
+            return T(1) - t * t;
+        });
+    }
+
+    __event__ tanh_deriv(datatype dtype, void* v, const std::size_t N)
+    {
+        return tanh_deriv(dtype, v, v, N);
+    }
+
+    __event__ tanh_deriv_in_place(datatype dtype, void* v, const std::size_t N)
+    {
+        return tanh_deriv(dtype, v, v, N);
+    }
+
     __event__ tanh_deriv(cumeric_t* r, const cumeric_t* v, const std::size_t N)
     {
-        auto queue = internal::getQueue();
-        sycl::event e = oneapi::mkl::vm::tanh(queue, N, v, r);
+        return tanh_deriv(default_type, r, v, N);
+    }
 
-        // queue.parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        // {
-        //     cum::cumeric_t tanh_squared = sycl::pow(sycl::tanh(v[idx]), 2);
-        //     r[idx] = 1 - tanh_squared;
-        //     // r[idx] = 1 - sycl::tanh(v[idx]) * sycl::tanh(v[idx]);
-        // }).wait();
-        sycl::event event = queue.parallel_for(sycl::range<1>(N), {e},
-        [=](sycl::id<1> idx)
-        {
-            r[idx] = 1 - r[idx] * r[idx];
+    __event__ tanh_deriv_in_place(cumeric_t* v, const std::size_t N)
+    {
+        return tanh_deriv(default_type, v, v, N);
+    }
+
+    __event__ tanh_deriv_from_result(datatype dtype, void* r, const void* v, const std::size_t N)
+    {
+        return internal::dispatch_unary_math(dtype, r, v, N, [](auto x) {
+            using T = decltype(x);
+            return T(1) - x * x;
         });
-        return detail::event_handler::create(std::move(event));
+    }
+
+    __event__ tanh_deriv_from_result(datatype dtype, void* v, const std::size_t N)
+    {
+        return tanh_deriv_from_result(dtype, v, v, N);
+    }
+
+    __event__ tanh_deriv_from_result_in_place(datatype dtype, void* v, const std::size_t N)
+    {
+        return tanh_deriv_from_result(dtype, v, v, N);
     }
 
     __event__ tanh_deriv_from_result(cumeric_t* r, const cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            r[idx] = 1 - v[idx] * v[idx];
-        });
+        return tanh_deriv_from_result(default_type, r, v, N);
     }
 
     __event__ tanh_deriv_from_result_in_place(cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            v[idx] = 1 - v[idx] * v[idx];
-        });
-        return detail::event_handler::create(std::move(event));
+        return tanh_deriv_from_result(default_type, v, v, N);
+    }
+
+    __event__ sinh_deriv(datatype dtype, void* r, const void* v, const std::size_t N)
+    {
+        return cosh(dtype, r, v, N);
+    }
+
+    __event__ sinh_deriv(datatype dtype, void* v, const std::size_t N)
+    {
+        return cosh(dtype, v, v, N);
+    }
+
+    __event__ sinh_deriv_in_place(datatype dtype, void* v, const std::size_t N)
+    {
+        return cosh(dtype, v, v, N);
     }
 
     __event__ sinh_deriv(cumeric_t* r, const cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::cosh(internal::getQueue(), N, v, r);
-        return detail::event_handler::create(std::move(event));
+        return cosh(default_type, r, v, N);
     }
 
     __event__ sinh_deriv_in_place(cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::cosh(internal::getQueue(), N, v, v);
-        return detail::event_handler::create(std::move(event));
+        return cosh(default_type, v, v, N);
+    }
+
+    __event__ cosh_deriv(datatype dtype, void* r, const void* v, const std::size_t N)
+    {
+        return sinh(dtype, r, v, N);
+    }
+
+    __event__ cosh_deriv(datatype dtype, void* v, const std::size_t N)
+    {
+        return sinh(dtype, v, v, N);
+    }
+
+    __event__ cosh_deriv_in_place(datatype dtype, void* v, const std::size_t N)
+    {
+        return sinh(dtype, v, v, N);
     }
 
     __event__ cosh_deriv(cumeric_t* r, const cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::sinh(internal::getQueue(), N, v, r);
-        return detail::event_handler::create(std::move(event));
+        return sinh(default_type, r, v, N);
     }
 
     __event__ cosh_deriv_in_place(cumeric_t* v, const std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::sinh(internal::getQueue(), N, v, v);
-        return detail::event_handler::create(std::move(event));
+        return sinh(default_type, v, v, N);
     }
 
 }

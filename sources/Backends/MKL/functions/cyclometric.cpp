@@ -4,9 +4,8 @@
 #include <sycl/sycl.hpp>
 
 #include "cum/detail/vendor/oneapi/event_handler.hpp"
-
-
-#include "../../../../include/cum/detail/vendor/oneapi/context.hpp"
+#include "cum/detail/vendor/oneapi/context.hpp"
+#include "cum/detail/vendor/oneapi/dtype_dispatch.hpp"
 #include "cum/functions/cyclometric.hpp"
 
 namespace cum::functions::cyclometric
@@ -32,40 +31,94 @@ namespace cum::functions::cyclometric
 
     /* Parallel versions */
 
+    __event__ asin(datatype dtype, void* r, const void* v, std::size_t N)
+    {
+        return internal::dispatch_vm_unary(dtype, r, v, N,
+            [](auto& q, dim_t len, const auto* vp, auto* rp) -> decltype(oneapi::mkl::vm::asin(q, len, vp, rp)) {
+                return oneapi::mkl::vm::asin(q, len, vp, rp);
+            },
+            [](auto x) { return sycl::asin(x); }
+        );
+    }
+
+    __event__ asin(datatype dtype, void* v, std::size_t N)
+    {
+        return asin(dtype, v, v, N);
+    }
+
+    __event__ asin_in_place(datatype dtype, void* v, std::size_t N)
+    {
+        return asin(dtype, v, v, N);
+    }
+
     __event__ asin(cumeric_t* r, const cumeric_t* v, std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::asin(internal::getQueue(), N, v, r, {});
-        return detail::event_handler::create(std::move(event));
+        return asin(default_type, r, v, N);
     }
 
     __event__ asin_in_place(cumeric_t* v, std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::asin(internal::getQueue(), N, v, v, {});
-        return detail::event_handler::create(std::move(event));
+        return asin(default_type, v, v, N);
+    }
+
+    __event__ acos(datatype dtype, void* r, const void* v, std::size_t N)
+    {
+        return internal::dispatch_vm_unary(dtype, r, v, N,
+            [](auto& q, dim_t len, const auto* vp, auto* rp) -> decltype(oneapi::mkl::vm::acos(q, len, vp, rp)) {
+                return oneapi::mkl::vm::acos(q, len, vp, rp);
+            },
+            [](auto x) { return sycl::acos(x); }
+        );
+    }
+
+    __event__ acos(datatype dtype, void* v, std::size_t N)
+    {
+        return acos(dtype, v, v, N);
+    }
+
+    __event__ acos_in_place(datatype dtype, void* v, std::size_t N)
+    {
+        return acos(dtype, v, v, N);
     }
 
     __event__ acos(cumeric_t* r, const cumeric_t* v, std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::acos(internal::getQueue(), N, v, r, {});
-        return detail::event_handler::create(std::move(event));
+        return acos(default_type, r, v, N);
     }
 
     __event__ acos_in_place(cumeric_t* v, std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::acos(internal::getQueue(), N, v, v, {});
-        return detail::event_handler::create(std::move(event));
+        return acos(default_type, v, v, N);
+    }
+
+    __event__ atan(datatype dtype, void* r, const void* v, std::size_t N)
+    {
+        return internal::dispatch_vm_unary(dtype, r, v, N,
+            [](auto& q, dim_t len, const auto* vp, auto* rp) -> decltype(oneapi::mkl::vm::atan(q, len, vp, rp)) {
+                return oneapi::mkl::vm::atan(q, len, vp, rp);
+            },
+            [](auto x) { return sycl::atan(x); }
+        );
+    }
+
+    __event__ atan(datatype dtype, void* v, std::size_t N)
+    {
+        return atan(dtype, v, v, N);
+    }
+
+    __event__ atan_in_place(datatype dtype, void* v, std::size_t N)
+    {
+        return atan(dtype, v, v, N);
     }
 
     __event__ atan(cumeric_t* r, const cumeric_t* v, std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::atan(internal::getQueue(), N, v, r, {});
-        return detail::event_handler::create(std::move(event));
+        return atan(default_type, r, v, N);
     }
 
     __event__ atan_in_place(cumeric_t* v, std::size_t N)
     {
-        sycl::event event = oneapi::mkl::vm::atan(internal::getQueue(), N, v, v, {});
-        return detail::event_handler::create(std::move(event));
+        return atan(default_type, v, v, N);
     }
 
     /* ========================== Derivatives ========================== */
@@ -88,57 +141,87 @@ namespace cum::functions::cyclometric
 
     /* Parallel versions */
 
+    __event__ asin_deriv(datatype dtype, void* r, const void* v, std::size_t N)
+    {
+        return internal::dispatch_unary_math(dtype, r, v, N, [](auto x) {
+            using T = decltype(x);
+            return T(1) / sycl::sqrt(T(1) - x * x);
+        });
+    }
+
+    __event__ asin_deriv(datatype dtype, void* v, std::size_t N)
+    {
+        return asin_deriv(dtype, v, v, N);
+    }
+
+    __event__ asin_deriv_in_place(datatype dtype, void* v, std::size_t N)
+    {
+        return asin_deriv(dtype, v, v, N);
+    }
+
     __event__ asin_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            r[idx] = asin_deriv(v[idx]);
-        });
-        return detail::event_handler::create(std::move(event));
+        return asin_deriv(default_type, r, v, N);
     }
 
     __event__ asin_deriv_in_place(cumeric_t* v, std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            v[idx] = asin_deriv(v[idx]);
+        return asin_deriv(default_type, v, v, N);
+    }
+
+    __event__ acos_deriv(datatype dtype, void* r, const void* v, std::size_t N)
+    {
+        return internal::dispatch_unary_math(dtype, r, v, N, [](auto x) {
+            using T = decltype(x);
+            return T(-1) / sycl::sqrt(T(1) - x * x);
         });
-        return detail::event_handler::create(std::move(event));
+    }
+
+    __event__ acos_deriv(datatype dtype, void* v, std::size_t N)
+    {
+        return acos_deriv(dtype, v, v, N);
+    }
+
+    __event__ acos_deriv_in_place(datatype dtype, void* v, std::size_t N)
+    {
+        return acos_deriv(dtype, v, v, N);
     }
 
     __event__ acos_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            r[idx] = acos_deriv(v[idx]);
-        });
-        return detail::event_handler::create(std::move(event));
+        return acos_deriv(default_type, r, v, N);
     }
 
     __event__ acos_deriv_in_place(cumeric_t* v, std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            v[idx] = acos_deriv(v[idx]);
+        return acos_deriv(default_type, v, v, N);
+    }
+
+    __event__ atan_deriv(datatype dtype, void* r, const void* v, std::size_t N)
+    {
+        return internal::dispatch_unary_math(dtype, r, v, N, [](auto x) {
+            using T = decltype(x);
+            return T(1) / (x * x + T(1));
         });
-        return detail::event_handler::create(std::move(event));
+    }
+
+    __event__ atan_deriv(datatype dtype, void* v, std::size_t N)
+    {
+        return atan_deriv(dtype, v, v, N);
+    }
+
+    __event__ atan_deriv_in_place(datatype dtype, void* v, std::size_t N)
+    {
+        return atan_deriv(dtype, v, v, N);
     }
 
     __event__ atan_deriv(cumeric_t* r, const cumeric_t* v, std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            r[idx] = atan_deriv(v[idx]);
-        });
-        return detail::event_handler::create(std::move(event));
+        return atan_deriv(default_type, r, v, N);
     }
 
     __event__ atan_deriv_in_place(cumeric_t* v, std::size_t N)
     {
-        sycl::event event = internal::getQueue().parallel_for(sycl::range<1>(N), [=](sycl::id<1> idx)
-        {
-            v[idx] = atan_deriv(v[idx]);
-        });
-        return detail::event_handler::create(std::move(event));
+        return atan_deriv(default_type, v, v, N);
     }
 }
