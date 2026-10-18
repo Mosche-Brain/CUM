@@ -28,7 +28,7 @@ jobs:
 
       # Oficjalna akcja z repozytorium oneapi-src/oneapi-ci
       - name: Setup Intel oneAPI
-        uses: oneapi-src/oneapi-ci@v1
+        uses: oneapi-src/oneapi-ci@main
         with:
           components: |
             intel-oneapi-compiler-dpcpp-cpp
