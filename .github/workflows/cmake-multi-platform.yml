@@ -1,0 +1,111 @@
+name: Intel oneAPI Multiplatform (icpx + MKL + DPL + DNN) # LLM generated
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.os }} - Intel oneAPI
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        build_type: [Release]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # ==========================================
+    # KROK 1A: Instalacja oneAPI na Ubuntu (APT)
+    # ==========================================
+    - name: Install oneAPI on Linux
+      if: runner.os == 'Linux'
+      run: |
+        wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+          | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+        echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" \
+          | sudo tee /etc/apt/sources.list.d/oneAPI.list
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends \
+          intel-oneapi-compiler-dpcpp-cpp \
+          intel-oneapi-mkl-devel \
+          intel-oneapi-dpl-devel \
+          intel-oneapi-dnn-devel
+
+    - name: Initialize Linux Environment
+      if: runner.os == 'Linux'
+      run: |
+        source /opt/intel/oneapi/setvars.sh || true
+        env | grep -E '^(PATH|LD_LIBRARY_PATH|CPATH|LIBRARY_PATH|MKLROOT|DNNLROOT|DPL_ROOT|CMAKE_PREFIX_PATH)=' >> "$GITHUB_ENV"
+
+    # ==========================================
+    # KROK 1B: Instalacja oneAPI na Windows (winget)
+    # ==========================================
+    - name: Install oneAPI on Windows
+      if: runner.os == 'Windows'
+      shell: powershell
+      run: |
+        # Instalacja kompilatora DPCPP/C++, oneMKL, oneDNN, oneDPL przez winget
+        # Parametry --silent i akceptacja licencji są kluczowe w CI
+        $packages = @(
+          "Intel.oneAPI.BaseToolkit.Compiler",
+          "Intel.oneAPI.BaseToolkit.MKL",
+          "Intel.oneAPI.BaseToolkit.DNN",
+          "Intel.oneAPI.BaseToolkit.DPL"
+        )
+        foreach ($pkg in $packages) {
+          Write-Host "Installing $pkg..."
+          winget install --id $pkg --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+        }
+
+    - name: Setup MSVC & Intel Environment on Windows
+      if: runner.os == 'Windows'
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Initialize Windows oneAPI Environment
+      if: runner.os == 'Windows'
+      shell: cmd
+      run: |
+        call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+        set >> %GITHUB_ENV%
+
+    # ==========================================
+    # KROK 2: Konfiguracja CMake
+    # ==========================================
+    - name: Configure CMake (Linux)
+      if: runner.os == 'Linux'
+      run: >
+        cmake -B build
+        -G Ninja
+        -DCMAKE_C_COMPILER=icx
+        -DCMAKE_CXX_COMPILER=icpx
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_PREFIX_PATH="/opt/intel/oneapi"
+        -S .
+
+    - name: Configure CMake (Windows)
+      if: runner.os == 'Windows'
+      shell: cmd
+      run: >
+        cmake -B build
+        -G "Ninja"
+        -DCMAKE_C_COMPILER=icx
+        -DCMAKE_CXX_COMPILER=icx
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI"
+        -S .
+
+    # ==========================================
+    # KROK 3: Build & Test
+    # ==========================================
+    - name: Build
+      run: cmake --build build --config ${{ matrix.build_type }}
+
+    - name: Run Tests
+      run: ctest --test-dir build --build-config ${{ matrix.build_type }} --output-on-failure
