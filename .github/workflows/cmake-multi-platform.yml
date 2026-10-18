@@ -21,49 +21,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ==========================================
-      # LINUX SETUP (Natywny APT z prawidłowymi nazwami)
-      # ==========================================
-      - name: Install oneAPI on Linux
-        if: runner.os == 'Linux'
-        run: |
-          wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
-            | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
-          echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" \
-            | sudo tee /etc/apt/sources.list.d/oneAPI.list
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            intel-oneapi-compiler-dpcpp-cpp \
-            intel-oneapi-mkl-devel \
-            intel-oneapi-dpl \
-            intel-oneapi-dnnl-devel
-
-      - name: Initialize oneAPI Environment (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          source /opt/intel/oneapi/setvars.sh || true
-          env | grep -E '^(PATH|LD_LIBRARY_PATH|CPATH|LIBRARY_PATH|MKLROOT|DNNLROOT|DPL_ROOT|CMAKE_PREFIX_PATH)=' >> "$GITHUB_ENV"
-
-      # ==========================================
-      # WINDOWS SETUP (msvc + setup-oneapi)
-      # ==========================================
+      # Na Windowsie oneAPI nadal wymaga narzędzi Visual Studio (link.exe / MSVC runtime)
       - name: Setup MSVC (Windows)
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
 
-      - name: Setup oneAPI (Windows)
-        if: runner.os == 'Windows'
-        uses: oneapi-src/setup-oneapi@v1
+      # Oficjalna akcja z repozytorium oneapi-src/oneapi-ci
+      - name: Setup Intel oneAPI
+        uses: oneapi-src/oneapi-ci@v1
         with:
-          list: |
-            intel.oneapi.win.dpcpp-cpp-compiler
-            intel.oneapi.win.mkl.devel
-            intel.oneapi.win.dnnl.devel
-            intel.oneapi.win.dpl
+          components: |
+            intel-oneapi-compiler-dpcpp-cpp
+            intel-oneapi-mkl-devel
+            intel-oneapi-dpl
+            intel-oneapi-dnnl-devel
 
-      # ==========================================
-      # CMAKE CONFIGURE, BUILD & TEST
-      # ==========================================
       - name: Configure CMake
         shell: bash
         run: |
@@ -78,7 +50,6 @@ jobs:
               -DCMAKE_C_COMPILER=icx \
               -DCMAKE_CXX_COMPILER=icpx \
               -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -DCMAKE_PREFIX_PATH="/opt/intel/oneapi" \
               -S .
           fi
 
