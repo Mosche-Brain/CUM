@@ -18,43 +18,75 @@ jobs:
         build_type: [Release]
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      # Na Windowsie oneAPI nadal wymaga narzędzi Visual Studio (link.exe / MSVC runtime)
-      - name: Setup MSVC (Windows)
-        if: runner.os == 'Windows'
-        uses: ilammy/msvc-dev-cmd@v1
+    # ========================================================
+    # 1. LINUX SETUP (Natywny APT z precyzyjnymi nazwami paczek)
+    # ========================================================
+    - name: Install oneAPI on Linux
+      if: runner.os == 'Linux'
+      run: |
+        wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+          | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+        echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" \
+          | sudo tee /etc/apt/sources.list.d/oneAPI.list
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends \
+          intel-oneapi-compiler-dpcpp-cpp \
+          intel-oneapi-mkl-devel \
+          intel-oneapi-dpl \
+          intel-oneapi-dnnl-devel
 
-      # Oficjalna akcja z repozytorium oneapi-src/oneapi-ci
-      - name: Setup Intel oneAPI
-        uses: oneapi-src/oneapi-ci@v0
-        with:
-          components: |
-            intel-oneapi-compiler-dpcpp-cpp
-            intel-oneapi-mkl-devel
-            intel-oneapi-dpl
-            intel-oneapi-dnnl-devel
+    - name: Initialize Environment (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        source /opt/intel/oneapi/setvars.sh || true
+        env | grep -E '^(PATH|LD_LIBRARY_PATH|CPATH|LIBRARY_PATH|MKLROOT|DNNLROOT|DPL_ROOT|CMAKE_PREFIX_PATH)=' >> "$GITHUB_ENV"
 
-      - name: Configure CMake
-        shell: bash
-        run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            cmake -B build -G Ninja \
-              -DCMAKE_C_COMPILER=icx \
-              -DCMAKE_CXX_COMPILER=icx \
-              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -S .
-          else
-            cmake -B build -G Ninja \
-              -DCMAKE_C_COMPILER=icx \
-              -DCMAKE_CXX_COMPILER=icpx \
-              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -S .
-          fi
+    # ========================================================
+    # 2. WINDOWS SETUP (Wbudowany MSVC + preinstalowany Chocolatey)
+    # ========================================================
+    - name: Setup MSVC (Windows)
+      if: runner.os == 'Windows'
+      uses: ilammy/msvc-dev-cmd@v1
 
-      - name: Build
-        run: cmake --build build --config ${{ matrix.build_type }}
+    - name: Install oneAPI on Windows
+      if: runner.os == 'Windows'
+      run: |
+        choco install intel-oneapi-compiler-dpcpp-cpp intel-oneapi-mkl intel-oneapi-dnnl intel-oneapi-dpl -y --no-progress
 
-      - name: Run Tests
-        run: ctest --test-dir build --build-config ${{ matrix.build_type }} --output-on-failure
+    - name: Initialize Environment (Windows)
+      if: runner.os == 'Windows'
+      shell: cmd
+      run: |
+        call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+        set >> %GITHUB_ENV%
+
+    # ========================================================
+    # 3. CMAKE BUILD & TEST
+    # ========================================================
+    - name: Configure CMake
+      shell: bash
+      run: |
+        if [ "$RUNNER_OS" == "Windows" ]; then
+          cmake -B build -G Ninja \
+            -DCMAKE_C_COMPILER=icx \
+            -DCMAKE_CXX_COMPILER=icx \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI" \
+            -S .
+        else
+          cmake -B build -G Ninja \
+            -DCMAKE_C_COMPILER=icx \
+            -DCMAKE_CXX_COMPILER=icpx \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DCMAKE_PREFIX_PATH="/opt/intel/oneapi" \
+            -S .
+        fi
+
+    - name: Build
+      run: cmake --build build --config ${{ matrix.build_type }}
+
+    - name: Run Tests
+      run: ctest --test-dir build --build-config ${{ matrix.build_type }} --output-on-failure
