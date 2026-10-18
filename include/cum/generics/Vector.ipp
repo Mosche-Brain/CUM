@@ -22,7 +22,7 @@ namespace cum
     namespace detail
     {
         template <typename T, dim_t length_>
-        Vector<T, length_> make_vector_like(dim_t len)
+        Vector<T, length_> make_vector_like([[maybe_unused]] dim_t len)
         {
             if constexpr (length_ == Dynamic)
             {
@@ -30,7 +30,6 @@ namespace cum
             }
             else
             {
-                (void)len;
                 return Vector<T, length_>();
             }
         }
