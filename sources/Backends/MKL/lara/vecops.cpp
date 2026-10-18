@@ -100,6 +100,51 @@ namespace cum::lara
 		);
 	}
 
+	__event__ vadd_batch(datatype dtype, void* r, const dim_t stride_r, const void* v, const dim_t stride_v, const void* u, const dim_t stride_u, const dim_t n, const dim_t batch_size)
+	{
+		return internal::dispatch_vm_binary_batch(dtype, r, stride_r, v, stride_v, u, stride_u, n, batch_size,
+			[](auto& q, auto len, auto* a, auto* b, auto* res) -> decltype(oneapi::mkl::vm::add(q, len, a, b, res)) {
+				return oneapi::mkl::vm::add(q, len, a, b, res);
+			},
+			std::plus<>{}
+		);
+	}
+
+	__event__ vadd_batch(datatype dtype, void* v, const dim_t stride_v, const void* u, const dim_t stride_u, const dim_t n, const dim_t batch_size)
+	{
+		return vadd_batch(dtype, v, stride_v, v, stride_v, u, stride_u, n, batch_size);
+	}
+
+	__event__ vadd_batch(datatype dtype, void* r, const void* v, const void* u, const dim_t n, const dim_t batch_size)
+	{
+		return vadd_batch(dtype, r, n, v, n, u, n, n, batch_size);
+	}
+
+	__event__ vadd_batch(datatype dtype, void* v, const void* u, const dim_t n, const dim_t batch_size)
+	{
+		return vadd_batch(dtype, v, n, v, n, u, n, n, batch_size);
+	}
+
+	__event__ vadd_batch(cumeric_t* r, const dim_t stride_r, const cumeric_t* v, const dim_t stride_v, const cumeric_t* u, const dim_t stride_u, const dim_t n, const dim_t batch_size)
+	{
+		return vadd_batch(default_type, r, stride_r, v, stride_v, u, stride_u, n, batch_size);
+	}
+
+	__event__ vadd_batch(cumeric_t* v, const dim_t stride_v, const cumeric_t* u, const dim_t stride_u, const dim_t n, const dim_t batch_size)
+	{
+		return vadd_batch(default_type, v, stride_v, v, stride_v, u, stride_u, n, batch_size);
+	}
+
+	__event__ vadd_batch(cumeric_t* r, const cumeric_t* v, const cumeric_t* u, const dim_t n, const dim_t batch_size)
+	{
+		return vadd(r, v, u, n * batch_size);
+	}
+
+	__event__ vadd_batch(cumeric_t* v, const cumeric_t* u, const dim_t n, const dim_t batch_size)
+	{
+		return vadd(v, u, n * batch_size);
+	}
+
 	__event__ vsub(datatype dtype, void* r, const void* v, const void* u, const dim_t n)
 	{
 		return internal::dispatch_vm_binary(dtype, r, v, u, n,

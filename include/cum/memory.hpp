@@ -18,6 +18,6 @@ namespace cum::memory
     template <typename T>
     T* allocate(dim_t size)
     {
-        return static_cast<T*>(allocate_bytes(size));
+        return static_cast<T*>(static_cast<void*>(allocate_bytes(size * static_cast<dim_t>(sizeof(T)))));
     }
 }

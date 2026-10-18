@@ -13,6 +13,8 @@
 
 #include <stdfloat>
 #include <cstdint>
+#include <type_traits>
+
 
 
 
@@ -171,9 +173,48 @@ namespace cum
     }
 
     template <typename T>
-    inline datatype type_tag()
+    constexpr datatype type_tag() noexcept
     {
+        using U = std::remove_cvref_t<T>;
 
+        if constexpr (std::is_same_v<U, float64>)
+            return datatype::FP64;
+        else if constexpr (std::is_same_v<U, float32>)
+            return datatype::FP32;
+        else if constexpr (std::is_same_v<U, float16>
+#if defined(SYCL_LANGUAGE_VERSION)
+            || std::is_same_v<U, sycl::half>
+#endif
+        )
+            return datatype::FP16;
+        else if constexpr (std::is_same_v<U, bfloat16>
+#if defined(SYCL_LANGUAGE_VERSION)
+            || std::is_same_v<U, sycl::ext::oneapi::bfloat16>
+#endif
+        )
+            return datatype::BF16;
+        else if constexpr (std::is_same_v<U, float8>)
+            return datatype::FP8;
+        else if constexpr (std::is_integral_v<U> && !std::is_same_v<U, bool>)
+        {
+            if constexpr (std::is_signed_v<U>)
+            {
+                if constexpr (sizeof(U) == 8) return datatype::S64;
+                else if constexpr (sizeof(U) == 4) return datatype::S32;
+                else if constexpr (sizeof(U) == 2) return datatype::S16;
+                else if constexpr (sizeof(U) == 1) return datatype::S8;
+            }
+            else
+            {
+                if constexpr (sizeof(U) == 8) return datatype::U64;
+                else if constexpr (sizeof(U) == 4) return datatype::U32;
+                else if constexpr (sizeof(U) == 2) return datatype::U16;
+                else if constexpr (sizeof(U) == 1) return datatype::U8;
+            }
+            return datatype::UNDEF;
+        }
+        else
+            return datatype::UNDEF;
     }
 
 }
