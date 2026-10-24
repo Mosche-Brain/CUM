@@ -1,11 +1,13 @@
-//
-// Created by jaro on 7/19/26.
-//
+/**
+ * @file trigonometric.hpp
+ * @brief Trigonometric functions (sin, cos, tan) and their analytical derivatives.
+ * @author jaro
+ * @details Implements scalar evaluations and asynchronous parallel GPU/device vector operations.
+ */
 
 #pragma once
 
 #include "cum/Core.hpp"
-
 #include <cstddef>
 
 namespace cum::functions::trigonometric
@@ -14,8 +16,25 @@ namespace cum::functions::trigonometric
 
     /* Scalar versions */
 
+    /**
+     * @brief Evaluates scalar sine: sin(x).
+     * @param x Input scalar in radians.
+     * @return Result scalar.
+     */
     cumeric_t sin(cumeric_t x);
+
+    /**
+     * @brief Evaluates scalar cosine: cos(x).
+     * @param x Input scalar in radians.
+     * @return Result scalar.
+     */
     cumeric_t cos(cumeric_t x);
+
+    /**
+     * @brief Evaluates scalar tangent: tan(x).
+     * @param x Input scalar in radians.
+     * @return Result scalar.
+     */
     cumeric_t tan(cumeric_t x);
 
     /* Parallel versions */

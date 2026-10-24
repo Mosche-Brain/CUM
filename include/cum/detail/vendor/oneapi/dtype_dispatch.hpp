@@ -1,8 +1,7 @@
-/*
- * @author: jaro
- * @name:   dtype_dispatch
- * @file:   include/cum/detail/vendor/oneapi/dtype_dispatch.hpp
- * @date:   17 October 2026 12:34:53
+/**
+ * @file dtype_dispatch.hpp
+ * @brief SYCL and oneMKL datatype dispatchers, type mapping traits, and fallback kernel templates.
+ * @author jaro
  */
 
 #pragma once
@@ -32,6 +31,13 @@ namespace cum::internal
     template <typename T>
     using sycl_type_t = typename sycl_type_map<T>::type;
 
+    /**
+     * @brief Dispatches runtime datatype to compile-time SYCL mapped type.
+     * @tparam F Generic functor type.
+     * @param dt Runtime datatype tag.
+     * @param f Functor called with mapped SYCL type (e.g. sycl::half).
+     * @return Result of invoking functor f.
+     */
     template <typename F>
     decltype(auto) dispatch_sycl_datatype(datatype dt, F&& f)
     {
@@ -53,6 +59,9 @@ namespace cum::internal
         SyclT,
         std::conditional_t<std::is_same_v<SyclT, double>, double, float>>;
 
+    /**
+     * @brief Dispatches binary vector-matrix or elementwise operations to oneMKL or SYCL fallback kernel.
+     */
     template <typename MklCall, typename FallbackOp>
     __event__ dispatch_vm_binary(
         datatype dtype, void* r, const void* v, const void* u, const dim_t n,
@@ -85,6 +94,9 @@ namespace cum::internal
         return detail::event_handler::create(std::move(event));
     }
 
+    /**
+     * @brief Dispatches batched binary operations to oneMKL or 2D parallel_for SYCL fallback kernel.
+     */
     template <typename MklCall, typename FallbackOp>
     __event__ dispatch_vm_binary_batch(
         datatype dtype,
@@ -210,6 +222,9 @@ namespace cum::internal
         }
     }
 
+    /**
+     * @brief Dispatches unary vector operations to oneMKL or 1D parallel_for SYCL fallback kernel.
+     */
     template <typename MklCall, typename FallbackOp>
     __event__ dispatch_vm_unary(
         datatype dtype, void* r, const void* v, const std::size_t n,
@@ -235,6 +250,9 @@ namespace cum::internal
         return detail::event_handler::create(std::move(event));
     }
 
+    /**
+     * @brief Dispatches generic unary mathematical functor across array elements using SYCL parallel_for.
+     */
     template <typename Op>
     __event__ dispatch_unary_math(
         datatype dtype, void* r, const void* v, const std::size_t n,

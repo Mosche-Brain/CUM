@@ -1,14 +1,15 @@
-//
-// Created by jaro on 7/19/26.
-//
+/**
+ * @file exponential.hpp
+ * @brief Exponential and logarithmic functions and their derivatives.
+ * @author jaro
+ * @details Implements exp (base e, 2, 10) and log (natural, base 2, base 10) for scalar values
+ *          and parallel asynchronous GPU/device vectors.
+ */
 
 #pragma once
 
 #include "cum/Core.hpp"
-
 #include <cstddef>
-
-// TODO: Dodać przeładowania in_place
 
 namespace cum::functions::exponential
 {
@@ -16,12 +17,46 @@ namespace cum::functions::exponential
 
     /* Scalar versions */
 
+    /**
+     * @brief Evaluates natural exponential: e^x.
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
     cumeric_t exp(cumeric_t x);
+
+    /**
+     * @brief Evaluates base-2 exponential: 2^x.
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
     cumeric_t exp2(cumeric_t x);
+
+    /**
+     * @brief Evaluates base-10 exponential: 10^x.
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
     cumeric_t exp10(cumeric_t x);
 
-    cumeric_t log(cumeric_t x);   // base e
+    /**
+     * @brief Evaluates natural logarithm: ln(x).
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
+    cumeric_t log(cumeric_t x);
+
+    /**
+     * @brief Evaluates base-2 logarithm: log2(x).
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
     cumeric_t log2(cumeric_t x);
+
+    /**
+     * @brief Evaluates base-10 logarithm: log10(x).
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
     cumeric_t log10(cumeric_t x);
 
     /* Parallel versions */
@@ -44,7 +79,7 @@ namespace cum::functions::exponential
     __event__ exp10(datatype dtype, void* v, std::size_t N);
     __event__ exp10_in_place(datatype dtype, void* v, std::size_t N);
 
-    __event__ log(cumeric_t* r, const cumeric_t* v, std::size_t N);   // base e
+    __event__ log(cumeric_t* r, const cumeric_t* v, std::size_t N);
     __event__ log_in_place(cumeric_t* v, std::size_t N);
     __event__ log(datatype dtype, void* r, const void* v, std::size_t N);
     __event__ log(datatype dtype, void* v, std::size_t N);
@@ -118,4 +153,3 @@ namespace cum::functions::exponential
     __event__ log10_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
 } // namespace cum::functions::exponential
-

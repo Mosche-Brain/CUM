@@ -1,8 +1,7 @@
-/*
- * @author: jaro
- * @name:   parallel
- * @file:   include/cum/generics/parallel.hpp
- * @date:   17 October 2026 21:17:59
+/**
+ * @file parallel.hpp
+ * @brief Generic parallel algorithms and execution primitives.
+ * @author jaro
  */
 
 #pragma once

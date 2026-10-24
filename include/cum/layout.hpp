@@ -1,28 +1,29 @@
-/*
- * @author: jaro
- * @name:   layou
- * @file:   modules/cum/layou.hpp
- * @date:   19 September 2026 11:00:58
+/**
+ * @file layout.hpp
+ * @brief Memory layout and tensor dimension order tags.
+ * @author jaro
+ * @details Defines memory stride formatting tags for 1D vectors, 2D matrices (Row/Col major),
+ *          and N-dimensional activation, weight, and RNN tensors.
+ * @note Derived from oneDNN memory format tags (Apache 2.0 license).
  */
 
 #pragma once
 
 namespace cum
 {
-    /*
-     * @info: This part was derived from one of the oneDNN headers
-     * @source: https://github.com/uxlfoundation/oneDNN/blob/main/include/oneapi/dnnl/dnnl.hpp
-     * @license: Apache 2.0
+    /**
+     * @enum layout
+     * @brief Memory layout and dimension permutation tags for multi-dimensional tensors.
      */
     enum class layout : unsigned char
     {
-        UNDEF,
-        ANY,
+        UNDEF, ///< Undefined layout format.
+        ANY,   ///< Flexible/unspecified layout (chosen automatically by engine for performance).
 
-        A,
+        A,     ///< 1D contiguous layout.
 
-        AB, // Row Major
-        BA, // Col Major
+        AB,    ///< 2D Row-Major format.
+        BA,    ///< 2D Column-Major format.
 
         ABC,
         ACB,
@@ -75,10 +76,10 @@ namespace cum
         ABCDEFGHIJKL,
         ABCDEFGHIJLK,
 
-        // 1D
+        /* 1D Named Aliases */
         X = A,
 
-        // Activations
+        /* Activations (Batch N, Channel C, Depth D, Height H, Width W) */
         NC    = AB,
         CN    = BA,
         NCW   = ABC,
@@ -89,7 +90,7 @@ namespace cum
         NCDHW = ABCDE,
         NDHWC = ACDEB,
 
-        // Weights
+        /* Weights (Output O, Input I, Depth D, Height H, Width W) */
         OI    = AB,
         IO    = BA,
 
@@ -110,7 +111,7 @@ namespace cum
         IODHW = BACDE,
         IDHWO = BCDEA,
 
-        // Grouped weights
+        /* Grouped weights (Group G, Output O, Input I, Depth D, Height H, Width W) */
         GOIW   = ABCD,
         GOWI   = ABDC,
         WIGO   = DCAB,
@@ -125,7 +126,7 @@ namespace cum
         GODHWI = ABDEFC,
         DHWIGO = DEFCAB,
 
-        // RNN
+        /* Recurrent Neural Network (Time T, Batch N, Channel C, Layer L, Direction D, etc.) */
         TN    = AB,
         NT    = BA,
         TNC   = ABC,
@@ -139,4 +140,4 @@ namespace cum
         LDGO  = ABCD,
     };
 
-}
+} // namespace cum

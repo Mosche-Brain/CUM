@@ -1,6 +1,8 @@
-//
-// Created by jaro on 8/2/26.
-//
+/**
+ * @file BLAS.hpp
+ * @brief Master include header for Basic Linear Algebra Subprograms (BLAS levels 1, 2, and 3).
+ * @author jaro
+ */
 
 #ifndef YANN_BLAS_HPP
 #define YANN_BLAS_HPP

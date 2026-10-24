@@ -1,9 +1,14 @@
-//
-// Created by jaro on 7/19/26.
-//
+/**
+ * @file cyclometric.hpp
+ * @brief Inverse trigonometric (cyclometric) functions (asin, acos, atan) and their derivatives.
+ * @author jaro
+ * @details Implements scalar evaluations and asynchronous parallel GPU/device vector operations.
+ */
 
 #pragma once
+
 #include "cum/Core.hpp"
+#include <cstddef>
 
 namespace cum::functions::cyclometric
 {
@@ -11,8 +16,25 @@ namespace cum::functions::cyclometric
 
     /* Scalar versions */
 
+    /**
+     * @brief Evaluates scalar inverse sine: asin(x).
+     * @param x Input scalar in range [-1, 1].
+     * @return Result scalar in radians.
+     */
     cumeric_t asin(cumeric_t x);
+
+    /**
+     * @brief Evaluates scalar inverse cosine: acos(x).
+     * @param x Input scalar in range [-1, 1].
+     * @return Result scalar in radians.
+     */
     cumeric_t acos(cumeric_t x);
+
+    /**
+     * @brief Evaluates scalar inverse tangent: atan(x).
+     * @param x Input scalar.
+     * @return Result scalar in radians.
+     */
     cumeric_t atan(cumeric_t x);
 
     /* Parallel versions */
@@ -63,5 +85,4 @@ namespace cum::functions::cyclometric
     __event__ atan_deriv(datatype dtype, void* v, std::size_t N);
     __event__ atan_deriv_in_place(datatype dtype, void* v, std::size_t N);
 
-}
-
+} // namespace cum::functions::cyclometric

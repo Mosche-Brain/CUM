@@ -1,8 +1,7 @@
-/*
- * @author: jaro
- * @name:   Vector
- * @file:   modules/cum/include/cum/generics/Vector.cpp
- * @date:   17 October 2026 09:38:23
+/**
+ * @file Vector.ipp
+ * @brief Template implementation for generic Vector methods and operators.
+ * @author jaro
  */
 
 #pragma once

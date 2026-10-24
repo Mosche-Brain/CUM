@@ -1,6 +1,8 @@
-//
-// Created by jaro on 7/2/26.
-//
+/**
+ * @file neural_primitives.hpp
+ * @brief Master include header for deep learning primitives and tensor memory descriptors.
+ * @author jaro
+ */
 
 #pragma once
 
@@ -14,5 +16,4 @@
 namespace cum::neural_primitives
 {
 
-
-}
+} // namespace cum::neural_primitives

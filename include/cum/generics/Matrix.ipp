@@ -1,8 +1,7 @@
-/*
- * @author: jaro
- * @name:   Matrix
- * @file:   include/cum/generics/Matrix.cpp
- * @date:   18 October 2026 08:26:47
+/**
+ * @file Matrix.ipp
+ * @brief Template implementation for generic Matrix methods and operators.
+ * @author jaro
  */
 
 #pragma once

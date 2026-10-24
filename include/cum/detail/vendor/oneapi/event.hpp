@@ -1,23 +1,14 @@
-/**-----------------------------------------------
- * ?                    ABOUT
- * @author      : Swiadomy-Mężczyzna
- * @email       : contact@mosche.dev
- * @createdOn   : 09/01/26
- * @description : Definition of opaque __event__ structure
- *----------------------------------------------**/
+/**
+ * @file event.hpp
+ * @brief oneAPI SYCL event integration header.
+ * @author Swiadomy-Mężczyzna
+ */
+
 #pragma once
 
 #include <sycl/event.hpp>
 
 namespace cum::experimental 
 {
-    // struct __event__
-    // {
-    //     sycl::event event;
 
-    //     sycl::event& operator ()();
-        
-    //     void wait();
-    // };
-} 
-
+} // namespace cum::experimental

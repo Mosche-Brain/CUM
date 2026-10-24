@@ -1,6 +1,8 @@
-//
-// Created by jaro on 8/2/26.
-//
+/**
+ * @file float16.hpp
+ * @brief Intel oneAPI / SYCL half-precision floating point detail header.
+ * @author jaro
+ */
 
 #ifndef YANN_FLOAT16_HPP
 #define YANN_FLOAT16_HPP

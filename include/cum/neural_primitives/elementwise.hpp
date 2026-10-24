@@ -1,8 +1,9 @@
-/*
- * @author: jaro
- * @name:   elementwise
- * @file:   modules/cum/include/cum/neural_primitives/elementwise.hpp
- * @date:   12 September 2026 16:40:14
+/**
+ * @file elementwise.hpp
+ * @brief Forward elementwise neural activation primitives.
+ * @author jaro
+ * @details Implements forward propagation primitives (ReLU, Sigmoid, Tanh, GELU, ELU, Leaky ReLU, Sqrt, Square, Exp, Log, Abs, Clamp)
+ *          across raw backend handles, RAII @ref Memory / @ref Descriptor objects, and high-level @ref Tensor instances.
  */
 
 #pragma once
@@ -19,32 +20,34 @@ namespace cum { class Tensor; }
 
 namespace cum::neural_primitives
 {
-    enum class prop_kind { // temporalery copied directly form dnnl.hpp
-        /// Undefined propagation kind.
-        undef = 0,
-        /// Forward data propagation (training mode). In this mode, primitives
-            /// perform computations necessary for subsequent backward propagation.
-        forward_training = 64,
-        /// Forward data propagation (inference mode). In this mode, primitives
-            /// perform only computations that are necessary for inference and omit
-            /// computations that are necessary only for backward propagation.
-        forward_inference = 96,
-        /// Forward data propagation,
-            /// alias for #dnnl::prop_kind::forward_training.
-        forward = 64,
-        /// Backward propagation (with respect to all parameters).
-        backward = 128,
-        /// Backward data propagation.
-        backward_data = 160,
-        /// Backward weights propagation.
-        backward_weights = 192,
-        /// Backward bias propagation.
-        backward_bias = 192
+    /**
+     * @enum prop_kind
+     * @brief Propagation mode for neural network primitives.
+     * @details Modeled after oneDNN propagation kind flags.
+     */
+    enum class prop_kind
+    {
+        undef             = 0,   ///< Undefined propagation kind.
+        forward_training  = 64,  ///< Forward propagation for training mode (saves data for backpropagation).
+        forward_inference = 96,  ///< Forward propagation for inference mode (omits training caches).
+        forward           = 64,  ///< Forward propagation alias for forward_training.
+        backward          = 128, ///< Backward propagation for all parameters.
+        backward_data     = 160, ///< Backward propagation with respect to data.
+        backward_weights  = 192, ///< Backward propagation with respect to weights.
+        backward_bias     = 192  ///< Backward propagation with respect to bias.
     };
 
-    /* Raw handles overloads */
-    __event__ eltwise(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc,  functions::function_id algorithm, prop_kind prop_kind);
-    __event__ eltwise(handles::__memory__& memory, const handles::__desc__& desc,  functions::function_id algorithm, prop_kind prop_kind);
+    /* Raw handle overloads */
+
+    /**
+     * @brief Executes generic elementwise primitive on raw backend handles out-of-place.
+     */
+    __event__ eltwise(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc, functions::function_id algorithm, prop_kind prop_kind);
+
+    /**
+     * @brief Executes generic elementwise primitive on raw backend handle in-place.
+     */
+    __event__ eltwise(handles::__memory__& memory, const handles::__desc__& desc, functions::function_id algorithm, prop_kind prop_kind);
 
     __event__ relu(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& r_desc, const handles::__desc__& a_desc);
     __event__ relu(handles::__memory__& src, const handles::__desc__& desc);
@@ -70,11 +73,11 @@ namespace cum::neural_primitives
     __event__ square(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc);
     __event__ square(handles::__memory__& src, const handles::__desc__& desc);
 
-    __event__ exp(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc); // base e
-    __event__ exp(handles::__memory__& src, const handles::__desc__& desc); // base e
+    __event__ exp(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc);
+    __event__ exp(handles::__memory__& src, const handles::__desc__& desc);
 
-    __event__ log(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc); // base e
-    __event__ log(handles::__memory__& src, const handles::__desc__& desc); // base e
+    __event__ log(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc);
+    __event__ log(handles::__memory__& src, const handles::__desc__& desc);
 
     __event__ abs(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc);
     __event__ abs(handles::__memory__& src, const handles::__desc__& desc);
@@ -82,7 +85,8 @@ namespace cum::neural_primitives
     __event__ clamp(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc, cumeric_t min, cumeric_t max);
     __event__ clamp(handles::__memory__& src, const handles::__desc__& desc, cumeric_t min, cumeric_t max);
 
-    /* RsrcII wrappers overloads */
+    /* RAII wrapper overloads */
+
     __event__ eltwise(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, functions::function_id algorithm, prop_kind prop_kind);
 
     __event__ relu(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
@@ -109,11 +113,11 @@ namespace cum::neural_primitives
     __event__ square(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
     __event__ square(Memory& src, const Descriptor& desc);
 
-    __event__ exp(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc); // base e
-    __event__ exp(Memory& src, const Descriptor& desc); // base e
+    __event__ exp(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
+    __event__ exp(Memory& src, const Descriptor& desc);
 
-    __event__ log(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc); // base e
-    __event__ log(Memory& src, const Descriptor& desc); // base e
+    __event__ log(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
+    __event__ log(Memory& src, const Descriptor& desc);
 
     __event__ abs(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
     __event__ abs(Memory& src, const Descriptor& desc);
@@ -121,7 +125,8 @@ namespace cum::neural_primitives
     __event__ clamp(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, cumeric_t min, cumeric_t max);
     __event__ clamp(Memory& src, const Descriptor& desc, cumeric_t min, cumeric_t max);
 
-    /* Objective tensors overloads */
+    /* Tensor overloads */
+
     __event__ eltwise(Tensor& dst, const Tensor& src, functions::function_id algorithm, prop_kind prop_kind);
     __event__ eltwise(Tensor& tensor, functions::function_id algorithm, prop_kind prop_kind);
 
@@ -146,15 +151,15 @@ namespace cum::neural_primitives
     __event__ square(Tensor& dst, const Tensor& src);
     __event__ square(Tensor& src);
 
-    __event__ exp(Tensor& dst, const Tensor& src); // base e
-    __event__ exp(Tensor& src); // base e
+    __event__ exp(Tensor& dst, const Tensor& src);
+    __event__ exp(Tensor& src);
 
-    __event__ log(Tensor& dst, const Tensor& src); // base e
-    __event__ log(Tensor& src); // base e
+    __event__ log(Tensor& dst, const Tensor& src);
+    __event__ log(Tensor& src);
 
     __event__ abs(Tensor& dst, const Tensor& src);
     __event__ abs(Tensor& src);
 
     __event__ clamp(Tensor& dst, const Tensor& src, cumeric_t min, cumeric_t max);
     __event__ clamp(Tensor& src, cumeric_t min, cumeric_t max);
-}
+} // namespace cum::neural_primitives

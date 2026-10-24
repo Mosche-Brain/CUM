@@ -1,12 +1,14 @@
-//
-// Created by jaro on 7/19/26.
-//
+/**
+ * @file hyperbolic.hpp
+ * @brief Hyperbolic functions (tanh, sinh, cosh) and their derivatives.
+ * @author jaro
+ * @details Implements scalar functions and asynchronous parallel device vector kernels.
+ */
 
 #ifndef CUM_FUNCTIONS_HYPERBOLIC_HPP
 #define CUM_FUNCTIONS_HYPERBOLIC_HPP
 
 #include "cum/Core.hpp"
-
 #include <cstddef>
 
 namespace cum::functions::hyperbolic
@@ -15,8 +17,25 @@ namespace cum::functions::hyperbolic
 
     /* Scalar versions */
 
+    /**
+     * @brief Evaluates scalar hyperbolic tangent: tanh(x).
+     * @param x Input scalar.
+     * @return Result scalar in range (-1, 1).
+     */
     cumeric_t tanh(cumeric_t x);
+
+    /**
+     * @brief Evaluates scalar hyperbolic sine: sinh(x).
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
     cumeric_t sinh(cumeric_t x);
+
+    /**
+     * @brief Evaluates scalar hyperbolic cosine: cosh(x).
+     * @param x Input scalar.
+     * @return Result scalar.
+     */
     cumeric_t cosh(cumeric_t x);
 
     /* Parallel versions */

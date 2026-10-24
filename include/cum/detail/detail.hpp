@@ -1,6 +1,8 @@
-//
-// Created by jaro on 8/2/26.
-//
+/**
+ * @file detail.hpp
+ * @brief Internal implementation utilities and forward declarations.
+ * @author jaro
+ */
 
 #ifndef YANN_DETAIL_HPP
 #define YANN_DETAIL_HPP
