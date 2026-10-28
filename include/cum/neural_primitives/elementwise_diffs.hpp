@@ -10,7 +10,7 @@
 
 #include "cum/neural_primitives/opaque_types.hpp"
 #include "cum/neural_primitives/Memory.hpp"
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
 
 #include "cum/functions/function_id.hpp"
 #include "cum/neural_primitives/elementwise.hpp"
@@ -54,31 +54,31 @@ namespace cum::neural_primitives
 
     /* RAII wrapper overloads */
 
-    __event__ eltwise_diff(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, functions::function_id algorithm, prop_kind prop_kind);
+    __event__ eltwise_diff(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc, functions::function_id algorithm, prop_kind prop_kind);
 
-    __event__ relu_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ relu_diff(Memory& src, const Descriptor& desc);
+    __event__ relu_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ relu_diff(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ sigmoid_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ sigmoid_diff(Memory& src, const Descriptor& desc);
+    __event__ sigmoid_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ sigmoid_diff(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ tanh_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ tanh_diff(Memory& src, const Descriptor& desc);
+    __event__ tanh_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ tanh_diff(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ softmax_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ softmax_diff(Memory& src, const Descriptor& desc);
+    __event__ softmax_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ softmax_diff(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ gelu_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ gelu_diff(Memory& src, const Descriptor& desc);
+    __event__ gelu_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ gelu_diff(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ elu_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ elu_diff(Memory& src, const Descriptor& desc);
+    __event__ elu_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ elu_diff(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ leaky_relu_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc, cumeric_t alpha);
-    __event__ leaky_relu_diff(Memory& src, const Descriptor& desc, cumeric_t alpha);
+    __event__ leaky_relu_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc, cumeric_t alpha);
+    __event__ leaky_relu_diff(Memory& src, const MemoryDescriptor& desc, cumeric_t alpha);
 
-    __event__ sqrt_diff(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
-    __event__ sqrt_diff(Memory& src, const Descriptor& desc);
+    __event__ sqrt_diff(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc);
+    __event__ sqrt_diff(Memory& src, const MemoryDescriptor& desc);
 
     /* Tensor overloads */
 

@@ -10,7 +10,7 @@
 
 #include "cum/neural_primitives/opaque_types.hpp"
 #include "cum/neural_primitives/Memory.hpp"
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
 #include "cum/Core.hpp"
 
 namespace cum { class Tensor; }
@@ -33,17 +33,17 @@ namespace cum::neural_primitives
 
     /* RAII handles overloads */
 
-    __event__ add(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ sub(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ mul(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ div(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ matmul(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc);
+    __event__ add(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ sub(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ mul(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ div(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ matmul(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
 
-    __event__ add(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ sub(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ mul(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ div(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc);
-    __event__ matmul(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc);
+    __event__ add(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ sub(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ mul(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ div(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
+    __event__ matmul(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc);
 
     /* Tensor overloads */
 

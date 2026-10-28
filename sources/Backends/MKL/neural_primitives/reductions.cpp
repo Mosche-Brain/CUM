@@ -96,7 +96,7 @@ namespace cum::neural_primitives
 
     /* RAII overloads */
 
-    __event__ softmax(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, const dim_t axis)
+    __event__ softmax(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc, const dim_t axis)
     {
         __memory__& dst_memory = dst.handle();
         const __memory__& src_memory = src.handle();
@@ -107,12 +107,12 @@ namespace cum::neural_primitives
         return softmax(dst_memory, src_memory, dst_descriptor, src_descriptor, axis);
     }
 
-    __event__ softmax(Memory& src, const Descriptor& desc, const dim_t axis)
+    __event__ softmax(Memory& src, const MemoryDescriptor& desc, const dim_t axis)
     {
         return softmax(src, src, desc, desc, axis);
     }
 
-    __event__ softmax_diff(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, const dim_t axis)
+    __event__ softmax_diff(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc, const dim_t axis)
     {
         __memory__& dst_memory = dst.handle();
         const __memory__& src_memory = src.handle();
@@ -123,7 +123,7 @@ namespace cum::neural_primitives
         return softmax_diff(dst_memory, src_memory, dst_descriptor, src_descriptor, axis);
     }
 
-    __event__ softmax_diff(Memory& memory, const Descriptor& desc, const dim_t axis)
+    __event__ softmax_diff(Memory& memory, const MemoryDescriptor& desc, const dim_t axis)
     {
         return softmax_diff(memory, memory, desc, desc, axis);
     }

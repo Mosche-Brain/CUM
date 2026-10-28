@@ -16,7 +16,7 @@
 #include "Matrix.hpp"
 #include "cum/Core.hpp"
 #include "cum/memory.hpp"
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
 #include "cum/neural_primitives/Memory.hpp"
 #include "cum/neural_primitives/opaque_types.hpp"
 #include "functions/function_id.hpp"
@@ -63,7 +63,7 @@ namespace cum
          * @brief Constructs a Tensor backed by an existing neural primitive descriptor.
          * @param descriptor Neural primitive memory descriptor.
          */
-        Tensor(neural_primitives::Descriptor& descriptor);
+        Tensor(neural_primitives::MemoryDescriptor& descriptor);
 
         /**
          * @brief Constructs a 0D scalar tensor holding a single scalar value.
@@ -356,7 +356,7 @@ namespace cum
          * @brief Returns mutable reference to descriptor pointer.
          * @return Unique pointer reference to @ref neural_primitives::Descriptor.
          */
-        std::unique_ptr<neural_primitives::Descriptor>& descriptor();
+        std::unique_ptr<neural_primitives::MemoryDescriptor>& descriptor();
 
         /**
          * @brief Returns mutable reference to memory object pointer.
@@ -368,7 +368,7 @@ namespace cum
          * @brief Returns const reference to descriptor pointer.
          * @return Const unique pointer reference to @ref neural_primitives::Descriptor.
          */
-        const std::unique_ptr<neural_primitives::Descriptor>& descriptor() const;
+        const std::unique_ptr<neural_primitives::MemoryDescriptor>& descriptor() const;
 
         /**
          * @brief Returns const reference to memory object pointer.
@@ -679,11 +679,11 @@ namespace cum
         Tensor& operator = (Tensor&& other) noexcept;
 
     private:
-        Tensor(neural_primitives::Descriptor&& desc, const neural_primitives::Memory& source);
+        Tensor(neural_primitives::MemoryDescriptor&& desc, const neural_primitives::Memory& source);
         dim_t compute_index(const Shape& indices) const;
         void* compute_address(const Shape& indices);
 
-        std::unique_ptr<neural_primitives::Descriptor> _desc_;
+        std::unique_ptr<neural_primitives::MemoryDescriptor> _desc_;
         std::unique_ptr<neural_primitives::Memory> _memr_;
         void* _data = nullptr;
         bool _owns_data = true;

@@ -183,7 +183,7 @@ namespace cum::neural_primitives
 
     /* RAII handles overloads */
 
-    __event__ add(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc)
+    __event__ add(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
     {
         handles::__memory__& c_memory = C.handle();
         const handles::__memory__& a_memory = A.handle();
@@ -196,7 +196,7 @@ namespace cum::neural_primitives
         return add(c_memory, a_memory, b_memory, c_descriptor, a_descriptor, b_descriptor);
     }
 
-    __event__ sub(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc)
+    __event__ sub(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
     {
         handles::__memory__& c_memory = C.handle();
         const handles::__memory__& a_memory = A.handle();
@@ -209,7 +209,7 @@ namespace cum::neural_primitives
         return sub(c_memory, a_memory, b_memory, c_descriptor, a_descriptor, b_descriptor);
     }
 
-    __event__ mul(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc)
+    __event__ mul(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
     {
         handles::__memory__& c_memory = C.handle();
         const handles::__memory__& a_memory = A.handle();
@@ -222,7 +222,7 @@ namespace cum::neural_primitives
         return mul(c_memory, a_memory, b_memory, c_descriptor, a_descriptor, b_descriptor);
     }
 
-    __event__ div(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc)
+    __event__ div(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
     {
         handles::__memory__& c_memory = C.handle();
         const handles::__memory__& a_memory = A.handle();
@@ -235,7 +235,7 @@ namespace cum::neural_primitives
         return div(c_memory, a_memory, b_memory, c_descriptor, a_descriptor, b_descriptor);
     }
     
-    __event__ matmul(Memory& C, const Memory& A, const Memory& B, const Descriptor& c_desc, const Descriptor& a_desc, const Descriptor& b_desc)
+    __event__ matmul(Memory& C, const Memory& A, const Memory& B, const MemoryDescriptor& c_desc, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
     {
         handles::__memory__& c_memory = C.handle();
         const handles::__memory__& a_memory = A.handle();
@@ -248,27 +248,27 @@ namespace cum::neural_primitives
         return matmul(c_memory, a_memory, b_memory, c_descriptor, a_descriptor, b_descriptor);
     }
 
-	__event__ add(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc)
+	__event__ add(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
     {
     	return add(A, A, B, a_desc, a_desc, b_desc);
     }
 
-	__event__ sub(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc)
+	__event__ sub(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
 	{
     	return sub(A, A, B, a_desc, a_desc, b_desc);
 	}
 
-	__event__ mul(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc)
+	__event__ mul(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
 	{
     	return mul(A, A, B, a_desc, a_desc, b_desc);
 	}
 
-	__event__ div(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc)
+	__event__ div(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
 	{
     	return div(A, A, B, a_desc, a_desc, b_desc);
 	}
 
-	__event__ matmul(Memory& A, const Memory& B, const Descriptor& a_desc, const Descriptor& b_desc)
+	__event__ matmul(Memory& A, const Memory& B, const MemoryDescriptor& a_desc, const MemoryDescriptor& b_desc)
 	{
     	return matmul(A, A, B, a_desc, a_desc, b_desc);
 	}

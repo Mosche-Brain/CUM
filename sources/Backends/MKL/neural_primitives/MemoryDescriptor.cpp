@@ -9,98 +9,98 @@
 #include "cum/detail/vendor/oneapi/opaque_types.hpp"
 #include "cum/detail/vendor/oneapi/conversion_helpers.hpp"
 
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
 #include <numeric>
 
 namespace cum::neural_primitives
 {
 
 
-    Descriptor::Descriptor(Shape dims, datatype dtype, layout format) : fmt(format)
+    MemoryDescriptor::MemoryDescriptor(Shape dims, datatype dtype, layout format) : fmt(format)
     {
         handle_ = std::make_unique<handles::__desc__>(
             dnnl::memory::desc(dims, dnnl_data_type(dtype), dnnl_format_tag(format))
         );
     }
 
-    Descriptor::Descriptor(Descriptor& other) : fmt(other.fmt)
+    MemoryDescriptor::MemoryDescriptor(MemoryDescriptor& other) : fmt(other.fmt)
     {
         handle_ = std::make_unique<handles::__desc__>(other.handle_->desc);
     }
 
-    Descriptor::Descriptor(const handles::__desc__& handle) : fmt(cum::layout::ANY)
+    MemoryDescriptor::MemoryDescriptor(const handles::__desc__& handle) : fmt(cum::layout::ANY)
     {
         handle_ = std::make_unique<handles::__desc__>(handle);
     }
 
-    Descriptor::Descriptor(const handles::__desc__& handle, layout format) : fmt(format)
+    MemoryDescriptor::MemoryDescriptor(const handles::__desc__& handle, layout format) : fmt(format)
     {
         handle_ = std::make_unique<handles::__desc__>(handle);
     }
 
-    Descriptor::Descriptor(Descriptor&&) noexcept = default;
-    Descriptor& Descriptor::operator=(Descriptor&&) noexcept = default;
+    MemoryDescriptor::MemoryDescriptor(MemoryDescriptor&&) noexcept = default;
+    MemoryDescriptor& MemoryDescriptor::operator=(MemoryDescriptor&&) noexcept = default;
 
-    Descriptor::~Descriptor()
+    MemoryDescriptor::~MemoryDescriptor()
     {
 
     }
 
-    dim_t Descriptor::size() const
+    dim_t MemoryDescriptor::size() const
     {
         return handle_->desc.get_size();
     }
 
-    dim_t Descriptor::ndims() const
+    dim_t MemoryDescriptor::ndims() const
     {
         return handle_->desc.get_ndims();
     }
 
-    Shape Descriptor::shape() const
+    Shape MemoryDescriptor::shape() const
     {
         return handle_->desc.get_dims();
     }
 
-    datatype Descriptor::type() const
+    datatype MemoryDescriptor::type() const
     {
         return cum_data_type(handle_->desc.get_data_type());
     }
 
-    const handles::__desc__& Descriptor::handle() const
+    const handles::__desc__& MemoryDescriptor::handle() const
     {
         return *handle_;
     }
 
-    handles::__desc__& Descriptor::handle()
+    handles::__desc__& MemoryDescriptor::handle()
     {
         return *handle_;
     }
 
-    layout Descriptor::format() const
+    layout MemoryDescriptor::format() const
     {
         return fmt;
         // return cum_format_tag(handle_->desc.get_format_kind());
     }
 
-    dim_t Descriptor::stride() const
+    dim_t MemoryDescriptor::stride() const
     {
         return 69;
         // return handle_->desc.get_strides();
     }
 
-    dim_t Descriptor::offset() const
+    dim_t MemoryDescriptor::offset() const
     {
         return handle_->desc.get_submemory_offset();
     }
 
 
-    Descriptor Descriptor::reshape(const Shape& shape)
+    MemoryDescriptor MemoryDescriptor::reshape(const Shape& shape)
     {
         // return Descriptor(shape, type(), format());
-        return Descriptor({handle_->desc.reshape(shape)}, format());
+        return MemoryDescriptor({handle_->desc.reshape(shape)}, format());
     }
 
-    Descriptor& Descriptor::reshape_in_place(const Shape& shape)
+    MemoryDescriptor& MemoryDescriptor::reshape_in_place(const Shape& shape)
     {
         // Check is the sum of elements in old and new shape equak
         size_t sum_a = std::accumulate(shape.begin(), shape.end(), 1, std::multiplies<size_t>());
@@ -112,7 +112,7 @@ namespace cum::neural_primitives
         return *this;
     }
 
-    Descriptor& Descriptor::operator = (Descriptor& other)
+    MemoryDescriptor& MemoryDescriptor::operator = (MemoryDescriptor& other)
     {
         if (this == &other) return *this;
 

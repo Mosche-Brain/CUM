@@ -9,6 +9,9 @@
 
 #include "cum/Core.hpp"
 
+#include "cum/neural_primitives/Memory.hpp"
+#include "cum/neural_primitives/PrimitiveDescriptor.hpp"
+
 namespace cum::neural_primitives
 {
     /**
@@ -18,6 +21,9 @@ namespace cum::neural_primitives
     class Primitive
     {
     public:
+        /** @brief Decriptor*/
+        using Descriptor = PrimitiveDescriptor;
+
         Primitive();
 
         /** @brief Creates binary operation primitive. */

@@ -15,7 +15,7 @@
 #include "cum/datatypes.hpp"
 #include "cum/functions.hpp"
 #include "cum/neural_primitives/Memory.hpp"
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
 #include "cum/neural_primitives/elementwise.hpp"
 #include "cum/neural_primitives/reductions.hpp"
 #include "cum/detail/vendor/oneapi/opaque_types.hpp"
@@ -40,7 +40,7 @@
 namespace cum
 {
 	using namespace neural_primitives::handles;
-	using neural_primitives::Descriptor;
+	using neural_primitives::MemoryDescriptor;
 	using neural_primitives::Memory;
 	// using namespace neural_primitives;
 	layout default_layout_from_rank(dim_t rank)
@@ -79,7 +79,7 @@ namespace cum
 	 *------------------------------------------------------------------------------------------------**/
 
 	Tensor::Tensor(const Shape& shape, datatype dtype, layout layout)
-		: _desc_(std::make_unique<Descriptor>(shape, dtype, layout == layout::ANY ? default_layout_from_rank(shape.size()) : layout)),
+		: _desc_(std::make_unique<MemoryDescriptor>(shape, dtype, layout == layout::ANY ? default_layout_from_rank(shape.size()) : layout)),
 		  _data(sycl::malloc_shared<byte>(_desc_->size(), internal::device(), internal::sycl_context()))
 	{
 		if(_data == nullptr)
@@ -90,8 +90,8 @@ namespace cum
 		_memr_ = std::make_unique<Memory>(*_desc_, _data);
 	}
 
-	Tensor::Tensor( Descriptor& descriptor)
-		: _desc_(std::make_unique<Descriptor>(descriptor)),
+	Tensor::Tensor( MemoryDescriptor& descriptor)
+		: _desc_(std::make_unique<MemoryDescriptor>(descriptor)),
 		  _data(sycl::malloc_shared<byte>(_desc_->size(), internal::device(), internal::sycl_context()))
 	{
 		if(_data == nullptr)
@@ -103,7 +103,7 @@ namespace cum
 	}
 
 	Tensor::Tensor(const Tensor& tensor)
-		: _desc_(std::make_unique<Descriptor>(
+		: _desc_(std::make_unique<MemoryDescriptor>(
 			tensor.shape(), tensor.type(),
 			concrete_layout(tensor.rank(), tensor.format()))),
 		  _data(sycl::malloc_shared<std::byte>(
@@ -197,7 +197,7 @@ namespace cum
 	Tensor Tensor::Random(const Shape& shape, cumeric_t min, cumeric_t max, datatype dtype, layout layout)
 	{
 		Tensor tensor;
-		tensor._desc_ = std::make_unique<Descriptor>(shape, dtype, layout == layout::ANY ? default_layout_from_rank(shape.size()) : layout);
+		tensor._desc_ = std::make_unique<MemoryDescriptor>(shape, dtype, layout == layout::ANY ? default_layout_from_rank(shape.size()) : layout);
 		tensor._data = sycl::malloc_shared<std::byte>(
 			tensor._desc_->size(), internal::device(), internal::sycl_context());
 		if(tensor._data == nullptr)
@@ -322,7 +322,7 @@ namespace cum
 	 *                                         Getters
 	 *------------------------------------------------------------------------------------------------**/
 
-	const std::unique_ptr<neural_primitives::Descriptor>& Tensor::descriptor() const
+	const std::unique_ptr<neural_primitives::MemoryDescriptor>& Tensor::descriptor() const
 	{
 		return _desc_;
 	}
@@ -395,7 +395,7 @@ namespace cum
 	    return shape()[1];
     }
 
-	std::unique_ptr<neural_primitives::Descriptor>& Tensor::descriptor()
+	std::unique_ptr<neural_primitives::MemoryDescriptor>& Tensor::descriptor()
 	{
 		return _desc_;
 	}
@@ -576,8 +576,8 @@ namespace cum
 	}
 
 
-	Tensor::Tensor(neural_primitives::Descriptor&& desc, const neural_primitives::Memory& source)
-		: _desc_(std::make_unique<neural_primitives::Descriptor>(std::move(desc))),
+	Tensor::Tensor(neural_primitives::MemoryDescriptor&& desc, const neural_primitives::Memory& source)
+		: _desc_(std::make_unique<neural_primitives::MemoryDescriptor>(std::move(desc))),
 		  _memr_(std::make_unique<neural_primitives::Memory>(*_desc_, source)),
 		  _data(const_cast<void*>(source.data())),
 		  _owns_data(false)
@@ -602,7 +602,7 @@ namespace cum
 
 		const dnnl::memory::desc sub_md = md.submemory_desc(shape, offset);
 
-		return Tensor(Descriptor({sub_md}), *_memr_);
+		return Tensor(MemoryDescriptor({sub_md}), *_memr_);
     }
 
 
@@ -666,7 +666,7 @@ namespace cum
 		layout format = this->format() == layout::BA ? layout::AB : layout::BA;
 
 
-		Descriptor desc(this->shape(), this->type(), format);
+		MemoryDescriptor desc(this->shape(), this->type(), format);
 		dnnl::reorder::primitive_desc primitive_desc(
 			internal::engine(),
 			_desc_->handle().desc,
@@ -686,7 +686,7 @@ namespace cum
 
 		internal::stream().wait();
 
-		std::make_unique<neural_primitives::Descriptor>(desc);
+		std::make_unique<neural_primitives::MemoryDescriptor>(desc);
 
 		Shape new_shape = _desc_->shape();
 
@@ -1398,7 +1398,7 @@ namespace cum
     	cumeric_t* scalar_buff = memory::allocate(1);
     	scalar_buff[0] = scalar;
 
-		neural_primitives::Descriptor scalar_descriptor(Shape(tensor.rank(), 1), tensor.type(), tensor.format());
+		neural_primitives::MemoryDescriptor scalar_descriptor(Shape(tensor.rank(), 1), tensor.type(), tensor.format());
 
 		neural_primitives::Memory scalar_memory(scalar_descriptor, scalar_buff);
 
@@ -1464,7 +1464,7 @@ namespace cum
 		cumeric_t* scalar_buff = memory::allocate(1);
 		scalar_buff[0] = scalar;
 
-		Descriptor scalar_descriptor(Shape(this->rank(), 1), this->type(), this->format());
+		MemoryDescriptor scalar_descriptor(Shape(this->rank(), 1), this->type(), this->format());
 
 		Memory scalar_memory(scalar_descriptor, scalar_buff);
 
@@ -1487,7 +1487,7 @@ namespace cum
     	if(this == &other)
     		return *this;
 
-		auto desc = std::make_unique<neural_primitives::Descriptor>(
+		auto desc = std::make_unique<neural_primitives::MemoryDescriptor>(
 			other.shape(), other.type(),
 			concrete_layout(other.rank(), other.format()));
 		void* data = sycl::malloc_shared<std::byte>(

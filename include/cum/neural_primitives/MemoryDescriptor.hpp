@@ -17,10 +17,10 @@
 namespace cum::neural_primitives
 {
     /**
-     * @class Descriptor
+     * @class MemoryDescriptor
      * @brief Encapsulates tensor shape, data type, and memory format layout for neural network primitives.
      */
-    class Descriptor
+    class MemoryDescriptor
     {
     public:
         /**
@@ -29,40 +29,40 @@ namespace cum::neural_primitives
          * @param dtype Element datatype tag.
          * @param format Memory layout tag.
          */
-        Descriptor(Shape dims, datatype dtype, layout format);
+        MemoryDescriptor(Shape dims, datatype dtype, layout format);
 
         /**
          * @brief Copy constructor.
          * @param other Descriptor to copy.
          */
-        Descriptor(Descriptor& other);
+        MemoryDescriptor(MemoryDescriptor& other);
 
         /**
          * @brief Constructs descriptor from const backend descriptor handle.
          * @param handle Backend handle.
          */
-        Descriptor(const handles::__desc__& handle);
+        MemoryDescriptor(const handles::__desc__& handle);
 
         /**
          * @brief Constructs descriptor from const backend descriptor handle and layout format.
          * @param handle Backend handle.
          * @param format Memory layout format.
          */
-        Descriptor(const handles::__desc__& handle, layout format);
+        MemoryDescriptor(const handles::__desc__& handle, layout format);
 
         /**
          * @brief Constructs descriptor from backend descriptor handle.
          * @param handle Backend handle.
          */
-        Descriptor(handles::__desc__& handle);
+        MemoryDescriptor(handles::__desc__& handle);
 
         /**
          * @brief Move constructor.
          * @param other Descriptor to move from.
          */
-        Descriptor(Descriptor&& other) noexcept;
+        MemoryDescriptor(MemoryDescriptor&& other) noexcept;
 
-        Descriptor& operator=(Descriptor&& other) noexcept;
+        MemoryDescriptor& operator=(MemoryDescriptor&& other) noexcept;
 
         /**
          * @brief Returns total memory size in bytes required by descriptor.
@@ -111,14 +111,14 @@ namespace cum::neural_primitives
          * @param shape New shape.
          * @return Reshaped Descriptor.
          */
-        Descriptor reshape(const Shape& shape);
+        MemoryDescriptor reshape(const Shape& shape);
 
         /**
          * @brief Reshapes descriptor in-place.
          * @param shape New shape.
          * @return Reference to `*this`.
          */
-        Descriptor& reshape_in_place(const Shape& shape);
+        MemoryDescriptor& reshape_in_place(const Shape& shape);
 
         /**
          * @brief Returns const reference to backend handle.
@@ -132,8 +132,8 @@ namespace cum::neural_primitives
          */
         handles::__desc__& handle();
 
-        Descriptor& operator = (Descriptor& other);
-        ~Descriptor();
+        MemoryDescriptor& operator = (MemoryDescriptor& other);
+        ~MemoryDescriptor();
 
     private:
         friend class Memory;

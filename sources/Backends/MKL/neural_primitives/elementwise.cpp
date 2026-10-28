@@ -414,7 +414,7 @@ namespace cum::neural_primitives
 
     /* RAII wrappers overloads */
 
-    __event__ relu(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ relu(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -424,12 +424,12 @@ namespace cum::neural_primitives
 
         return relu(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
-    __event__ relu(Memory& src, const Descriptor& desc)
+    __event__ relu(Memory& src, const MemoryDescriptor& desc)
     {
         return relu(src, src, desc, desc);
     }
 
-    __event__ sigmoid(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ sigmoid(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -439,12 +439,12 @@ namespace cum::neural_primitives
 
         return sigmoid(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
-    __event__ sigmoid(Memory& src, const Descriptor& desc)
+    __event__ sigmoid(Memory& src, const MemoryDescriptor& desc)
     {
         return sigmoid(src, src, desc, desc);
     }
 
-    __event__ tanh(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ tanh(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -455,12 +455,12 @@ namespace cum::neural_primitives
         return tanh(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
 
-    __event__ tanh(Memory& src, const Descriptor& desc)
+    __event__ tanh(Memory& src, const MemoryDescriptor& desc)
     {
         return tanh(src, src, desc, desc);
     }
 
-    __event__ gelu(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ gelu(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -470,12 +470,12 @@ namespace cum::neural_primitives
 
         return gelu(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
-    __event__ gelu(Memory& src, const Descriptor& desc)
+    __event__ gelu(Memory& src, const MemoryDescriptor& desc)
     {
         return gelu(src, src, desc, desc);
     }
 
-    __event__ elu(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ elu(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -486,12 +486,12 @@ namespace cum::neural_primitives
         return elu(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
 
-    __event__ elu(Memory& src, const Descriptor& desc)
+    __event__ elu(Memory& src, const MemoryDescriptor& desc)
     {
         return elu(src, src, desc, desc);
     }
 
-    __event__ leaky_relu(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, const cumeric_t alpha)
+    __event__ leaky_relu(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc, const cumeric_t alpha)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -502,12 +502,12 @@ namespace cum::neural_primitives
         return leaky_relu(dst_memory, src_memory, dst_descriptor, src_descriptor, alpha);
     }
 
-    __event__ leaky_relu(Memory& src, const Descriptor& desc, const cumeric_t alpha)
+    __event__ leaky_relu(Memory& src, const MemoryDescriptor& desc, const cumeric_t alpha)
     {
         return leaky_relu(src, src, desc, desc, alpha);
     }
 
-    __event__ sqrt(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ sqrt(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -518,12 +518,12 @@ namespace cum::neural_primitives
         return sqrt(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
 
-    __event__ sqrt(Memory& src, const Descriptor& desc)
+    __event__ sqrt(Memory& src, const MemoryDescriptor& desc)
     {
         return sqrt(src, src, desc, desc);
     }
 
-    __event__ square(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ square(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -534,12 +534,12 @@ namespace cum::neural_primitives
         return square(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
 
-    __event__ square(Memory& src, const Descriptor& desc)
+    __event__ square(Memory& src, const MemoryDescriptor& desc)
     {
         return square(src, src, desc, desc);
     }
 
-    __event__ exp(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ exp(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -550,12 +550,12 @@ namespace cum::neural_primitives
         return exp(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
 
-    __event__ exp(Memory& src, const Descriptor& desc)
+    __event__ exp(Memory& src, const MemoryDescriptor& desc)
     {
         return exp(src, src, desc, desc);
     }
 
-    __event__ log(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ log(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -566,12 +566,12 @@ namespace cum::neural_primitives
         return log(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
 
-    __event__ log(Memory& src, const Descriptor& desc)
+    __event__ log(Memory& src, const MemoryDescriptor& desc)
     {
         return log(src, src, desc, desc);
     }
 
-    __event__ abs(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc)
+    __event__ abs(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -582,12 +582,12 @@ namespace cum::neural_primitives
         return abs(dst_memory, src_memory, dst_descriptor, src_descriptor);
     }
 
-    __event__ abs(Memory& src, const Descriptor& desc)
+    __event__ abs(Memory& src, const MemoryDescriptor& desc)
     {
         return abs(src, src, desc, desc);
     }
 
-    __event__ clamp(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, cumeric_t min, cumeric_t max)
+    __event__ clamp(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc, cumeric_t min, cumeric_t max)
     {
         handles::__memory__& dst_memory = dst.handle();
         const handles::__memory__& src_memory = src.handle();
@@ -598,7 +598,7 @@ namespace cum::neural_primitives
         return clamp(dst_memory, src_memory, dst_descriptor, src_descriptor, min, max);
     }
 
-    __event__ clamp(Memory& src, const Descriptor& desc, cumeric_t min, cumeric_t max)
+    __event__ clamp(Memory& src, const MemoryDescriptor& desc, cumeric_t min, cumeric_t max)
     {
         return sqrt(src, src, desc, desc);
     }

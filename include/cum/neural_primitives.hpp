@@ -11,7 +11,7 @@
 #include <vector>
 #include <memory>
 
-#include "neural_primitives/Descriptor.hpp"
+#include "neural_primitives/MemoryDescriptor.hpp"
 
 namespace cum::neural_primitives
 {

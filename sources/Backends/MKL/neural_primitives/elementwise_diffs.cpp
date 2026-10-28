@@ -112,12 +112,12 @@ namespace cum::neural_primitives
     }
 
 
-    __event__ eltwise_diff(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(Memory& dst, const Memory& src, const Memory::Descriptor& dst_desc, const Memory::Descriptor& src_desc, functions::function_id algorithm, prop_kind kind)
     {
         return eltwise_diff(dst.handle(), src.handle(), dst_desc.handle(), src_desc.handle(), algorithm, kind);
     }
 
-    __event__ eltwise_diff(Memory& memory, const Descriptor& desc, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(Memory& memory, const Memory::Descriptor& desc, functions::function_id algorithm, prop_kind kind)
     {
         return eltwise_diff(memory.handle(), desc.handle(), algorithm, kind);
     }
@@ -176,11 +176,11 @@ namespace cum::neural_primitives
 
 #define CUM_DIFF_MEMORY(NAME, RAW) \
     \
-    __event__ NAME(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc) \
+    __event__ NAME(Memory& dst, const Memory& src, const Memory::Descriptor& dst_desc, const Memory::Descriptor& src_desc) \
     { \
         return RAW(dst.handle(), src.handle(), dst_desc.handle(), src_desc.handle()); \
     } \
-    __event__ NAME(Memory& src, const Descriptor& desc) \
+    __event__ NAME(Memory& src, const Memory::Descriptor& desc) \
     {  \
         return RAW(src.handle(), desc.handle()); \
     } \
@@ -195,11 +195,11 @@ namespace cum::neural_primitives
     CUM_DIFF_MEMORY(square_diff, square_diff);
 #undef CUM_DIFF_MEMORY
 
-    __event__ leaky_relu_diff(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, cumeric_t alpha)
+    __event__ leaky_relu_diff(Memory& dst, const Memory& src, const Memory::Descriptor& dst_desc, const Memory::Descriptor& src_desc, cumeric_t alpha)
     {
         return leaky_relu_diff(dst.handle(), src.handle(), dst_desc.handle(), src_desc.handle(), alpha);
     }
-    __event__ leaky_relu_diff(Memory& src, const Descriptor& desc, cumeric_t alpha)
+    __event__ leaky_relu_diff(Memory& src, const Memory::Descriptor& desc, cumeric_t alpha)
     {
         return leaky_relu_diff(src.handle(), desc.handle(), alpha);
     }

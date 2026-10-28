@@ -10,7 +10,7 @@
 
 #include <memory>
 
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
 #include "cum/neural_primitives/Engine.hpp"
 #include "cum/neural_primitives/opaque_types.hpp"
 
@@ -23,6 +23,12 @@ namespace cum::neural_primitives
     class Memory
     {
     public:
+        /**
+         * @brief Descriptor describing the layout of this memory (alias of neural_primitives::Descriptor).
+         * @note ok.
+         */
+        using Descriptor = MemoryDescriptor;
+
         /**
          * @brief Constructs memory buffer according to descriptor.
          * @param desc Memory descriptor.

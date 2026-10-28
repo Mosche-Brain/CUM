@@ -19,8 +19,8 @@
 
 namespace cum::neural_primitives
 {
-    EltwiseKernel::EltwiseKernel(const Descriptor& desc, functions::function_id algorithm)
-        :  algorithm_(algorithm), desc(std::make_unique<Descriptor>(desc.shape(), desc.type(), desc.format()))
+    EltwiseKernel::EltwiseKernel(const MemoryDescriptor& desc, functions::function_id algorithm)
+        :  algorithm_(algorithm), desc(std::make_unique<MemoryDescriptor>(desc.shape(), desc.type(), desc.format()))
     {
 
     }

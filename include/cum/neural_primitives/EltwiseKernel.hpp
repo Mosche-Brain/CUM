@@ -24,7 +24,7 @@ namespace cum::neural_primitives
          * @param desc Memory descriptor defining shape and layout.
          * @param algorithm Activation algorithm identifier.
          */
-        EltwiseKernel(const Descriptor& desc, functions::function_id algorithm);
+        EltwiseKernel(const MemoryDescriptor& desc, functions::function_id algorithm);
 
         /**
          * @brief Warms up and compiles device kernel pipelines.
@@ -97,6 +97,6 @@ namespace cum::neural_primitives
         __event__ backward(handles::__memory__& dst, const handles::__memory__& src);
 
         functions::function_id algorithm_;
-        std::unique_ptr<Descriptor> desc;
+        std::unique_ptr<MemoryDescriptor> desc;
     };
 } // namespace cum::neural_primitives

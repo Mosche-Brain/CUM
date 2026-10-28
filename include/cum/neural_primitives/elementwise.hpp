@@ -10,7 +10,8 @@
 
 #include "cum/neural_primitives/opaque_types.hpp"
 #include "cum/neural_primitives/Memory.hpp"
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
+#include "cum/neural_primitives/PrimitiveDescriptor.hpp"
 
 #include "cum/functions/function_id.hpp"
 
@@ -20,23 +21,6 @@ namespace cum { class Tensor; }
 
 namespace cum::neural_primitives
 {
-    /**
-     * @enum prop_kind
-     * @brief Propagation mode for neural network primitives.
-     * @details Modeled after oneDNN propagation kind flags.
-     */
-    enum class prop_kind
-    {
-        undef             = 0,   ///< Undefined propagation kind.
-        forward_training  = 64,  ///< Forward propagation for training mode (saves data for backpropagation).
-        forward_inference = 96,  ///< Forward propagation for inference mode (omits training caches).
-        forward           = 64,  ///< Forward propagation alias for forward_training.
-        backward          = 128, ///< Backward propagation for all parameters.
-        backward_data     = 160, ///< Backward propagation with respect to data.
-        backward_weights  = 192, ///< Backward propagation with respect to weights.
-        backward_bias     = 192  ///< Backward propagation with respect to bias.
-    };
-
     /* Raw handle overloads */
 
     /**
@@ -87,43 +71,43 @@ namespace cum::neural_primitives
 
     /* RAII wrapper overloads */
 
-    __event__ eltwise(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, functions::function_id algorithm, prop_kind prop_kind);
+    __event__ eltwise(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc, functions::function_id algorithm, prop_kind prop_kind);
 
-    __event__ relu(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ relu(Memory& src, const Descriptor& desc);
+    __event__ relu(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ relu(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ sigmoid(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ sigmoid(Memory& src, const Descriptor& desc);
+    __event__ sigmoid(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ sigmoid(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ tanh(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ tanh(Memory& src, const Descriptor& desc);
+    __event__ tanh(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ tanh(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ gelu(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ gelu(Memory& src, const Descriptor& desc);
+    __event__ gelu(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ gelu(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ elu(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc);
-    __event__ elu(Memory& src, const Descriptor& desc);
+    __event__ elu(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc);
+    __event__ elu(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ leaky_relu(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc, cumeric_t alpha);
-    __event__ leaky_relu(Memory& src, const Descriptor& desc, cumeric_t alpha);
+    __event__ leaky_relu(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc, cumeric_t alpha);
+    __event__ leaky_relu(Memory& src, const MemoryDescriptor& desc, cumeric_t alpha);
 
-    __event__ sqrt(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
-    __event__ sqrt(Memory& src, const Descriptor& desc);
+    __event__ sqrt(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc);
+    __event__ sqrt(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ square(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
-    __event__ square(Memory& src, const Descriptor& desc);
+    __event__ square(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc);
+    __event__ square(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ exp(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
-    __event__ exp(Memory& src, const Descriptor& desc);
+    __event__ exp(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc);
+    __event__ exp(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ log(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
-    __event__ log(Memory& src, const Descriptor& desc);
+    __event__ log(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc);
+    __event__ log(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ abs(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc);
-    __event__ abs(Memory& src, const Descriptor& desc);
+    __event__ abs(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc);
+    __event__ abs(Memory& src, const MemoryDescriptor& desc);
 
-    __event__ clamp(Memory& dst, const Memory& src, const Descriptor& dst_desc, const Descriptor& src_desc, cumeric_t min, cumeric_t max);
-    __event__ clamp(Memory& src, const Descriptor& desc, cumeric_t min, cumeric_t max);
+    __event__ clamp(Memory& dst, const Memory& src, const MemoryDescriptor& dst_desc, const MemoryDescriptor& src_desc, cumeric_t min, cumeric_t max);
+    __event__ clamp(Memory& src, const MemoryDescriptor& desc, cumeric_t min, cumeric_t max);
 
     /* Tensor overloads */
 

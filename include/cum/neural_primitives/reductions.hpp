@@ -9,7 +9,7 @@
 #pragma once
 
 #include "cum/neural_primitives/Memory.hpp"
-#include "cum/neural_primitives/Descriptor.hpp"
+#include "cum/neural_primitives/MemoryDescriptor.hpp"
 #include "cum/neural_primitives/opaque_types.hpp"
 #include "cum/Core.hpp"
 
@@ -34,11 +34,11 @@ namespace cum::neural_primitives
 
     /* RAII wrappers overloads */
 
-    __event__ softmax(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc, dim_t axis = -1);
-    __event__ softmax(Memory& src, const Descriptor& desc, dim_t axis = -1);
+    __event__ softmax(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc, dim_t axis = -1);
+    __event__ softmax(Memory& src, const MemoryDescriptor& desc, dim_t axis = -1);
 
-    __event__ softmax_diff(Memory& dst, const Memory& src, const Descriptor& r_desc, const Descriptor& a_desc, dim_t axis = -1);
-    __event__ softmax_diff(Memory& memory, const Descriptor& desc, dim_t axis = -1);
+    __event__ softmax_diff(Memory& dst, const Memory& src, const MemoryDescriptor& r_desc, const MemoryDescriptor& a_desc, dim_t axis = -1);
+    __event__ softmax_diff(Memory& memory, const MemoryDescriptor& desc, dim_t axis = -1);
 
     /* Tensor overloads */
 
