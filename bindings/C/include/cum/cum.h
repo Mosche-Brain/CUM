@@ -1,8 +1,12 @@
-#ifndef CUM_CUM_H
-#define CUM_CUM_H
+#ifndef CUM_C_CUM_H
+#define CUM_C_CUM_H
 
 #include "cum/core.h"
 #include "cum/datatypes.h"
+#include "cum/constants.h"
 #include "cum/tensor.h"
+#include "cum/matrix.h"
+#include "cum/vector.h"
+#include "cum/linear_algebra/blas.h"
 
-#endif
+#endif /* CUM_C_CUM_H */

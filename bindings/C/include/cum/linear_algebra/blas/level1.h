@@ -1,11 +1,8 @@
-/*
- * @author: jaro
- * @name:   level1
- * @file:   modules/cum/bindings/C/include/cum/linear_algebra/blas/level1.hpp
- * @date:   13 September 2026 22:27:04
- */
+#ifndef CUM_C_BLAS_LEVEL1_H
+#define CUM_C_BLAS_LEVEL1_H
 
-#ifndef YANN_LEVEL1_HPP
-#define YANN_LEVEL1_HPP
+#include "cum/core.h"
 
-#endif //YANN_LEVEL1_HPP
+/* BLAS level 1 functions are not exposed by the C binding yet. */
+
+#endif /* CUM_C_BLAS_LEVEL1_H */

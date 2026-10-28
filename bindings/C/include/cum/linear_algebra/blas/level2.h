@@ -1,11 +1,8 @@
-/*
- * @author: jaro
- * @name:   level2
- * @file:   modules/cum/bindings/C/include/cum/linear_algebra/blas/level2.h
- * @date:   13 September 2026 22:27:24
- */
+#ifndef CUM_C_BLAS_LEVEL2_H
+#define CUM_C_BLAS_LEVEL2_H
 
-#ifndef YANN_LEVEL2_H
-#define YANN_LEVEL2_H
+#include "cum/core.h"
 
-#endif //YANN_LEVEL2_H
+/* BLAS level 2 functions are not exposed by the C binding yet. */
+
+#endif /* CUM_C_BLAS_LEVEL2_H */

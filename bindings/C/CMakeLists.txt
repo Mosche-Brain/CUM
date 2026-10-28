@@ -1,5 +1,8 @@
 add_library(cum_C STATIC
     src/cum.cpp
+    src/tensor.cpp
+    src/matrix.cpp
+    src/vector.cpp
 )
 
 set_target_properties(cum_C PROPERTIES

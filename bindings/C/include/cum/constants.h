@@ -1,11 +1,6 @@
-/*
- * @author: jaro
- * @name:   constants
- * @file:   modules/cum/bindings/C/include/cum/constants.h
- * @date:   13 September 2026 22:33:02
- */
+#ifndef CUM_C_CONSTANTS_H
+#define CUM_C_CONSTANTS_H
 
-#ifndef YANN_CONSTANTS_H
-#define YANN_CONSTANTS_H
+#include "cum/core.h"
 
-#endif //YANN_CONSTANTS_H
+#endif /* CUM_C_CONSTANTS_H */

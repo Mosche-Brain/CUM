@@ -1,45 +1,27 @@
-/*
- * @author: jaro
- * @name:   tensor
- * @file:   modules/cum/bindings/C/src/tensor.cpp
- * @date:   15 September 2026 21:58:55
- */
-#include <exception>
-#include <new>
-#include <string>
+#include <cstring>
 
 #include "cum/cum.h"
-#include "cum/cum.hpp"
 #include "cum/Tensor.hpp"
 #include "cum/detail/opaques_impl.hpp"
+#include "cum/detail/error.hpp"
+#include "cum/detail/convert.hpp"
+
+using cum_c::guard;
+using cum_c::invalid_argument;
+
+namespace
+{
+    constexpr const char* null_tensor = "null tensor argument";
+
+    cum_status_t emplace(cum_tensor_t** out, cum::Tensor&& tensor)
+    {
+        *out = new cum_tensor_t { std::move(tensor) };
+        return CUM_STATUS_SUCCESS;
+    }
+}
 
 extern "C"
 {
-
-    #define CUM_BINARY_OPERATION(name, operation) \
-    cum_status_t name(cum_tensor_t* dst, const cum_tensor_t* lhs, const cum_tensor_t* rhs) \
-    { \
-        if(dst == nullptr || lhs == nullptr || rhs == nullptr) \
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor"); \
-        try \
-        { \
-            dst->tensor = lhs->tensor + rhs->tensor; \
-            last_error.clear(); \
-            return CUM_STATUS_SUCCESS; \
-        } \
-        catch(const std::exception& error) \
-        { \
-            return failure(CUM_STATUS_RUNTIME_ERROR, error); \
-        } \
-    }
-
-    CUM_BINARY_OPERATION(cum_tensor_add, add)
-    CUM_BINARY_OPERATION(cum_tensor_sub, sub)
-    CUM_BINARY_OPERATION(cum_tensor_mul, mul)
-    CUM_BINARY_OPERATION(cum_tensor_div, div)
-    CUM_BINARY_OPERATION(cum_tensor_mmul, matmul)
-
-    #undef CUM_BINARY_OPERATION
     cum_status_t cum_tensor_create(
         cum_tensor_t** tensor,
         cum_shape_t shape,
@@ -47,29 +29,44 @@ extern "C"
         cum_layout_t layout
     )
     {
-        if(tensor == nullptr || (shape.rank != 0 && shape.dims == nullptr))
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor or shape");
+        if(tensor == nullptr)
+            return invalid_argument("null output pointer");
+        return guard([&] {
+            emplace(tensor, cum::Tensor(
+                cum_c::to_shape(shape), cum_c::to_datatype(datatype), cum_c::to_layout(layout)));
+        });
+    }
 
-        try
-        {
-            cum::Shape cpp_shape;
-            if(shape.rank != 0)
-                cpp_shape.assign(shape.dims, shape.dims + shape.rank);
+    cum_status_t cum_tensor_create_zeros(cum_tensor_t** tensor, cum_shape_t shape)
+    {
+        if(tensor == nullptr)
+            return invalid_argument("null output pointer");
+        return guard([&] { emplace(tensor, cum::Tensor::Zeros(cum_c::to_shape(shape))); });
+    }
 
-            *tensor = new cum_tensor_t {
-                cum::Tensor(cpp_shape, to_datatype(datatype), to_layout(layout))
-            };
-            last_error.clear();
-            return CUM_STATUS_SUCCESS;
-        }
-        catch(const std::bad_alloc& error)
-        {
-            return failure(CUM_STATUS_OUT_OF_MEMORY, error);
-        }
-        catch(const std::exception& error)
-        {
-            return failure(CUM_STATUS_RUNTIME_ERROR, error);
-        }
+    cum_status_t cum_tensor_create_ones(cum_tensor_t** tensor, cum_shape_t shape)
+    {
+        if(tensor == nullptr)
+            return invalid_argument("null output pointer");
+        return guard([&] { emplace(tensor, cum::Tensor::Ones(cum_c::to_shape(shape))); });
+    }
+
+    cum_status_t cum_tensor_create_random(cum_tensor_t** tensor, cum_shape_t shape, cumeric_t min, cumeric_t max)
+    {
+        if(tensor == nullptr)
+            return invalid_argument("null output pointer");
+        return guard([&] { emplace(tensor, cum::Tensor::Random(cum_c::to_shape(shape), min, max)); });
+    }
+
+    cum_status_t cum_tensor_create_from_data(cum_tensor_t** tensor, cum_shape_t shape, const cumeric_t* data)
+    {
+        if(tensor == nullptr || data == nullptr)
+            return invalid_argument("null output pointer or data");
+        return guard([&] {
+            cum::Tensor created(cum_c::to_shape(shape), cum::datatype::FP32, cum::layout::ANY);
+            std::memcpy(created.data(), data, static_cast<size_t>(created.size()));
+            emplace(tensor, std::move(created));
+        });
     }
 
     cum_status_t cum_tensor_destroy(cum_tensor_t* tensor)
@@ -81,18 +78,15 @@ extern "C"
     cum_status_t cum_tensor_copy(cum_tensor_t* dst, const cum_tensor_t* src)
     {
         if(dst == nullptr || src == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor");
+            return invalid_argument(null_tensor);
+        return guard([&] { dst->tensor = src->tensor; });
+    }
 
-        try
-        {
-            dst->tensor = src->tensor;
-            last_error.clear();
-            return CUM_STATUS_SUCCESS;
-        }
-        catch(const std::exception& error)
-        {
-            return failure(CUM_STATUS_RUNTIME_ERROR, error);
-        }
+    cum_status_t cum_tensor_clone(cum_tensor_t** dst, const cum_tensor_t* src)
+    {
+        if(dst == nullptr || src == nullptr)
+            return invalid_argument(null_tensor);
+        return guard([&] { emplace(dst, src->tensor.clone()); });
     }
 
     cum_status_t cum_tensor_shape(
@@ -103,106 +97,168 @@ extern "C"
     )
     {
         if(tensor == nullptr || rank == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor or rank");
-
-        try
-        {
+            return invalid_argument("invalid tensor or rank");
+        return guard([&] {
             const cum::Shape shape = tensor->tensor.shape();
             *rank = shape.size();
             if(dims == nullptr)
-                return CUM_STATUS_SUCCESS;
+                return;
             if(capacity < shape.size())
-                return failure(CUM_STATUS_INVALID_ARGUMENT, "shape buffer is too small");
-
+                throw std::invalid_argument("shape buffer is too small");
             for(size_t index = 0; index < shape.size(); ++index)
                 dims[index] = shape[index];
-
-            last_error.clear();
-            return CUM_STATUS_SUCCESS;
-        }
-        catch(const std::exception& error)
-        {
-            return failure(CUM_STATUS_RUNTIME_ERROR, error);
-        }
+        });
     }
 
     cum_status_t cum_tensor_size(const cum_tensor_t* tensor, dim_t* size)
     {
         if(tensor == nullptr || size == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor or size");
-        *size = tensor->tensor.size();
-        return CUM_STATUS_SUCCESS;
+            return invalid_argument();
+        return guard([&] { *size = tensor->tensor.size(); });
     }
 
     cum_status_t cum_tensor_length(const cum_tensor_t* tensor, dim_t* length)
     {
         if(tensor == nullptr || length == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor or length");
-        *length = tensor->tensor.lenght();
-        return CUM_STATUS_SUCCESS;
+            return invalid_argument();
+        return guard([&] { *length = tensor->tensor.lenght(); });
     }
 
     cum_status_t cum_tensor_datatype(const cum_tensor_t* tensor, cum_datatype_t* datatype)
     {
         if(tensor == nullptr || datatype == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor or datatype");
-        *datatype = static_cast<cum_datatype_t>(tensor->tensor.type());
-        return CUM_STATUS_SUCCESS;
+            return invalid_argument();
+        return guard([&] { *datatype = cum_c::from_datatype(tensor->tensor.type()); });
     }
 
     cum_status_t cum_tensor_layout(const cum_tensor_t* tensor, cum_layout_t* layout)
     {
         if(tensor == nullptr || layout == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor or layout");
-        *layout = static_cast<cum_layout_t>(tensor->tensor.format());
-        return CUM_STATUS_SUCCESS;
+            return invalid_argument();
+        return guard([&] { *layout = cum_c::from_layout(tensor->tensor.format()); });
     }
 
     cum_status_t cum_tensor_data(const cum_tensor_t* tensor, const void** data)
     {
         if(tensor == nullptr || data == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor or data");
-        *data = tensor->tensor.data();
-        return CUM_STATUS_SUCCESS;
+            return invalid_argument();
+        return guard([&] { *data = tensor->tensor.data(); });
+    }
+
+    cum_status_t cum_tensor_mutable_data(cum_tensor_t* tensor, void** data)
+    {
+        if(tensor == nullptr || data == nullptr)
+            return invalid_argument();
+        return guard([&] { *data = tensor->tensor.data(); });
+    }
+
+    cum_status_t cum_tensor_reshape(cum_tensor_t* dst, const cum_tensor_t* src, cum_shape_t shape)
+    {
+        if(dst == nullptr || src == nullptr)
+            return invalid_argument(null_tensor);
+        return guard([&] { dst->tensor = src->tensor.reshape(cum_c::to_shape(shape)); });
+    }
+
+    cum_status_t cum_tensor_transpose(cum_tensor_t* dst, const cum_tensor_t* src)
+    {
+        if(dst == nullptr || src == nullptr)
+            return invalid_argument(null_tensor);
+        return guard([&] { dst->tensor = src->tensor.transpose(); });
     }
 
     cum_status_t cum_tensor_fill(cum_tensor_t* tensor, cumeric_t scalar)
     {
         if(tensor == nullptr)
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor");
-        try
-        {
-            tensor->tensor.fill(scalar);
-            last_error.clear();
-            return CUM_STATUS_SUCCESS;
-        }
-        catch(const std::exception& error)
-        {
-            return failure(CUM_STATUS_RUNTIME_ERROR, error);
-        }
+            return invalid_argument(null_tensor);
+        return guard([&] { tensor->tensor.fill(scalar); });
     }
 
-    #define CUM_IN_PLACE_OPERATION(name, operation) \
+    #define CUM_TENSOR_BINARY(name, expression) \
+    cum_status_t name(cum_tensor_t* dst, const cum_tensor_t* lhs, const cum_tensor_t* rhs) \
+    { \
+        if(dst == nullptr || lhs == nullptr || rhs == nullptr) \
+            return invalid_argument(null_tensor); \
+        return guard([&] { dst->tensor = (expression); }); \
+    }
+
+    CUM_TENSOR_BINARY(cum_tensor_add, lhs->tensor + rhs->tensor)
+    CUM_TENSOR_BINARY(cum_tensor_sub, lhs->tensor - rhs->tensor)
+    CUM_TENSOR_BINARY(cum_tensor_mul, lhs->tensor.multiply(rhs->tensor))
+    CUM_TENSOR_BINARY(cum_tensor_div, lhs->tensor / rhs->tensor)
+    CUM_TENSOR_BINARY(cum_tensor_mmul, lhs->tensor.matmul(rhs->tensor))
+
+    #undef CUM_TENSOR_BINARY
+
+    #define CUM_TENSOR_IN_PLACE(name, op) \
     cum_status_t name(cum_tensor_t* lhs, const cum_tensor_t* rhs) \
     { \
         if(lhs == nullptr || rhs == nullptr) \
-            return failure(CUM_STATUS_INVALID_ARGUMENT, "invalid tensor"); \
-        try \
-        { \
-            lhs->tensor += rhs->tensor; \
-            last_error.clear(); \
-            return CUM_STATUS_SUCCESS; \
-        } \
-        catch(const std::exception& error) \
-        { \
-            return failure(CUM_STATUS_RUNTIME_ERROR, error); \
-        } \
+            return invalid_argument(null_tensor); \
+        return guard([&] { lhs->tensor op rhs->tensor; }); \
     }
 
-    CUM_IN_PLACE_OPERATION(cum_tensor_add_in_place, add)
-    CUM_IN_PLACE_OPERATION(cum_tensor_sub_in_place, sub)
-    CUM_IN_PLACE_OPERATION(cum_tensor_mul_in_place, mul)
-    CUM_IN_PLACE_OPERATION(cum_tensor_div_in_place, div)
+    CUM_TENSOR_IN_PLACE(cum_tensor_add_in_place, +=)
+    CUM_TENSOR_IN_PLACE(cum_tensor_sub_in_place, -=)
+    CUM_TENSOR_IN_PLACE(cum_tensor_mul_in_place, *=)
+    CUM_TENSOR_IN_PLACE(cum_tensor_div_in_place, /=)
 
-    #undef CUM_IN_PLACE_OPERATION
+    #undef CUM_TENSOR_IN_PLACE
+
+    #define CUM_TENSOR_SCALAR(name, expression) \
+    cum_status_t name(cum_tensor_t* dst, const cum_tensor_t* src, cumeric_t scalar) \
+    { \
+        if(dst == nullptr || src == nullptr) \
+            return invalid_argument(null_tensor); \
+        return guard([&] { dst->tensor = (expression); }); \
+    }
+
+    CUM_TENSOR_SCALAR(cum_tensor_add_scalar, src->tensor + scalar)
+    CUM_TENSOR_SCALAR(cum_tensor_sub_scalar, src->tensor - scalar)
+    CUM_TENSOR_SCALAR(cum_tensor_mul_scalar, src->tensor * scalar)
+    CUM_TENSOR_SCALAR(cum_tensor_div_scalar, src->tensor / scalar)
+
+    #undef CUM_TENSOR_SCALAR
+
+    cum_status_t cum_tensor_scale(cum_tensor_t* tensor, cumeric_t scalar)
+    {
+        if(tensor == nullptr)
+            return invalid_argument(null_tensor);
+        return guard([&] { tensor->tensor = tensor->tensor * scalar; });
+    }
+
+    #define CUM_TENSOR_UNARY(name, method) \
+    cum_status_t name(cum_tensor_t* dst, const cum_tensor_t* src) \
+    { \
+        if(dst == nullptr || src == nullptr) \
+            return invalid_argument(null_tensor); \
+        return guard([&] { dst->tensor = src->tensor.method(); }); \
+    }
+
+    CUM_TENSOR_UNARY(cum_tensor_sqrt, sqrt)
+    CUM_TENSOR_UNARY(cum_tensor_square, square)
+    CUM_TENSOR_UNARY(cum_tensor_abs, abs)
+    CUM_TENSOR_UNARY(cum_tensor_log, log)
+
+    #undef CUM_TENSOR_UNARY
+
+    cum_status_t cum_tensor_clamp(cum_tensor_t* dst, const cum_tensor_t* src, cumeric_t min, cumeric_t max)
+    {
+        if(dst == nullptr || src == nullptr)
+            return invalid_argument(null_tensor);
+        return guard([&] { dst->tensor = src->tensor.clamp(min, max); });
+    }
+
+    #define CUM_TENSOR_REDUCTION(name, method) \
+    cum_status_t name(const cum_tensor_t* tensor, cumeric_t* result) \
+    { \
+        if(tensor == nullptr || result == nullptr) \
+            return invalid_argument(); \
+        return guard([&] { *result = tensor->tensor.method(); }); \
+    }
+
+    CUM_TENSOR_REDUCTION(cum_tensor_sum, sum)
+    CUM_TENSOR_REDUCTION(cum_tensor_mean, mean)
+    CUM_TENSOR_REDUCTION(cum_tensor_norm, norm)
+
+    #undef CUM_TENSOR_REDUCTION
 }

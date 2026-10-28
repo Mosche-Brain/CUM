@@ -1,11 +1,8 @@
-/*
- * @author: jaro
- * @name:   blas
- * @file:   modules/cum/bindings/C/include/cum/linear_algebra/blas.h
- * @date:   13 September 2026 22:26:37
- */
+#ifndef CUM_C_BLAS_H
+#define CUM_C_BLAS_H
 
-#ifndef YANN_BLAS_H
-#define YANN_BLAS_H
+#include "cum/linear_algebra/blas/level1.h"
+#include "cum/linear_algebra/blas/level2.h"
+#include "cum/linear_algebra/blas/level3.h"
 
-#endif //YANN_BLAS_H
+#endif /* CUM_C_BLAS_H */
