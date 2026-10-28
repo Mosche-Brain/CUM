@@ -3,6 +3,7 @@
 
 #include "cum/Tensor.hpp"
 #include "cum/Matrix.hpp"
+#include "cum/Core.hpp"
 
 struct cum_tensor_t
 {
@@ -12,6 +13,11 @@ struct cum_tensor_t
 struct cum_matrix_t
 {
     cum::Matrix matrix;
+};
+
+struct cum_event_t
+{
+    cum::__event__ event;
 };
 
 /* The C vector is backed by a rank-1 tensor (cum::Vector has no safe copy semantics). */

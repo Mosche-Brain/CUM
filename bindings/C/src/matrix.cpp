@@ -49,14 +49,14 @@ extern "C"
     {
         if(matrix == nullptr || !valid_dims(rows, cols))
             return invalid_argument("invalid output pointer or dimensions");
-        return guard([&] { emplace(matrix, cum::Matrix::Zeros(rows, cols)); });
+        return synced([&] { emplace(matrix, cum::Matrix::Zeros(rows, cols)); });
     }
 
     cum_status_t cum_matrix_create_filled(cum_matrix_t** matrix, dim_t rows, dim_t cols, cumeric_t value)
     {
         if(matrix == nullptr || !valid_dims(rows, cols))
             return invalid_argument("invalid output pointer or dimensions");
-        return guard([&] { emplace(matrix, cum::Matrix(rows, cols, value)); });
+        return synced([&] { emplace(matrix, cum::Matrix(rows, cols, value)); });
     }
 
     cum_status_t cum_matrix_create_zeros(cum_matrix_t** matrix, dim_t rows, dim_t cols)
@@ -74,7 +74,7 @@ extern "C"
     {
         if(matrix == nullptr || !valid_dims(rows, cols))
             return invalid_argument("invalid output pointer or dimensions");
-        return guard([&] { emplace(matrix, cum::Matrix::Random(rows, cols, min, max)); });
+        return synced([&] { emplace(matrix, cum::Matrix::Random(rows, cols, min, max)); });
     }
 
     cum_status_t cum_matrix_create_from_data(
@@ -82,7 +82,7 @@ extern "C"
     {
         if(matrix == nullptr || data == nullptr || !valid_dims(rows, cols))
             return invalid_argument("invalid output pointer, data or dimensions");
-        return guard([&] { emplace(matrix, cum::Matrix(rows, cols, data)); });
+        return synced([&] { emplace(matrix, cum::Matrix(rows, cols, data)); });
     }
 
     cum_status_t cum_matrix_destroy(cum_matrix_t* matrix)
@@ -95,14 +95,14 @@ extern "C"
     {
         if(dst == nullptr || src == nullptr)
             return invalid_argument(null_matrix);
-        return guard([&] { dst->matrix.set(src->matrix); });
+        return synced([&] { dst->matrix.set(src->matrix); });
     }
 
     cum_status_t cum_matrix_clone(cum_matrix_t** dst, const cum_matrix_t* src)
     {
         if(dst == nullptr || src == nullptr)
             return invalid_argument(null_matrix);
-        return guard([&] { emplace(dst, cum::Matrix(src->matrix)); });
+        return synced([&] { emplace(dst, cum::Matrix(src->matrix)); });
     }
 
     cum_status_t cum_matrix_rows(const cum_matrix_t* matrix, dim_t* rows)

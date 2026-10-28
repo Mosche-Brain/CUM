@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "cum/export.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -157,9 +159,9 @@ typedef struct cum_shape_t
     size_t rank;
 } cum_shape_t;
 
-cum_status_t cum_init(cum_device_t device);
-cum_status_t cum_shutdown(void);
-const char* cum_last_error(void);
+CUM_C_API cum_status_t cum_init(cum_device_t device);
+CUM_C_API cum_status_t cum_shutdown(void);
+CUM_C_API const char* cum_last_error(void);
 
 #ifdef __cplusplus
 }

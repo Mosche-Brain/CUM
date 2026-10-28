@@ -2,6 +2,8 @@
 #define CUM_C_CUM_H
 
 #include "cum/core.h"
+#include "cum/event.h"
+#include "cum/memory.h"
 #include "cum/datatypes.h"
 #include "cum/constants.h"
 #include "cum/tensor.h"

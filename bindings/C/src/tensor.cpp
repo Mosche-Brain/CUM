@@ -156,7 +156,17 @@ extern "C"
     {
         if(dst == nullptr || src == nullptr)
             return invalid_argument(null_tensor);
-        return guard([&] { dst->tensor = src->tensor.reshape(cum_c::to_shape(shape)); });
+        return guard([&] {
+            const cum::Shape new_shape = cum_c::to_shape(shape);
+            dim_t total = 1;
+            for(dim_t d : new_shape)
+                total *= d;
+            if(total != src->tensor.lenght())
+                throw std::invalid_argument("reshape element count mismatch");
+            cum::Tensor reshaped(new_shape, src->tensor.type(), cum::layout::ANY);
+            std::memcpy(reshaped.data(), src->tensor.data(), static_cast<size_t>(src->tensor.size()));
+            dst->tensor = std::move(reshaped);
+        });
     }
 
     cum_status_t cum_tensor_transpose(cum_tensor_t* dst, const cum_tensor_t* src)

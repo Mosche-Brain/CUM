@@ -178,6 +178,56 @@ static int test_vector(void)
     return 0;
 }
 
+static int test_blas(void)
+{
+    cumeric_t *a = NULL, *b = NULL, *c = NULL, *res = NULL;
+    cum_event_t* event = NULL;
+    dim_t i;
+
+    OK(cum_memory_allocate(4, &a));
+    OK(cum_memory_allocate(4, &b));
+    OK(cum_memory_allocate(4, &c));
+    OK(cum_memory_allocate(1, &res));
+    for(i = 0; i < 4; ++i)
+    {
+        a[i] = (cumeric_t)(i + 1);
+        b[i] = (cumeric_t)(i + 5);
+        c[i] = 0;
+    }
+
+    /* synchronous: event == NULL */
+    OK(cum_gemm('N', 'N', 2, 2, 2, 1.0f, a, 2, b, 2, 0.0f, c, 2, NULL));
+    CHECK(NEAR(c[0], 19) && NEAR(c[1], 22) && NEAR(c[2], 43) && NEAR(c[3], 50));
+
+    OK(cum_dot(4, a, 1, b, 1, res, NULL));
+    CHECK(NEAR(res[0], 70));
+
+    /* asynchronous: event returned, then waited for */
+    OK(cum_gemm('N', 'N', 2, 2, 2, 1.0f, a, 2, b, 2, 0.0f, c, 2, &event));
+    CHECK(event != NULL);
+    OK(cum_event_wait(event));
+    OK(cum_event_destroy(event));
+    CHECK(NEAR(c[3], 50));
+
+    OK(cum_axpy(4, 2.0f, a, 1, c, 1, &event));
+    OK(cum_event_wait(event));
+    OK(cum_event_destroy(event));
+    CHECK(NEAR(c[0], 21));
+
+    OK(cum_scal(4, 0.5f, c, 1, NULL));
+    CHECK(NEAR(c[0], 10.5f));
+
+    OK(cum_nrm2(2, a, 1, res, NULL));
+    CHECK(NEAR(res[0], sqrtf(5.0f)));
+
+    OK(cum_synchronize());
+    OK(cum_memory_free(a));
+    OK(cum_memory_free(b));
+    OK(cum_memory_free(c));
+    OK(cum_memory_free(res));
+    return 0;
+}
+
 int main(void)
 {
     int failed = 0;
@@ -186,6 +236,7 @@ int main(void)
     failed |= test_tensor();
     failed |= test_matrix();
     failed |= test_vector();
+    failed |= test_blas();
     OK(cum_shutdown());
 
     if(failed == 0)
