@@ -5,21 +5,28 @@ file(GLOB_RECURSE SOURCES_MKL CONFIGURE_DEPENDS
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# Unify threading across MKL, MKL SYCL, oneDPL and oneDNN on oneTBB (avoids pulling in libiomp5 / OpenMP).
+set(MKL_THREADING "tbb_thread" CACHE STRING "MKL threading layer" FORCE)
+set(MKL_SYCL_THREADING "tbb_thread" CACHE STRING "MKL SYCL threading layer" FORCE)
+
 find_package(TBB CONFIG REQUIRED)
 find_package(MKL CONFIG REQUIRED)
 find_package(oneDPL CONFIG REQUIRED)
 
-if(NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib/cmake/dnnl/dnnl-config.cmake" AND
-   NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib64/cmake/dnnl/dnnl-config.cmake")
+if((NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib/libdnnl.a" AND
+    NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib64/libdnnl.a" AND
+    NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib/dnnl.lib") OR
+   (NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib/cmake/dnnl/dnnl-config.cmake" AND
+    NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib64/cmake/dnnl/dnnl-config.cmake"))
     if(NOT EXISTS "${CUM_ONEDNN_ROOT}/CMakeLists.txt")
         message(FATAL_ERROR
-            "oneDNN installation was not found in '${CUM_ONEDNN_INSTALL_DIR}' and "
+            "Static oneDNN installation was not found in '${CUM_ONEDNN_INSTALL_DIR}' and "
             "source submodule at '${CUM_ONEDNN_ROOT}' is missing. "
             "Initialize submodules with: git submodule update --init --recursive"
         )
     endif()
 
-    message(STATUS "oneDNN not found in '${CUM_ONEDNN_INSTALL_DIR}'. Building from '${CUM_ONEDNN_ROOT}'...")
+    message(STATUS "Static oneDNN not found in '${CUM_ONEDNN_INSTALL_DIR}'. Building static oneDNN from '${CUM_ONEDNN_ROOT}'...")
 
     include(ProcessorCount)
     ProcessorCount(CUM_ONEDNN_BUILD_JOBS)
@@ -50,9 +57,10 @@ if(NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib/cmake/dnnl/dnnl-config.cmake" AND
             "-DCMAKE_C_COMPILER=${CUM_ONEDNN_C_COMPILER}"
             "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
             "-DCMAKE_BUILD_TYPE=Release"
+            "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
             "-DCMAKE_INSTALL_PREFIX=${CUM_ONEDNN_INSTALL_DIR}"
             "-DCMAKE_INSTALL_LIBDIR=lib"
-            "-DONEDNN_LIBRARY_TYPE=SHARED"
+            "-DONEDNN_LIBRARY_TYPE=STATIC"
             "-DONEDNN_CPU_RUNTIME=SYCL"
             "-DONEDNN_GPU_RUNTIME=SYCL"
             "-DONEDNN_GPU_VENDOR=INTEL"
@@ -134,7 +142,10 @@ if(CUM_UMF_LIBRARY)
 endif()
 
 if(CUM_BUILD_SHARED)
-    target_link_options(${CUM_PROJECT_NAME}_MKL PRIVATE -fsycl)
+    target_link_options(${CUM_PROJECT_NAME}_MKL PRIVATE
+        -fsycl
+        $<$<PLATFORM_ID:Linux>:-Wl,--exclude-libs,libdnnl.a>
+    )
     set(_cum_mkl_rpath "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}")
     if(CUM_UMF_LIBRARY_DIR)
         list(APPEND _cum_mkl_rpath "${CUM_UMF_LIBRARY_DIR}")
@@ -142,7 +153,7 @@ if(CUM_BUILD_SHARED)
     set_target_properties(${CUM_PROJECT_NAME}_MKL PROPERTIES
         BUILD_RPATH "${CUM_UMF_LIBRARY_DIR}"
         INSTALL_RPATH "${_cum_mkl_rpath}"
-        INSTALL_RPATH_USE_LINK_PATH TRUE
+        INSTALL_RPATH_USE_LINK_PATH FALSE
     )
 else()
     target_link_options(${CUM_PROJECT_NAME}_MKL INTERFACE -fsycl)
@@ -156,11 +167,3 @@ install(TARGETS ${CUM_PROJECT_NAME}_MKL
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-
-if(TARGET DNNL::dnnl)
-    install(DIRECTORY "${CUM_ONEDNN_INSTALL_DIR}/lib/"
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        FILES_MATCHING
-            PATTERN "libdnnl.so*"
-    )
-endif()

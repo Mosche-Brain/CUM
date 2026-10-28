@@ -72,10 +72,6 @@ def _find_library() -> ctypes.CDLL:
         if path.is_file():
             # Preload sibling shared libraries if present in the same directory
             lib_dir = path.parent
-            for dnnl in sorted(lib_dir.glob("libdnnl.so*")):
-                if dnnl.is_file():
-                    ctypes.CDLL(str(dnnl), mode=ctypes.RTLD_GLOBAL)
-                    break
             for dep in ("libcum_Core.so", "libcum_MKL.so"):
                 dep_path = lib_dir / dep
                 if dep_path.is_file():

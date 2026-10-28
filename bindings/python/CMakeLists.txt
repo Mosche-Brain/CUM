@@ -13,7 +13,7 @@ endif()
 
 if(CUM_PREFIX AND EXISTS "${CUM_PREFIX}/lib/libcum_C.so")
     message(STATUS "Bundling pre-installed CUM libraries from ${CUM_PREFIX}/lib")
-    file(GLOB _cum_libs "${CUM_PREFIX}/lib/libcum*.so*" "${CUM_PREFIX}/lib/libdnnl.so.3.*")
+    file(GLOB _cum_libs "${CUM_PREFIX}/lib/libcum*.so*")
     install(FILES ${_cum_libs} DESTINATION "${CUMPY_PACKAGE_DIR}")
 else()
     set(BUILD_TESTS OFF CACHE BOOL "" FORCE)

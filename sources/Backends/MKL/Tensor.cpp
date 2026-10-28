@@ -197,7 +197,7 @@ namespace cum
 	Tensor Tensor::Random(const Shape& shape, cumeric_t min, cumeric_t max, datatype dtype, layout layout)
 	{
 		Tensor tensor;
-		tensor._desc_ = std::make_unique<neural_primitives::Descriptor>(shape, dtype, layout);
+		tensor._desc_ = std::make_unique<Descriptor>(shape, dtype, layout == layout::ANY ? default_layout_from_rank(shape.size()) : layout);
 		tensor._data = sycl::malloc_shared<std::byte>(
 			tensor._desc_->size(), internal::device(), internal::sycl_context());
 		if(tensor._data == nullptr)

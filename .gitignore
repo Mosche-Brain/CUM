@@ -3,4 +3,4 @@
 
 build/
 bindings/python/dist
-bindings/python/src/cumpy/__pycache__
+bindings/python/src/cumpy/__pycache__/
