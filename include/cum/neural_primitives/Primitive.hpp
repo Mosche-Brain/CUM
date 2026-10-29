@@ -55,22 +55,5 @@ namespace cum::neural_primitives
     protected:
         struct Impl;
         std::unique_ptr<Impl> impl;
-
-        friend struct BinaryPrimitiveImpl;
-        friend struct MatmulPrimitiveImpl;
-        friend struct ElementwisePrimitiveImpl;
-        friend struct ReductionPrimitiveImpl;
-        friend struct ConvolutionPrimitiveImpl;
-        friend struct SoftmaxPrimitiveImpl;
-        friend struct PoolingPrimitiveImpl;
-        friend struct ConvolutionBackwardPrimitiveImpl;
-        friend struct SoftmaxBackwardPrimitiveImpl;
-        friend struct PoolingBackwardPrimitiveImpl;
-        friend struct BinaryBackwardPrimitiveImpl;
-        friend struct MatmulBackwardPrimitiveImpl;
-        friend struct ElementwiseBackwardPrimitiveImpl;
-        friend struct ReductionBackwardPrimitiveImpl;
-        friend struct ReorderPrimitiveImpl;
-        friend struct ReorderBackwardPrimitiveImpl;
     };
 } // namespace cum::neural_primitives

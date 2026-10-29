@@ -63,6 +63,13 @@ namespace cum::neural_primitives
         enum class Kind { binary, elementwise, matmul, softmax, sum, reduction, reorder };
 
         PrimitiveDescriptor() = default;
+        ~PrimitiveDescriptor();
+
+        PrimitiveDescriptor(PrimitiveDescriptor&&) noexcept = default;
+        PrimitiveDescriptor& operator = (PrimitiveDescriptor&&) noexcept = default;
+
+        PrimitiveDescriptor(PrimitiveDescriptor&);
+        PrimitiveDescriptor& operator = (PrimitiveDescriptor&);
 
         static PrimitiveDescriptor Binary(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src1, const Memory::Descriptor& src2);
         static PrimitiveDescriptor Elementwise(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, Purpose prop_kind=Purpose::forward);
@@ -73,6 +80,7 @@ namespace cum::neural_primitives
         friend class Primitive;
 
         Kind kind() const noexcept;
+        Kind _kind;
     protected:
         struct Impl;
         friend class BinaryDescriptor;

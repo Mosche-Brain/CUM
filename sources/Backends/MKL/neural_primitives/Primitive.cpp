@@ -12,42 +12,23 @@
 
 #include "cum/neural_primitives/Primitive.hpp"
 
+#include "cum/detail/vendor/oneapi/opaque_types.hpp"
+
 namespace cum::neural_primitives
 {
+    struct PrimitiveDescriptor::Impl
+    {
+        std::unique_ptr<dnnl::primitive_desc> desc;
+    }; // this is redundant
+
     struct Primitive::Impl
     {
+        std::unique_ptr<dnnl::primitive> primitive;
 
+        ~Impl() = default;
     };
 
-    struct BinaryPrimitiveImpl final : Primitive::Impl
-    {
-        dnnl::binary primitive;
-    };
-
-    struct ElementwisePrimitiveImpl final : Primitive::Impl
-    {
-        dnnl::eltwise_forward primitive;
-    };
-
-    struct ElementwiseBackwardPrimitiveImpl final : Primitive::Impl
-    {
-        dnnl::eltwise_forward primitive;
-    };
-
-    struct PoolingPrimitiveImpl final : Primitive::Impl
-    {
-        dnnl::pooling_forward primitive;
-    };
-
-    struct ConvolutionPrimitiveImpl final : Primitive::Impl
-    {
-        dnnl::convolution_forward primitive;
-    };
-
-    struct ConvolutionBackwardPrimitiveImpl final : Primitive::Impl
-    {
-        dnnl::convolution_forward primitive;
-    };
+    Primitive::~Primitive() = default;
 
     Primitive::Primitive(const Descriptor& descriptor)
     {
@@ -55,9 +36,20 @@ namespace cum::neural_primitives
         {
             case Kind::binary:
             {
-                const dnnl::binary::primitive_desc& pd = static_cast<const BinaryDescriptor*>(descriptor._impl.get())->desc;
-                this->impl = std::make_unique<BinaryPrimitiveImpl>();
+                const auto& pd = static_cast<const dnnl::binary::primitive_desc&>(
+                    *descriptor._impl->desc
+                );
 
+                this->impl->primitive = std::make_unique<dnnl::binary>(pd);
+                break;
+            }
+            case Kind::elementwise:
+            {
+                const auto& pd = static_cast<const dnnl::eltwise_forward::primitive_desc&>(
+                    *descriptor._impl->desc
+                );
+
+                this->impl->primitive = std::make_unique<dnnl::eltwise_forward>(pd);
                 break;
             }
 
@@ -78,7 +70,17 @@ namespace cum::neural_primitives
 
     __event__ Primitive::execute(Memory& dst, const Memory& arg0, const Memory& arg1)
     {
-        sycl::event event = dnnl::sycl_interop::execute()
+        sycl::event event = dnnl::sycl_interop::execute(
+            *impl->primitive,
+            internal::stream(),
+            {
+                { DNNL_ARG_DST, dst.handle().memory },
+                { DNNL_ARG_SRC_0, arg0.handle().memory },
+                { DNNL_ARG_SRC_1, arg1.handle().memory }
+            }
+        );
+
+        return cum::detail::event_handler::create(std::move(event));
     }
 
     __event__ Primitive::execute(KVMap kv_map)

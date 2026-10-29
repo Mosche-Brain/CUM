@@ -17,17 +17,64 @@
 
 namespace cum::neural_primitives
 {
+    struct PrimitiveDescriptor::Impl
+    {
+        std::unique_ptr<dnnl::primitive_desc> desc;
+
+        Impl() = default;
+
+        Impl(const Impl& other) : desc(other.desc ? std::make_unique<dnnl::primitive_desc>(*other.desc) : nullptr) {}
+        Impl& operator=(const Impl& other)
+        {
+            if (this != &other)
+                desc = other.desc ? std::make_unique<dnnl::primitive_desc>(*other.desc) : nullptr;
+
+            return *this;
+        }
+
+        Impl(Impl&&) noexcept = default;
+        Impl& operator=(Impl&&) noexcept = default;
+    };
+
+
+    // PrimitiveDescriptor::PrimitiveDescriptor(PrimitiveDescriptor&&) noexcept
+    // {
+    //
+    // }
+    //
+    // PrimitiveDescriptor& PrimitiveDescriptor::operator = (PrimitiveDescriptor&&) noexcept
+    // {
+    //
+    // }
+
+    PrimitiveDescriptor::~PrimitiveDescriptor() = default;
+
+    PrimitiveDescriptor::PrimitiveDescriptor(PrimitiveDescriptor& other) : _impl(other._impl ? std::make_unique<Impl>(*other._impl) : nullptr) { }
+
+    PrimitiveDescriptor& PrimitiveDescriptor::operator = (PrimitiveDescriptor& other)
+    {
+        if (this == &other) return *this;
+        if (!other._impl)
+            _impl.reset();
+        else if (_impl)
+            *_impl = *other._impl;
+        else
+            _impl = std::make_unique<Impl>(*other._impl);
+
+        return *this;
+    }
+
     PrimitiveDescriptor PrimitiveDescriptor::Binary(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src1, const Memory::Descriptor& src2)
     {
         PrimitiveDescriptor desc;
 
-        desc._impl = std::make_unique<BinaryDescriptor>(
+        desc._impl->desc = std::make_unique<dnnl::primitive_desc>(dnnl::binary::primitive_desc(
             internal::engine(),
-            alg,
+            detail::dnnl_algorithm(alg),
             src1.handle().desc,
             src2.handle().desc,
             dst.handle().desc
-        );
+        ));
 
         return desc;
     }
@@ -36,15 +83,21 @@ namespace cum::neural_primitives
     {
         PrimitiveDescriptor desc;
 
-        desc._impl = std::make_unique<ElementwiseDescriptor>(
-            alg, dst.handle().desc, src.handle().desc, prop_kind
-        );
+
+        desc._impl->desc = std::make_unique<dnnl::primitive_desc>(dnnl::eltwise_forward::primitive_desc(
+            internal::engine(),
+            detail::dnnl_prop_kind(prop_kind),
+            detail::dnnl_algorithm(alg),
+            src.handle().desc,
+            dst.handle().desc
+        ));
+
 
         return desc;
     }
 
     PrimitiveDescriptor::Kind PrimitiveDescriptor::kind() const noexcept
     {
-        return _impl->kind;
+        return _kind;
     }
 } // cum
