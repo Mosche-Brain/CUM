@@ -20,7 +20,7 @@
 namespace cum::neural_primitives
 {
 
-    __event__ dnnl_eltwise_diff(handles::__memory__& dst,const handles::__memory__& src,const handles::__desc__& dst_desc, const handles::__desc__& src_desc,dnnl::algorithm algorithm,prop_kind kind,cumeric_t alpha = 0)
+    __event__ dnnl_eltwise_diff(handles::__memory__& dst,const handles::__memory__& src,const handles::__desc__& dst_desc, const handles::__desc__& src_desc,dnnl::algorithm algorithm,Purpose kind,cumeric_t alpha = 0)
     {
         const dnnl::eltwise_forward::primitive_desc forward_desc = dnnl::eltwise_forward::primitive_desc(
             internal::engine(), dnnl::prop_kind::forward_training,
@@ -97,7 +97,7 @@ namespace cum::neural_primitives
                             const handles::__desc__& dst_desc,
                             const handles::__desc__& src_desc,
                             functions::function_id algorithm,
-                            prop_kind kind,
+                            Purpose kind,
                             cumeric_t alpha = 0)
     {
         if(algorithm == functions::function_id::undefined)
@@ -106,22 +106,22 @@ namespace cum::neural_primitives
     }
 
 
-    __event__ eltwise_diff(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc, functions::function_id algorithm, Purpose kind)
     {
         return dispatch_diff(dst, src, dst_desc, src_desc, algorithm, kind);
     }
 
 
-    __event__ eltwise_diff(Memory& dst, const Memory& src, const Memory::Descriptor& dst_desc, const Memory::Descriptor& src_desc, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(Memory& dst, const Memory& src, const Memory::Descriptor& dst_desc, const Memory::Descriptor& src_desc, functions::function_id algorithm, Purpose kind)
     {
         return eltwise_diff(dst.handle(), src.handle(), dst_desc.handle(), src_desc.handle(), algorithm, kind);
     }
 
-    __event__ eltwise_diff(Memory& memory, const Memory::Descriptor& desc, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(Memory& memory, const Memory::Descriptor& desc, functions::function_id algorithm, Purpose kind)
     {
         return eltwise_diff(memory.handle(), desc.handle(), algorithm, kind);
     }
-    __event__ eltwise_diff(handles::__memory__& memory, const handles::__desc__& desc, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(handles::__memory__& memory, const handles::__desc__& desc, functions::function_id algorithm, Purpose kind)
     {
         return eltwise_diff(memory, memory, desc, desc, algorithm, kind);
     }
@@ -130,7 +130,7 @@ namespace cum::neural_primitives
     \
     __event__ NAME(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc) \
     { \
-        return dispatch_diff(dst, src, dst_desc, src_desc, ID, prop_kind::forward); \
+        return dispatch_diff(dst, src, dst_desc, src_desc, ID, Purpose::forward); \
     } \
     __event__ NAME(handles::__memory__& src, const handles::__desc__& desc) \
     { \
@@ -145,7 +145,7 @@ namespace cum::neural_primitives
     CUM_DIFF_RAW(sqrt_diff, functions::function_id::sqrt)
     __event__ square_diff(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc) \
     { \
-        return dnnl_eltwise_diff(dst, src, dst_desc, src_desc, dnnl::algorithm::eltwise_square, prop_kind::forward);
+        return dnnl_eltwise_diff(dst, src, dst_desc, src_desc, dnnl::algorithm::eltwise_square, Purpose::forward);
     } \
     __event__ square_diff(handles::__memory__& src, const handles::__desc__& desc) \
     { \
@@ -166,7 +166,7 @@ namespace cum::neural_primitives
 
     __event__ leaky_relu_diff(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc, cumeric_t alpha)
     {
-        return dispatch_diff(dst, src, dst_desc, src_desc, functions::function_id::leaky_relu, prop_kind::forward, alpha);
+        return dispatch_diff(dst, src, dst_desc, src_desc, functions::function_id::leaky_relu, Purpose::forward, alpha);
     }
 
     __event__ leaky_relu_diff(handles::__memory__& src, const handles::__desc__& desc, cumeric_t alpha)
@@ -226,12 +226,12 @@ namespace cum::neural_primitives
     CUM_DIFF_TENSOR(square_diff, square_diff);
  #undef CUM_DIFF_TENSOR
 
-    __event__ eltwise_diff(Tensor& dst, const Tensor& src, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(Tensor& dst, const Tensor& src, functions::function_id algorithm, Purpose kind)
     {
         return eltwise_diff(*dst.memory(), *src.memory(), *dst.descriptor(), *src.descriptor(), algorithm, kind);
     }
 
-    __event__ eltwise_diff(Tensor& tensor, functions::function_id algorithm, prop_kind kind)
+    __event__ eltwise_diff(Tensor& tensor, functions::function_id algorithm, Purpose kind)
     {
         return eltwise_diff(*tensor.memory(), *tensor.descriptor(), algorithm, kind);
     }

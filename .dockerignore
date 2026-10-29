@@ -1,0 +1,11 @@
+.git
+.idea
+.vscode
+build
+dist
+**/__pycache__
+**/*.pyc
+bindings/python/.venv
+bindings/python/dist
+thirdparty/oneDNN/build
+thirdparty/oneDNN/install

@@ -1,0 +1,11 @@
+bindings/python/dist
+bindings/python/src/cumpy.egg-info
+bindings/python/.venv
+build
+Assets
+thirdparty
+tools
+.external
+.cache
+.vscode
+*.xml

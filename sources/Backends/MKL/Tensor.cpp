@@ -990,14 +990,14 @@ namespace cum
 	Tensor Tensor::elementwise(functions::function_id function) const
 	{
 		Tensor result = Tensor(shape(), type(), format());
-		neural_primitives::eltwise(result, *this, function, neural_primitives::prop_kind::forward);
+		neural_primitives::eltwise(result, *this, function, neural_primitives::Purpose::forward);
 		return result;
 	}
 
 
 	Tensor& Tensor::elementwise_in_place(functions::function_id function)
 	{
-		neural_primitives::eltwise(_memr_->handle(), _desc_->handle(), function, neural_primitives::prop_kind::forward);
+		neural_primitives::eltwise(_memr_->handle(), _desc_->handle(), function, neural_primitives::Purpose::forward);
 		return *this;
 	}
 
@@ -1005,13 +1005,13 @@ namespace cum
 	{
 		Tensor result = Tensor(shape(), type(), format());
 		result.fill(1);
-		neural_primitives::eltwise_diff(result, *this, function, neural_primitives::prop_kind::backward);
+		neural_primitives::eltwise_diff(result, *this, function, neural_primitives::Purpose::backward);
 		return result;
 	}
 
 	Tensor& Tensor::elementwise_diff_in_place(functions::function_id function)
 	{
-		neural_primitives::eltwise_diff(_memr_->handle(), _desc_->handle(), function, neural_primitives::prop_kind::forward);
+		neural_primitives::eltwise_diff(_memr_->handle(), _desc_->handle(), function, neural_primitives::Purpose::forward);
 		return *this;
 	}
 

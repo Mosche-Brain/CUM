@@ -9,20 +9,18 @@
 
 #include "cum/Core.hpp"
 
+#include "cum/neural_primitives/Memory.hpp"
 #include "cum/neural_primitives/MemoryDescriptor.hpp"
 
 namespace cum::neural_primitives
 {
     /**
-     * @enum prop_kind
+     * @enum Purpose
      * @brief Propagation mode for neural network primitives.
      * @details Modeled after oneDNN propagation kind flags.
      */
-    enum class prop_kind
+    enum class Purpose
     {
-        undef             = 0,   ///< Undefined propagation kind.
-        forward_training  = 64,  ///< Forward propagation for training mode (saves data for backpropagation).
-        forward_inference = 96,  ///< Forward propagation for inference mode (omits training caches).
         forward           = 64,  ///< Forward propagation alias for forward_training.
         backward          = 128, ///< Backward propagation for all parameters.
         backward_data     = 160, ///< Backward propagation with respect to data.
@@ -30,7 +28,7 @@ namespace cum::neural_primitives
         backward_bias     = 192  ///< Backward propagation with respect to bias.
     };
 
-    enum class algo
+    enum class Algo
     {
         undef = 0,
 
@@ -58,14 +56,32 @@ namespace cum::neural_primitives
     class PrimitiveDescriptor
     {
     public:
+        /**
+         * @enum Kind
+         * @brief Primitive operation category.
+         */
+        enum class Kind { binary, elementwise, matmul, softmax, sum, reduction, reorder };
+
         PrimitiveDescriptor() = default;
 
-        static PrimitiveDescriptor Binary(algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src1, const Memory::Descriptor& src2);
-        static PrimitiveDescriptor Elementwise(algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src1, const Memory::Descriptor& src2, prop_kind prop_kind=prop_kind::forward);
-        static PrimitiveDescriptor Reduction(algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src1, const Memory::Descriptor& src2, prop_kind prop_kind=prop_kind::forward);
-        static PrimitiveDescriptor Convolution(algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, const Memory::Descriptor& weights, Shape strides, Shape padding, Shape padding, prop_kind prop_kind=prop_kind::forward);
-    private:
+        static PrimitiveDescriptor Binary(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src1, const Memory::Descriptor& src2);
+        static PrimitiveDescriptor Elementwise(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, Purpose prop_kind=Purpose::forward);
+        static PrimitiveDescriptor Reduction(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src1, const Memory::Descriptor& src2, Purpose prop_kind=Purpose::forward);
+        static PrimitiveDescriptor Convolution(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, const Memory::Descriptor& weights, Shape strides, Shape padding, Purpose prop_kind=Purpose::forward);
+        static PrimitiveDescriptor Convolution(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, const Memory::Descriptor& weights, Shape strides, Shape padding_l, Shape padding_r, Purpose prop_kind=Purpose::forward);
+
+        friend class Primitive;
+
+        Kind kind() const noexcept;
+    protected:
         struct Impl;
+        friend class BinaryDescriptor;
+        friend class MatmulDescriptor;
+        friend class ElementwiseDescriptor;
+        friend class ReductionDescriptor;
+        friend class ConvolutionDescriptor;
+        friend class SoftmaxDescriptor;
+        friend class PoolingDescriptor;
         std::unique_ptr<Impl> _impl;
     };
 } // cum

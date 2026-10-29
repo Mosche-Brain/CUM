@@ -42,12 +42,12 @@ namespace cum::neural_primitives
         return detail::event_handler::create(std::move(event));
     }
 
-    __event__ eltwise(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc,  functions::function_id algorithm, prop_kind prop_kind)
+    __event__ eltwise(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc,  functions::function_id algorithm, Purpose prop_kind)
     {
         return dnnl_eltwise(dst, src, dst_desc, src_desc, dnnl_algorithm(algorithm), static_cast<dnnl::prop_kind>(prop_kind));
     }
 
-    __event__ eltwise(handles::__memory__& memory, const handles::__desc__& desc,  functions::function_id algorithm, prop_kind prop_kind)
+    __event__ eltwise(handles::__memory__& memory, const handles::__desc__& desc,  functions::function_id algorithm, Purpose prop_kind)
     {
         return eltwise(memory, memory, desc, desc, algorithm, prop_kind);
     }
@@ -605,7 +605,7 @@ namespace cum::neural_primitives
 
     /* Objective tensors overloads */
 
-    __event__ eltwise(Tensor& dst, const Tensor& src, functions::function_id algorithm, prop_kind prop_kind)
+    __event__ eltwise(Tensor& dst, const Tensor& src, functions::function_id algorithm, Purpose prop_kind)
     {
         handles::__memory__& dst_memory = dst.memory()->handle();
         const handles::__memory__& src_memory = src.memory()->handle();
@@ -616,7 +616,7 @@ namespace cum::neural_primitives
         return eltwise(dst_memory, src_memory, dst_descriptor, a_descriptor, algorithm, prop_kind);
     }
 
-    __event__ eltwise(Tensor& tensor, functions::function_id algorithm, prop_kind prop_kind)
+    __event__ eltwise(Tensor& tensor, functions::function_id algorithm, Purpose prop_kind)
     {
         handles::__memory__& memory = tensor.memory()->handle();
         const handles::__desc__& descriptor = tensor.descriptor()->handle();

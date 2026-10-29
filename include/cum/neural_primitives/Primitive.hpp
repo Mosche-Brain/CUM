@@ -4,8 +4,9 @@
  * @author jaro
  */
 
-#ifndef YANN_PRIMITIVE_HPP
-#define YANN_PRIMITIVE_HPP
+#pragma once
+
+#include <unordered_map>
 
 #include "cum/Core.hpp"
 
@@ -21,19 +22,18 @@ namespace cum::neural_primitives
     class Primitive
     {
     public:
-        /** @brief Decriptor*/
+        /** @brief Decriptor */
         using Descriptor = PrimitiveDescriptor;
 
+        /** @brief Arguments for primitive execution */
+        enum class Argument { src, src0 = src, src1, dst, weights, bias};
+        using KV = std::pair<Argument, Memory>; // Currently, I have no idea how to name it
+        using KVMap = std::unordered_map<Argument, Memory>;
+
         Primitive();
+        ~Primitive();
 
-        /** @brief Creates binary operation primitive. */
-        static Primitive binary();
-
-        /** @brief Creates elementwise operation primitive. */
-        static Primitive eltwise();
-
-        /** @brief Creates matrix multiplication primitive. */
-        static Primitive matmul();
+        Primitive(const Descriptor& descriptor);
 
         Primitive(const Primitive& other);
 
@@ -41,14 +41,36 @@ namespace cum::neural_primitives
          * @brief Submits primitive execution to compute stream.
          * @return Asynchronous execution event.
          */
-        __event__ execute();
+        __event__ execute(Memory& dst, const Memory& arg0, const Memory& arg1, const Memory& arg2);
+        __event__ execute(Memory& dst, const Memory& arg0, const Memory& arg1);
+        __event__ execute(KVMap kv_map);
+
+        void compile();
 
         /**
          * @enum Kind
          * @brief Primitive operation category.
          */
-        enum class Kind { binary, elementwise, matmul, softmax, sum, reduction, reorder };
+        using Kind = Descriptor::Kind;
+    protected:
+        struct Impl;
+        std::unique_ptr<Impl> impl;
+
+        friend struct BinaryPrimitiveImpl;
+        friend struct MatmulPrimitiveImpl;
+        friend struct ElementwisePrimitiveImpl;
+        friend struct ReductionPrimitiveImpl;
+        friend struct ConvolutionPrimitiveImpl;
+        friend struct SoftmaxPrimitiveImpl;
+        friend struct PoolingPrimitiveImpl;
+        friend struct ConvolutionBackwardPrimitiveImpl;
+        friend struct SoftmaxBackwardPrimitiveImpl;
+        friend struct PoolingBackwardPrimitiveImpl;
+        friend struct BinaryBackwardPrimitiveImpl;
+        friend struct MatmulBackwardPrimitiveImpl;
+        friend struct ElementwiseBackwardPrimitiveImpl;
+        friend struct ReductionBackwardPrimitiveImpl;
+        friend struct ReorderPrimitiveImpl;
+        friend struct ReorderBackwardPrimitiveImpl;
     };
 } // namespace cum::neural_primitives
-
-#endif //YANN_PRIMITIVE_HPP
