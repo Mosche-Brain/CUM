@@ -1,41 +1,32 @@
-# Building the `cumpy` wheel in a manylinux container
+# Building & Publishing the `cumpy` `manylinux_2_28` Wheel
 
-`build.sh` builds the whole stack (static oneDNN, CUM, C binding, Python wheel) inside
-`quay.io/pypa/manylinux_2_28_x86_64` (glibc 2.28), so the libraries do not reference newer glibc
-symbols (e.g. `GLIBC_2.38`) and `auditwheel repair` can assign the `manylinux_2_28` tag.
+## 1. GitHub Actions CI/CD (Recommended)
+
+The workflow [`.github/workflows/python-wheels.yml`](../../.github/workflows/python-wheels.yml) builds, repairs, tests, and publishes `cumpy-*-manylinux_2_28_x86_64.whl` in the cloud:
+
+1. **`build-wheel`**:
+   - Runs `quay.io/pypa/manylinux_2_28_x86_64` with `gcc-toolset-14` (`libstdc++_nonshared.a` + `libstdc++exp.a` for C++23 `std::println`) and Intel oneAPI 2026.x.
+   - Caches the static `oneDNN` installation (`.cache/onednn-install`, keyed by the `thirdparty/oneDNN` submodule SHA) and `ccache` via `actions/cache@v4`, so `oneDNN` is compiled only once per submodule update.
+   - Runs [`build-wheel.sh`](./build-wheel.sh) to compile `libcum_Core.so`, `libcum_MKL.so`, and `libcum_C.so`, repair the wheel with `auditwheel repair --plat manylinux_2_28_x86_64`, and inject `$ORIGIN:$ORIGIN/../../..:$ORIGIN/../../../../lib` into `RUNPATH` so `ld-linux` resolves Intel runtime libraries installed by `pip` into `<prefix>/lib`.
+2. **`test-wheel`**:
+   - Installs the wheel on clean `ubuntu-latest` VMs (without `/opt/intel/oneapi`) across Python 3.10, 3.12, and 3.13, pulling Intel runtime dependencies (`dpcpp-cpp-rt`, `mkl`, `onemkl-sycl-{blas,rng,vm}`, `intel-opencl-rt`, `intel-cmplr-lib-rt`, `tbb`, `umf`) from PyPI and running the `cumpy` test suite.
+3. **`publish-pypi`**:
+   - Triggered automatically when pushing a version tag matching `v*` (e.g. `git tag v0.1.5.1 && git push origin v0.1.5.1`).
+   - Uses PyPI **Trusted Publishing (OIDC)** (`environment: pypi`) — configure a Trusted Publisher on PyPI pointing to repository owner/name, workflow `python-wheels.yml`, and environment `pypi`.
+
+---
+
+## 2. Local Container Build (Optional)
+
+You can also run the same build locally using `podman` (preferred) or `docker` with `buildx`:
 
 ```bash
 packaging/manylinux/build.sh                  # -> dist/cumpy-*-manylinux_2_28_x86_64.whl
-BUNDLE_INTEL=1 packaging/manylinux/build.sh   # also bundle Intel/oneTBB runtime (very large)
+BUNDLE_INTEL=1 packaging/manylinux/build.sh   # also bundle Intel/oneTBB runtime into the wheel (very large)
 ```
-
-Requirements: `podman` (preferred) or `docker` with the buildx plugin. The legacy `docker build`
-builder is not enough (the Dockerfile uses heredocs and `RUN --mount=type=cache`).
-
-## Layers and caching
 
 | Stage | Contents | Rebuilt when |
 |---|---|---|
-| `oneapi` | GCC toolset 14, cmake/ninja, Intel oneAPI (compiler, MKL, oneDPL, oneTBB) | the Dockerfile changes |
-| `onednn` | static oneDNN in `/opt/onednn` (slowest step) | `thirdparty/oneDNN` or its flags change |
-| `builder` | CUM sources + `build-wheel.sh` | any source change |
-
-The CUM build itself runs at `run` time. Its ccache lives in the `cum-ccache` volume. The oneDNN
-flags in the Dockerfile must be kept in sync with `sources/Backends/MKL/CMakeLists.txt`.
-Do not reuse a oneDNN built on the host: it was compiled against a newer glibc.
-
-## What goes into the wheel
-
-By default the Intel runtime (`libsycl`, `libmkl_*`, `libtbb`, `libumf`, `libimf`, ...) is excluded
-from `auditwheel repair`, so the wheel contains only `libcum_*.so` and expects the oneAPI runtime
-on the target machine (its location must be reachable by the dynamic loader). `BUNDLE_INTEL=1`
-grafts everything, which makes the wheel far larger than PyPI's default 100 MB limit.
-
-## Known open points
-
-- The build was not run end to end yet. The first run downloads several GB of oneAPI and compiles
-  oneDNN for a while.
-- `std::println` in `Tensor.cpp` and `internal/context.cpp` needs `GLIBCXX` symbols newer than
-  the manylinux_2_28 policy allows. GCC toolset links such symbols statically via
-  `libstdc++_nonshared.a`; if `auditwheel` still reports `GLIBCXX`, replace those calls or link
-  `libcum_MKL.so` with `-static-libstdc++ -static-libgcc`.
+| `oneapi` | GCC toolset 14, cmake/ninja, Intel oneAPI (compiler, MKL, oneDPL, oneTBB) | `Dockerfile` changes |
+| `onednn` | Static oneDNN in `/opt/onednn` | `thirdparty/oneDNN` or its flags change |
+| `builder` | CUM sources + `build-wheel.sh` | Any source change |

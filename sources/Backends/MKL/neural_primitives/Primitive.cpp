@@ -54,7 +54,7 @@ namespace cum::neural_primitives
             }
 
             default:
-                break;
+                throw std::runtime_error("Unknown primitive type");
         }
     }
 

@@ -59,8 +59,12 @@ COPY thirdparty/oneDNN /src/oneDNN
 
 RUN --mount=type=cache,target=/root/.ccache <<'EOF'
 #!/bin/bash
-set -eux
+set -ex
+if [[ -f /opt/rh/gcc-toolset-14/enable ]]; then
+    source /opt/rh/gcc-toolset-14/enable
+fi
 source /opt/intel/oneapi/setvars.sh --force
+set -u
 cmake -S /src/oneDNN -B /tmp/onednn-build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx \

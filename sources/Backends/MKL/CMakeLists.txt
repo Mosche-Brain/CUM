@@ -125,10 +125,16 @@ target_link_libraries(${CUM_PROJECT_NAME}_MKL
     PRIVATE
         TBB::tbb
         MKL::MKL
-        MKL::MKL_DPCPP
+        MKL::MKL_SYCL::BLAS
+        MKL::MKL_SYCL::RNG
+        MKL::MKL_SYCL::VM
         oneDPL
         DNNL::dnnl
 )
+
+if(CUM_STDCPPEXP_LIBRARY AND CUM_BUILD_SHARED)
+    target_link_libraries(${CUM_PROJECT_NAME}_MKL PRIVATE "${CUM_STDCPPEXP_LIBRARY}")
+endif()
 
 if(CUM_UMF_LIBRARY)
     get_filename_component(CUM_UMF_LIBRARY_DIR "${CUM_UMF_LIBRARY}" REALPATH)
@@ -144,7 +150,8 @@ endif()
 if(CUM_BUILD_SHARED)
     target_link_options(${CUM_PROJECT_NAME}_MKL PRIVATE
         -fsycl
-        $<$<PLATFORM_ID:Linux>:-Wl,--exclude-libs,libdnnl.a>
+        $<$<PLATFORM_ID:Linux>:-Wl,--as-needed>
+        "$<$<PLATFORM_ID:Linux>:-Wl,--exclude-libs=libdnnl.a:libstdc++exp.a>"
     )
     set(_cum_mkl_rpath "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}")
     if(CUM_UMF_LIBRARY_DIR)

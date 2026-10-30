@@ -13,6 +13,24 @@ add_library(${CUM_PROJECT_NAME}::Core ALIAS ${CUM_PROJECT_NAME}_Core)
 
 set_target_properties(${CUM_PROJECT_NAME}_Core PROPERTIES EXPORT_NAME Core)
 
+if(UNIX AND NOT APPLE)
+    separate_arguments(_cum_cxx_flags NATIVE_COMMAND "${CMAKE_CXX_FLAGS}")
+    execute_process(
+        COMMAND "${CMAKE_CXX_COMPILER}" ${_cum_cxx_flags} -print-file-name=libstdc++exp.a
+        OUTPUT_VARIABLE _cum_stdcppexp_path
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        ERROR_QUIET
+    )
+    if(_cum_stdcppexp_path AND IS_ABSOLUTE "${_cum_stdcppexp_path}" AND EXISTS "${_cum_stdcppexp_path}")
+        set(CUM_STDCPPEXP_LIBRARY "${_cum_stdcppexp_path}")
+    endif()
+endif()
+
+if(CUM_STDCPPEXP_LIBRARY AND CUM_BUILD_SHARED)
+    target_link_libraries(${CUM_PROJECT_NAME}_Core PRIVATE "${CUM_STDCPPEXP_LIBRARY}")
+    target_link_options(${CUM_PROJECT_NAME}_Core PRIVATE "-Wl,--exclude-libs=libstdc++exp.a")
+endif()
+
 if(BUILD_USE_MKL)
     target_compile_definitions(${CUM_PROJECT_NAME}_Core PRIVATE BUILD_USE_MKL)
     target_compile_options(${CUM_PROJECT_NAME}_Core PRIVATE
@@ -22,7 +40,7 @@ if(BUILD_USE_MKL)
         target_link_options(${CUM_PROJECT_NAME}_Core PRIVATE -fsycl)
         set_target_properties(${CUM_PROJECT_NAME}_Core PROPERTIES
             INSTALL_RPATH "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}"
-            INSTALL_RPATH_USE_LINK_PATH TRUE
+            INSTALL_RPATH_USE_LINK_PATH FALSE
         )
     else()
         target_link_options(${CUM_PROJECT_NAME}_Core INTERFACE -fsycl)

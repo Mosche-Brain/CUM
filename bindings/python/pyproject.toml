@@ -12,7 +12,17 @@ license = "Apache-2.0"
 authors = [
     {name = "Świadomy Mężczyzna"}
 ]
-dependencies = []
+dependencies = [
+    "dpcpp-cpp-rt>=2026.0,<2027.0",
+    "intel-cmplr-lib-rt>=2026.0,<2027.0",
+    "intel-opencl-rt>=2026.0,<2027.0",
+    "mkl>=2026.0,<2027.0",
+    "onemkl-sycl-blas>=2026.0,<2027.0",
+    "onemkl-sycl-rng>=2026.0,<2027.0",
+    "onemkl-sycl-vm>=2026.0,<2027.0",
+    "tbb>=2021.11",
+    "umf>=1.0,<2.0",
+]
 
 [project.urls]
 Homepage = "https://brain.mosche.dev"

@@ -37,16 +37,6 @@ namespace cum::neural_primitives
     };
 
 
-    // PrimitiveDescriptor::PrimitiveDescriptor(PrimitiveDescriptor&&) noexcept
-    // {
-    //
-    // }
-    //
-    // PrimitiveDescriptor& PrimitiveDescriptor::operator = (PrimitiveDescriptor&&) noexcept
-    // {
-    //
-    // }
-
     PrimitiveDescriptor::~PrimitiveDescriptor() = default;
 
     PrimitiveDescriptor::PrimitiveDescriptor(PrimitiveDescriptor& other) : _impl(other._impl ? std::make_unique<Impl>(*other._impl) : nullptr) { }
@@ -76,6 +66,8 @@ namespace cum::neural_primitives
             dst.handle().desc
         ));
 
+        desc._kind = Kind::binary;
+
         return desc;
     }
 
@@ -92,6 +84,7 @@ namespace cum::neural_primitives
             dst.handle().desc
         ));
 
+        desc._kind = Kind::elementwise;
 
         return desc;
     }

@@ -6,6 +6,9 @@ import ctypes
 from ctypes import POINTER, c_char, c_char_p, c_float, c_int, c_int64, c_size_t, c_void_p
 import os
 from pathlib import Path
+import site
+import sys
+import sysconfig
 
 cumeric_t = c_float
 dim_t = c_int64
@@ -47,8 +50,87 @@ CUM_STATUS_RUNTIME_ERROR = 3
 CUM_STATUS_NOT_IMPLEMENTED = 4
 
 
+_INTEL_RUNTIME_LIBS = (
+    "libintlc.so.5",
+    "libimf.so",
+    "libsvml.so",
+    "libirng.so",
+    "libhwloc.so.15",
+    "libtcm.so.1",
+    "libumf.so.1",
+    "libtbb.so.12",
+    "libOpenCL.so.1",
+    "libur_loader.so.0",
+    "libsycl.so.9",
+    "libmkl_core.so.3",
+    "libmkl_tbb_thread.so.3",
+    "libmkl_intel_ilp64.so.3",
+    "libmkl_sycl_vm.so.6",
+    "libmkl_sycl_rng.so.6",
+    "libmkl_sycl_blas.so.6",
+)
+
+
+def _runtime_lib_dirs(pkg_dir: Path) -> list[Path]:
+    raw_dirs: list[Path] = [
+        Path(sys.prefix) / "lib",
+        Path(sysconfig.get_path("data")) / "lib",
+        pkg_dir / "../../..",
+        pkg_dir / "../../../../lib",
+    ]
+    user_base = getattr(site, "USER_BASE", None)
+    if user_base:
+        raw_dirs.append(Path(user_base) / "lib")
+
+    seen: set[Path] = set()
+    result: list[Path] = []
+    for candidate in raw_dirs:
+        try:
+            resolved = candidate.resolve()
+        except OSError:
+            continue
+        if resolved not in seen and resolved.is_dir():
+            seen.add(resolved)
+            result.append(resolved)
+    return result
+
+
+def _prepare_intel_runtime(pkg_dir: Path) -> None:
+    if sys.platform == "win32":
+        win_bin = Path(sys.prefix) / "Library" / "bin"
+        if win_bin.is_dir() and hasattr(os, "add_dll_directory"):
+            os.add_dll_directory(str(win_bin))
+        return
+
+    lib_dirs = _runtime_lib_dirs(pkg_dir)
+
+    # Intel's PyPI `intel-opencl-rt` wheel ships an unpatched conda `.icd` file; register
+    # `libintelocl.so` via OCL_ICD_FILENAMES so CPU SYCL works while keeping `/etc/OpenCL/vendors`.
+    for lib_dir in lib_dirs:
+        intel_ocl = lib_dir / "libintelocl.so"
+        if intel_ocl.is_file():
+            ocl_path = str(intel_ocl)
+            existing = [p for p in os.environ.get("OCL_ICD_FILENAMES", "").split(os.pathsep) if p]
+            if ocl_path not in existing and "libintelocl.so" not in existing:
+                existing.append(ocl_path)
+                os.environ["OCL_ICD_FILENAMES"] = os.pathsep.join(existing)
+            break
+
+    for soname in _INTEL_RUNTIME_LIBS:
+        for lib_dir in lib_dirs:
+            lib_file = lib_dir / soname
+            if lib_file.is_file():
+                try:
+                    ctypes.CDLL(str(lib_file), mode=ctypes.RTLD_GLOBAL)
+                except OSError:
+                    pass
+                break
+
+
 def _find_library() -> ctypes.CDLL:
     pkg_dir = Path(__file__).resolve().parent
+    _prepare_intel_runtime(pkg_dir)
+
     candidates: list[Path] = []
 
     env_path = os.environ.get("CUM_C_LIBRARY")
