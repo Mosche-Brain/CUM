@@ -18,14 +18,14 @@ namespace cum::neural_primitives
 {
     struct PrimitiveDescriptor::Impl
     {
-        std::unique_ptr<dnnl::primitive_desc> desc;
+        std::unique_ptr<dnnl::primitive_desc> desc = nullptr;
     }; // this is redundant
 
     struct Primitive::Impl
     {
         std::unique_ptr<dnnl::primitive> primitive;
 
-        ~Impl() = default;
+        // ~Impl() = default;
     };
 
     Primitive::~Primitive() = default;
@@ -41,6 +41,7 @@ namespace cum::neural_primitives
                 );
 
                 this->impl->primitive = std::make_unique<dnnl::binary>(pd);
+                // this->impl = Primitive::Impl{std::make_unique<dnnl::binary>(pd)};
                 break;
             }
             case Kind::elementwise:

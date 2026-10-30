@@ -43,7 +43,7 @@ EOF
 RUN dnf install -y \
         intel-oneapi-compiler-dpcpp-cpp \
         intel-oneapi-mkl-devel \
-        intel-oneapi-onedpl-devel \
+        intel-oneapi-libdpstd-devel \
         intel-oneapi-tbb-devel \
     && dnf clean all
 
