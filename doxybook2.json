@@ -1,8 +1,12 @@
 {
-  "target": "mkdocs",
-  "baseUrl": "/CUM/api/",
-  "filesFilter": ["*.hpp", "*.h"],
-  "mainPageInRoot": false,
+  "baseUrl": "",
   "indexInFolders": true,
-  "linkLowercase": false
+  "mainPageInRoot": false,
+  "linkLowercase": false,
+  "linkSuffix": ".md",
+  "foldersToGenerate": [
+    "classes",
+    "files",
+    "namespaces"
+  ]
 }

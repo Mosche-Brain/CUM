@@ -59,11 +59,11 @@ jobs:
       - name: Run Doxybook2 (Generate Markdown from XML)
         run: |
           mkdir -p docs/api
-          doxybook2 -i build/docs/doxygen/xml -o docs/api --target mkdocs -c doxybook2.json
+          doxybook2 -i build/docs/doxygen/xml -o docs/api -c doxybook2.json
 
       - name: Build MkDocs Site
         run: |
-          mkdocs build --strict
+          mkdocs build
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3

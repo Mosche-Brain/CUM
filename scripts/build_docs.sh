@@ -38,7 +38,7 @@ doxygen Doxyfile
 
 echo "==> Running Doxybook2 to generate Markdown in docs/api..."
 mkdir -p docs/api
-"${DOXYBOOK2}" -i build/docs/doxygen/xml -o docs/api --target mkdocs -c doxybook2.json
+"${DOXYBOOK2}" -i build/docs/doxygen/xml -o docs/api -c doxybook2.json
 
 echo "==> Building MkDocs site..."
 if command -v mkdocs &>/dev/null; then
