@@ -17,10 +17,21 @@ Runtime dependencies from the Intel oneAPI PyPI channel (`mkl`, `dpcpp-cpp-rt`, 
 ```python
 import cumpy as cp
 
-# Example matrix multiplication
-a = cp.zeros((1024, 1024), dtype=cp.float32)
-b = cp.ones((1024, 1024), dtype=cp.float32)
+# Initialize backend on CPU or GPU
+cp.init(cp.Device.CPU)
 
-c = cp.matmul(a, b)
-print("Result shape:", c.shape)
+# Create tensors from data
+a = cp.Tensor.from_data((2, 2), [1.0, 2.0, 3.0, 4.0])
+b = cp.Tensor.from_data((2, 2), [5.0, 6.0, 7.0, 8.0])
+
+# Perform tensor operations
+c = a + b      # Elementwise addition
+d = a @ b      # Matrix multiplication
+e = a * 2.0    # Scalar multiplication
+
+print("Matrix multiplication result:", d.to_list())
+print("Shape:", d.shape)
+
+# Clean up runtime
+cp.shutdown()
 ```

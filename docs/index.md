@@ -29,20 +29,60 @@
 ## Quick Example (C++)
 
 ```cpp
-#include <cum/Core.hpp>
-#include <cum/lara/BLAS.hpp>
+#include <cum/cum.hpp>
+#include <cum/Matrix.hpp>
 #include <iostream>
 
 int main() {
-    // Initialize matrices
-    cum::Matrix<float> A({3, 3});
-    cum::Matrix<float> B({3, 3});
-    cum::Matrix<float> C({3, 3});
+    // Initialize runtime on GPU (or cum::DEVICE::CPU)
+    cum::cum(cum::DEVICE::GPU);
 
-    // Perform matrix multiplication C = A * B
-    cum::lara::gemm(A, B, C);
+    // Create matrices
+    cum::Matrix A(2048, 2048, 1.5);
+    cum::Matrix B(2048, 2048, 2.0);
 
-    std::cout << "Computation finished successfully." << std::endl;
+    // Matrix addition & multiplication (accelerated by oneMKL/SYCL)
+    cum::Matrix Sum = A + B;
+    cum::Matrix Prod = A * B;
+
+    std::cout << "Element at (0, 0): " << Prod.at(0, 0) << std::endl;
+
+    // Switch device to CPU on the fly
+    cum::recum(cum::DEVICE::CPU);
+
+    // Shutdown and clean up runtime
+    cum::decum();
+    return 0;
+}
+```
+
+## Deep Learning Primitives Example
+
+```cpp
+#include <cum/cum.hpp>
+#include <cum/neural_primitives/Primitive.hpp>
+#include <cum/neural_primitives/Memory.hpp>
+
+namespace dnn = cum::neural_primitives;
+
+int main() {
+    cum::cum(cum::DEVICE::GPU);
+
+    // Create 2D memory descriptor for [6, 7] tensor
+    dnn::Memory::Descriptor md({6, 7}, cum::datatype::F32, cum::layout::AB);
+
+    // Define binary elementwise multiplication primitive (oneDNN)
+    auto pd = dnn::Primitive::Descriptor::Binary(
+        dnn::Algo::binary_mul, md, md, md
+    );
+
+    dnn::Primitive primitive(pd);
+    primitive.compile();
+
+    dnn::Memory A(md), B(md), C(md);
+    primitive.execute(C, A, B);
+
+    cum::decum();
     return 0;
 }
 ```
