@@ -3,7 +3,17 @@
 from __future__ import annotations
 
 import ctypes
-from ctypes import POINTER, c_char, c_char_p, c_float, c_int, c_int64, c_size_t, c_void_p
+from ctypes import (
+    POINTER,
+    c_bool,
+    c_char,
+    c_char_p,
+    c_float,
+    c_int,
+    c_int64,
+    c_size_t,
+    c_void_p,
+)
 import os
 from pathlib import Path
 import site
@@ -37,10 +47,44 @@ class _cum_event_t(ctypes.Structure):
     pass
 
 
+class _cum_memory_desc_t(ctypes.Structure):
+    pass
+
+
+class _cum_memory_t(ctypes.Structure):
+    pass
+
+
+class _cum_primitive_desc_t(ctypes.Structure):
+    pass
+
+
+class _cum_primitive_t(ctypes.Structure):
+    pass
+
+
 cum_tensor_p = POINTER(_cum_tensor_t)
 cum_matrix_p = POINTER(_cum_matrix_t)
 cum_vector_p = POINTER(_cum_vector_t)
 cum_event_p = POINTER(_cum_event_t)
+cum_memory_desc_p = POINTER(_cum_memory_desc_t)
+cum_memory_p = POINTER(_cum_memory_t)
+cum_primitive_desc_p = POINTER(_cum_primitive_desc_t)
+cum_primitive_p = POINTER(_cum_primitive_t)
+
+
+class cum_memory_arg_t(ctypes.Structure):
+    _fields_ = [
+        ("arg", c_int),
+        ("memory", cum_memory_p),
+    ]
+
+
+class cum_tensor_arg_t(ctypes.Structure):
+    _fields_ = [
+        ("arg", c_int),
+        ("tensor", cum_tensor_p),
+    ]
 
 # Status codes
 CUM_STATUS_SUCCESS = 0
@@ -189,9 +233,12 @@ _bind("cum_tensor_create_zeros", [POINTER(cum_tensor_p), cum_shape_t])
 _bind("cum_tensor_create_ones", [POINTER(cum_tensor_p), cum_shape_t])
 _bind("cum_tensor_create_random", [POINTER(cum_tensor_p), cum_shape_t, cumeric_t, cumeric_t])
 _bind("cum_tensor_create_from_data", [POINTER(cum_tensor_p), cum_shape_t, POINTER(cumeric_t)])
+_bind("cum_tensor_create_from_desc", [POINTER(cum_tensor_p), cum_memory_desc_p])
 _bind("cum_tensor_destroy", [cum_tensor_p])
 _bind("cum_tensor_copy", [cum_tensor_p, cum_tensor_p])
 _bind("cum_tensor_clone", [POINTER(cum_tensor_p), cum_tensor_p])
+_bind("cum_tensor_memory_desc", [cum_tensor_p, POINTER(cum_memory_desc_p)])
+_bind("cum_tensor_memory", [cum_tensor_p, POINTER(cum_memory_p)])
 _bind("cum_tensor_shape", [cum_tensor_p, POINTER(dim_t), c_size_t, POINTER(c_size_t)])
 _bind("cum_tensor_size", [cum_tensor_p, POINTER(dim_t)])
 _bind("cum_tensor_length", [cum_tensor_p, POINTER(dim_t)])
@@ -269,6 +316,161 @@ _bind("cum_vector_scale", [cum_vector_p, cumeric_t])
 _bind("cum_vector_dot", [cum_vector_p, cum_vector_p, POINTER(cumeric_t)])
 _bind("cum_vector_sum", [cum_vector_p, POINTER(cumeric_t)])
 _bind("cum_vector_norm", [cum_vector_p, POINTER(cumeric_t)])
+
+# Neural Primitives: MemoryDescriptor
+_bind("cum_memory_desc_create", [POINTER(cum_memory_desc_p), cum_shape_t, c_int, c_int])
+_bind("cum_memory_desc_create_strided", [POINTER(cum_memory_desc_p), cum_shape_t, c_int, cum_shape_t])
+_bind("cum_memory_desc_create_any", [POINTER(cum_memory_desc_p), cum_shape_t, c_int])
+_bind("cum_memory_desc_clone", [POINTER(cum_memory_desc_p), cum_memory_desc_p])
+_bind("cum_memory_desc_destroy", [cum_memory_desc_p])
+_bind("cum_memory_desc_valid", [cum_memory_desc_p, POINTER(c_bool)])
+_bind("cum_memory_desc_equal", [cum_memory_desc_p, cum_memory_desc_p, POINTER(c_bool)])
+_bind("cum_memory_desc_size", [cum_memory_desc_p, POINTER(dim_t)])
+_bind("cum_memory_desc_ndims", [cum_memory_desc_p, POINTER(dim_t)])
+_bind("cum_memory_desc_shape", [cum_memory_desc_p, POINTER(dim_t), c_size_t, POINTER(c_size_t)])
+_bind("cum_memory_desc_strides", [cum_memory_desc_p, POINTER(dim_t), c_size_t, POINTER(c_size_t)])
+_bind("cum_memory_desc_datatype", [cum_memory_desc_p, POINTER(c_int)])
+_bind("cum_memory_desc_layout", [cum_memory_desc_p, POINTER(c_int)])
+_bind("cum_memory_desc_reshape", [POINTER(cum_memory_desc_p), cum_memory_desc_p, cum_shape_t])
+
+# Neural Primitives: Memory
+_bind("cum_memory_create", [POINTER(cum_memory_p), cum_memory_desc_p])
+_bind("cum_memory_create_from_ptr", [POINTER(cum_memory_p), cum_memory_desc_p, c_void_p])
+_bind("cum_memory_create_view", [POINTER(cum_memory_p), cum_memory_desc_p, cum_memory_p])
+_bind("cum_memory_destroy", [cum_memory_p])
+_bind("cum_memory_valid", [cum_memory_p, POINTER(c_bool)])
+_bind("cum_memory_desc", [cum_memory_p, POINTER(cum_memory_desc_p)])
+_bind("cum_memory_data", [cum_memory_p, POINTER(c_void_p)])
+_bind("cum_memory_mutable_data", [cum_memory_p, POINTER(c_void_p)])
+_bind("cum_memory_set_data", [cum_memory_p, c_void_p])
+
+# Neural Primitives: PrimitiveDescriptor
+_bind(
+    "cum_primitive_desc_create_binary",
+    [POINTER(cum_primitive_desc_p), c_int, cum_memory_desc_p, cum_memory_desc_p, cum_memory_desc_p],
+)
+_bind(
+    "cum_primitive_desc_create_eltwise_forward",
+    [POINTER(cum_primitive_desc_p), c_int, cum_memory_desc_p, cum_memory_desc_p, c_float, c_float, c_int],
+)
+_bind(
+    "cum_primitive_desc_create_eltwise_backward",
+    [
+        POINTER(cum_primitive_desc_p),
+        c_int,
+        cum_memory_desc_p,
+        cum_memory_desc_p,
+        cum_memory_desc_p,
+        cum_primitive_desc_p,
+        c_float,
+        c_float,
+    ],
+)
+_bind(
+    "cum_primitive_desc_create_matmul",
+    [POINTER(cum_primitive_desc_p), cum_memory_desc_p, cum_memory_desc_p, cum_memory_desc_p, cum_memory_desc_p],
+)
+_bind(
+    "cum_primitive_desc_create_softmax_forward",
+    [POINTER(cum_primitive_desc_p), c_int, cum_memory_desc_p, cum_memory_desc_p, c_int, c_int],
+)
+_bind(
+    "cum_primitive_desc_create_softmax_backward",
+    [
+        POINTER(cum_primitive_desc_p),
+        c_int,
+        cum_memory_desc_p,
+        cum_memory_desc_p,
+        cum_memory_desc_p,
+        c_int,
+        cum_primitive_desc_p,
+    ],
+)
+_bind(
+    "cum_primitive_desc_create_reduction",
+    [POINTER(cum_primitive_desc_p), c_int, cum_memory_desc_p, cum_memory_desc_p, c_float, c_float],
+)
+_bind(
+    "cum_primitive_desc_create_reorder",
+    [POINTER(cum_primitive_desc_p), cum_memory_desc_p, cum_memory_desc_p],
+)
+_bind(
+    "cum_primitive_desc_create_sum",
+    [
+        POINTER(cum_primitive_desc_p),
+        cum_memory_desc_p,
+        POINTER(cum_memory_desc_p),
+        c_size_t,
+        POINTER(c_float),
+    ],
+)
+_bind(
+    "cum_primitive_desc_create_concat",
+    [
+        POINTER(cum_primitive_desc_p),
+        cum_memory_desc_p,
+        POINTER(cum_memory_desc_p),
+        c_size_t,
+        c_int,
+    ],
+)
+_bind("cum_primitive_desc_clone", [POINTER(cum_primitive_desc_p), cum_primitive_desc_p])
+_bind("cum_primitive_desc_destroy", [cum_primitive_desc_p])
+_bind("cum_primitive_desc_valid", [cum_primitive_desc_p, POINTER(c_bool)])
+_bind("cum_primitive_desc_kind", [cum_primitive_desc_p, POINTER(c_int)])
+_bind("cum_primitive_desc_purpose", [cum_primitive_desc_p, POINTER(c_int)])
+_bind("cum_primitive_desc_algo", [cum_primitive_desc_p, POINTER(c_int)])
+_bind("cum_primitive_desc_impl_info", [cum_primitive_desc_p, POINTER(c_char_p)])
+
+for _q in ("src_desc", "dst_desc", "weights_desc", "diff_src_desc", "diff_dst_desc", "diff_weights_desc"):
+    _bind(f"cum_primitive_desc_{_q}", [cum_primitive_desc_p, c_int, POINTER(cum_memory_desc_p)])
+
+for _q in ("bias_desc", "workspace_desc", "scratchpad_desc"):
+    _bind(f"cum_primitive_desc_{_q}", [cum_primitive_desc_p, POINTER(cum_memory_desc_p)])
+
+# Neural Primitives: Primitive
+_bind("cum_primitive_create", [POINTER(cum_primitive_p), cum_primitive_desc_p])
+_bind("cum_primitive_clone", [POINTER(cum_primitive_p), cum_primitive_p])
+_bind("cum_primitive_destroy", [cum_primitive_p])
+_bind("cum_primitive_valid", [cum_primitive_p, POINTER(c_bool)])
+_bind("cum_primitive_kind", [cum_primitive_p, POINTER(c_int)])
+_bind("cum_primitive_get_desc", [cum_primitive_p, POINTER(cum_primitive_desc_p)])
+
+_deps_t = POINTER(cum_event_p)
+_out_ev_t = POINTER(cum_event_p)
+
+_bind(
+    "cum_primitive_execute",
+    [cum_primitive_p, POINTER(cum_memory_arg_t), c_size_t, _deps_t, c_size_t, _out_ev_t],
+)
+_bind(
+    "cum_primitive_execute_tensors",
+    [cum_primitive_p, POINTER(cum_tensor_arg_t), c_size_t, _deps_t, c_size_t, _out_ev_t],
+)
+_bind(
+    "cum_primitive_execute_unary",
+    [cum_primitive_p, cum_tensor_p, cum_tensor_p, _deps_t, c_size_t, _out_ev_t],
+)
+_bind(
+    "cum_primitive_execute_binary",
+    [cum_primitive_p, cum_tensor_p, cum_tensor_p, cum_tensor_p, _deps_t, c_size_t, _out_ev_t],
+)
+_bind(
+    "cum_primitive_execute_ternary",
+    [cum_primitive_p, cum_tensor_p, cum_tensor_p, cum_tensor_p, cum_tensor_p, _deps_t, c_size_t, _out_ev_t],
+)
+_bind(
+    "cum_primitive_execute_memory_unary",
+    [cum_primitive_p, cum_memory_p, cum_memory_p, _deps_t, c_size_t, _out_ev_t],
+)
+_bind(
+    "cum_primitive_execute_memory_binary",
+    [cum_primitive_p, cum_memory_p, cum_memory_p, cum_memory_p, _deps_t, c_size_t, _out_ev_t],
+)
+_bind(
+    "cum_primitive_execute_memory_ternary",
+    [cum_primitive_p, cum_memory_p, cum_memory_p, cum_memory_p, cum_memory_p, _deps_t, c_size_t, _out_ev_t],
+)
 
 
 def check(status: int) -> None:

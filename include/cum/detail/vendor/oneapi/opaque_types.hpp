@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include <oneapi/dnnl/dnnl.hpp>
 #include <oneapi/dnnl/dnnl_common.hpp>
 
@@ -13,8 +15,12 @@
 
 namespace cum::neural_primitives::handles
 {
-    /** @brief Underlying oneDNN memory wrapper. */
-    struct __memory__ { dnnl::memory memory; };
+    /** @brief Underlying oneDNN memory wrapper with optional USM shared ownership. */
+    struct __memory__
+    {
+        dnnl::memory memory;
+        std::shared_ptr<void> owned_usm = nullptr;
+    };
 
     /** @brief Underlying oneDNN engine wrapper. */
     struct __engine__ { dnnl::engine engine; };

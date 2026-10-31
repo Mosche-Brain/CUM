@@ -138,19 +138,15 @@ if(CUM_STDCPPEXP_LIBRARY AND CUM_BUILD_SHARED)
     target_link_libraries(${CUM_PROJECT_NAME}_MKL PRIVATE "${CUM_STDCPPEXP_LIBRARY}")
 endif()
 
-if(CUM_UMF_LIBRARY)
+if(CUM_UMF_LIBRARY AND UNIX AND NOT APPLE AND CUM_BUILD_SHARED)
     get_filename_component(CUM_UMF_LIBRARY_DIR "${CUM_UMF_LIBRARY}" REALPATH)
     get_filename_component(CUM_UMF_LIBRARY_DIR "${CUM_UMF_LIBRARY_DIR}" DIRECTORY)
-    if(UNIX AND NOT APPLE)
-        target_link_libraries(${CUM_PROJECT_NAME}_MKL
-            PRIVATE
-                "-Wl,--push-state,--no-as-needed"
-                "${CUM_UMF_LIBRARY}"
-                "-Wl,--pop-state"
-        )
-    else()
-        target_link_libraries(${CUM_PROJECT_NAME}_MKL PRIVATE "${CUM_UMF_LIBRARY}")
-    endif()
+    target_link_libraries(${CUM_PROJECT_NAME}_MKL
+        PRIVATE
+            "-Wl,--push-state,--no-as-needed"
+            "${CUM_UMF_LIBRARY}"
+            "-Wl,--pop-state"
+    )
 endif()
 
 if(CUM_BUILD_SHARED)
@@ -159,8 +155,8 @@ if(CUM_BUILD_SHARED)
         $<$<PLATFORM_ID:Linux>:-Wl,--as-needed>
         "$<$<PLATFORM_ID:Linux>:-Wl,--exclude-libs=libdnnl.a:libstdc++exp.a>"
     )
-    set(_cum_mkl_rpath "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}")
-    if(CUM_UMF_LIBRARY_DIR)
+    set(_cum_mkl_rpath "$ORIGIN")
+    if(CUM_UMF_LIBRARY_DIR AND NOT CUM_PORTABLE_INSTALL)
         list(APPEND _cum_mkl_rpath "${CUM_UMF_LIBRARY_DIR}")
     endif()
     set_target_properties(${CUM_PROJECT_NAME}_MKL PROPERTIES
@@ -180,3 +176,20 @@ install(TARGETS ${CUM_PROJECT_NAME}_MKL
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+# When CUM is built as a static library (e.g. on Windows), bundle the static oneDNN archive and
+# its CMake config files into the install prefix so downstream consumers of cumTargets.cmake
+# resolve DNNL::dnnl out-of-the-box without needing the CI build cache directory.
+if(NOT CUM_BUILD_SHARED)
+    foreach(_dnnl_libdir IN ITEMS lib lib64)
+        if(EXISTS "${CUM_ONEDNN_INSTALL_DIR}/${_dnnl_libdir}/cmake/dnnl")
+            install(DIRECTORY "${CUM_ONEDNN_INSTALL_DIR}/${_dnnl_libdir}/"
+                    DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+                    FILES_MATCHING
+                        PATTERN "libdnnl*.a"
+                        PATTERN "dnnl*.lib"
+                        PATTERN "cmake/dnnl/*.cmake")
+            break()
+        endif()
+    endforeach()
+endif()

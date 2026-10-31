@@ -20,6 +20,7 @@ namespace cum { class Tensor; }
 
 namespace cum::neural_primitives
 {
+    using cum::Tensor;
     /* Raw handles overloads */
 
     __event__ eltwise_diff(handles::__memory__& dst, const handles::__memory__& src, const handles::__desc__& dst_desc, const handles::__desc__& src_desc, functions::function_id algorithm, Purpose prop_kind);

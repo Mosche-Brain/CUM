@@ -57,8 +57,9 @@ namespace cum
             case dnnl::memory::data_type::f8_e4m3:  return datatype::FP8;
             case dnnl::memory::data_type::s8:       return datatype::S8;
             case dnnl::memory::data_type::u8:       return datatype::U8;
-            case dnnl::memory::data_type::s32:  return datatype::S32;
-            default:                            return datatype::UNDEF;
+            case dnnl::memory::data_type::s32:      return datatype::S32;
+            case dnnl::memory::data_type::s64:      return datatype::S64;
+            default:                                return datatype::UNDEF;
         }
     }
 

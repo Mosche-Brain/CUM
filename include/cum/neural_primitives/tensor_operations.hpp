@@ -17,6 +17,7 @@ namespace cum { class Tensor; }
 
 namespace cum::neural_primitives
 {
+    using cum::Tensor;
     /* Raw handles overloads */
 
     __event__ add(handles::__memory__& C, const handles::__memory__& A, const handles::__memory__& B, const handles::__desc__& c_desc, const handles::__desc__& a_desc, const handles::__desc__& b_desc);

@@ -6,11 +6,58 @@ import ctypes
 from ctypes import byref, c_int, c_size_t, c_void_p
 from functools import reduce
 import operator
-from typing import Iterable, Sequence
+import struct
+from typing import TYPE_CHECKING, Iterable, Sequence
 import weakref
 
-from ._ffi import check, cum_tensor_p, cumeric_t, dim_t, lib, make_shape
+from ._ffi import (
+    check,
+    cum_memory_desc_p,
+    cum_memory_p,
+    cum_tensor_p,
+    cumeric_t,
+    dim_t,
+    lib,
+    make_shape,
+)
 from .runtime import DataType, Layout
+
+if TYPE_CHECKING:
+    from .dnn.memory import Memory, MemoryDescriptor
+
+
+_CTYPE_BY_DTYPE = {
+    DataType.FP64: (ctypes.c_double, float),
+    DataType.FP32: (ctypes.c_float, float),
+    DataType.S64: (ctypes.c_int64, int),
+    DataType.S32: (ctypes.c_int32, int),
+    DataType.S16: (ctypes.c_int16, int),
+    DataType.S8: (ctypes.c_int8, int),
+    DataType.U64: (ctypes.c_uint64, int),
+    DataType.U32: (ctypes.c_uint32, int),
+    DataType.U16: (ctypes.c_uint16, int),
+    DataType.U8: (ctypes.c_uint8, int),
+}
+
+
+def _read_typed_buffer(raw: c_void_p, count: int, dtype: DataType) -> list[float | int]:
+    if count <= 0 or not raw.value:
+        return []
+    entry = _CTYPE_BY_DTYPE.get(dtype)
+    if entry is not None:
+        c_t, py_cast = entry
+        arr = ctypes.cast(raw, ctypes.POINTER(c_t))
+        return [py_cast(arr[i]) for i in range(count)]
+    if dtype == DataType.FP16:
+        buf = ctypes.string_at(raw, count * 2)
+        return [float(x) for x in struct.unpack(f"<{count}e", buf)]
+    if dtype == DataType.BF16:
+        arr = ctypes.cast(raw, ctypes.POINTER(ctypes.c_uint16))
+        return [
+            float(struct.unpack("<f", struct.pack("<I", int(arr[i]) << 16))[0])
+            for i in range(count)
+        ]
+    raise NotImplementedError(f"to_list() does not support dtype {dtype!r}")
 
 
 def _prod(dims: Sequence[int]) -> int:
@@ -77,6 +124,34 @@ class Tensor:
         check(lib.cum_tensor_create_from_data(byref(ptr), c_shape, arr))
         return cls._from_ptr(ptr)
 
+    @classmethod
+    def from_descriptor(cls, desc: MemoryDescriptor) -> Tensor:
+        """Allocates a Tensor matching a concrete neural-primitive MemoryDescriptor."""
+        from .dnn.memory import MemoryDescriptor as _MemoryDescriptor
+
+        if not isinstance(desc, _MemoryDescriptor):
+            raise TypeError("expected MemoryDescriptor")
+        ptr = cum_tensor_p()
+        check(lib.cum_tensor_create_from_desc(byref(ptr), desc._ptr))
+        return cls._from_ptr(ptr)
+
+    @property
+    def descriptor(self) -> MemoryDescriptor:
+        """Returns the MemoryDescriptor describing this tensor's shape, dtype, and layout."""
+        from .dnn.memory import MemoryDescriptor as _MemoryDescriptor
+
+        md_ptr = cum_memory_desc_p()
+        check(lib.cum_tensor_memory_desc(self._ptr, byref(md_ptr)))
+        return _MemoryDescriptor._from_ptr(md_ptr)
+
+    def memory(self) -> Memory:
+        """Returns a Memory handle viewing this tensor's underlying USM buffer."""
+        from .dnn.memory import Memory as _Memory
+
+        mem_ptr = cum_memory_p()
+        check(lib.cum_tensor_memory(self._ptr, byref(mem_ptr)))
+        return _Memory._from_ptr(mem_ptr, keepalive=self)
+
     def clone(self) -> Tensor:
         ptr = cum_tensor_p()
         check(lib.cum_tensor_clone(byref(ptr), self._ptr))
@@ -136,12 +211,10 @@ class Tensor:
         check(lib.cum_tensor_mutable_data(self._ptr, byref(raw)))
         return int(raw.value or 0)
 
-    def to_list(self) -> list[float]:
+    def to_list(self) -> list[float | int]:
         raw = c_void_p()
         check(lib.cum_tensor_data(self._ptr, byref(raw)))
-        n = self.length
-        arr = ctypes.cast(raw, ctypes.POINTER(cumeric_t))
-        return [float(arr[i]) for i in range(n)]
+        return _read_typed_buffer(raw, self.length, self.dtype)
 
     def fill(self, value: float) -> Tensor:
         check(lib.cum_tensor_fill(self._ptr, cumeric_t(value)))

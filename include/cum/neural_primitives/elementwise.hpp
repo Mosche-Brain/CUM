@@ -21,6 +21,7 @@ namespace cum { class Tensor; }
 
 namespace cum::neural_primitives
 {
+    using cum::Tensor;
     /* Raw handle overloads */
 
     /**

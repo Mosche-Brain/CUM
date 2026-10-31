@@ -20,11 +20,17 @@ CUM_C_API cum_status_t cum_tensor_create_ones(cum_tensor_t** tensor, cum_shape_t
 CUM_C_API cum_status_t cum_tensor_create_random(cum_tensor_t** tensor, cum_shape_t shape, cumeric_t min, cumeric_t max);
 /* Creates an FP32 tensor and copies `shape` elements worth of `data` (row-major) into it. */
 CUM_C_API cum_status_t cum_tensor_create_from_data(cum_tensor_t** tensor, cum_shape_t shape, const cumeric_t* data);
+/* Allocates a tensor whose shape, datatype, and physical layout match `desc`. */
+CUM_C_API cum_status_t cum_tensor_create_from_desc(cum_tensor_t** tensor, const cum_memory_desc_t* desc);
 CUM_C_API cum_status_t cum_tensor_destroy(cum_tensor_t* tensor);
 /* Deep copy of `src` into the existing tensor `dst`. */
 CUM_C_API cum_status_t cum_tensor_copy(cum_tensor_t* dst, const cum_tensor_t* src);
 /* Deep copy of `src` into a newly created tensor. */
 CUM_C_API cum_status_t cum_tensor_clone(cum_tensor_t** dst, const cum_tensor_t* src);
+
+/* Neural-primitive descriptor and memory handle extraction (caller owns returned handle). */
+CUM_C_API cum_status_t cum_tensor_memory_desc(const cum_tensor_t* tensor, cum_memory_desc_t** desc);
+CUM_C_API cum_status_t cum_tensor_memory(const cum_tensor_t* tensor, cum_memory_t** memory);
 
 /* Properties. `size` is in bytes, `length` is the number of elements. When `dims` is NULL
  * only `rank` is written. */

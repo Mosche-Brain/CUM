@@ -10,5 +10,6 @@
 #include "cum/matrix.h"
 #include "cum/vector.h"
 #include "cum/linear_algebra/blas.h"
+#include "cum/neural_primitives.h"
 
 #endif /* CUM_C_CUM_H */

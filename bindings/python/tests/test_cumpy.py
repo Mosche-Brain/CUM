@@ -106,6 +106,137 @@ class TestCumPy(unittest.TestCase):
         with self.assertRaises(ValueError):
             _ = u + cp.Vector.zeros(4)
 
+    def test_dnn_oop_descriptors_memory_and_primitives(self) -> None:
+        md = cp.dnn.MemoryDescriptor((2, 3), cp.DataType.FP32, cp.Layout.AB)
+        self.assertTrue(md.valid)
+        self.assertEqual(md.shape, (2, 3))
+        self.assertEqual(md.strides, (3, 1))
+        self.assertEqual(md.size, 24)
+        self.assertEqual(md, md.clone())
+        self.assertNotEqual(md, md.reshape((3, 2)))
+
+        mem = cp.dnn.Memory(md).copy_from_list([1, 2, 3, 4, 5, 6])
+        self.assertListAlmostEqual(mem.to_list(), [1, 2, 3, 4, 5, 6])
+        view_md = cp.dnn.MemoryDescriptor.from_strides((3, 2), (2, 1), cp.DataType.FP32)
+        view_mem = cp.dnn.Memory.view(view_md, mem)
+        self.assertListAlmostEqual(view_mem.to_list(), [1, 2, 3, 4, 5, 6])
+
+        # Matmul with Layout.ANY + bias + async Event chaining into LeakyReLU
+        a = cp.Tensor.from_data((2, 2), [1.0, -2.0, -3.0, 1.0])
+        b = cp.Tensor.from_data((2, 2), [2.0, 1.0, 1.0, 3.0])
+        bias = cp.Tensor.from_data((1, 2), [-1.0, 0.5])
+        any_dst = cp.dnn.MemoryDescriptor.any((2, 2), cp.DataType.FP32)
+
+        mm_pd = cp.dnn.PrimitiveDescriptor.matmul(any_dst, a, b, bias)
+        self.assertEqual(mm_pd.kind, cp.dnn.PrimitiveKind.MATMUL)
+        self.assertTrue(len(mm_pd.impl_info) > 0)
+
+        mm_out = cp.Tensor.from_descriptor(mm_pd.dst_desc())
+        act_out = cp.Tensor.from_descriptor(mm_pd.dst_desc())
+
+        mm_prim = cp.dnn.Primitive(mm_pd)
+        relu_pd = cp.dnn.PrimitiveDescriptor.eltwise_forward(
+            cp.dnn.Algo.ELTWISE_LEAKY_RELU, mm_out, mm_out, alpha=0.1
+        )
+        relu_prim = cp.dnn.Primitive(relu_pd)
+
+        ev1 = mm_prim(dst=mm_out, src=a, weights=b, bias=bias, async_op=True)
+        self.assertIsInstance(ev1, cp.Event)
+        ev2 = relu_prim(act_out, mm_out, deps=[ev1], async_op=True)
+        self.assertIsInstance(ev2, cp.Event)
+        ev2.wait()
+
+        self.assertListAlmostEqual(act_out.to_list(), [-0.1, -0.45, -0.6, 0.5])
+
+        # Explicit Argument map execution on Concat
+        x0 = cp.Tensor.from_data((2, 1), [10.0, 20.0])
+        x1 = cp.Tensor.from_data((2, 2), [1.0, 2.0, 3.0, 4.0])
+        cat_pd = cp.dnn.PrimitiveDescriptor.concat([x0, x1], axis=1)
+        cat_out = cp.Tensor.from_descriptor(cat_pd.dst_desc())
+        cat_prim = cp.dnn.Primitive(cat_pd)
+        cat_prim(
+            args={
+                cp.dnn.Argument.DST: cat_out,
+                cp.dnn.Argument.multiple_src_at(0): x0,
+                cp.dnn.Argument.multiple_src_at(1): x1,
+            }
+        )
+        self.assertEqual(cat_out.shape, (2, 3))
+        self.assertListAlmostEqual(cat_out.to_list(), [10.0, 1.0, 2.0, 20.0, 3.0, 4.0])
+
+    def test_dnn_functional_layers_and_backward(self) -> None:
+        # Activations + backward
+        x = cp.Tensor.from_data((4,), [-2.0, -0.5, 0.0, 3.0])
+        dy = cp.Tensor.from_data((4,), [1.0, 2.0, 3.0, 4.0])
+        y = cp.dnn.leaky_relu(x, negative_slope=0.1)
+        self.assertListAlmostEqual(y.to_list(), [-0.2, -0.05, 0.0, 3.0])
+
+        dx = cp.dnn.leaky_relu_backward(dy, x, negative_slope=0.1)
+        self.assertListAlmostEqual(dx.to_list(), [0.1, 0.2, 0.3, 4.0])
+
+        sig = cp.dnn.sigmoid(cp.Tensor.from_data((2,), [0.0, math.log(3.0)]))
+        self.assertListAlmostEqual(sig.to_list(), [0.5, 0.75])
+        dsig = cp.dnn.sigmoid_backward(
+            cp.Tensor.from_data((2,), [1.0, 1.0]), sig, use_dst=True
+        )
+        self.assertListAlmostEqual(dsig.to_list(), [0.25, 0.1875])
+
+        # Broadcast binary ops with rank mismatch (2, 3) + (3,)
+        m = cp.Tensor.from_data((2, 3), [1, 2, 3, 4, 5, 6])
+        row = cp.Tensor.from_data((3,), [10, 20, 30])
+        added = cp.dnn.add(m, row)
+        self.assertEqual(added.shape, (2, 3))
+        self.assertListAlmostEqual(added.to_list(), [11, 22, 33, 14, 25, 36])
+
+        # PyTorch-style linear(input, weight[out, in], bias[out]) on 2D and batched 3D inputs
+        inp = cp.Tensor.from_data((2, 3), [1, 2, 3, 4, 5, 6])
+        w = cp.Tensor.from_data((2, 3), [1, 0, -1, 2, 1, 0])  # out_features=2, in_features=3
+        b = cp.Tensor.from_data((2,), [0.5, -1.0])
+        lin = cp.dnn.linear(inp, w, b)
+        self.assertEqual(lin.shape, (2, 2))
+        # Row 0: [1*1 + 2*0 + 3*(-1) + 0.5, 1*2 + 2*1 + 3*0 - 1.0] = [-1.5, 3.0]
+        # Row 1: [4*1 + 5*0 + 6*(-1) + 0.5, 4*2 + 5*1 + 6*0 - 1.0] = [-1.5, 12.0]
+        self.assertListAlmostEqual(lin.to_list(), [-1.5, 3.0, -1.5, 12.0])
+
+        inp3d = inp.reshape((1, 2, 3))
+        lin3d, ev = cp.dnn.linear(inp3d, w, b, async_op=True)
+        ev.wait()
+        self.assertEqual(lin3d.shape, (1, 2, 2))
+        self.assertListAlmostEqual(lin3d.to_list(), [-1.5, 3.0, -1.5, 12.0])
+
+        # Softmax + Softmax backward
+        logits = cp.Tensor.from_data((1, 3), [0.0, math.log(2.0), math.log(5.0)])
+        probs = cp.dnn.softmax(logits, axis=-1)
+        self.assertListAlmostEqual(probs.to_list(), [0.125, 0.25, 0.625])
+        grad_p = cp.Tensor.from_data((1, 3), [1.0, 0.0, 0.0])
+        grad_logits = cp.dnn.softmax_backward(grad_p, probs, axis=-1)
+        # s_i * (g_i - sum_j s_j g_j), dot = 0.125 -> [0.125*0.875, -0.25*0.125, -0.625*0.125]
+        self.assertListAlmostEqual(
+            grad_logits.to_list(), [0.109375, -0.03125, -0.078125]
+        )
+
+        # Reductions (keepdims=False and keepdims=True)
+        r_sum = cp.dnn.reduce_sum(m, axis=1)
+        self.assertEqual(r_sum.shape, (2,))
+        self.assertListAlmostEqual(r_sum.to_list(), [6.0, 15.0])
+
+        r_mean = cp.dnn.reduce_mean(m, axis=0, keepdims=True)
+        self.assertEqual(r_mean.shape, (1, 3))
+        self.assertListAlmostEqual(r_mean.to_list(), [2.5, 3.5, 4.5])
+
+        # Multi-tensor sum, concat, and reorder (layout + S32 dtype)
+        s = cp.dnn.sum_tensors([m, m], scales=[2.0, -0.5])
+        self.assertListAlmostEqual(s.to_list(), [1.5, 3.0, 4.5, 6.0, 7.5, 9.0])
+
+        cat = cp.dnn.concat([m, m], axis=0)
+        self.assertEqual(cat.shape, (4, 3))
+
+        reord_s32 = cp.dnn.reorder(m, dtype=cp.DataType.S32, layout=cp.Layout.BA)
+        self.assertEqual(reord_s32.dtype, cp.DataType.S32)
+        self.assertEqual(reord_s32.layout, cp.Layout.BA)
+        # Physical buffer in BA (column-major for 2x3): [1, 4, 2, 5, 3, 6]
+        self.assertEqual(reord_s32.to_list(), [1, 4, 2, 5, 3, 6])
+
 
 if __name__ == "__main__":
     unittest.main()

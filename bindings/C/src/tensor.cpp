@@ -69,6 +69,18 @@ extern "C"
         });
     }
 
+    cum_status_t cum_tensor_create_from_desc(cum_tensor_t** tensor, const cum_memory_desc_t* desc)
+    {
+        if(tensor == nullptr || desc == nullptr)
+            return invalid_argument("null output pointer or memory descriptor");
+        return guard([&] {
+            if(!desc->desc.valid() || desc->desc.size() <= 0)
+                throw std::invalid_argument("memory descriptor must have a concrete non-empty layout");
+            cum::neural_primitives::MemoryDescriptor md_copy(desc->desc);
+            emplace(tensor, cum::Tensor(md_copy));
+        });
+    }
+
     cum_status_t cum_tensor_destroy(cum_tensor_t* tensor)
     {
         delete tensor;
@@ -87,6 +99,30 @@ extern "C"
         if(dst == nullptr || src == nullptr)
             return invalid_argument(null_tensor);
         return guard([&] { emplace(dst, src->tensor.clone()); });
+    }
+
+    cum_status_t cum_tensor_memory_desc(const cum_tensor_t* tensor, cum_memory_desc_t** desc)
+    {
+        if(tensor == nullptr || desc == nullptr)
+            return invalid_argument("null tensor or output descriptor pointer");
+        return guard([&] {
+            const auto& md_ptr = tensor->tensor.descriptor();
+            if(!md_ptr)
+                throw std::invalid_argument("tensor has no memory descriptor");
+            *desc = new cum_memory_desc_t { *md_ptr };
+        });
+    }
+
+    cum_status_t cum_tensor_memory(const cum_tensor_t* tensor, cum_memory_t** memory)
+    {
+        if(tensor == nullptr || memory == nullptr)
+            return invalid_argument("null tensor or output memory pointer");
+        return guard([&] {
+            const auto& mem_ptr = tensor->tensor.memory();
+            if(!mem_ptr)
+                throw std::invalid_argument("tensor has no memory handle");
+            *memory = new cum_memory_t { *mem_ptr };
+        });
     }
 
     cum_status_t cum_tensor_shape(

@@ -39,7 +39,7 @@ if(BUILD_USE_MKL)
     if(CUM_BUILD_SHARED)
         target_link_options(${CUM_PROJECT_NAME}_Core PRIVATE -fsycl)
         set_target_properties(${CUM_PROJECT_NAME}_Core PROPERTIES
-            INSTALL_RPATH "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}"
+            INSTALL_RPATH "$ORIGIN"
             INSTALL_RPATH_USE_LINK_PATH FALSE
         )
     else()

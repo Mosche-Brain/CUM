@@ -10,19 +10,35 @@ endif()
 
 if(NOT @CUM_BUILD_SHARED@)
     if(@BUILD_USE_MKL@)
+        if(NOT DEFINED MKL_THREADING)
+            set(MKL_THREADING "tbb_thread")
+        endif()
+        if(NOT DEFINED MKL_SYCL_THREADING)
+            set(MKL_SYCL_THREADING "tbb_thread")
+        endif()
         find_dependency(MKL CONFIG)
         find_dependency(oneDPL CONFIG)
         if(NOT TARGET DNNL::dnnl)
-            find_dependency(dnnl CONFIG
-                PATHS
-                    "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@/cmake/dnnl"
+            set(_cum_dnnl_hints
+                "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@/cmake/dnnl"
+                "${PACKAGE_PREFIX_DIR}/lib/cmake/dnnl"
+            )
+            if(NOT @CUM_PORTABLE_INSTALL@)
+                list(APPEND _cum_dnnl_hints
                     "@CUM_ONEDNN_INSTALL_DIR@/lib/cmake/dnnl"
                     "@CUM_ONEDNN_INSTALL_DIR@/lib64/cmake/dnnl"
-                NO_DEFAULT_PATH
-            )
+                )
+            endif()
+            find_dependency(dnnl CONFIG PATHS ${_cum_dnnl_hints} NO_DEFAULT_PATH)
+            unset(_cum_dnnl_hints)
         endif()
     endif()
 endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/cumTargets.cmake")
+
+if(NOT CUM_C_STANDALONE AND NOT TARGET cum::C AND EXISTS "${CMAKE_CURRENT_LIST_DIR}/cumCTargets.cmake")
+    include("${CMAKE_CURRENT_LIST_DIR}/cumCTargets.cmake")
+endif()
+
 check_required_components(cum)

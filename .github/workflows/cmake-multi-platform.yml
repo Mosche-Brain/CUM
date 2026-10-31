@@ -3,13 +3,14 @@ name: Intel oneAPI Multiplatform (icpx + MKL + DPL + DNN)
 on:
   push:
     branches: [ "main" ]
+    tags: [ "v*" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
 
 concurrency:
-  group: cmake-multi-platform-${{ github.ref }}
-  cancel-in-progress: true
+  group: cmake-multi-platform-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/v') }}
 
 jobs:
   build-and-test:
@@ -58,7 +59,7 @@ jobs:
             submodule update --init --depth 1 thirdparty/oneDNN
 
       # ========================================================
-      # 1. LINUX SETUP (Ubuntu + GCC 14 + oneAPI APT)
+      # 1. LINUX SETUP (Ubuntu + oneAPI APT)
       # ========================================================
       - name: Install toolchain and oneAPI on Linux
         if: runner.os == 'Linux'
@@ -69,15 +70,18 @@ jobs:
             | sudo tee /etc/apt/sources.list.d/oneAPI.list
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            g++-14 \
+            g++ \
             ninja-build \
             libcatch2-dev \
             intel-oneapi-compiler-dpcpp-cpp \
             intel-oneapi-mkl-devel \
-            intel-oneapi-onedpl-devel \
+            intel-oneapi-libdpstd-devel \
             intel-oneapi-tbb-devel
-          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100 \
-            --slave /usr/bin/g++ g++ /usr/bin/g++-14
+          if [ "$(g++ -dumpversion | cut -d. -f1)" -lt 14 ]; then
+            sudo apt-get install -y --no-install-recommends g++-14
+            sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100 \
+              --slave /usr/bin/g++ g++ /usr/bin/g++-14
+          fi
 
       - name: Initialize Environment (Linux)
         if: runner.os == 'Linux'
@@ -142,11 +146,22 @@ jobs:
         shell: bash
         run: |
           ONEDNN_PREFIX="${GITHUB_WORKSPACE//\\//}/.cache/onednn-install"
+          VERSION_ARGS=()
+          if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
+            RAW_VER="${GITHUB_REF_NAME#v}"
+            CLEAN_VER="${RAW_VER%%[-+]*}"
+            if [[ "${CLEAN_VER}" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]; then
+              VERSION_ARGS+=("-DCUM_VERSION=${CLEAN_VER}")
+            fi
+          fi
           if [ "$RUNNER_OS" == "Windows" ]; then
             cmake -B build -G Ninja \
               -DCMAKE_C_COMPILER=icx \
               -DCMAKE_CXX_COMPILER=icx \
               -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DCMAKE_INSTALL_LIBDIR=lib \
+              -DCUM_PORTABLE_INSTALL=ON \
+              "${VERSION_ARGS[@]}" \
               -DCMAKE_PREFIX_PATH="C:/Program Files (x86)/Intel/oneAPI" \
               -DCUM_ONEDNN_INSTALL_DIR="${ONEDNN_PREFIX}" \
               -S .
@@ -155,6 +170,9 @@ jobs:
               -DCMAKE_C_COMPILER=icx \
               -DCMAKE_CXX_COMPILER=icpx \
               -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DCMAKE_INSTALL_LIBDIR=lib \
+              -DCUM_PORTABLE_INSTALL=ON \
+              "${VERSION_ARGS[@]}" \
               -DCMAKE_PREFIX_PATH="/opt/intel/oneapi" \
               -DCUM_ONEDNN_INSTALL_DIR="${ONEDNN_PREFIX}" \
               -S .
@@ -165,3 +183,57 @@ jobs:
 
       - name: Run Tests
         run: ctest --test-dir build --build-config ${{ matrix.build_type }} --output-on-failure
+
+      - name: Package SDK archive
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
+            VER_TAG="${GITHUB_REF_NAME}"
+          else
+            VER_TAG="${GITHUB_SHA::7}"
+          fi
+
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            PKG_NAME="cum-${VER_TAG}-windows-x64"
+            cmake --install build --config ${{ matrix.build_type }} --prefix "pkg/${PKG_NAME}"
+            cp -f LICENSE.txt README.md "pkg/${PKG_NAME}/"
+            (cd pkg && 7z a -tzip "../${PKG_NAME}.zip" "${PKG_NAME}")
+          else
+            PKG_NAME="cum-${VER_TAG}-linux-x64"
+            cmake --install build --config ${{ matrix.build_type }} --prefix "pkg/${PKG_NAME}"
+            cp -f LICENSE.txt README.md "pkg/${PKG_NAME}/"
+            tar -C pkg -czf "${PKG_NAME}.tar.gz" "${PKG_NAME}"
+          fi
+
+      - name: Upload SDK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cum-sdk-${{ runner.os }}
+          path: |
+            cum-*.tar.gz
+            cum-*.zip
+          if-no-files-found: error
+
+  publish-release:
+    name: Publish SDK to GitHub Release
+    needs: build-and-test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download SDK artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cum-sdk-*
+          path: release-assets
+          merge-multiple: true
+
+      - name: Create or update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            release-assets/cum-*.tar.gz
+            release-assets/cum-*.zip

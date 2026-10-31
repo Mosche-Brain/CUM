@@ -4,7 +4,13 @@ if(CMAKE_HOST_WIN32)
     find_package(oneDPLWindowsIntelLLVM QUIET)
 endif()
 
-project(cum LANGUAGES CXX C VERSION 0.1)
+set(CUM_VERSION "0.1.5.1" CACHE STRING "CUM package version")
+project(cum LANGUAGES CXX C VERSION ${CUM_VERSION})
+
+option(CUM_PORTABLE_INSTALL
+    "Omit build-host paths from installed RPATH and CMake package configs"
+    OFF
+)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

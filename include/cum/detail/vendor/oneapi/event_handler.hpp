@@ -30,10 +30,24 @@ namespace cum::detail
         static experimental::__event__ create(sycl::event&& event);
 
         /**
+         * @brief Checks whether the wrapped event holds an active backend event handle.
+         * @param event Wrapped event handle.
+         * @return True if initialized, false if default-constructed/empty.
+         */
+        static bool valid(const experimental::__event__& event) noexcept;
+
+        /**
          * @brief Extracts underlying SYCL event reference from an @ref experimental::__event__.
          * @param event Wrapped event handle.
          * @return Reference to underlying SYCL event.
          */
         static sycl::event& handle(experimental::__event__& event);
+
+        /**
+         * @brief Extracts underlying const SYCL event reference from an @ref experimental::__event__.
+         * @param event Wrapped event handle.
+         * @return Const reference to underlying SYCL event.
+         */
+        static const sycl::event& handle(const experimental::__event__& event);
     };
 } // namespace cum::detail

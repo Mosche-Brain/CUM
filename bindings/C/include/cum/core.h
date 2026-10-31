@@ -152,6 +152,10 @@ typedef enum cum_layout_t
 
 typedef struct cum_event_t cum_event_t;
 typedef struct cum_tensor_t cum_tensor_t;
+typedef struct cum_memory_desc_t cum_memory_desc_t;
+typedef struct cum_memory_t cum_memory_t;
+typedef struct cum_primitive_desc_t cum_primitive_desc_t;
+typedef struct cum_primitive_t cum_primitive_t;
 
 typedef struct cum_shape_t
 {

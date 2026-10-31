@@ -1,5 +1,5 @@
 /**
- * @file Descriptor.hpp
+ * @file MemoryDescriptor.hpp
  * @brief Multi-dimensional tensor memory descriptor for neural primitives.
  * @author jaro
  */
@@ -8,11 +8,13 @@
 #define YANN_TENSOR_DESCRIPTOR_HPP
 
 #include <cstdint>
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include "cum/Core.hpp"
 #include "cum/neural_primitives/opaque_types.hpp"
+
+namespace cum { class Tensor; }
 
 namespace cum::neural_primitives
 {
@@ -24,18 +26,39 @@ namespace cum::neural_primitives
     {
     public:
         /**
+         * @brief Constructs an empty (zero) memory descriptor.
+         */
+        MemoryDescriptor();
+
+        /**
          * @brief Constructs descriptor from dimensions, datatype, and layout format.
          * @param dims Shape vector.
          * @param dtype Element datatype tag.
-         * @param format Memory layout tag.
+         * @param format Memory layout tag (defaults to @ref layout::ANY).
          */
-        MemoryDescriptor(Shape dims, datatype dtype, layout format);
+        MemoryDescriptor(Shape dims, datatype dtype, layout format = layout::ANY);
+
+        /**
+         * @brief Constructs descriptor with explicit per-dimension strides (in elements).
+         * @param dims Shape vector.
+         * @param dtype Element datatype tag.
+         * @param strides Per-dimension stride vector.
+         */
+        MemoryDescriptor(Shape dims, datatype dtype, Shape strides);
+
+        /**
+         * @brief Creates a format-agnostic (`layout::ANY`) descriptor allowing primitives to pick an optimal layout.
+         * @param dims Shape vector.
+         * @param dtype Element datatype tag.
+         * @return Format-agnostic memory descriptor.
+         */
+        static MemoryDescriptor Any(const Shape& dims, datatype dtype);
 
         /**
          * @brief Copy constructor.
          * @param other Descriptor to copy.
          */
-        MemoryDescriptor(MemoryDescriptor& other);
+        MemoryDescriptor(const MemoryDescriptor& other);
 
         /**
          * @brief Constructs descriptor from const backend descriptor handle.
@@ -62,7 +85,20 @@ namespace cum::neural_primitives
          */
         MemoryDescriptor(MemoryDescriptor&& other) noexcept;
 
+        MemoryDescriptor& operator=(const MemoryDescriptor& other);
         MemoryDescriptor& operator=(MemoryDescriptor&& other) noexcept;
+
+        ~MemoryDescriptor();
+
+        /**
+         * @brief Checks whether this descriptor represents a non-empty memory layout.
+         */
+        [[nodiscard]] bool valid() const noexcept;
+
+        /**
+         * @brief Boolean conversion equivalent to @ref valid().
+         */
+        explicit operator bool() const noexcept { return valid(); }
 
         /**
          * @brief Returns total memory size in bytes required by descriptor.
@@ -83,6 +119,18 @@ namespace cum::neural_primitives
         Shape shape() const;
 
         /**
+         * @brief Returns per-dimension strides vector (empty if layout is opaque or `ANY`).
+         * @return Stride vector in elements.
+         */
+        Shape strides() const;
+
+        /**
+         * @brief Returns leading stride of descriptor (or 0 if empty/unspecified).
+         * @return Leading stride in elements.
+         */
+        dim_t stride() const;
+
+        /**
          * @brief Returns element datatype tag.
          * @return Datatype tag.
          */
@@ -95,13 +143,7 @@ namespace cum::neural_primitives
         layout format() const;
 
         /**
-         * @brief Returns stride of descriptor.
-         * @return Stride.
-         */
-        dim_t stride() const;
-
-        /**
-         * @brief Returns memory offset.
+         * @brief Returns submemory offset.
          * @return Offset in bytes.
          */
         dim_t offset() const;
@@ -111,7 +153,7 @@ namespace cum::neural_primitives
          * @param shape New shape.
          * @return Reshaped Descriptor.
          */
-        MemoryDescriptor reshape(const Shape& shape);
+        MemoryDescriptor reshape(const Shape& shape) const;
 
         /**
          * @brief Reshapes descriptor in-place.
@@ -132,15 +174,16 @@ namespace cum::neural_primitives
          */
         handles::__desc__& handle();
 
-        MemoryDescriptor& operator = (MemoryDescriptor& other);
-        ~MemoryDescriptor();
+        bool operator==(const MemoryDescriptor& other) const noexcept;
+        bool operator!=(const MemoryDescriptor& other) const noexcept;
 
     private:
         friend class Memory;
-        friend class Tensor;
+        friend class cum::Tensor;
+        friend class PrimitiveDescriptor;
 
         std::unique_ptr<handles::__desc__> handle_;
-        layout fmt;
+        layout fmt = layout::UNDEF;
     };
 } // namespace cum::neural_primitives
 

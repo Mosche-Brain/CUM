@@ -46,7 +46,17 @@ namespace cum::detail
         return experimental::__event__(std::make_unique<experimental::__event__::Impl>(std::move(event)));
     }
 
+    bool event_handler::valid(const experimental::__event__& event) noexcept
+    {
+        return event.handle != nullptr;
+    }
+
     sycl::event& event_handler::handle(experimental::__event__& event)
+    {
+        return event.handle->event;
+    }
+
+    const sycl::event& event_handler::handle(const experimental::__event__& event)
     {
         return event.handle->event;
     }

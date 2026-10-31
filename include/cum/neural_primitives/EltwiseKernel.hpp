@@ -12,6 +12,7 @@
 
 namespace cum::neural_primitives
 {
+    using cum::Tensor;
     /**
      * @class EltwiseKernel
      * @brief Pre-compiled elementwise neural operation kernel for repeated forward/backward execution.

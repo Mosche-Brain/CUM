@@ -15,8 +15,8 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
 
     option(BUILD_TESTS "Build the C binding tests" ON)
 
-    find_package(cum CONFIG REQUIRED)
     set(CUM_C_STANDALONE ON)
+    find_package(cum CONFIG REQUIRED)
 endif()
 
 include(GNUInstallDirs)
@@ -35,15 +35,17 @@ add_library(cum_C ${CUM_C_LIBRARY_TYPE}
     src/vector.cpp
     src/event.cpp
     src/blas.cpp
+    src/neural_primitives.cpp
 )
 
 set_target_properties(cum_C PROPERTIES
+    EXPORT_NAME C
     CXX_STANDARD 23
     CXX_STANDARD_REQUIRED ON
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET hidden
     VISIBILITY_INLINES_HIDDEN ON
-    INSTALL_RPATH "$ORIGIN:${CMAKE_INSTALL_FULL_LIBDIR}"
+    INSTALL_RPATH "$ORIGIN"
     INSTALL_RPATH_USE_LINK_PATH FALSE
 )
 
@@ -74,8 +76,13 @@ if(CUM_C_STANDALONE)
 endif()
 
 install(TARGETS cum_C
+        EXPORT cumCTargets
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(EXPORT cumCTargets
+        FILE cumCTargets.cmake
+        NAMESPACE cum::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cum)
 install(DIRECTORY include/cum DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         FILES_MATCHING PATTERN "*.h")
