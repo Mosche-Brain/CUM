@@ -6,7 +6,9 @@
 
 #pragma once
 
+#if __has_include(<stdfloat>)
 #include <stdfloat>
+#endif
 
 #include "cum/Core.hpp"
 

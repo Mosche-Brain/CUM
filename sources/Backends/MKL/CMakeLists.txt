@@ -56,6 +56,8 @@ if((NOT EXISTS "${CUM_ONEDNN_INSTALL_DIR}/lib/libdnnl.a" AND
             "-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}"
             "-DCMAKE_C_COMPILER=${CUM_ONEDNN_C_COMPILER}"
             "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
+            "-DCMAKE_C_FLAGS=${CMAKE_C_FLAGS}"
+            "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}"
             "-DCMAKE_BUILD_TYPE=Release"
             "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
             "-DCMAKE_INSTALL_PREFIX=${CUM_ONEDNN_INSTALL_DIR}"
@@ -139,12 +141,16 @@ endif()
 if(CUM_UMF_LIBRARY)
     get_filename_component(CUM_UMF_LIBRARY_DIR "${CUM_UMF_LIBRARY}" REALPATH)
     get_filename_component(CUM_UMF_LIBRARY_DIR "${CUM_UMF_LIBRARY_DIR}" DIRECTORY)
-    target_link_libraries(${CUM_PROJECT_NAME}_MKL
-        PRIVATE
-            "-Wl,--push-state,--no-as-needed"
-            "${CUM_UMF_LIBRARY}"
-            "-Wl,--pop-state"
-    )
+    if(UNIX AND NOT APPLE)
+        target_link_libraries(${CUM_PROJECT_NAME}_MKL
+            PRIVATE
+                "-Wl,--push-state,--no-as-needed"
+                "${CUM_UMF_LIBRARY}"
+                "-Wl,--pop-state"
+        )
+    else()
+        target_link_libraries(${CUM_PROJECT_NAME}_MKL PRIVATE "${CUM_UMF_LIBRARY}")
+    endif()
 endif()
 
 if(CUM_BUILD_SHARED)

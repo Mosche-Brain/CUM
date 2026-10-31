@@ -10,7 +10,9 @@
 #include "cum/config.hpp"
 #include "cum/datatypes.hpp"
 #include <cstdint>
+#if __has_include(<stdfloat>)
 #include <stdfloat>
+#endif
 #include <utility>
 #include <vector>
 

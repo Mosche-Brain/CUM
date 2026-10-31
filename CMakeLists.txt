@@ -1,4 +1,9 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.18)
+
+if(CMAKE_HOST_WIN32)
+    find_package(oneDPLWindowsIntelLLVM QUIET)
+endif()
+
 project(cum LANGUAGES CXX C VERSION 0.1)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -6,7 +11,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-option(CUM_BUILD_SHARED "Build CUM library as shared library" ON)
+if(WIN32)
+    set(_cum_default_shared OFF)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+    add_compile_options(-Wno-error=return-type)
+else()
+    set(_cum_default_shared ON)
+endif()
+
+option(CUM_BUILD_SHARED "Build CUM library as shared library" ${_cum_default_shared})
 if(CUM_BUILD_SHARED)
     set(CUM_LIBRARY_TYPE SHARED)
 else()
