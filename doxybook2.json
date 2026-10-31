@@ -4,6 +4,9 @@
   "mainPageInRoot": false,
   "linkLowercase": false,
   "linkSuffix": ".md",
+  "indexClassesName": "index",
+  "indexFilesName": "index",
+  "indexNamespacesName": "index",
   "foldersToGenerate": [
     "classes",
     "files",

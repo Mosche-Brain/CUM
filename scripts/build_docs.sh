@@ -10,7 +10,7 @@ mkdir -p "${BUILD_TOOLS_DIR}"
 # 1. Check or install doxybook2
 DOXYBOOK2="doxybook2"
 if ! command -v doxybook2 &>/dev/null; then
-    if [[ ! -x "${BUILD_TOOLS_DIR}/doxybook2" ]]; then
+    if [[ ! -x "${BUILD_TOOLS_DIR}/bin/doxybook2" && ! -x "${BUILD_TOOLS_DIR}/doxybook2" ]]; then
         echo "==> doxybook2 not found in PATH. Downloading standalone binary to ${BUILD_TOOLS_DIR}..."
         DOXYBOOK2_URL="https://github.com/matusnovak/doxybook2/releases/download/v1.5.0/doxybook2-linux-amd64-v1.5.0.zip"
         curl -fsSL -o "${BUILD_TOOLS_DIR}/doxybook2.zip" "${DOXYBOOK2_URL}"
@@ -25,16 +25,21 @@ if ! command -v doxybook2 &>/dev/null; then
     fi
 fi
 
-# 2. Check doxygen
+# 2. Check or download doxygen
+DOXYGEN="doxygen"
 if ! command -v doxygen &>/dev/null; then
-    echo "ERROR: 'doxygen' is not installed or not in PATH."
-    echo "Please install doxygen (e.g. 'sudo pacman -S doxygen' or 'sudo apt install doxygen')."
-    exit 1
+    DOXYGEN_DIR="${BUILD_TOOLS_DIR}/doxygen-1.18.0"
+    if [[ ! -x "${DOXYGEN_DIR}/bin/doxygen" ]]; then
+        echo "==> doxygen not found in PATH. Downloading standalone binary to ${BUILD_TOOLS_DIR}..."
+        DOXYGEN_URL="https://github.com/doxygen/doxygen/releases/download/Release_1_18_0/doxygen-1.18.0.linux.bin.tar.gz"
+        curl -fsSL "${DOXYGEN_URL}" | tar -xz -C "${BUILD_TOOLS_DIR}"
+    fi
+    DOXYGEN="${DOXYGEN_DIR}/bin/doxygen"
 fi
 
 echo "==> Running Doxygen..."
 mkdir -p build/docs/doxygen
-doxygen Doxyfile
+"${DOXYGEN}" Doxyfile
 
 echo "==> Running Doxybook2 to generate Markdown in docs/api..."
 mkdir -p docs/api
