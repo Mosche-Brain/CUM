@@ -1,0 +1,81 @@
+site_name: CUM
+site_description: C++ Numeric Library - Linear algebra, eltwise operations, and deep learning primitives
+site_author: CUM Contributors
+site_url: https://mosche-brain.github.io/CUM/
+repo_name: Mosche-Brain/CUM
+repo_url: https://github.com/Mosche-Brain/CUM
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Modules:
+      - Overview: modules/index.md
+      - Core & Memory: modules/core.md
+      - LARA (BLAS): modules/lara.md
+      - Neural Primitives: modules/neural_primitives.md
+      - Elementwise Functions: modules/functions.md
+  - CumPy (Python API): cumpy.md
+  - C++ API Reference:
+      - Overview: api/index.md
+      - Namespaces: api/Namespaces/index.md
+      - Classes: api/Classes/index.md
+      - Files: api/Files/index.md

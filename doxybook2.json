@@ -1,0 +1,8 @@
+{
+  "target": "mkdocs",
+  "baseUrl": "/CUM/api/",
+  "filesFilter": ["*.hpp", "*.h"],
+  "mainPageInRoot": false,
+  "indexInFolders": true,
+  "linkLowercase": false
+}

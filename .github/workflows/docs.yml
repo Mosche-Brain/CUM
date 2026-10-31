@@ -1,0 +1,84 @@
+name: Build & Deploy Documentation
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install MkDocs and Material theme
+        run: |
+          python -m pip install --upgrade pip
+          pip install \
+            mkdocs-material \
+            pymdown-extensions
+
+      - name: Install Doxygen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends doxygen
+
+      - name: Install Doxybook2
+        run: |
+          mkdir -p /tmp/doxybook2
+          curl -fsSL https://github.com/matusnovak/doxybook2/releases/download/v1.5.0/doxybook2-linux-amd64-v1.5.0.zip -o /tmp/doxybook2/doxybook2.zip
+          unzip -q /tmp/doxybook2/doxybook2.zip -d /tmp/doxybook2
+          sudo mv /tmp/doxybook2/bin/doxybook2 /usr/local/bin/doxybook2 || sudo mv /tmp/doxybook2/doxybook2 /usr/local/bin/doxybook2
+          rm -rf /tmp/doxybook2
+          doxybook2 --version
+
+      - name: Run Doxygen (Generate XML)
+        run: |
+          mkdir -p build/docs/doxygen
+          doxygen Doxyfile
+
+      - name: Run Doxybook2 (Generate Markdown from XML)
+        run: |
+          mkdir -p docs/api
+          doxybook2 -i build/docs/doxygen/xml -o docs/api --target mkdocs -c doxybook2.json
+
+      - name: Build MkDocs Site
+        run: |
+          mkdocs build --strict
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy-docs:
+    name: Deploy to GitHub Pages
+    needs: build-docs
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

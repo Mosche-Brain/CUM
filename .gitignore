@@ -2,5 +2,6 @@
 .idea/
 
 build/
+site/
 bindings/python/dist
 bindings/python/src/cumpy/__pycache__/
