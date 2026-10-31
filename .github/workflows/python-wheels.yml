@@ -33,14 +33,29 @@ jobs:
         with:
           submodules: false
 
+      - name: Verify release tag matches CUM_VERSION
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          CMAKE_VER="$(sed -n 's/^set(CUM_VERSION "\([^"]*\)".*/\1/p' CMakeLists.txt)"
+          TAG_VER="${GITHUB_REF_NAME#v}"
+          if [ -z "${CMAKE_VER}" ]; then
+            echo "::error::Could not read CUM_VERSION from CMakeLists.txt"
+            exit 1
+          fi
+          if [ "${CMAKE_VER}" != "${TAG_VER}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match CUM_VERSION=${CMAKE_VER} in CMakeLists.txt. Bump the version before tagging."
+            exit 1
+          fi
+          echo "Tag ${GITHUB_REF_NAME} matches CUM_VERSION ${CMAKE_VER}"
+
       - name: Resolve oneDNN submodule commit
         id: onednn-sha
         run: |
           echo "sha=$(git rev-parse HEAD:thirdparty/oneDNN)" >> "$GITHUB_OUTPUT"
 
-      - name: Cache static oneDNN (manylinux_2_28)
+      - name: Restore static oneDNN cache (manylinux_2_28)
         id: cache-onednn
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: .cache/onednn-install
           key: onednn-static-manylinux228-oneapi2026-${{ steps.onednn-sha.outputs.sha }}
@@ -99,6 +114,18 @@ jobs:
 
               bash /src/packaging/manylinux/build-wheel.sh
             '
+
+      # Save even if the wheel build failed after oneDNN had been compiled.
+      - name: Save static oneDNN cache (manylinux_2_28)
+        if: >-
+          always() &&
+          steps.cache-onednn.outputs.cache-hit != 'true' &&
+          (hashFiles('.cache/onednn-install/lib/cmake/dnnl/dnnl-config.cmake') != '' ||
+           hashFiles('.cache/onednn-install/lib64/cmake/dnnl/dnnl-config.cmake') != '')
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/onednn-install
+          key: ${{ steps.cache-onednn.outputs.cache-primary-key }}
 
       - name: Upload wheel artifact
         uses: actions/upload-artifact@v4

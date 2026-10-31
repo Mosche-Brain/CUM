@@ -4,7 +4,7 @@ if(CMAKE_HOST_WIN32)
     find_package(oneDPLWindowsIntelLLVM QUIET)
 endif()
 
-set(CUM_VERSION "0.1.5.1" CACHE STRING "CUM package version")
+set(CUM_VERSION "0.1.6.7" CACHE STRING "CUM package version")
 project(cum LANGUAGES CXX C VERSION ${CUM_VERSION})
 
 option(CUM_PORTABLE_INSTALL

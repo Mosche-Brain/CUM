@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "cumpy"
-version = "0.1.6"
+dynamic = ["version"]
 description = "CumPy numerical library for Python"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -32,3 +32,9 @@ wheel.packages = ["src/cumpy"]
 wheel.exclude = ["include/**", "lib/cmake/**"]
 wheel.py-api = "py3"
 cmake.build-type = "Release"
+
+# Single source of truth for the version: CUM_VERSION in the top-level CMakeLists.txt.
+[tool.scikit-build.metadata.version]
+provider = "scikit_build_core.metadata.regex"
+input = "../../CMakeLists.txt"
+regex = 'set\(CUM_VERSION "(?P<value>[^"]+)"'

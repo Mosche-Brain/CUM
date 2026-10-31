@@ -28,7 +28,11 @@ print(a.sum(), a.mean(), a.norm())
 cp.shutdown()
 ```
 
-## Examples
+## Features
+
+* 
+
+## Examples (avaible on github)
 
 - `examples/basic_tensors.py` – creating tensors, arithmetics, unary functions, reductions, transpositions and `reshape`.
 - `examples/matrix_and_vector.py` – operations on `Matrix` i `Vector`, indexing `m[r, c]` / `v[i]`, dot product, etc.

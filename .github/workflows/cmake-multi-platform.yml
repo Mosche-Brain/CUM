@@ -44,9 +44,9 @@ jobs:
         run: |
           echo "sha=$(git rev-parse HEAD:thirdparty/oneDNN)" >> "$GITHUB_OUTPUT"
 
-      - name: Cache static oneDNN
+      - name: Restore static oneDNN cache
         id: cache-onednn
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: .cache/onednn-install
           key: onednn-static-${{ runner.os }}-oneapi2026-${{ steps.onednn-sha.outputs.sha }}
@@ -177,6 +177,19 @@ jobs:
               -DCUM_ONEDNN_INSTALL_DIR="${ONEDNN_PREFIX}" \
               -S .
           fi
+
+      # oneDNN is compiled during the configure step above; save it right away so that
+      # later failures (build, tests, packaging) do not throw the result away.
+      - name: Save static oneDNN cache
+        if: >-
+          always() &&
+          steps.cache-onednn.outputs.cache-hit != 'true' &&
+          (hashFiles('.cache/onednn-install/lib/cmake/dnnl/dnnl-config.cmake') != '' ||
+           hashFiles('.cache/onednn-install/lib64/cmake/dnnl/dnnl-config.cmake') != '')
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/onednn-install
+          key: ${{ steps.cache-onednn.outputs.cache-primary-key }}
 
       - name: Build
         run: cmake --build build --config ${{ matrix.build_type }}
