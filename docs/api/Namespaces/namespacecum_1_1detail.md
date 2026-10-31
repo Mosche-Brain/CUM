@@ -11,14 +11,14 @@ title: cum::detail
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::detail::event_handler](Classes/classcum_1_1detail_1_1event__handler.md)** <br>Factory and accessor bridging SYCL asynchronous events with CUM's [experimental::__event__]().  |
+| class | **[cum::detail::event_handler](/CUM/api/Classes/classcum_1_1detail_1_1event__handler/)** <br>Factory and accessor bridging SYCL asynchronous events with CUM's [experimental::__event__]().  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > | **[make_matrix_like](Namespaces/namespacecum_1_1detail.md#function-make-matrix-like)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols) |
-| template <typename T ,dim_t length_\> <br>[Vector](Classes/classcum_1_1Vector.md)< T, length_ > | **[make_vector_like](Namespaces/namespacecum_1_1detail.md#function-make-vector-like)**([dim_t](Namespaces/namespacecum.md#using-dim-t) len) |
+| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > | **[make_matrix_like](/CUM/api/Namespaces/namespacecum_1_1detail/#function-make-matrix-like)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols) |
+| template <typename T ,dim_t length_\> <br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > | **[make_vector_like](/CUM/api/Namespaces/namespacecum_1_1detail/#function-make-vector-like)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) len) |
 
 
 ## Functions Documentation
@@ -53,4 +53,4 @@ Vector< T, length_ > make_vector_like(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

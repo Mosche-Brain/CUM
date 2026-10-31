@@ -11,47 +11,47 @@ title: cum::functions
 
 | Name           |
 | -------------- |
-| **[cum::functions::cyclometric](Namespaces/namespacecum_1_1functions_1_1cyclometric.md)**  |
-| **[cum::functions::exponential](Namespaces/namespacecum_1_1functions_1_1exponential.md)**  |
-| **[cum::functions::hyperbolic](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md)**  |
-| **[cum::functions::linear_units](Namespaces/namespacecum_1_1functions_1_1linear__units.md)**  |
-| **[cum::functions::logistic](Namespaces/namespacecum_1_1functions_1_1logistic.md)**  |
-| **[cum::functions::trigonometric](Namespaces/namespacecum_1_1functions_1_1trigonometric.md)**  |
-| **[cum::functions::various](Namespaces/namespacecum_1_1functions_1_1various.md)**  |
+| **[cum::functions::cyclometric](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/)**  |
+| **[cum::functions::exponential](/CUM/api/Namespaces/namespacecum_1_1functions_1_1exponential/)**  |
+| **[cum::functions::hyperbolic](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/)**  |
+| **[cum::functions::linear_units](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/)**  |
+| **[cum::functions::logistic](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/)**  |
+| **[cum::functions::trigonometric](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/)**  |
+| **[cum::functions::various](/CUM/api/Namespaces/namespacecum_1_1functions_1_1various/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::functions::activation_t](Classes/structcum_1_1functions_1_1activation__t.md)** <br>Bundles activation function identifier, forward function, and derivative pointers.  |
-| struct | **[cum::functions::GELU](Classes/structcum_1_1functions_1_1GELU.md)** <br>Gaussian Error [Linear]() Unit activation functor: f(x) = x * P(X <= x).  |
-| struct | **[cum::functions::leaky_ReLU](Classes/structcum_1_1functions_1_1leaky__ReLU.md)** <br>Leaky Rectified [Linear]() Unit activation functor: f(x) = x if x >= 0 else alpha * x.  |
-| struct | **[cum::functions::Linear](Classes/structcum_1_1functions_1_1Linear.md)** <br>[Linear]() / identity activation function functor: f(x) = x.  |
-| struct | **[cum::functions::ReLU](Classes/structcum_1_1functions_1_1ReLU.md)** <br>Rectified [Linear](Classes/structcum_1_1functions_1_1Linear.md) Unit activation functor: f(x) = max(0, x).  |
-| struct | **[cum::functions::Sigmoid](Classes/structcum_1_1functions_1_1Sigmoid.md)** <br>Logistic sigmoid activation functor: f(x) = 1 / (1 + exp(-x)).  |
-| struct | **[cum::functions::Tanh](Classes/structcum_1_1functions_1_1Tanh.md)** <br>Hyperbolic tangent activation functor: f(x) = tanh(x).  |
+| struct | **[cum::functions::activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/)** <br>Bundles activation function identifier, forward function, and derivative pointers.  |
+| struct | **[cum::functions::GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/)** <br>Gaussian Error [Linear]() Unit activation functor: f(x) = x * P(X <= x).  |
+| struct | **[cum::functions::leaky_ReLU](/CUM/api/Classes/structcum_1_1functions_1_1leaky__ReLU/)** <br>Leaky Rectified [Linear]() Unit activation functor: f(x) = x if x >= 0 else alpha * x.  |
+| struct | **[cum::functions::Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/)** <br>[Linear]() / identity activation function functor: f(x) = x.  |
+| struct | **[cum::functions::ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/)** <br>Rectified [Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/) Unit activation functor: f(x) = max(0, x).  |
+| struct | **[cum::functions::Sigmoid](/CUM/api/Classes/structcum_1_1functions_1_1Sigmoid/)** <br>Logistic sigmoid activation functor: f(x) = 1 / (1 + exp(-x)).  |
+| struct | **[cum::functions::Tanh](/CUM/api/Classes/structcum_1_1functions_1_1Tanh/)** <br>Hyperbolic tangent activation functor: f(x) = tanh(x).  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
-| enum class std::uint8_t | **[function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id)** { undefined = 0, linear, relu, leaky_relu, gelu, elu, sqrt, exp, exp2, exp10, log, log2, log10, sin, cos, tan, sinh, cosh, tanh, asin, acos, atan, sigmoid}<br>Numerical identifier for activation and mathematical elementwise operations.  |
-| typedef cumeric_t(*)(cumeric_t) | **[function_t](Namespaces/namespacecum_1_1functions.md#typedef-function-t)** <br>Scalar unary mathematical function pointer type.  |
+| enum class std::uint8_t | **[function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id)** { undefined = 0, linear, relu, leaky_relu, gelu, elu, sqrt, exp, exp2, exp10, log, log2, log10, sin, cos, tan, sinh, cosh, tanh, asin, acos, atan, sigmoid}<br>Numerical identifier for activation and mathematical elementwise operations.  |
+| typedef cumeric_t(*)(cumeric_t) | **[function_t](/CUM/api/Namespaces/namespacecum_1_1functions/#typedef-function-t)** <br>Scalar unary mathematical function pointer type.  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| void | **[get_function_by_name](Namespaces/namespacecum_1_1functions.md#function-get-function-by-name)**([activation_t](Classes/structcum_1_1functions_1_1activation__t.md) * activation, const char * name)<br>Resolves an activation function struct by string name (e.g. "relu", "sigmoid", "tanh").  |
-| void | **[transformInPlace](Namespaces/namespacecum_1_1functions.md#function-transforminplace)**(cumeric_t * v, [activation_t](Classes/structcum_1_1functions_1_1activation__t.md) & func, std::size_t N)<br>Transforms vector in-place using an activation function definition.  |
-| void | **[transform](Namespaces/namespacecum_1_1functions.md#function-transform)**(cumeric_t * r, const cumeric_t * v, std::size_t N, [function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) activation)<br>Transforms vector `v` by applying activation `activation` into `r`.  |
-| void | **[transform](Namespaces/namespacecum_1_1functions.md#function-transform)**(cumeric_t * r, const cumeric_t * v, std::size_t N, const [activation_t](Classes/structcum_1_1functions_1_1activation__t.md) & activation)<br>Transforms vector `v` by applying activation struct `activation` into `r`.  |
-| void | **[transform](Namespaces/namespacecum_1_1functions.md#function-transform)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N, [function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) activation)<br>Generic datatype vector transformation using activation identifier.  |
-| void | **[transform](Namespaces/namespacecum_1_1functions.md#function-transform)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N, const [activation_t](Classes/structcum_1_1functions_1_1activation__t.md) & activation)<br>Generic datatype vector transformation using activation struct.  |
-| void | **[transform_deriv](Namespaces/namespacecum_1_1functions.md#function-transform-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N, [function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) activation)<br>Evaluates activation derivative on vector `v` into `r`.  |
-| void | **[transform_deriv](Namespaces/namespacecum_1_1functions.md#function-transform-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N, const [activation_t](Classes/structcum_1_1functions_1_1activation__t.md) & activation)<br>Evaluates activation derivative on vector `v` into `r` using activation struct.  |
-| void | **[transform_deriv](Namespaces/namespacecum_1_1functions.md#function-transform-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N, [function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) activation)<br>Generic datatype vector derivative evaluation.  |
-| void | **[transform_deriv](Namespaces/namespacecum_1_1functions.md#function-transform-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N, const [activation_t](Classes/structcum_1_1functions_1_1activation__t.md) & activation)<br>Generic datatype vector derivative evaluation using activation struct.  |
+| void | **[get_function_by_name](/CUM/api/Namespaces/namespacecum_1_1functions/#function-get-function-by-name)**([activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/) * activation, const char * name)<br>Resolves an activation function struct by string name (e.g. "relu", "sigmoid", "tanh").  |
+| void | **[transformInPlace](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transforminplace)**(cumeric_t * v, [activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/) & func, std::size_t N)<br>Transforms vector in-place using an activation function definition.  |
+| void | **[transform](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform)**(cumeric_t * r, const cumeric_t * v, std::size_t N, [function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) activation)<br>Transforms vector `v` by applying activation `activation` into `r`.  |
+| void | **[transform](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform)**(cumeric_t * r, const cumeric_t * v, std::size_t N, const [activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/) & activation)<br>Transforms vector `v` by applying activation struct `activation` into `r`.  |
+| void | **[transform](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N, [function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) activation)<br>Generic datatype vector transformation using activation identifier.  |
+| void | **[transform](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N, const [activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/) & activation)<br>Generic datatype vector transformation using activation struct.  |
+| void | **[transform_deriv](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N, [function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) activation)<br>Evaluates activation derivative on vector `v` into `r`.  |
+| void | **[transform_deriv](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N, const [activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/) & activation)<br>Evaluates activation derivative on vector `v` into `r` using activation struct.  |
+| void | **[transform_deriv](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N, [function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) activation)<br>Generic datatype vector derivative evaluation.  |
+| void | **[transform_deriv](/CUM/api/Namespaces/namespacecum_1_1functions/#function-transform-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N, const [activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/) & activation)<br>Generic datatype vector derivative evaluation using activation struct.  |
 
 ## Types Documentation
 
@@ -111,7 +111,7 @@ Resolves an activation function struct by string name (e.g. "relu", "sigmoid", "
 
 **Parameters**: 
 
-  * **activation** Pointer to output [activation_t](Classes/structcum_1_1functions_1_1activation__t.md) struct. 
+  * **activation** Pointer to output [activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/) struct. 
   * **name** C-string containing function name. 
 
 
@@ -316,4 +316,4 @@ Generic datatype vector derivative evaluation using activation struct.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

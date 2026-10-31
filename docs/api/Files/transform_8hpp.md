@@ -12,8 +12,8 @@ Unified elementwise transformation and derivative dispatch routines.  [More...](
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::functions](Namespaces/namespacecum_1_1functions.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::functions](/CUM/api/Namespaces/namespacecum_1_1functions/)**  |
 
 ## Detailed Description
 
@@ -31,4 +31,4 @@ Dispatches forward and derivative evaluations across arrays based on function_id
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

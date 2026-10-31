@@ -17,52 +17,52 @@ Executable compute primitive representing a compiled neural network or tensor op
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[ArgBinding](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md)** <br>Zero-copy argument binding pairing an [Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) slot with a [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) or [Tensor]() reference.  |
+| struct | **[ArgBinding](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/)** <br>Zero-copy argument binding pairing an [Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) slot with a [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) or [Tensor]() reference.  |
 
 ## Public Types
 
 |                | Name           |
 | -------------- | -------------- |
-| enum class int | **[Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument)** { undef = 0, src = 1, src0 = 1, src1 = 2, src2 = 3, src3 = 4, dst = 17, dst0 = 17, weights = 33, bias = 41, workspace = 64, scratchpad = 80, diff_src = 129, diff_src0 = 129, diff_src1 = 130, diff_dst = 145, diff_weights = 161, diff_bias = 169, multiple_src = 1024}<br>Named tensor slot identifiers for primitive execution.  |
-| using [PrimitiveDescriptor](Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor.md) | **[Descriptor](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-descriptor)** <br>[Descriptor]() type alias.  |
-| using [Descriptor::Kind](Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor.md#enum-kind) | **[Kind](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-kind)** <br>Operation category alias.  |
-| using std::pair< [Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument), [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) > | **[KV](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-kv)**  |
-| using std::unordered_map< [Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument), [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) > | **[KVMap](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-kvmap)**  |
+| enum class int | **[Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument)** { undef = 0, src = 1, src0 = 1, src1 = 2, src2 = 3, src3 = 4, dst = 17, dst0 = 17, weights = 33, bias = 41, workspace = 64, scratchpad = 80, diff_src = 129, diff_src0 = 129, diff_src1 = 130, diff_dst = 145, diff_weights = 161, diff_bias = 169, multiple_src = 1024}<br>Named tensor slot identifiers for primitive execution.  |
+| using [PrimitiveDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor/) | **[Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-descriptor)** <br>[Descriptor]() type alias.  |
+| using [Descriptor::Kind](/CUM/api/Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor/#enum-kind) | **[Kind](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-kind)** <br>Operation category alias.  |
+| using std::pair< [Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument), [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) > | **[KV](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-kv)**  |
+| using std::unordered_map< [Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument), [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) > | **[KVMap](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-kvmap)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| [Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) | **[multiple_src_arg](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-multiple-src-arg)**(int index)<br>Computes the indexed variadic source slot (`[Argument::multiple_src](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enumvalue-multiple-src) + index`) for `Sum` / `Concat`.  |
-| | **[Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive)**()<br>Constructs an empty, uncompiled primitive.  |
-| | **[Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive)**(const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-descriptor) & descriptor)<br>Compiles an executable primitive from `descriptor`.  |
-| | **[Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive)**(const Primitive & other) |
-| [Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-operator=)**(const [Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive) & other) |
-| | **[Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive)**(Primitive && other) |
-| [Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-operator=)**([Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-primitive) && other) |
-| | **[~Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-~primitive)**() |
-| void | **[compile](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-compile)**(const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-descriptor) & descriptor)<br>Compiles (or recompiles) this primitive from `descriptor`.  |
-| void | **[compile](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-compile)**()<br>Ensures the primitive is compiled from its stored descriptor.  |
-| bool | **[valid](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-valid)**() const<br>Checks whether this primitive is compiled and ready to execute.  |
-| | **[operator bool](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-operator-bool)**() const<br>Boolean conversion equivalent to [valid()](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-valid).  |
-| [Kind](Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor.md#enum-kind) | **[kind](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-kind)**() const<br>Returns operation category of this primitive.  |
-| const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-descriptor) & | **[descriptor](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-descriptor)**() const<br>Returns const reference to the [PrimitiveDescriptor]() from which this primitive was compiled.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**(std::span< const [ArgBinding](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md) > args, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes the primitive with explicit [ArgBinding]() pairs (accepts both [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) and [Tensor]()).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**(std::initializer_list< [ArgBinding](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md) > args, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes the primitive from a brace-initialized list of [ArgBinding]() pairs.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**(const [KVMap](Classes/classcum_1_1neural__primitives_1_1Primitive.md#using-kvmap) & kv_map, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes the primitive from a legacy `[Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) -> [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md)` map.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & dst, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & arg0, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes a unary primitive (`Elementwise`, `Softmax`, `Reduction`, `Reorder`).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & dst, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & arg0, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & arg1, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes a 2-input primitive (`Binary`, `Matmul` without bias, `ElementwiseBackward`, `SoftmaxBackward`, 2-input `Sum`/`Concat`).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & dst, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & arg0, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & arg1, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & arg2, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes a 3-input primitive (`Matmul` with bias, 3-input `Sum`/`Concat`).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & dst, std::span< const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) > srcs, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes a variadic-source primitive (`Sum`, `Concat`) over a span of [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) buffers.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**([Tensor](Classes/classcum_1_1Tensor.md) & dst, const [Tensor](Classes/classcum_1_1Tensor.md) & arg0, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes a unary primitive directly on [Tensor]() operands.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**([Tensor](Classes/classcum_1_1Tensor.md) & dst, const [Tensor](Classes/classcum_1_1Tensor.md) & arg0, const [Tensor](Classes/classcum_1_1Tensor.md) & arg1, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes a 2-input primitive directly on [Tensor]() operands.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[execute](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-execute)**([Tensor](Classes/classcum_1_1Tensor.md) & dst, const [Tensor](Classes/classcum_1_1Tensor.md) & arg0, const [Tensor](Classes/classcum_1_1Tensor.md) & arg1, const [Tensor](Classes/classcum_1_1Tensor.md) & arg2, const [__events__](Namespaces/namespacecum.md#using---events--) & deps ={}) const<br>Executes a 3-input primitive directly on [Tensor]() operands.  |
+| [Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) | **[multiple_src_arg](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-multiple-src-arg)**(int index)<br>Computes the indexed variadic source slot (`[Argument::multiple_src](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enumvalue-multiple-src) + index`) for `Sum` / `Concat`.  |
+| | **[Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive)**()<br>Constructs an empty, uncompiled primitive.  |
+| | **[Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive)**(const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-descriptor) & descriptor)<br>Compiles an executable primitive from `descriptor`.  |
+| | **[Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive)**(const Primitive & other) |
+| [Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-operator=)**(const [Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive) & other) |
+| | **[Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive)**(Primitive && other) |
+| [Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-operator=)**([Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-primitive) && other) |
+| | **[~Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-~primitive)**() |
+| void | **[compile](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-compile)**(const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-descriptor) & descriptor)<br>Compiles (or recompiles) this primitive from `descriptor`.  |
+| void | **[compile](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-compile)**()<br>Ensures the primitive is compiled from its stored descriptor.  |
+| bool | **[valid](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-valid)**() const<br>Checks whether this primitive is compiled and ready to execute.  |
+| | **[operator bool](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-operator-bool)**() const<br>Boolean conversion equivalent to [valid()](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-valid).  |
+| [Kind](/CUM/api/Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor/#enum-kind) | **[kind](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-kind)**() const<br>Returns operation category of this primitive.  |
+| const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-descriptor) & | **[descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-descriptor)**() const<br>Returns const reference to the [PrimitiveDescriptor]() from which this primitive was compiled.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**(std::span< const [ArgBinding](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/) > args, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes the primitive with explicit [ArgBinding]() pairs (accepts both [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) and [Tensor]()).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**(std::initializer_list< [ArgBinding](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/) > args, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes the primitive from a brace-initialized list of [ArgBinding]() pairs.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**(const [KVMap](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#using-kvmap) & kv_map, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes the primitive from a legacy `[Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) -> [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/)` map.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & dst, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & arg0, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes a unary primitive (`Elementwise`, `Softmax`, `Reduction`, `Reorder`).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & dst, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & arg0, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & arg1, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes a 2-input primitive (`Binary`, `Matmul` without bias, `ElementwiseBackward`, `SoftmaxBackward`, 2-input `Sum`/`Concat`).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & dst, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & arg0, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & arg1, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & arg2, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes a 3-input primitive (`Matmul` with bias, 3-input `Sum`/`Concat`).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & dst, std::span< const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) > srcs, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes a variadic-source primitive (`Sum`, `Concat`) over a span of [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) buffers.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & dst, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & arg0, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes a unary primitive directly on [Tensor]() operands.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & dst, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & arg0, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & arg1, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes a 2-input primitive directly on [Tensor]() operands.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[execute](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-execute)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & dst, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & arg0, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & arg1, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & arg2, const [__events__](/CUM/api/Namespaces/namespacecum/#using---events--) & deps ={}) const<br>Executes a 3-input primitive directly on [Tensor]() operands.  |
 
 ## Protected Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| std::unique_ptr< Impl > | **[impl](Classes/classcum_1_1neural__primitives_1_1Primitive.md#variable-impl)**  |
+| std::unique_ptr< Impl > | **[impl](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#variable-impl)**  |
 
 ## Detailed Description
 
@@ -72,7 +72,7 @@ class cum::neural_primitives::Primitive;
 
 Executable compute primitive representing a compiled neural network or tensor operation. 
 
-Wraps a backend-compiled primitive created from a [PrimitiveDescriptor](Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor.md) and executes asynchronously on the active compute stream, returning an [__event__](Namespaces/namespacecum.md#using---event--). 
+Wraps a backend-compiled primitive created from a [PrimitiveDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor/) and executes asynchronously on the active compute stream, returning an [__event__](/CUM/api/Namespaces/namespacecum/#using---event--). 
 
 ## Public Types Documentation
 
@@ -144,7 +144,7 @@ static inline Argument multiple_src_arg(
 )
 ```
 
-Computes the indexed variadic source slot (`[Argument::multiple_src](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enumvalue-multiple-src) + index`) for `Sum` / `Concat`. 
+Computes the indexed variadic source slot (`[Argument::multiple_src](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enumvalue-multiple-src) + index`) for `Sum` / `Concat`. 
 
 ### function Primitive
 
@@ -239,7 +239,7 @@ Checks whether this primitive is compiled and ready to execute.
 inline explicit operator bool() const
 ```
 
-Boolean conversion equivalent to [valid()](Classes/classcum_1_1neural__primitives_1_1Primitive.md#function-valid). 
+Boolean conversion equivalent to [valid()](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#function-valid). 
 
 ### function kind
 
@@ -266,7 +266,7 @@ __event__ execute(
 ) const
 ```
 
-Executes the primitive with explicit [ArgBinding]() pairs (accepts both [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) and [Tensor]()). 
+Executes the primitive with explicit [ArgBinding]() pairs (accepts both [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) and [Tensor]()). 
 
 ### function execute
 
@@ -288,7 +288,7 @@ __event__ execute(
 ) const
 ```
 
-Executes the primitive from a legacy `[Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) -> [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md)` map. 
+Executes the primitive from a legacy `[Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) -> [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/)` map. 
 
 ### function execute
 
@@ -339,7 +339,7 @@ __event__ execute(
 ) const
 ```
 
-Executes a variadic-source primitive (`Sum`, `Concat`) over a span of [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) buffers. 
+Executes a variadic-source primitive (`Sum`, `Concat`) over a span of [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) buffers. 
 
 ### function execute
 
@@ -391,4 +391,4 @@ std::unique_ptr< Impl > impl;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

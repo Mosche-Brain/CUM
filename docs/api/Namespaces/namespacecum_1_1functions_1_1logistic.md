@@ -11,39 +11,39 @@ title: cum::functions::logistic
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t | **[sigmoid](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid)**(cumeric_t x)<br>Evaluates scalar logistic sigmoid: f(x) = 1 / (1 + exp(-x)).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid)**(cumeric_t * r, const cumeric_t * v, const std::size_t N)<br>Computes vector sigmoid out-of-place: `r` = 1 / (1 + exp(-`v`)).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-in-place)**(cumeric_t * v, const std::size_t N)<br>Computes vector sigmoid in-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax)**(cumeric_t * r, const cumeric_t * v, const [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>Computes vector softmax normalization out-of-place: `r_i` = exp(`v_i`) / sum(exp(`v`)).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-in-place)**(cumeric_t * v, const [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>Computes vector softmax normalization in-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, const [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| cumeric_t | **[sigmoid_deriv](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv)**(cumeric_t x)<br>Evaluates sigmoid derivative from input `x:` f'(x) = sigmoid(x) * (1 - sigmoid(x)).  |
-| cumeric_t | **[sigmoid_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-from-result)**(cumeric_t x)<br>Evaluates sigmoid derivative directly from activated value `y` = sigmoid(x): f'(x) = y * (1 - y).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-in-place)**(cumeric_t * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv_from_result_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-from-result-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sigmoid_deriv_from_result_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-sigmoid-deriv-from-result-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv_from_result_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv-from-result-in-place)**(cumeric_t * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[softmax_deriv_from_result_in_place](Namespaces/namespacecum_1_1functions_1_1logistic.md#function-softmax-deriv-from-result-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
+| cumeric_t | **[sigmoid](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid)**(cumeric_t x)<br>Evaluates scalar logistic sigmoid: f(x) = 1 / (1 + exp(-x)).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid)**(cumeric_t * r, const cumeric_t * v, const std::size_t N)<br>Computes vector sigmoid out-of-place: `r` = 1 / (1 + exp(-`v`)).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-in-place)**(cumeric_t * v, const std::size_t N)<br>Computes vector sigmoid in-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax)**(cumeric_t * r, const cumeric_t * v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>Computes vector softmax normalization out-of-place: `r_i` = exp(`v_i`) / sum(exp(`v`)).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-in-place)**(cumeric_t * v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>Computes vector softmax normalization in-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| cumeric_t | **[sigmoid_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv)**(cumeric_t x)<br>Evaluates sigmoid derivative from input `x:` f'(x) = sigmoid(x) * (1 - sigmoid(x)).  |
+| cumeric_t | **[sigmoid_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-from-result)**(cumeric_t x)<br>Evaluates sigmoid derivative directly from activated value `y` = sigmoid(x): f'(x) = y * (1 - y).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-in-place)**(cumeric_t * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv_from_result_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-from-result-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sigmoid_deriv_from_result_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-sigmoid-deriv-from-result-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv_from_result_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv-from-result-in-place)**(cumeric_t * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[softmax_deriv_from_result_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/#function-softmax-deriv-from-result-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
 
 
 ## Functions Documentation
@@ -99,7 +99,7 @@ Computes vector sigmoid in-place.
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md) buffer modified in place. 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer modified in place. 
   * **N** Element count. 
 
 
@@ -173,7 +173,7 @@ Computes vector softmax normalization in-place.
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md) buffer modified in place. 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer modified in place. 
   * **N** Element count. 
 
 
@@ -473,4 +473,4 @@ __event__ softmax_deriv_from_result_in_place(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

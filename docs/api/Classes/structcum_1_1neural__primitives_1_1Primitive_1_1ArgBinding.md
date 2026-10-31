@@ -8,7 +8,7 @@ summary: Zero-copy argument binding pairing an Argument slot with a Memory or Te
 
 
 
-Zero-copy argument binding pairing an [Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) slot with a [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) or [Tensor]() reference. 
+Zero-copy argument binding pairing an [Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) slot with a [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) or [Tensor]() reference. 
 
 
 `#include <Primitive.hpp>`
@@ -17,15 +17,15 @@ Zero-copy argument binding pairing an [Argument](Classes/classcum_1_1neural__pri
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr | **[ArgBinding](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md#function-argbinding)**([Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) a, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & m) |
-| | **[ArgBinding](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md#function-argbinding)**([Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) a, const [Tensor](Classes/classcum_1_1Tensor.md) & t) |
+| constexpr | **[ArgBinding](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/#function-argbinding)**([Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) a, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & m) |
+| | **[ArgBinding](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/#function-argbinding)**([Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) a, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & t) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| [Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) | **[arg](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md#variable-arg)**  |
-| const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) * | **[memory](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md#variable-memory)**  |
+| [Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) | **[arg](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/#variable-arg)**  |
+| const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) * | **[memory](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/#variable-memory)**  |
 
 ## Public Functions Documentation
 
@@ -67,4 +67,4 @@ const Memory * memory = nullptr;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

@@ -11,13 +11,13 @@ title: cum::memory
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t * | **[allocate](Namespaces/namespacecum_1_1memory.md#function-allocate)**([dim_t](Namespaces/namespacecum.md#using-dim-t) size)<br>Allocates device memory for an array of elements of default numeric type cumeric_t.  |
-| [uint8](Namespaces/namespacecum.md#using-uint8) * | **[allocate_bytes](Namespaces/namespacecum_1_1memory.md#function-allocate-bytes)**([dim_t](Namespaces/namespacecum.md#using-dim-t) size)<br>Allocates raw byte storage in device memory.  |
-| void * | **[allocate](Namespaces/namespacecum_1_1memory.md#function-allocate)**([dim_t](Namespaces/namespacecum.md#using-dim-t) size, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype)<br>Allocates device memory buffer for elements of the specified runtime datatype.  |
-| void | **[free](Namespaces/namespacecum_1_1memory.md#function-free)**(void * chunk)<br>Frees a previously allocated device memory chunk.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[memcopy](Namespaces/namespacecum_1_1memory.md#function-memcopy)**(void * dst, const void * src, [dim_t](Namespaces/namespacecum.md#using-dim-t) size)<br>Asynchronously copies memory between memory regions.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[prefetch](Namespaces/namespacecum_1_1memory.md#function-prefetch)**(void * chunk, [dim_t](Namespaces/namespacecum.md#using-dim-t) size)<br>Asynchronously prefetches device memory to the active device.  |
-| template <typename T \> <br>T * | **[allocate](Namespaces/namespacecum_1_1memory.md#function-allocate)**([dim_t](Namespaces/namespacecum.md#using-dim-t) size)<br>Allocates device memory for an array of elements of static type `T`.  |
+| cumeric_t * | **[allocate](/CUM/api/Namespaces/namespacecum_1_1memory/#function-allocate)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) size)<br>Allocates device memory for an array of elements of default numeric type cumeric_t.  |
+| [uint8](/CUM/api/Namespaces/namespacecum/#using-uint8) * | **[allocate_bytes](/CUM/api/Namespaces/namespacecum_1_1memory/#function-allocate-bytes)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) size)<br>Allocates raw byte storage in device memory.  |
+| void * | **[allocate](/CUM/api/Namespaces/namespacecum_1_1memory/#function-allocate)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) size, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype)<br>Allocates device memory buffer for elements of the specified runtime datatype.  |
+| void | **[free](/CUM/api/Namespaces/namespacecum_1_1memory/#function-free)**(void * chunk)<br>Frees a previously allocated device memory chunk.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[memcopy](/CUM/api/Namespaces/namespacecum_1_1memory/#function-memcopy)**(void * dst, const void * src, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) size)<br>Asynchronously copies memory between memory regions.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[prefetch](/CUM/api/Namespaces/namespacecum_1_1memory/#function-prefetch)**(void * chunk, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) size)<br>Asynchronously prefetches device memory to the active device.  |
+| template <typename T \> <br>T * | **[allocate](/CUM/api/Namespaces/namespacecum_1_1memory/#function-allocate)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) size)<br>Allocates device memory for an array of elements of static type `T`.  |
 
 
 ## Functions Documentation
@@ -159,4 +159,4 @@ Allocates device memory for an array of elements of static type `T`.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

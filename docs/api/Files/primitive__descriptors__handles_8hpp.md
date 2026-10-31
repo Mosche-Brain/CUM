@@ -12,15 +12,15 @@ Internal oneDNN conversion helpers and Pimpl definition for PrimitiveDescriptor.
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
-| **[cum::neural_primitives::detail](Namespaces/namespacecum_1_1neural__primitives_1_1detail.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
+| **[cum::neural_primitives::detail](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1detail/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::neural_primitives::PrimitiveDescriptor::Impl](Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl.md)** <br>Single unified Pimpl definition shared across PrimitiveDescriptor.cpp and Primitive.cpp.  |
+| struct | **[cum::neural_primitives::PrimitiveDescriptor::Impl](/CUM/api/Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl/)** <br>Single unified Pimpl definition shared across PrimitiveDescriptor.cpp and Primitive.cpp.  |
 
 ## Detailed Description
 
@@ -34,4 +34,4 @@ Internal oneDNN conversion helpers and Pimpl definition for PrimitiveDescriptor.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

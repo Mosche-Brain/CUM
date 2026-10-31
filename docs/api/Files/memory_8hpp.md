@@ -12,8 +12,8 @@ Memory allocation, deallocation, copying, and prefetching routines for host and 
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::memory](Namespaces/namespacecum_1_1memory.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::memory](/CUM/api/Namespaces/namespacecum_1_1memory/)**  |
 
 ## Detailed Description
 
@@ -28,4 +28,4 @@ Provides unified device memory management functions supporting USM (Unified Shar
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

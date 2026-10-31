@@ -12,17 +12,17 @@ SYCL and oneMKL datatype dispatchers, type mapping traits, and fallback kernel t
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::internal](Namespaces/namespacecum_1_1internal.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::internal](/CUM/api/Namespaces/namespacecum_1_1internal/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::internal::sycl_type_map](Classes/structcum_1_1internal_1_1sycl__type__map.md)**  |
-| struct | **[cum::internal::sycl_type_map< float16 >](Classes/structcum_1_1internal_1_1sycl__type__map_3_01float16_01_4.md)**  |
-| struct | **[cum::internal::sycl_type_map< bfloat16 >](Classes/structcum_1_1internal_1_1sycl__type__map_3_01bfloat16_01_4.md)**  |
-| struct | **[cum::internal::scalar_buffer](Classes/structcum_1_1internal_1_1scalar__buffer.md)**  |
+| struct | **[cum::internal::sycl_type_map](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map/)**  |
+| struct | **[cum::internal::sycl_type_map< float16 >](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map_3_01float16_01_4/)**  |
+| struct | **[cum::internal::sycl_type_map< bfloat16 >](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map_3_01bfloat16_01_4/)**  |
+| struct | **[cum::internal::scalar_buffer](/CUM/api/Classes/structcum_1_1internal_1_1scalar__buffer/)**  |
 
 ## Detailed Description
 
@@ -36,4 +36,4 @@ SYCL and oneMKL datatype dispatchers, type mapping traits, and fallback kernel t
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

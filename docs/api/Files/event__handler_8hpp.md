@@ -12,14 +12,14 @@ Internal adapter bridging SYCL events with experimental::**event**.  [More...](#
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::detail](Namespaces/namespacecum_1_1detail.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::detail](/CUM/api/Namespaces/namespacecum_1_1detail/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::detail::event_handler](Classes/classcum_1_1detail_1_1event__handler.md)** <br>Factory and accessor bridging SYCL asynchronous events with CUM's [experimental::__event__]().  |
+| class | **[cum::detail::event_handler](/CUM/api/Classes/classcum_1_1detail_1_1event__handler/)** <br>Factory and accessor bridging SYCL asynchronous events with CUM's [experimental::__event__]().  |
 
 ## Detailed Description
 
@@ -33,4 +33,4 @@ Internal adapter bridging SYCL events with experimental::**event**.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

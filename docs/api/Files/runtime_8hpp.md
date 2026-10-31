@@ -6,18 +6,18 @@ summary: Device and queue abstractions and synchronization primitives.
 
 # include/cum/runtime.hpp
 
-[Device](Classes/structDevice.md) and queue abstractions and synchronization primitives.  [More...](#detailed-description)
+[Device](/CUM/api/Classes/structDevice/) and queue abstractions and synchronization primitives.  [More...](#detailed-description)
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::runtime](Namespaces/namespacecum_1_1runtime.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::runtime](/CUM/api/Namespaces/namespacecum_1_1runtime/)**  |
 
 ## Detailed Description
 
-[Device](Classes/structDevice.md) and queue abstractions and synchronization primitives. 
+[Device](/CUM/api/Classes/structDevice/) and queue abstractions and synchronization primitives. 
 
 **Author**: jaro 
 
@@ -27,4 +27,4 @@ summary: Device and queue abstractions and synchronization primitives.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

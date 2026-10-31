@@ -12,18 +12,18 @@ oneDNN backend handle implementations for neural primitive structures.  [More...
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
-| **[cum::neural_primitives::handles](Namespaces/namespacecum_1_1neural__primitives_1_1handles.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
+| **[cum::neural_primitives::handles](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1handles/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::neural_primitives::handles::__memory__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md)** <br>Underlying oneDNN memory wrapper with optional USM shared ownership.  |
-| struct | **[cum::neural_primitives::handles::__engine__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____.md)** <br>Underlying oneDNN engine wrapper.  |
-| struct | **[cum::neural_primitives::handles::__stream__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____stream____.md)** <br>Underlying oneDNN stream wrapper.  |
-| struct | **[cum::neural_primitives::handles::__desc__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md)** <br>Underlying oneDNN memory descriptor wrapper.  |
+| struct | **[cum::neural_primitives::handles::__memory__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/)** <br>Underlying oneDNN memory wrapper with optional USM shared ownership.  |
+| struct | **[cum::neural_primitives::handles::__engine__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____/)** <br>Underlying oneDNN engine wrapper.  |
+| struct | **[cum::neural_primitives::handles::__stream__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____stream____/)** <br>Underlying oneDNN stream wrapper.  |
+| struct | **[cum::neural_primitives::handles::__desc__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/)** <br>Underlying oneDNN memory descriptor wrapper.  |
 
 ## Detailed Description
 
@@ -37,4 +37,4 @@ oneDNN backend handle implementations for neural primitive structures.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

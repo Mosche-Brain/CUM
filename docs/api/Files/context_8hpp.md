@@ -12,14 +12,14 @@ Intel oneAPI SYCL and oneDNN runtime context and resource management.  [More...]
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::internal](Namespaces/namespacecum_1_1internal.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::internal](/CUM/api/Namespaces/namespacecum_1_1internal/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::internal::Context](Classes/structcum_1_1internal_1_1Context.md)** <br>Singleton hardware and runtime execution context for oneAPI / SYCL / oneDNN backends.  |
+| struct | **[cum::internal::Context](/CUM/api/Classes/structcum_1_1internal_1_1Context/)** <br>Singleton hardware and runtime execution context for oneAPI / SYCL / oneDNN backends.  |
 
 ## Detailed Description
 
@@ -34,4 +34,4 @@ Manages SYCL queue, context, device, oneDNN engine and stream, constant buffers,
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

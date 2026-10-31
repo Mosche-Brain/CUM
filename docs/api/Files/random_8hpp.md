@@ -12,8 +12,8 @@ Random number generators for filling memory buffers with uniform and normal dist
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::random](Namespaces/namespacecum_1_1random.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::random](/CUM/api/Namespaces/namespacecum_1_1random/)**  |
 
 ## Detailed Description
 
@@ -28,4 +28,4 @@ Supports typed (cumeric_t) and generic runtime datatype buffers, with configurab
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

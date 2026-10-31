@@ -12,9 +12,9 @@ Fused deep learning neural network layer kernels and loss functions.  [More...](
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
-| **[cum::neural_primitives::neural_kernels](Namespaces/namespacecum_1_1neural__primitives_1_1neural__kernels.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
+| **[cum::neural_primitives::neural_kernels](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1neural__kernels/)**  |
 
 ## Detailed Description
 
@@ -32,4 +32,4 @@ Implements fused dense feed-forward GEMM + bias + activation layers and binary c
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

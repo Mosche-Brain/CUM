@@ -11,14 +11,14 @@ title: cum::runtime
 
 |                | Name           |
 | -------------- | -------------- |
-| typedef struct [Device](Namespaces/namespacecum_1_1runtime.md#typedef-device) | **[Device](Namespaces/namespacecum_1_1runtime.md#typedef-device)**  |
-| typedef struct [Queue](Namespaces/namespacecum_1_1runtime.md#typedef-queue) | **[Queue](Namespaces/namespacecum_1_1runtime.md#typedef-queue)**  |
+| typedef struct [Device](/CUM/api/Namespaces/namespacecum_1_1runtime/#typedef-device) | **[Device](/CUM/api/Namespaces/namespacecum_1_1runtime/#typedef-device)**  |
+| typedef struct [Queue](/CUM/api/Namespaces/namespacecum_1_1runtime/#typedef-queue) | **[Queue](/CUM/api/Namespaces/namespacecum_1_1runtime/#typedef-queue)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| void | **[sync](Namespaces/namespacecum_1_1runtime.md#function-sync)**()<br>Blocks host execution until all submitted asynchronous operations complete on the device queue.  |
+| void | **[sync](/CUM/api/Namespaces/namespacecum_1_1runtime/#function-sync)**()<br>Blocks host execution until all submitted asynchronous operations complete on the device queue.  |
 
 ## Types Documentation
 
@@ -53,4 +53,4 @@ Blocks host execution until all submitted asynchronous operations complete on th
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

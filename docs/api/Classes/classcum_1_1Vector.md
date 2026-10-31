@@ -17,73 +17,73 @@ Templated generic 1D dense vector.  [More...](#detailed-description)
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Vector](Classes/classcum_1_1Vector.md#function-vector)**()<br>Default constructor.  |
-| | **[Vector](Classes/classcum_1_1Vector.md#function-vector)**([dim_t](Namespaces/namespacecum.md#using-dim-t) len)<br>Constructs dynamic vector of specified length.  |
-| | **[Vector](Classes/classcum_1_1Vector.md#function-vector)**(const Vector & other)<br>Copy constructor.  |
-| | **[Vector](Classes/classcum_1_1Vector.md#function-vector)**(Vector && other)<br>Move constructor.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator=](Classes/classcum_1_1Vector.md#function-operator=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other) |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator=](Classes/classcum_1_1Vector.md#function-operator=)**([Vector](Classes/classcum_1_1Vector.md#function-vector) && other) |
-| | **[~Vector](Classes/classcum_1_1Vector.md#function-~vector)**() |
-| T & | **[operator[]](Classes/classcum_1_1Vector.md#function-operator[])**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) index) |
-| const T | **[operator[]](Classes/classcum_1_1Vector.md#function-operator[])**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) index) const |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[length](Classes/classcum_1_1Vector.md#function-length)**() const |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[size](Classes/classcum_1_1Vector.md#function-size)**() const |
-| T * | **[data](Classes/classcum_1_1Vector.md#function-data)**() |
-| const T * | **[data](Classes/classcum_1_1Vector.md#function-data)**() const |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator+=](Classes/classcum_1_1Vector.md#function-operator+=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other) |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator-=](Classes/classcum_1_1Vector.md#function-operator-=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other) |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator*=](Classes/classcum_1_1Vector.md#function-operator*=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other) |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator*=](Classes/classcum_1_1Vector.md#function-operator*=)**(T scalar) |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator/=](Classes/classcum_1_1Vector.md#function-operator/=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other) |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator/=](Classes/classcum_1_1Vector.md#function-operator/=)**(T scalar) |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[cross](Classes/classcum_1_1Vector.md#function-cross)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other) const<br>Computes 3D vector cross product.  |
-| T | **[dot](Classes/classcum_1_1Vector.md#function-dot)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other) const<br>Computes inner dot product with another vector.  |
-| T | **[sum](Classes/classcum_1_1Vector.md#function-sum)**() const<br>Computes sum of all vector elements.  |
-| T | **[norm](Classes/classcum_1_1Vector.md#function-norm)**() const<br>Computes Euclidean L2 norm of vector.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[normalize](Classes/classcum_1_1Vector.md#function-normalize)**() const<br>Computes normalized vector with unit L2 norm.  |
-| | **[Vector](Classes/classcum_1_1Vector.md#function-vector)**([dim_t](Namespaces/namespacecum.md#using-dim-t) lenght)<br>Constructs an uninitialized vector of the given length.  |
-| | **[Vector](Classes/classcum_1_1Vector.md#function-vector)**(std::size_t lenght, cumeric_t value)<br>Constructs a vector of the given length filled with an initial scalar value.  |
-| | **[Vector](Classes/classcum_1_1Vector.md#function-vector)**() =default<br>Default constructor creating an empty vector.  |
-| | **[operator Matrix](Classes/classcum_1_1Vector.md#function-operator-matrix)**() const<br>Implicit conversion operator from [Vector](Classes/classcum_1_1Vector.md) to 1D/column [Matrix](Classes/classcum_1_1Matrix.md).  |
-| cumeric_t & | **[operator[]](Classes/classcum_1_1Vector.md#function-operator[])**(const std::size_t index)<br>Subscript access operator (lvalue reference).  |
-| const cumeric_t | **[operator[]](Classes/classcum_1_1Vector.md#function-operator[])**(const std::size_t index) const<br>Subscript access operator (const value).  |
-| cumeric_t * | **[data](Classes/classcum_1_1Vector.md#function-data)**()<br>Returns pointer to the underlying raw memory buffer.  |
-| std::size_t | **[lenght](Classes/classcum_1_1Vector.md#function-lenght)**() const<br>Returns the length (number of elements) of the vector.  |
-| std::size_t | **[size](Classes/classcum_1_1Vector.md#function-size)**() const<br>Returns the total size (number of elements) of the vector.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator+=](Classes/classcum_1_1Vector.md#function-operator+=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other)<br>In-place vector addition (`this += other`).  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator+=](Classes/classcum_1_1Vector.md#function-operator+=)**([Matrix](Classes/classcum_1_1Matrix.md) & matrix)<br>In-place matrix addition.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator-=](Classes/classcum_1_1Vector.md#function-operator-=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other)<br>In-place vector subtraction (`this -= other`).  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator*=](Classes/classcum_1_1Vector.md#function-operator*=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other)<br>In-place elementwise vector multiplication.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator*=](Classes/classcum_1_1Vector.md#function-operator*=)**(const cumeric_t & scalar)<br>In-place scalar multiplication.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[operator/=](Classes/classcum_1_1Vector.md#function-operator/=)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other)<br>In-place elementwise vector division.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[dot](Classes/classcum_1_1Vector.md#function-dot)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other)<br>Computes the dot (inner) product with another vector.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[dotInPlace](Classes/classcum_1_1Vector.md#function-dotinplace)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & other)<br>In-place dot product computation.  |
-| cumeric_t | **[sum](Classes/classcum_1_1Vector.md#function-sum)**()<br>Computes the sum of all elements in the vector.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[normalize](Classes/classcum_1_1Vector.md#function-normalize)**()<br>Normalizes the vector to unit L2 norm, returning a new vector.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) & | **[normalizeInPlace](Classes/classcum_1_1Vector.md#function-normalizeinplace)**()<br>Normalizes the vector in-place.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[random](Classes/classcum_1_1Vector.md#function-random)**(T min =static_cast< T >(-1), T max =static_cast< T >(1))<br>Creates random vector with fixed compile-time length.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[random](Classes/classcum_1_1Vector.md#function-random)**([dim_t](Namespaces/namespacecum.md#using-dim-t) len, T min, T max)<br>Creates random dynamic vector of specified length.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[zeros](Classes/classcum_1_1Vector.md#function-zeros)**()<br>Creates zero-filled vector with fixed compile-time length.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[zeros](Classes/classcum_1_1Vector.md#function-zeros)**([dim_t](Namespaces/namespacecum.md#using-dim-t) len)<br>Creates zero-filled dynamic vector of specified length.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[ones](Classes/classcum_1_1Vector.md#function-ones)**()<br>Creates ones-filled vector with fixed compile-time length.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[ones](Classes/classcum_1_1Vector.md#function-ones)**([dim_t](Namespaces/namespacecum.md#using-dim-t) len)<br>Creates ones-filled dynamic vector of specified length.  |
+| | **[Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)**()<br>Default constructor.  |
+| | **[Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) len)<br>Constructs dynamic vector of specified length.  |
+| | **[Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)**(const Vector & other)<br>Copy constructor.  |
+| | **[Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)**(Vector && other)<br>Move constructor.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator=](/CUM/api/Classes/classcum_1_1Vector/#function-operator=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other) |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator=](/CUM/api/Classes/classcum_1_1Vector/#function-operator=)**([Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) && other) |
+| | **[~Vector](/CUM/api/Classes/classcum_1_1Vector/#function-~vector)**() |
+| T & | **[operator[]](/CUM/api/Classes/classcum_1_1Vector/#function-operator[])**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) index) |
+| const T | **[operator[]](/CUM/api/Classes/classcum_1_1Vector/#function-operator[])**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) index) const |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[length](/CUM/api/Classes/classcum_1_1Vector/#function-length)**() const |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[size](/CUM/api/Classes/classcum_1_1Vector/#function-size)**() const |
+| T * | **[data](/CUM/api/Classes/classcum_1_1Vector/#function-data)**() |
+| const T * | **[data](/CUM/api/Classes/classcum_1_1Vector/#function-data)**() const |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator+=](/CUM/api/Classes/classcum_1_1Vector/#function-operator+=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other) |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator-=](/CUM/api/Classes/classcum_1_1Vector/#function-operator-=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other) |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator*=](/CUM/api/Classes/classcum_1_1Vector/#function-operator*=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other) |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator*=](/CUM/api/Classes/classcum_1_1Vector/#function-operator*=)**(T scalar) |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator/=](/CUM/api/Classes/classcum_1_1Vector/#function-operator/=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other) |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator/=](/CUM/api/Classes/classcum_1_1Vector/#function-operator/=)**(T scalar) |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[cross](/CUM/api/Classes/classcum_1_1Vector/#function-cross)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other) const<br>Computes 3D vector cross product.  |
+| T | **[dot](/CUM/api/Classes/classcum_1_1Vector/#function-dot)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other) const<br>Computes inner dot product with another vector.  |
+| T | **[sum](/CUM/api/Classes/classcum_1_1Vector/#function-sum)**() const<br>Computes sum of all vector elements.  |
+| T | **[norm](/CUM/api/Classes/classcum_1_1Vector/#function-norm)**() const<br>Computes Euclidean L2 norm of vector.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[normalize](/CUM/api/Classes/classcum_1_1Vector/#function-normalize)**() const<br>Computes normalized vector with unit L2 norm.  |
+| | **[Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lenght)<br>Constructs an uninitialized vector of the given length.  |
+| | **[Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)**(std::size_t lenght, cumeric_t value)<br>Constructs a vector of the given length filled with an initial scalar value.  |
+| | **[Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)**() =default<br>Default constructor creating an empty vector.  |
+| | **[operator Matrix](/CUM/api/Classes/classcum_1_1Vector/#function-operator-matrix)**() const<br>Implicit conversion operator from [Vector](/CUM/api/Classes/classcum_1_1Vector/) to 1D/column [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| cumeric_t & | **[operator[]](/CUM/api/Classes/classcum_1_1Vector/#function-operator[])**(const std::size_t index)<br>Subscript access operator (lvalue reference).  |
+| const cumeric_t | **[operator[]](/CUM/api/Classes/classcum_1_1Vector/#function-operator[])**(const std::size_t index) const<br>Subscript access operator (const value).  |
+| cumeric_t * | **[data](/CUM/api/Classes/classcum_1_1Vector/#function-data)**()<br>Returns pointer to the underlying raw memory buffer.  |
+| std::size_t | **[lenght](/CUM/api/Classes/classcum_1_1Vector/#function-lenght)**() const<br>Returns the length (number of elements) of the vector.  |
+| std::size_t | **[size](/CUM/api/Classes/classcum_1_1Vector/#function-size)**() const<br>Returns the total size (number of elements) of the vector.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator+=](/CUM/api/Classes/classcum_1_1Vector/#function-operator+=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other)<br>In-place vector addition (`this += other`).  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator+=](/CUM/api/Classes/classcum_1_1Vector/#function-operator+=)**([Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & matrix)<br>In-place matrix addition.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator-=](/CUM/api/Classes/classcum_1_1Vector/#function-operator-=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other)<br>In-place vector subtraction (`this -= other`).  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator*=](/CUM/api/Classes/classcum_1_1Vector/#function-operator*=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other)<br>In-place elementwise vector multiplication.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator*=](/CUM/api/Classes/classcum_1_1Vector/#function-operator*=)**(const cumeric_t & scalar)<br>In-place scalar multiplication.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[operator/=](/CUM/api/Classes/classcum_1_1Vector/#function-operator/=)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other)<br>In-place elementwise vector division.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[dot](/CUM/api/Classes/classcum_1_1Vector/#function-dot)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other)<br>Computes the dot (inner) product with another vector.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[dotInPlace](/CUM/api/Classes/classcum_1_1Vector/#function-dotinplace)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & other)<br>In-place dot product computation.  |
+| cumeric_t | **[sum](/CUM/api/Classes/classcum_1_1Vector/#function-sum)**()<br>Computes the sum of all elements in the vector.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[normalize](/CUM/api/Classes/classcum_1_1Vector/#function-normalize)**()<br>Normalizes the vector to unit L2 norm, returning a new vector.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & | **[normalizeInPlace](/CUM/api/Classes/classcum_1_1Vector/#function-normalizeinplace)**()<br>Normalizes the vector in-place.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[random](/CUM/api/Classes/classcum_1_1Vector/#function-random)**(T min =static_cast< T >(-1), T max =static_cast< T >(1))<br>Creates random vector with fixed compile-time length.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[random](/CUM/api/Classes/classcum_1_1Vector/#function-random)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) len, T min, T max)<br>Creates random dynamic vector of specified length.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[zeros](/CUM/api/Classes/classcum_1_1Vector/#function-zeros)**()<br>Creates zero-filled vector with fixed compile-time length.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[zeros](/CUM/api/Classes/classcum_1_1Vector/#function-zeros)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) len)<br>Creates zero-filled dynamic vector of specified length.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[ones](/CUM/api/Classes/classcum_1_1Vector/#function-ones)**()<br>Creates ones-filled vector with fixed compile-time length.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[ones](/CUM/api/Classes/classcum_1_1Vector/#function-ones)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) len)<br>Creates ones-filled dynamic vector of specified length.  |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > | **[operator+](Classes/classcum_1_1Vector.md#friend-operator+)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & u)  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > | **[operator-](Classes/classcum_1_1Vector.md#friend-operator-)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & u)  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > | **[operator*](Classes/classcum_1_1Vector.md#friend-operator*)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & u)  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > | **[operator*](Classes/classcum_1_1Vector.md#friend-operator*)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & v, std::type_identity_t< U > scalar)  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > | **[operator/](Classes/classcum_1_1Vector.md#friend-operator/)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & u)  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > | **[operator/](Classes/classcum_1_1Vector.md#friend-operator/)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector)< U, L > & v, std::type_identity_t< U > scalar)  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[operator+](Classes/classcum_1_1Vector.md#friend-operator+)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector) & u) <br>Elementwise addition of two vectors.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[operator+](Classes/classcum_1_1Vector.md#friend-operator+)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & v, const [Matrix](Classes/classcum_1_1Matrix.md) & A) <br>Addition of a vector and a matrix.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[operator-](Classes/classcum_1_1Vector.md#friend-operator-)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector) & u) <br>Elementwise subtraction of two vectors.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[operator*](Classes/classcum_1_1Vector.md#friend-operator*)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector) & u) <br>Elementwise multiplication of two vectors.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[operator*](Classes/classcum_1_1Vector.md#friend-operator*)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & v, const cumeric_t & scalar) <br>Scalar multiplication of a vector.  |
-| [Vector](Classes/classcum_1_1Vector.md#function-vector) | **[operator/](Classes/classcum_1_1Vector.md#friend-operator/)**(const [Vector](Classes/classcum_1_1Vector.md#function-vector) & v, const [Vector](Classes/classcum_1_1Vector.md#function-vector) & u) <br>Elementwise division of two vectors.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > | **[operator+](/CUM/api/Classes/classcum_1_1Vector/#friend-operator+)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & u)  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > | **[operator-](/CUM/api/Classes/classcum_1_1Vector/#friend-operator-)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & u)  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > | **[operator*](/CUM/api/Classes/classcum_1_1Vector/#friend-operator*)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & u)  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > | **[operator*](/CUM/api/Classes/classcum_1_1Vector/#friend-operator*)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & v, std::type_identity_t< U > scalar)  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > | **[operator/](/CUM/api/Classes/classcum_1_1Vector/#friend-operator/)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & u)  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > | **[operator/](/CUM/api/Classes/classcum_1_1Vector/#friend-operator/)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector)< U, L > & v, std::type_identity_t< U > scalar)  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[operator+](/CUM/api/Classes/classcum_1_1Vector/#friend-operator+)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & u) <br>Elementwise addition of two vectors.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[operator+](/CUM/api/Classes/classcum_1_1Vector/#friend-operator+)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & v, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & A) <br>Addition of a vector and a matrix.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[operator-](/CUM/api/Classes/classcum_1_1Vector/#friend-operator-)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & u) <br>Elementwise subtraction of two vectors.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[operator*](/CUM/api/Classes/classcum_1_1Vector/#friend-operator*)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & u) <br>Elementwise multiplication of two vectors.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[operator*](/CUM/api/Classes/classcum_1_1Vector/#friend-operator*)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & v, const cumeric_t & scalar) <br>Scalar multiplication of a vector.  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) | **[operator/](/CUM/api/Classes/classcum_1_1Vector/#friend-operator/)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & v, const [Vector](/CUM/api/Classes/classcum_1_1Vector/#function-vector) & u) <br>Elementwise division of two vectors.  |
 
 ## Detailed Description
 
@@ -104,7 +104,7 @@ Templated generic 1D dense vector.
 1D numeric dense vector allocated in unified device memory.
 
 
-Provides vector arithmetic, dot product, normalization, and conversion to/from [Matrix](Classes/classcum_1_1Matrix.md). 
+Provides vector arithmetic, dot product, normalization, and conversion to/from [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ## Public Functions Documentation
 
@@ -143,7 +143,7 @@ Copy constructor.
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) to copy from. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) to copy from. 
 
 
 ### function Vector
@@ -158,7 +158,7 @@ Move constructor.
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) to move from. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) to move from. 
 
 
 ### function operator=
@@ -301,7 +301,7 @@ Computes 3D vector cross product.
   * **other** Right-hand side vector. 
 
 
-**Return**: Cross product [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Cross product [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ### function dot
 
@@ -315,7 +315,7 @@ Computes inner dot product with another vector.
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) operand. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) operand. 
 
 
 **Return**: Scalar dot product. 
@@ -348,7 +348,7 @@ Vector normalize() const
 
 Computes normalized vector with unit L2 norm. 
 
-**Return**: Normalized [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Normalized [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ### function Vector
 
@@ -396,9 +396,9 @@ Default constructor creating an empty vector.
 operator Matrix() const
 ```
 
-Implicit conversion operator from [Vector](Classes/classcum_1_1Vector.md) to 1D/column [Matrix](Classes/classcum_1_1Matrix.md). 
+Implicit conversion operator from [Vector](/CUM/api/Classes/classcum_1_1Vector/) to 1D/column [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
-**Return**: [Matrix](Classes/classcum_1_1Matrix.md) representation of the vector. 
+**Return**: [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) representation of the vector. 
 
 ### function operator[]
 
@@ -476,7 +476,7 @@ In-place vector addition (`this += other`).
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) to add. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) to add. 
 
 
 **Return**: Reference to `*this`. 
@@ -493,7 +493,7 @@ In-place matrix addition.
 
 **Parameters**: 
 
-  * **matrix** [Matrix](Classes/classcum_1_1Matrix.md) to add. 
+  * **matrix** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to add. 
 
 
 **Return**: Reference to `*this`. 
@@ -510,7 +510,7 @@ In-place vector subtraction (`this -= other`).
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) to subtract. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) to subtract. 
 
 
 **Return**: Reference to `*this`. 
@@ -527,7 +527,7 @@ In-place elementwise vector multiplication.
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) to multiply with. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) to multiply with. 
 
 
 **Return**: Reference to `*this`. 
@@ -561,7 +561,7 @@ In-place elementwise vector division.
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) denominator. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) denominator. 
 
 
 **Return**: Reference to `*this`. 
@@ -578,7 +578,7 @@ Computes the dot (inner) product with another vector.
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) to compute dot product with. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) to compute dot product with. 
 
 
 **Return**: Result vector containing the dot product. 
@@ -595,7 +595,7 @@ In-place dot product computation.
 
 **Parameters**: 
 
-  * **other** [Vector](Classes/classcum_1_1Vector.md) to compute dot product with. 
+  * **other** [Vector](/CUM/api/Classes/classcum_1_1Vector/) to compute dot product with. 
 
 
 **Return**: Reference to `*this`. 
@@ -647,7 +647,7 @@ Creates random vector with fixed compile-time length.
   * **max** Maximum random bound. 
 
 
-**Return**: Random [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Random [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ### function random
 
@@ -663,12 +663,12 @@ Creates random dynamic vector of specified length.
 
 **Parameters**: 
 
-  * **len** [Vector](Classes/classcum_1_1Vector.md) length. 
+  * **len** [Vector](/CUM/api/Classes/classcum_1_1Vector/) length. 
   * **min** Minimum random bound. 
   * **max** Maximum random bound. 
 
 
-**Return**: Random [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Random [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ### function zeros
 
@@ -678,7 +678,7 @@ static Vector zeros()
 
 Creates zero-filled vector with fixed compile-time length. 
 
-**Return**: Zero-filled [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Zero-filled [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ### function zeros
 
@@ -692,10 +692,10 @@ Creates zero-filled dynamic vector of specified length.
 
 **Parameters**: 
 
-  * **len** [Vector](Classes/classcum_1_1Vector.md) length. 
+  * **len** [Vector](/CUM/api/Classes/classcum_1_1Vector/) length. 
 
 
-**Return**: Zero-filled [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Zero-filled [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ### function ones
 
@@ -705,7 +705,7 @@ static Vector ones()
 
 Creates ones-filled vector with fixed compile-time length. 
 
-**Return**: Ones-filled [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Ones-filled [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ### function ones
 
@@ -719,10 +719,10 @@ Creates ones-filled dynamic vector of specified length.
 
 **Parameters**: 
 
-  * **len** [Vector](Classes/classcum_1_1Vector.md) length. 
+  * **len** [Vector](/CUM/api/Classes/classcum_1_1Vector/) length. 
 
 
-**Return**: Ones-filled [Vector](Classes/classcum_1_1Vector.md). 
+**Return**: Ones-filled [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
 
 ## Friends
 
@@ -886,7 +886,7 @@ Scalar multiplication of a vector.
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md). 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/). 
   * **scalar** Scalar value. 
 
 
@@ -914,4 +914,4 @@ Elementwise division of two vectors.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

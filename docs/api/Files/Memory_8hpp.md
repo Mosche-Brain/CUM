@@ -12,14 +12,14 @@ Memory object abstraction for deep learning primitives.  [More...](#detailed-des
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::neural_primitives::Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md)** <br>Storage buffer managed by neural primitive engine according to a [Descriptor]().  |
+| class | **[cum::neural_primitives::Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/)** <br>Storage buffer managed by neural primitive engine according to a [Descriptor]().  |
 
 ## Detailed Description
 
@@ -37,4 +37,4 @@ Encapsulates allocated device storage managed by the underlying neural primitive
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

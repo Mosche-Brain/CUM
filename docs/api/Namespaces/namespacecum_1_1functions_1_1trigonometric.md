@@ -11,48 +11,48 @@ title: cum::functions::trigonometric
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t | **[sin](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin)**(cumeric_t x)<br>Evaluates scalar sine: sin(x).  |
-| cumeric_t | **[cos](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos)**(cumeric_t x)<br>Evaluates scalar cosine: cos(x).  |
-| cumeric_t | **[tan](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan)**(cumeric_t x)<br>Evaluates scalar tangent: tan(x).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-in-place)**(cumeric_t * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, const std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| cumeric_t | **[sin_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-deriv)**(cumeric_t x) |
-| cumeric_t | **[cos_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-deriv)**(cumeric_t x) |
-| cumeric_t | **[tan_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv)**(cumeric_t x) |
-| cumeric_t | **[tan_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-from-result)**(cumeric_t x) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sin_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-sin-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cos_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-cos-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv_in_place_from_result](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-in-place-from-result)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tan_deriv_in_place_from_result](Namespaces/namespacecum_1_1functions_1_1trigonometric.md#function-tan-deriv-in-place-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
+| cumeric_t | **[sin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin)**(cumeric_t x)<br>Evaluates scalar sine: sin(x).  |
+| cumeric_t | **[cos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos)**(cumeric_t x)<br>Evaluates scalar cosine: cos(x).  |
+| cumeric_t | **[tan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan)**(cumeric_t x)<br>Evaluates scalar tangent: tan(x).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-in-place)**(cumeric_t * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, const std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| cumeric_t | **[sin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-deriv)**(cumeric_t x) |
+| cumeric_t | **[cos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-deriv)**(cumeric_t x) |
+| cumeric_t | **[tan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv)**(cumeric_t x) |
+| cumeric_t | **[tan_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-from-result)**(cumeric_t x) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sin_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-sin-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cos_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-cos-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv_in_place_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-in-place-from-result)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tan_deriv_in_place_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/#function-tan-deriv-in-place-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
 
 
 ## Functions Documentation
@@ -535,4 +535,4 @@ __event__ tan_deriv_in_place_from_result(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

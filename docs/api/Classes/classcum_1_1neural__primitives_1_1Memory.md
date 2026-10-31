@@ -17,42 +17,42 @@ Storage buffer managed by neural primitive engine according to a [Descriptor]().
 
 |                | Name           |
 | -------------- | -------------- |
-| using [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md) | **[Descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#using-descriptor)** <br>[Descriptor]() describing the layout of this memory.  |
+| using [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/) | **[Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#using-descriptor)** <br>[Descriptor]() describing the layout of this memory.  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**()<br>Constructs an empty memory handle.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#using-descriptor) & desc)<br>Constructs memory buffer according to descriptor using shared USM storage.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#using-descriptor) & desc, void * data)<br>Constructs memory object wrapping existing raw data pointer.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#using-descriptor) & desc, [Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md) & engine)<br>Constructs memory buffer on specified compute engine.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#using-descriptor) & desc, [Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md) & engine, void * data)<br>Constructs memory object on engine wrapping existing raw data pointer.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(const [Descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#using-descriptor) & desc, const Memory & source)<br>Constructs memory view over source memory object.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(const [handles::__memory__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md) & handle)<br>Constructs memory object from backend handle.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**([handles::__memory__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md) & handle)<br>Constructs memory object from mutable backend handle.  |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(const Memory & other) |
-| [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-operator=)**(const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory) & other) |
-| | **[Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory)**(Memory && other) |
-| [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-operator=)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-memory) && other) |
-| | **[~Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-~memory)**() |
-| bool | **[valid](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-valid)**() const<br>Checks whether this memory object holds a valid backend memory handle.  |
-| | **[operator bool](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-operator-bool)**() const<br>Boolean conversion equivalent to [valid()](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-valid).  |
-| [Descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#using-descriptor) | **[descriptor](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-descriptor)**() const<br>Returns the [MemoryDescriptor]() associated with this memory buffer.  |
-| void * | **[data](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-data)**()<br>Returns pointer to mapped data buffer.  |
-| const void * | **[data](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-data)**() const<br>Returns const pointer to mapped data buffer.  |
-| template <typename T \> <br>T * | **[data](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-data)**()<br>Typed pointer accessor for the underlying data buffer.  |
-| template <typename T \> <br>const T * | **[data](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-data)**() const<br>Typed const pointer accessor for the underlying data buffer.  |
-| void | **[set_data](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-set-data)**(void * data)<br>Rebinds memory object to new raw data buffer.  |
-| std::shared_ptr< [handles::__memory__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md) > | **[owner](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-owner)**() const<br>Returns shared pointer to owner handle if this is a view.  |
-| const [handles::__memory__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md) & | **[handle](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-handle)**() const<br>Returns const reference to backend memory handle.  |
-| [handles::__memory__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md) & | **[handle](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-handle)**()<br>Returns mutable reference to backend memory handle.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**()<br>Constructs an empty memory handle.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#using-descriptor) & desc)<br>Constructs memory buffer according to descriptor using shared USM storage.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#using-descriptor) & desc, void * data)<br>Constructs memory object wrapping existing raw data pointer.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#using-descriptor) & desc, [Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/) & engine)<br>Constructs memory buffer on specified compute engine.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#using-descriptor) & desc, [Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/) & engine, void * data)<br>Constructs memory object on engine wrapping existing raw data pointer.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(const [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#using-descriptor) & desc, const Memory & source)<br>Constructs memory view over source memory object.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(const [handles::__memory__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/) & handle)<br>Constructs memory object from backend handle.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**([handles::__memory__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/) & handle)<br>Constructs memory object from mutable backend handle.  |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(const Memory & other) |
+| [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-operator=)**(const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory) & other) |
+| | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory)**(Memory && other) |
+| [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-operator=)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-memory) && other) |
+| | **[~Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-~memory)**() |
+| bool | **[valid](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-valid)**() const<br>Checks whether this memory object holds a valid backend memory handle.  |
+| | **[operator bool](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-operator-bool)**() const<br>Boolean conversion equivalent to [valid()](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-valid).  |
+| [Descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#using-descriptor) | **[descriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-descriptor)**() const<br>Returns the [MemoryDescriptor]() associated with this memory buffer.  |
+| void * | **[data](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-data)**()<br>Returns pointer to mapped data buffer.  |
+| const void * | **[data](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-data)**() const<br>Returns const pointer to mapped data buffer.  |
+| template <typename T \> <br>T * | **[data](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-data)**()<br>Typed pointer accessor for the underlying data buffer.  |
+| template <typename T \> <br>const T * | **[data](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-data)**() const<br>Typed const pointer accessor for the underlying data buffer.  |
+| void | **[set_data](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-set-data)**(void * data)<br>Rebinds memory object to new raw data buffer.  |
+| std::shared_ptr< [handles::__memory__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/) > | **[owner](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-owner)**() const<br>Returns shared pointer to owner handle if this is a view.  |
+| const [handles::__memory__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/) & | **[handle](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-handle)**() const<br>Returns const reference to backend memory handle.  |
+| [handles::__memory__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/) & | **[handle](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-handle)**()<br>Returns mutable reference to backend memory handle.  |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::Tensor](Classes/classcum_1_1neural__primitives_1_1Memory.md#friend-cumtensor)**  |
+| class | **[cum::Tensor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#friend-cumtensor)**  |
 
 ## Public Types Documentation
 
@@ -86,7 +86,7 @@ Constructs memory buffer according to descriptor using shared USM storage.
 
 **Parameters**: 
 
-  * **desc** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) descriptor. 
+  * **desc** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) descriptor. 
 
 
 ### function Memory
@@ -102,7 +102,7 @@ Constructs memory object wrapping existing raw data pointer.
 
 **Parameters**: 
 
-  * **desc** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) descriptor. 
+  * **desc** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) descriptor. 
   * **data** Pointer to existing memory. 
 
 
@@ -119,7 +119,7 @@ Constructs memory buffer on specified compute engine.
 
 **Parameters**: 
 
-  * **desc** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) descriptor. 
+  * **desc** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) descriptor. 
   * **engine** Target compute engine. 
 
 
@@ -137,7 +137,7 @@ Constructs memory object on engine wrapping existing raw data pointer.
 
 **Parameters**: 
 
-  * **desc** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) descriptor. 
+  * **desc** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) descriptor. 
   * **engine** Target compute engine. 
   * **data** Pointer to existing memory. 
 
@@ -155,7 +155,7 @@ Constructs memory view over source memory object.
 
 **Parameters**: 
 
-  * **desc** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) descriptor for the view. 
+  * **desc** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) descriptor for the view. 
   * **source** Underlying source memory. 
 
 
@@ -246,7 +246,7 @@ Checks whether this memory object holds a valid backend memory handle.
 inline explicit operator bool() const
 ```
 
-Boolean conversion equivalent to [valid()](Classes/classcum_1_1neural__primitives_1_1Memory.md#function-valid). 
+Boolean conversion equivalent to [valid()](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/#function-valid). 
 
 ### function descriptor
 
@@ -352,4 +352,4 @@ friend class cum::Tensor(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

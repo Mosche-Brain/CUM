@@ -12,21 +12,21 @@ Datatype definitions, precision aliases, and type tagging utilities for CUM.  [M
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[fp8_e4_3m_impl](Classes/structfp8__e4__3m__impl.md)** <br>8-bit floating point emulation structure (E4M3 format representation).  |
-| struct | **[cum::float16](Classes/structcum_1_1float16.md)** <br>Raw 16-bit fallback for half precision float.  |
-| struct | **[cum::bfloat16](Classes/structcum_1_1bfloat16.md)** <br>Raw 16-bit fallback for [bfloat16]() precision float.  |
+| struct | **[fp8_e4_3m_impl](/CUM/api/Classes/structfp8__e4__3m__impl/)** <br>8-bit floating point emulation structure (E4M3 format representation).  |
+| struct | **[cum::float16](/CUM/api/Classes/structcum_1_1float16/)** <br>Raw 16-bit fallback for half precision float.  |
+| struct | **[cum::bfloat16](/CUM/api/Classes/structcum_1_1bfloat16/)** <br>Raw 16-bit fallback for [bfloat16]() precision float.  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
-| typedef struct fp8_e4_3m_impl | **[fp8_e4_3m_impl](Files/datatypes_8hpp.md#typedef-fp8-e4-3m-impl)**  |
+| typedef struct fp8_e4_3m_impl | **[fp8_e4_3m_impl](/CUM/api/Files/datatypes_8hpp/#typedef-fp8-e4-3m-impl)**  |
 
 ## Detailed Description
 
@@ -53,4 +53,4 @@ typedef struct fp8_e4_3m_impl fp8_e4_3m_impl;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

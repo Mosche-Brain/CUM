@@ -12,14 +12,14 @@ SYCL kernel wrapper definition for experimental::**kernel**.  [More...](#detaile
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::experimental](Namespaces/namespacecum_1_1experimental.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::experimental](/CUM/api/Namespaces/namespacecum_1_1experimental/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::experimental::__kernel__](Classes/structcum_1_1experimental_1_1____kernel____.md)** <br>SYCL kernel handle wrapper.  |
+| struct | **[cum::experimental::__kernel__](/CUM/api/Classes/structcum_1_1experimental_1_1____kernel____/)** <br>SYCL kernel handle wrapper.  |
 
 ## Detailed Description
 
@@ -33,4 +33,4 @@ SYCL kernel wrapper definition for experimental::**kernel**.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

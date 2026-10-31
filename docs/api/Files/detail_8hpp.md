@@ -20,4 +20,4 @@ Internal implementation utilities and forward declarations.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

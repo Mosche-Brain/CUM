@@ -12,8 +12,8 @@ BLAS Level 1 vector-vector and vector-scalar operations.  [More...](#detailed-de
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::blas](Namespaces/namespacecum_1_1blas.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::blas](/CUM/api/Namespaces/namespacecum_1_1blas/)**  |
 
 ## Detailed Description
 
@@ -31,4 +31,4 @@ Implements axpy, dot products, scaling (scal), norms (nrm2), and min/max reducti
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

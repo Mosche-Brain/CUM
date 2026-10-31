@@ -17,11 +17,11 @@ Single unified Pimpl definition shared across PrimitiveDescriptor.cpp and Primit
 
 |                | Name           |
 | -------------- | -------------- |
-| dnnl::primitive_desc_base | **[pd](Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl.md#variable-pd)**  |
-| [Kind](Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor.md#enum-kind) | **[kind](Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl.md#variable-kind)**  |
-| [Purpose](Namespaces/namespacecum_1_1neural__primitives.md#enum-purpose) | **[purpose](Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl.md#variable-purpose)**  |
-| [Algo](Namespaces/namespacecum_1_1neural__primitives.md#enum-algo) | **[algo](Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl.md#variable-algo)**  |
-| bool | **[has_bias](Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl.md#variable-has-bias)**  |
+| dnnl::primitive_desc_base | **[pd](/CUM/api/Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl/#variable-pd)**  |
+| [Kind](/CUM/api/Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor/#enum-kind) | **[kind](/CUM/api/Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl/#variable-kind)**  |
+| [Purpose](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/#enum-purpose) | **[purpose](/CUM/api/Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl/#variable-purpose)**  |
+| [Algo](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/#enum-algo) | **[algo](/CUM/api/Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl/#variable-algo)**  |
+| bool | **[has_bias](/CUM/api/Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl/#variable-has-bias)**  |
 
 ## Detailed Description
 
@@ -72,4 +72,4 @@ bool has_bias = false;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

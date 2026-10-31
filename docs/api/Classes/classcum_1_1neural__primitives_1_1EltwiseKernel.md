@@ -17,16 +17,16 @@ Pre-compiled elementwise neural operation kernel for repeated forward/backward e
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[EltwiseKernel](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-eltwisekernel)**(const [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md) & desc, [functions::function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) algorithm)<br>Constructs and compiles elementwise kernel for a given descriptor and algorithm.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[warmup](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-warmup)**()<br>Warms up and compiles device kernel pipelines.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[forward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-forward)**([Tensor](Classes/classcum_1_1Tensor.md) & dst, const [Tensor](Classes/classcum_1_1Tensor.md) & src)<br>Executes forward pass out-of-place on Tensors.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[forward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-forward)**([Tensor](Classes/classcum_1_1Tensor.md) & src)<br>Executes forward pass in-place on [Tensor]().  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[forward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-forward)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & dst, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & src)<br>Executes forward pass out-of-place on [Memory]() objects.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[forward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-forward)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & src)<br>Executes forward pass in-place on [Memory]() object.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[backward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-backward)**([Tensor](Classes/classcum_1_1Tensor.md) & dst, const [Tensor](Classes/classcum_1_1Tensor.md) & src)<br>Executes backward (gradient) pass out-of-place on Tensors.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[backward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-backward)**([Tensor](Classes/classcum_1_1Tensor.md) & src)<br>Executes backward pass in-place on [Tensor]().  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[backward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-backward)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & dst, const [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & src)<br>Executes backward pass out-of-place on [Memory]() objects.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[backward](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md#function-backward)**([Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) & src)<br>Executes backward pass in-place on [Memory]() object.  |
+| | **[EltwiseKernel](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-eltwisekernel)**(const [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/) & desc, [functions::function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) algorithm)<br>Constructs and compiles elementwise kernel for a given descriptor and algorithm.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[warmup](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-warmup)**()<br>Warms up and compiles device kernel pipelines.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[forward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-forward)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & dst, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & src)<br>Executes forward pass out-of-place on Tensors.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[forward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-forward)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & src)<br>Executes forward pass in-place on [Tensor]().  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[forward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-forward)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & dst, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & src)<br>Executes forward pass out-of-place on [Memory]() objects.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[forward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-forward)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & src)<br>Executes forward pass in-place on [Memory]() object.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[backward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-backward)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & dst, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & src)<br>Executes backward (gradient) pass out-of-place on Tensors.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[backward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-backward)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/) & src)<br>Executes backward pass in-place on [Tensor]().  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[backward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-backward)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & dst, const [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & src)<br>Executes backward pass out-of-place on [Memory]() objects.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[backward](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/#function-backward)**([Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) & src)<br>Executes backward pass in-place on [Memory]() object.  |
 
 ## Public Functions Documentation
 
@@ -43,7 +43,7 @@ Constructs and compiles elementwise kernel for a given descriptor and algorithm.
 
 **Parameters**: 
 
-  * **desc** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) descriptor defining shape and layout. 
+  * **desc** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) descriptor defining shape and layout. 
   * **algorithm** Activation algorithm identifier. 
 
 
@@ -88,7 +88,7 @@ Executes forward pass in-place on [Tensor]().
 
 **Parameters**: 
 
-  * **src** [Tensor](Classes/classcum_1_1neural__primitives_1_1Tensor.md) modified in place. 
+  * **src** [Tensor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Tensor/) modified in place. 
 
 
 **Return**: Asynchronous execution event. 
@@ -124,7 +124,7 @@ Executes forward pass in-place on [Memory]() object.
 
 **Parameters**: 
 
-  * **src** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) modified in place. 
+  * **src** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) modified in place. 
 
 
 **Return**: Asynchronous execution event. 
@@ -160,7 +160,7 @@ Executes backward pass in-place on [Tensor]().
 
 **Parameters**: 
 
-  * **src** [Tensor](Classes/classcum_1_1neural__primitives_1_1Tensor.md) modified in place. 
+  * **src** [Tensor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Tensor/) modified in place. 
 
 
 **Return**: Asynchronous execution event. 
@@ -196,11 +196,11 @@ Executes backward pass in-place on [Memory]() object.
 
 **Parameters**: 
 
-  * **src** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) modified in place. 
+  * **src** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) modified in place. 
 
 
 **Return**: Asynchronous execution event. 
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

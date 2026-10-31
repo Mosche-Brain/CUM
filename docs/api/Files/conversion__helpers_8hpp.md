@@ -12,7 +12,7 @@ Bidirectional conversion helpers between CUM enums and oneDNN enumerations.  [Mo
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
 
 ## Detailed Description
 
@@ -30,4 +30,4 @@ Translates algorithms, data types, and format layouts between CUM and Intel oneD
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

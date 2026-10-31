@@ -17,8 +17,8 @@ Underlying oneDNN memory wrapper with optional USM shared ownership.
 
 |                | Name           |
 | -------------- | -------------- |
-| dnnl::memory | **[memory](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md#variable-memory)**  |
-| std::shared_ptr< void > | **[owned_usm](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md#variable-owned-usm)**  |
+| dnnl::memory | **[memory](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/#variable-memory)**  |
+| std::shared_ptr< void > | **[owned_usm](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/#variable-owned-usm)**  |
 
 ## Public Attributes Documentation
 
@@ -38,4 +38,4 @@ std::shared_ptr< void > owned_usm = nullptr;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

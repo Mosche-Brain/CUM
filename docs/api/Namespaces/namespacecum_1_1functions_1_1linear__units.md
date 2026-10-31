@@ -11,66 +11,66 @@ title: cum::functions::linear_units
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t | **[identity](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity)**(cumeric_t x)<br>Evaluates scalar identity: f(x) = x.  |
-| cumeric_t | **[relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu)**(cumeric_t x)<br>Evaluates scalar [ReLU](Classes/structcum_1_1functions_1_1ReLU.md): f(x) = max(0, x).  |
-| cumeric_t | **[leaky_relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu)**(cumeric_t x)<br>Evaluates scalar Leaky [ReLU](Classes/structcum_1_1functions_1_1ReLU.md): f(x) = x if x >= 0 else alpha * x.  |
-| cumeric_t | **[gelu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu)**(cumeric_t x)<br>Evaluates scalar Gaussian Error [Linear](Classes/structcum_1_1functions_1_1Linear.md) Unit ([GELU](Classes/structcum_1_1functions_1_1GELU.md)).  |
-| cumeric_t | **[elu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu)**(cumeric_t x)<br>Evaluates scalar Exponential [Linear](Classes/structcum_1_1functions_1_1Linear.md) Unit (ELU).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md) identity out-of-place: `r` = `v`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md) identity in-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md)[ReLU](Classes/structcum_1_1functions_1_1ReLU.md) out-of-place: `r` = max(0, `v`).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md)[ReLU](Classes/structcum_1_1functions_1_1ReLU.md) in-place: `v` = max(0, `v`).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md) Leaky [ReLU](Classes/structcum_1_1functions_1_1ReLU.md) out-of-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md) Leaky [ReLU](Classes/structcum_1_1functions_1_1ReLU.md) in-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md)[GELU](Classes/structcum_1_1functions_1_1GELU.md) out-of-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md)[GELU](Classes/structcum_1_1functions_1_1GELU.md) in-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md) ELU out-of-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N)<br>[Vector](Classes/classcum_1_1Vector.md) ELU in-place.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| cumeric_t | **[identity_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-deriv)**(cumeric_t x) |
-| cumeric_t | **[relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-deriv)**(cumeric_t x) |
-| cumeric_t | **[leaky_relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-deriv)**(cumeric_t x) |
-| cumeric_t | **[gelu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-deriv)**(cumeric_t x) |
-| cumeric_t | **[elu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-deriv)**(cumeric_t x) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-deriv-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[identity_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-identity-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-deriv-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[relu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-relu-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-deriv-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[leaky_relu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-leaky-relu-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-deriv-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gelu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-gelu-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-deriv-in-place)**(cumeric_t * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu_deriv](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[elu_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1linear__units.md#function-elu-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, [dim_t](Namespaces/namespacecum.md#using-dim-t) N) |
+| cumeric_t | **[identity](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity)**(cumeric_t x)<br>Evaluates scalar identity: f(x) = x.  |
+| cumeric_t | **[relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu)**(cumeric_t x)<br>Evaluates scalar [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/): f(x) = max(0, x).  |
+| cumeric_t | **[leaky_relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu)**(cumeric_t x)<br>Evaluates scalar Leaky [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/): f(x) = x if x >= 0 else alpha * x.  |
+| cumeric_t | **[gelu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu)**(cumeric_t x)<br>Evaluates scalar Gaussian Error [Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/) Unit ([GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/)).  |
+| cumeric_t | **[elu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu)**(cumeric_t x)<br>Evaluates scalar Exponential [Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/) Unit (ELU).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/) identity out-of-place: `r` = `v`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/) identity in-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)[ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) out-of-place: `r` = max(0, `v`).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)[ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) in-place: `v` = max(0, `v`).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/) Leaky [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) out-of-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/) Leaky [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) in-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)[GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/) out-of-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)[GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/) in-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/) ELU out-of-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N)<br>[Vector](/CUM/api/Classes/classcum_1_1Vector/) ELU in-place.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| cumeric_t | **[identity_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-deriv)**(cumeric_t x) |
+| cumeric_t | **[relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-deriv)**(cumeric_t x) |
+| cumeric_t | **[leaky_relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-deriv)**(cumeric_t x) |
+| cumeric_t | **[gelu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-deriv)**(cumeric_t x) |
+| cumeric_t | **[elu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-deriv)**(cumeric_t x) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-deriv-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[identity_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-identity-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-deriv-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[relu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-relu-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-deriv-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[leaky_relu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-leaky-relu-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-deriv-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gelu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-gelu-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-deriv)**(cumeric_t * r, const cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-deriv-in-place)**(cumeric_t * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[elu_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/#function-elu-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) N) |
 
 
 ## Functions Documentation
@@ -100,7 +100,7 @@ cumeric_t relu(
 )
 ```
 
-Evaluates scalar [ReLU](Classes/structcum_1_1functions_1_1ReLU.md): f(x) = max(0, x). 
+Evaluates scalar [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/): f(x) = max(0, x). 
 
 **Parameters**: 
 
@@ -117,7 +117,7 @@ cumeric_t leaky_relu(
 )
 ```
 
-Evaluates scalar Leaky [ReLU](Classes/structcum_1_1functions_1_1ReLU.md): f(x) = x if x >= 0 else alpha * x. 
+Evaluates scalar Leaky [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/): f(x) = x if x >= 0 else alpha * x. 
 
 **Parameters**: 
 
@@ -134,7 +134,7 @@ cumeric_t gelu(
 )
 ```
 
-Evaluates scalar Gaussian Error [Linear](Classes/structcum_1_1functions_1_1Linear.md) Unit ([GELU](Classes/structcum_1_1functions_1_1GELU.md)). 
+Evaluates scalar Gaussian Error [Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/) Unit ([GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/)). 
 
 **Parameters**: 
 
@@ -151,7 +151,7 @@ cumeric_t elu(
 )
 ```
 
-Evaluates scalar Exponential [Linear](Classes/structcum_1_1functions_1_1Linear.md) Unit (ELU). 
+Evaluates scalar Exponential [Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/) Unit (ELU). 
 
 **Parameters**: 
 
@@ -170,7 +170,7 @@ __event__ identity(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md) identity out-of-place: `r` = `v`. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/) identity out-of-place: `r` = `v`. 
 
 **Parameters**: 
 
@@ -190,11 +190,11 @@ __event__ identity_in_place(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md) identity in-place. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/) identity in-place. 
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md) buffer. 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer. 
   * **N** Element count. 
 
 
@@ -244,7 +244,7 @@ __event__ relu(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md)[ReLU](Classes/structcum_1_1functions_1_1ReLU.md) out-of-place: `r` = max(0, `v`). 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/)[ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) out-of-place: `r` = max(0, `v`). 
 
 **Parameters**: 
 
@@ -264,11 +264,11 @@ __event__ relu_in_place(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md)[ReLU](Classes/structcum_1_1functions_1_1ReLU.md) in-place: `v` = max(0, `v`). 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/)[ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) in-place: `v` = max(0, `v`). 
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md) buffer modified in place. 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer modified in place. 
   * **N** Element count. 
 
 
@@ -318,7 +318,7 @@ __event__ leaky_relu(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md) Leaky [ReLU](Classes/structcum_1_1functions_1_1ReLU.md) out-of-place. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/) Leaky [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) out-of-place. 
 
 **Parameters**: 
 
@@ -338,11 +338,11 @@ __event__ leaky_relu_in_place(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md) Leaky [ReLU](Classes/structcum_1_1functions_1_1ReLU.md) in-place. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/) Leaky [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/) in-place. 
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md) buffer modified in place. 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer modified in place. 
   * **N** Element count. 
 
 
@@ -392,7 +392,7 @@ __event__ gelu(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md)[GELU](Classes/structcum_1_1functions_1_1GELU.md) out-of-place. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/)[GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/) out-of-place. 
 
 **Parameters**: 
 
@@ -412,11 +412,11 @@ __event__ gelu_in_place(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md)[GELU](Classes/structcum_1_1functions_1_1GELU.md) in-place. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/)[GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/) in-place. 
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md) buffer modified in place. 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer modified in place. 
   * **N** Element count. 
 
 
@@ -466,7 +466,7 @@ __event__ elu(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md) ELU out-of-place. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/) ELU out-of-place. 
 
 **Parameters**: 
 
@@ -486,11 +486,11 @@ __event__ elu_in_place(
 )
 ```
 
-[Vector](Classes/classcum_1_1Vector.md) ELU in-place. 
+[Vector](/CUM/api/Classes/classcum_1_1Vector/) ELU in-place. 
 
 **Parameters**: 
 
-  * **v** [Vector](Classes/classcum_1_1Vector.md) buffer modified in place. 
+  * **v** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer modified in place. 
   * **N** Element count. 
 
 
@@ -856,4 +856,4 @@ __event__ elu_deriv_in_place(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

@@ -17,50 +17,50 @@ Lightweight, non-owning read view over a 2D matrix or existing data buffer.  [Mo
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[MatrixView](Classes/classcum_1_1MatrixView.md#function-matrixview)**(const [Matrix](Classes/classcum_1_1Matrix.md) & other)<br>Constructs a view over an existing [Matrix](Classes/classcum_1_1Matrix.md).  |
-| | **[MatrixView](Classes/classcum_1_1MatrixView.md#function-matrixview)**([Matrix](Classes/classcum_1_1Matrix.md) && other)<br>Move constructor.  |
-| | **[MatrixView](Classes/classcum_1_1MatrixView.md#function-matrixview)**(cumeric_t * source, [dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols)<br>Constructs a view over a raw pointer buffer.  |
-| | **[MatrixView](Classes/classcum_1_1MatrixView.md#function-matrixview)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, cumeric_t * source)<br>Constructs a view over a raw pointer buffer (dimensions first).  |
-| | **[MatrixView](Classes/classcum_1_1MatrixView.md#function-matrixview)**(const cumeric_t * source, [dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols)<br>Constructs a view over a const raw pointer buffer.  |
-| | **[MatrixView](Classes/classcum_1_1MatrixView.md#function-matrixview)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, const cumeric_t * source)<br>Constructs a view over a const raw pointer buffer (dimensions first).  |
-| | **[MatrixView](Classes/classcum_1_1MatrixView.md#function-matrixview)**() =default<br>Default constructor creating an empty view.  |
-| | **[~MatrixView](Classes/classcum_1_1MatrixView.md#function-~matrixview)**()<br>Destructor (does not free viewed memory).  |
-| std::size_t | **[rows](Classes/classcum_1_1MatrixView.md#function-rows)**() const<br>Returns the number of rows in the view.  |
-| std::size_t | **[cols](Classes/classcum_1_1MatrixView.md#function-cols)**() const<br>Returns the number of columns in the view.  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[row](Classes/classcum_1_1MatrixView.md#function-row)**(std::size_t i) const<br>Extracts a row as a new [Matrix](Classes/classcum_1_1Matrix.md).  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[col](Classes/classcum_1_1MatrixView.md#function-col)**(std::size_t i) const<br>Extracts a column as a new [Matrix](Classes/classcum_1_1Matrix.md).  |
-| std::size_t | **[size](Classes/classcum_1_1MatrixView.md#function-size)**() const<br>Returns the total number of elements in the view.  |
-| const cumeric_t * | **[data](Classes/classcum_1_1MatrixView.md#function-data)**() const<br>Returns const raw data pointer.  |
-| const cumeric_t & | **[at](Classes/classcum_1_1MatrixView.md#function-at)**(const std::size_t row, const std::size_t col) const<br>Indexed const element access.  |
-| const cumeric_t & | **[operator()](Classes/classcum_1_1MatrixView.md#function-operator())**(const std::size_t row, const std::size_t col) const<br>Function call operator for indexed const element access.  |
-| [Matrix](Classes/classcum_1_1Matrix.md) & | **[set](Classes/classcum_1_1MatrixView.md#function-set)**(const [Matrix](Classes/classcum_1_1Matrix.md) & other)<br>Sets target matrix with viewed data.  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[transpose](Classes/classcum_1_1MatrixView.md#function-transpose)**() const |
-| [Vector](Classes/classcum_1_1Vector.md) | **[flatten](Classes/classcum_1_1MatrixView.md#function-flatten)**() const |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[reshape](Classes/classcum_1_1MatrixView.md#function-reshape)**(std::size_t rows, std::size_t cols) const |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[cwiseProduct](Classes/classcum_1_1MatrixView.md#function-cwiseproduct)**(const [Matrix](Classes/classcum_1_1Matrix.md) & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[transform](Classes/classcum_1_1MatrixView.md#function-transform)**(void(*)(cumeric_t *[data](Classes/classcum_1_1MatrixView.md#function-data), const std::size_t [size](Classes/classcum_1_1MatrixView.md#function-size)) func) const |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[transform](Classes/classcum_1_1MatrixView.md#function-transform)**(cumeric_t(*)(cumeric_t x) func) const |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[clip](Classes/classcum_1_1MatrixView.md#function-clip)**(cumeric_t min, cumeric_t max) const |
-| cumeric_t | **[norm](Classes/classcum_1_1MatrixView.md#function-norm)**() |
-| cumeric_t | **[squaredNorm](Classes/classcum_1_1MatrixView.md#function-squarednorm)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[colwiseSum](Classes/classcum_1_1MatrixView.md#function-colwisesum)**() |
-| [Vector](Classes/classcum_1_1Vector.md) | **[colwiseSum2vec](Classes/classcum_1_1MatrixView.md#function-colwisesum2vec)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[rowwiseSum](Classes/classcum_1_1MatrixView.md#function-rowwisesum)**() |
-| [Vector](Classes/classcum_1_1Vector.md) | **[rowwiseSum2vec](Classes/classcum_1_1MatrixView.md#function-rowwisesum2vec)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[shuffleRows](Classes/classcum_1_1MatrixView.md#function-shufflerows)**() const |
+| | **[MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-matrixview)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & other)<br>Constructs a view over an existing [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| | **[MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-matrixview)**([Matrix](/CUM/api/Classes/classcum_1_1Matrix/) && other)<br>Move constructor.  |
+| | **[MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-matrixview)**(cumeric_t * source, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols)<br>Constructs a view over a raw pointer buffer.  |
+| | **[MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-matrixview)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, cumeric_t * source)<br>Constructs a view over a raw pointer buffer (dimensions first).  |
+| | **[MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-matrixview)**(const cumeric_t * source, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols)<br>Constructs a view over a const raw pointer buffer.  |
+| | **[MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-matrixview)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, const cumeric_t * source)<br>Constructs a view over a const raw pointer buffer (dimensions first).  |
+| | **[MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-matrixview)**() =default<br>Default constructor creating an empty view.  |
+| | **[~MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/#function-~matrixview)**()<br>Destructor (does not free viewed memory).  |
+| std::size_t | **[rows](/CUM/api/Classes/classcum_1_1MatrixView/#function-rows)**() const<br>Returns the number of rows in the view.  |
+| std::size_t | **[cols](/CUM/api/Classes/classcum_1_1MatrixView/#function-cols)**() const<br>Returns the number of columns in the view.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[row](/CUM/api/Classes/classcum_1_1MatrixView/#function-row)**(std::size_t i) const<br>Extracts a row as a new [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[col](/CUM/api/Classes/classcum_1_1MatrixView/#function-col)**(std::size_t i) const<br>Extracts a column as a new [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| std::size_t | **[size](/CUM/api/Classes/classcum_1_1MatrixView/#function-size)**() const<br>Returns the total number of elements in the view.  |
+| const cumeric_t * | **[data](/CUM/api/Classes/classcum_1_1MatrixView/#function-data)**() const<br>Returns const raw data pointer.  |
+| const cumeric_t & | **[at](/CUM/api/Classes/classcum_1_1MatrixView/#function-at)**(const std::size_t row, const std::size_t col) const<br>Indexed const element access.  |
+| const cumeric_t & | **[operator()](/CUM/api/Classes/classcum_1_1MatrixView/#function-operator())**(const std::size_t row, const std::size_t col) const<br>Function call operator for indexed const element access.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & | **[set](/CUM/api/Classes/classcum_1_1MatrixView/#function-set)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & other)<br>Sets target matrix with viewed data.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[transpose](/CUM/api/Classes/classcum_1_1MatrixView/#function-transpose)**() const |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/) | **[flatten](/CUM/api/Classes/classcum_1_1MatrixView/#function-flatten)**() const |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[reshape](/CUM/api/Classes/classcum_1_1MatrixView/#function-reshape)**(std::size_t rows, std::size_t cols) const |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[cwiseProduct](/CUM/api/Classes/classcum_1_1MatrixView/#function-cwiseproduct)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[transform](/CUM/api/Classes/classcum_1_1MatrixView/#function-transform)**(void(*)(cumeric_t *[data](/CUM/api/Classes/classcum_1_1MatrixView/#function-data), const std::size_t [size](/CUM/api/Classes/classcum_1_1MatrixView/#function-size)) func) const |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[transform](/CUM/api/Classes/classcum_1_1MatrixView/#function-transform)**(cumeric_t(*)(cumeric_t x) func) const |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[clip](/CUM/api/Classes/classcum_1_1MatrixView/#function-clip)**(cumeric_t min, cumeric_t max) const |
+| cumeric_t | **[norm](/CUM/api/Classes/classcum_1_1MatrixView/#function-norm)**() |
+| cumeric_t | **[squaredNorm](/CUM/api/Classes/classcum_1_1MatrixView/#function-squarednorm)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[colwiseSum](/CUM/api/Classes/classcum_1_1MatrixView/#function-colwisesum)**() |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/) | **[colwiseSum2vec](/CUM/api/Classes/classcum_1_1MatrixView/#function-colwisesum2vec)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[rowwiseSum](/CUM/api/Classes/classcum_1_1MatrixView/#function-rowwisesum)**() |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/) | **[rowwiseSum2vec](/CUM/api/Classes/classcum_1_1MatrixView/#function-rowwisesum2vec)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[shuffleRows](/CUM/api/Classes/classcum_1_1MatrixView/#function-shufflerows)**() const |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[operator+](Classes/classcum_1_1MatrixView.md#friend-operator+)**(const [Matrix](Classes/classcum_1_1Matrix.md) & A, const [Matrix](Classes/classcum_1_1Matrix.md) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[operator-](Classes/classcum_1_1MatrixView.md#friend-operator-)**(const [Matrix](Classes/classcum_1_1Matrix.md) & A, const [Matrix](Classes/classcum_1_1Matrix.md) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[operator*](Classes/classcum_1_1MatrixView.md#friend-operator*)**(const [Matrix](Classes/classcum_1_1Matrix.md) & A, const [Matrix](Classes/classcum_1_1Matrix.md) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[operator*](Classes/classcum_1_1MatrixView.md#friend-operator*)**(const [Matrix](Classes/classcum_1_1Matrix.md) & mat, const cumeric_t & scalar)  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[operator/](Classes/classcum_1_1MatrixView.md#friend-operator/)**(const [Matrix](Classes/classcum_1_1Matrix.md) & A, const [Matrix](Classes/classcum_1_1Matrix.md) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[operator/](Classes/classcum_1_1MatrixView.md#friend-operator/)**(const [Matrix](Classes/classcum_1_1Matrix.md) & mat, const cumeric_t & scalar)  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[activation](Classes/classcum_1_1MatrixView.md#friend-activation)**(const [Matrix](Classes/classcum_1_1Matrix.md) & mat, const char * name)  |
-| [Matrix](Classes/classcum_1_1Matrix.md) | **[activationInPlace](Classes/classcum_1_1MatrixView.md#friend-activationinplace)**([Matrix](Classes/classcum_1_1Matrix.md) & mat, const char * name)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[operator+](/CUM/api/Classes/classcum_1_1MatrixView/#friend-operator+)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[operator-](/CUM/api/Classes/classcum_1_1MatrixView/#friend-operator-)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[operator*](/CUM/api/Classes/classcum_1_1MatrixView/#friend-operator*)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[operator*](/CUM/api/Classes/classcum_1_1MatrixView/#friend-operator*)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & mat, const cumeric_t & scalar)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[operator/](/CUM/api/Classes/classcum_1_1MatrixView/#friend-operator/)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[operator/](/CUM/api/Classes/classcum_1_1MatrixView/#friend-operator/)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & mat, const cumeric_t & scalar)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[activation](/CUM/api/Classes/classcum_1_1MatrixView/#friend-activation)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & mat, const char * name)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) | **[activationInPlace](/CUM/api/Classes/classcum_1_1MatrixView/#friend-activationinplace)**([Matrix](/CUM/api/Classes/classcum_1_1Matrix/) & mat, const char * name)  |
 
 ## Detailed Description
 
@@ -82,11 +82,11 @@ MatrixView(
 )
 ```
 
-Constructs a view over an existing [Matrix](Classes/classcum_1_1Matrix.md). 
+Constructs a view over an existing [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) to view. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to view. 
 
 
 ### function MatrixView
@@ -101,7 +101,7 @@ Move constructor.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) to view. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to view. 
 
 
 ### function MatrixView
@@ -224,14 +224,14 @@ Matrix row(
 ) const
 ```
 
-Extracts a row as a new [Matrix](Classes/classcum_1_1Matrix.md). 
+Extracts a row as a new [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 **Parameters**: 
 
   * **i** Row index. 
 
 
-**Return**: Extracted row [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: Extracted row [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function col
 
@@ -241,14 +241,14 @@ Matrix col(
 ) const
 ```
 
-Extracts a column as a new [Matrix](Classes/classcum_1_1Matrix.md). 
+Extracts a column as a new [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 **Parameters**: 
 
   * **i** Column index. 
 
 
-**Return**: Extracted column [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: Extracted column [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function size
 
@@ -527,4 +527,4 @@ friend Matrix activationInPlace(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

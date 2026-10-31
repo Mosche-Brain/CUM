@@ -12,9 +12,9 @@ Inverse trigonometric (cyclometric) functions (asin, acos, atan) and their deriv
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::functions](Namespaces/namespacecum_1_1functions.md)**  |
-| **[cum::functions::cyclometric](Namespaces/namespacecum_1_1functions_1_1cyclometric.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::functions](/CUM/api/Namespaces/namespacecum_1_1functions/)**  |
+| **[cum::functions::cyclometric](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/)**  |
 
 ## Detailed Description
 
@@ -32,4 +32,4 @@ Implements scalar evaluations and asynchronous parallel GPU/device vector operat
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

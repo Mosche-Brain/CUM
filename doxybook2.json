@@ -1,9 +1,9 @@
 {
-  "baseUrl": "",
+  "baseUrl": "/CUM/api/",
   "indexInFolders": true,
   "mainPageInRoot": false,
   "linkLowercase": false,
-  "linkSuffix": ".md",
+  "linkSuffix": "/",
   "indexClassesName": "index",
   "indexFilesName": "index",
   "indexNamespacesName": "index",

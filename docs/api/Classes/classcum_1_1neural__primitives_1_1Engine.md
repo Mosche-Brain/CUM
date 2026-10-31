@@ -17,21 +17,21 @@ Compute execution engine encapsulating device accelerator execution context for 
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-engine)**()<br>Constructs default compute engine for the active device.  |
-| | **[~Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-~engine)**() |
-| | **[Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-engine)**(const Engine & other) |
-| [Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-engine) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-operator=)**(const [Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-engine) & other) |
-| | **[Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-engine)**(Engine && other) |
-| [Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-engine) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-operator=)**([Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-engine) && other) |
-| const [handles::__engine__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____.md) & | **[native_handle](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-native-handle)**() const<br>Returns const reference to backend engine handle.  |
-| [handles::__engine__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____.md) & | **[native_handle](Classes/classcum_1_1neural__primitives_1_1Engine.md#function-native-handle)**()<br>Returns mutable reference to backend engine handle.  |
+| | **[Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-engine)**()<br>Constructs default compute engine for the active device.  |
+| | **[~Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-~engine)**() |
+| | **[Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-engine)**(const Engine & other) |
+| [Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-engine) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-operator=)**(const [Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-engine) & other) |
+| | **[Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-engine)**(Engine && other) |
+| [Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-engine) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-operator=)**([Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-engine) && other) |
+| const [handles::__engine__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____/) & | **[native_handle](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-native-handle)**() const<br>Returns const reference to backend engine handle.  |
+| [handles::__engine__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____/) & | **[native_handle](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#function-native-handle)**()<br>Returns mutable reference to backend engine handle.  |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[Memory](Classes/classcum_1_1neural__primitives_1_1Engine.md#friend-memory)**  |
-| class | **[PrimitiveDescriptor](Classes/classcum_1_1neural__primitives_1_1Engine.md#friend-primitivedescriptor)**  |
+| class | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#friend-memory)**  |
+| class | **[PrimitiveDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/#friend-primitivedescriptor)**  |
 
 ## Public Functions Documentation
 
@@ -124,4 +124,4 @@ friend class PrimitiveDescriptor(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

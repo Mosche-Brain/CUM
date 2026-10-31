@@ -8,7 +8,7 @@ summary: Type trait mapping a static C++ type to its runtime datatype enum tag.
 
 
 
-Type trait mapping a static C++ type to its runtime [datatype](Namespaces/namespacecum.md#enum-datatype) enum tag.  [More...](#detailed-description)
+Type trait mapping a static C++ type to its runtime [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) enum tag.  [More...](#detailed-description)
 
 
 `#include <Tensor.hpp>`
@@ -20,7 +20,7 @@ template <typename T >
 struct cum::datatype_of;
 ```
 
-Type trait mapping a static C++ type to its runtime [datatype](Namespaces/namespacecum.md#enum-datatype) enum tag. 
+Type trait mapping a static C++ type to its runtime [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) enum tag. 
 
 **Template Parameters**: 
 
@@ -28,4 +28,4 @@ Type trait mapping a static C++ type to its runtime [datatype](Namespaces/namesp
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

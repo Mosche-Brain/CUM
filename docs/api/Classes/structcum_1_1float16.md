@@ -17,7 +17,7 @@ Raw 16-bit fallback for half precision float.
 
 |                | Name           |
 | -------------- | -------------- |
-| unsigned short | **[raw](Classes/structcum_1_1float16.md#variable-raw)**  |
+| unsigned short | **[raw](/CUM/api/Classes/structcum_1_1float16/#variable-raw)**  |
 
 ## Public Attributes Documentation
 
@@ -30,4 +30,4 @@ unsigned short raw;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

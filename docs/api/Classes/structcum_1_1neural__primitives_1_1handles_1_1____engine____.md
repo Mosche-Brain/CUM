@@ -17,7 +17,7 @@ Underlying oneDNN engine wrapper.
 
 |                | Name           |
 | -------------- | -------------- |
-| dnnl::engine | **[engine](Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____.md#variable-engine)**  |
+| dnnl::engine | **[engine](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____/#variable-engine)**  |
 
 ## Public Attributes Documentation
 
@@ -30,4 +30,4 @@ dnnl::engine engine;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

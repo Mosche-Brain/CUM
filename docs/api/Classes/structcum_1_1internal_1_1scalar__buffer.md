@@ -16,13 +16,13 @@ title: cum::internal::scalar_buffer
 
 |                | Name           |
 | -------------- | -------------- |
-| const void * | **[ptr](Classes/structcum_1_1internal_1_1scalar__buffer.md#function-ptr)**() const |
+| const void * | **[ptr](/CUM/api/Classes/structcum_1_1internal_1_1scalar__buffer/#function-ptr)**() const |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| std::byte[16] | **[data](Classes/structcum_1_1internal_1_1scalar__buffer.md#variable-data)**  |
+| std::byte[16] | **[data](/CUM/api/Classes/structcum_1_1internal_1_1scalar__buffer/#variable-data)**  |
 
 ## Public Functions Documentation
 
@@ -44,4 +44,4 @@ std::byte[16] data {};
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

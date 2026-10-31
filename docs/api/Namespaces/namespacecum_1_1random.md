@@ -11,12 +11,12 @@ title: cum::random
 
 |                | Name           |
 | -------------- | -------------- |
-| void | **[uniform](Namespaces/namespacecum_1_1random.md#function-uniform)**(cumeric_t * buff, const std::size_t N, const cumeric_t min =-1._c, const cumeric_t max =1._c, [dim_t](Namespaces/namespacecum.md#using-dim-t) seed =2137)<br>Generates uniformly distributed random values into a typed buffer.  |
-| void | **[uniform](Namespaces/namespacecum_1_1random.md#function-uniform)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * buff, const std::size_t N, const cumeric_t min =-1._c, const cumeric_t max =1._c, [dim_t](Namespaces/namespacecum.md#using-dim-t) seed =2137)<br>Generates uniformly distributed random values into a generic buffer with scalar bounds.  |
-| void | **[uniform](Namespaces/namespacecum_1_1random.md#function-uniform)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * buff, const std::size_t N, const void * min, const void * max, [dim_t](Namespaces/namespacecum.md#using-dim-t) seed =2137)<br>Generates uniformly distributed random values into a generic buffer with typed raw bound pointers.  |
-| void | **[normal](Namespaces/namespacecum_1_1random.md#function-normal)**(cumeric_t * buff, const std::size_t N, const cumeric_t sigma, std::size_t seed =2137)<br>Generates normally distributed random values (zero mean) into a typed buffer.  |
-| void | **[normal](Namespaces/namespacecum_1_1random.md#function-normal)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * buff, const std::size_t N, const cumeric_t sigma, std::size_t seed =2137)<br>Generates normally distributed random values (zero mean) into a generic buffer with scalar standard deviation.  |
-| void | **[normal](Namespaces/namespacecum_1_1random.md#function-normal)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * buff, const std::size_t N, const void * sigma, std::size_t seed =2137)<br>Generates normally distributed random values into a generic buffer with a pointer to standard deviation.  |
+| void | **[uniform](/CUM/api/Namespaces/namespacecum_1_1random/#function-uniform)**(cumeric_t * buff, const std::size_t N, const cumeric_t min =-1._c, const cumeric_t max =1._c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) seed =2137)<br>Generates uniformly distributed random values into a typed buffer.  |
+| void | **[uniform](/CUM/api/Namespaces/namespacecum_1_1random/#function-uniform)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * buff, const std::size_t N, const cumeric_t min =-1._c, const cumeric_t max =1._c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) seed =2137)<br>Generates uniformly distributed random values into a generic buffer with scalar bounds.  |
+| void | **[uniform](/CUM/api/Namespaces/namespacecum_1_1random/#function-uniform)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * buff, const std::size_t N, const void * min, const void * max, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) seed =2137)<br>Generates uniformly distributed random values into a generic buffer with typed raw bound pointers.  |
+| void | **[normal](/CUM/api/Namespaces/namespacecum_1_1random/#function-normal)**(cumeric_t * buff, const std::size_t N, const cumeric_t sigma, std::size_t seed =2137)<br>Generates normally distributed random values (zero mean) into a typed buffer.  |
+| void | **[normal](/CUM/api/Namespaces/namespacecum_1_1random/#function-normal)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * buff, const std::size_t N, const cumeric_t sigma, std::size_t seed =2137)<br>Generates normally distributed random values (zero mean) into a generic buffer with scalar standard deviation.  |
+| void | **[normal](/CUM/api/Namespaces/namespacecum_1_1random/#function-normal)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * buff, const std::size_t N, const void * sigma, std::size_t seed =2137)<br>Generates normally distributed random values into a generic buffer with a pointer to standard deviation.  |
 
 
 ## Functions Documentation
@@ -167,4 +167,4 @@ Generates normally distributed random values into a generic buffer with a pointe
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

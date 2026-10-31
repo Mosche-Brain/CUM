@@ -12,8 +12,8 @@ oneAPI SYCL event integration header.  [More...](#detailed-description)
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::experimental](Namespaces/namespacecum_1_1experimental.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::experimental](/CUM/api/Namespaces/namespacecum_1_1experimental/)**  |
 
 ## Detailed Description
 
@@ -27,4 +27,4 @@ oneAPI SYCL event integration header.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

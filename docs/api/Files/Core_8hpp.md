@@ -12,14 +12,14 @@ Core types, dimension definitions, and datatype dispatching utilities for CUM.  
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| cum::cumeric_t | **[operator""_c](Files/Core_8hpp.md#function-operator""-c)**(long double val)<br>User-defined literal for floating point values converting to default `cumeric_t`.  |
-| cum::cumeric_t | **[operator""_c](Files/Core_8hpp.md#function-operator""-c)**(unsigned long long val)<br>User-defined literal for integer values converting to default `cumeric_t`.  |
+| cum::cumeric_t | **[operator""_c](/CUM/api/Files/Core_8hpp/#function-operator""-c)**(long double val)<br>User-defined literal for floating point values converting to default `cumeric_t`.  |
+| cum::cumeric_t | **[operator""_c](/CUM/api/Files/Core_8hpp/#function-operator""-c)**(unsigned long long val)<br>User-defined literal for integer values converting to default `cumeric_t`.  |
 
 ## Detailed Description
 
@@ -70,4 +70,4 @@ User-defined literal for integer values converting to default `cumeric_t`.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

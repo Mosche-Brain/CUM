@@ -17,10 +17,10 @@ Factory and accessor bridging SYCL asynchronous events with CUM's [experimental:
 
 |                | Name           |
 | -------------- | -------------- |
-| [experimental::__event__](Classes/classcum_1_1experimental_1_1____event____.md) | **[create](Classes/classcum_1_1detail_1_1event__handler.md#function-create)**(sycl::event && event)<br>Wraps an rvalue SYCL event into an [experimental::__event__]().  |
-| bool | **[valid](Classes/classcum_1_1detail_1_1event__handler.md#function-valid)**(const [experimental::__event__](Classes/classcum_1_1experimental_1_1____event____.md) & event)<br>Checks whether the wrapped event holds an active backend event handle.  |
-| sycl::event & | **[handle](Classes/classcum_1_1detail_1_1event__handler.md#function-handle)**([experimental::__event__](Classes/classcum_1_1experimental_1_1____event____.md) & event)<br>Extracts underlying SYCL event reference from an [experimental::__event__]().  |
-| const sycl::event & | **[handle](Classes/classcum_1_1detail_1_1event__handler.md#function-handle)**(const [experimental::__event__](Classes/classcum_1_1experimental_1_1____event____.md) & event)<br>Extracts underlying const SYCL event reference from an [experimental::__event__]().  |
+| [experimental::__event__](/CUM/api/Classes/classcum_1_1experimental_1_1____event____/) | **[create](/CUM/api/Classes/classcum_1_1detail_1_1event__handler/#function-create)**(sycl::event && event)<br>Wraps an rvalue SYCL event into an [experimental::__event__]().  |
+| bool | **[valid](/CUM/api/Classes/classcum_1_1detail_1_1event__handler/#function-valid)**(const [experimental::__event__](/CUM/api/Classes/classcum_1_1experimental_1_1____event____/) & event)<br>Checks whether the wrapped event holds an active backend event handle.  |
+| sycl::event & | **[handle](/CUM/api/Classes/classcum_1_1detail_1_1event__handler/#function-handle)**([experimental::__event__](/CUM/api/Classes/classcum_1_1experimental_1_1____event____/) & event)<br>Extracts underlying SYCL event reference from an [experimental::__event__]().  |
+| const sycl::event & | **[handle](/CUM/api/Classes/classcum_1_1detail_1_1event__handler/#function-handle)**(const [experimental::__event__](/CUM/api/Classes/classcum_1_1experimental_1_1____event____/) & event)<br>Extracts underlying const SYCL event reference from an [experimental::__event__]().  |
 
 ## Public Functions Documentation
 
@@ -94,4 +94,4 @@ Extracts underlying const SYCL event reference from an [experimental::__event__]
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

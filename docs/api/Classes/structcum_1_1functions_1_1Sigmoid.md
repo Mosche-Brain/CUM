@@ -17,7 +17,7 @@ Logistic sigmoid activation functor: f(x) = 1 / (1 + exp(-x)).
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t | **[operator()](Classes/structcum_1_1functions_1_1Sigmoid.md#function-operator())**(cumeric_t x) const |
+| cumeric_t | **[operator()](/CUM/api/Classes/structcum_1_1functions_1_1Sigmoid/#function-operator())**(cumeric_t x) const |
 
 ## Public Functions Documentation
 
@@ -32,4 +32,4 @@ cumeric_t operator()(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

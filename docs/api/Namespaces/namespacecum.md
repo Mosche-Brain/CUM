@@ -11,125 +11,125 @@ title: cum
 
 | Name           |
 | -------------- |
-| **[cum::blas](Namespaces/namespacecum_1_1blas.md)**  |
-| **[cum::detail](Namespaces/namespacecum_1_1detail.md)**  |
-| **[cum::experimental](Namespaces/namespacecum_1_1experimental.md)**  |
-| **[cum::functions](Namespaces/namespacecum_1_1functions.md)**  |
-| **[cum::internal](Namespaces/namespacecum_1_1internal.md)**  |
-| **[cum::lara](Namespaces/namespacecum_1_1lara.md)**  |
-| **[cum::memory](Namespaces/namespacecum_1_1memory.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
-| **[cum::random](Namespaces/namespacecum_1_1random.md)**  |
-| **[cum::runtime](Namespaces/namespacecum_1_1runtime.md)**  |
+| **[cum::blas](/CUM/api/Namespaces/namespacecum_1_1blas/)**  |
+| **[cum::detail](/CUM/api/Namespaces/namespacecum_1_1detail/)**  |
+| **[cum::experimental](/CUM/api/Namespaces/namespacecum_1_1experimental/)**  |
+| **[cum::functions](/CUM/api/Namespaces/namespacecum_1_1functions/)**  |
+| **[cum::internal](/CUM/api/Namespaces/namespacecum_1_1internal/)**  |
+| **[cum::lara](/CUM/api/Namespaces/namespacecum_1_1lara/)**  |
+| **[cum::memory](/CUM/api/Namespaces/namespacecum_1_1memory/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
+| **[cum::random](/CUM/api/Namespaces/namespacecum_1_1random/)**  |
+| **[cum::runtime](/CUM/api/Namespaces/namespacecum_1_1runtime/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::bfloat16](Classes/structcum_1_1bfloat16.md)** <br>Raw 16-bit fallback for [bfloat16]() precision float.  |
-| struct | **[cum::datatype_of](Classes/structcum_1_1datatype__of.md)** <br>Type trait mapping a static C++ type to its runtime [datatype](Namespaces/namespacecum.md#enum-datatype) enum tag.  |
-| struct | **[cum::datatype_of< cum::bfloat16 >](Classes/structcum_1_1datatype__of_3_01cum_1_1bfloat16_01_4.md)**  |
-| struct | **[cum::datatype_of< cum::float16 >](Classes/structcum_1_1datatype__of_3_01cum_1_1float16_01_4.md)**  |
-| struct | **[cum::datatype_of< cum::float8 >](Classes/structcum_1_1datatype__of_3_01cum_1_1float8_01_4.md)**  |
-| struct | **[cum::datatype_of< double >](Classes/structcum_1_1datatype__of_3_01double_01_4.md)**  |
-| struct | **[cum::datatype_of< float >](Classes/structcum_1_1datatype__of_3_01float_01_4.md)**  |
-| struct | **[cum::datatype_of< std::int16_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int16__t_01_4.md)**  |
-| struct | **[cum::datatype_of< std::int32_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int32__t_01_4.md)**  |
-| struct | **[cum::datatype_of< std::int64_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int64__t_01_4.md)**  |
-| struct | **[cum::datatype_of< std::int8_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int8__t_01_4.md)**  |
-| struct | **[cum::datatype_of< std::uint16_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint16__t_01_4.md)**  |
-| struct | **[cum::datatype_of< std::uint32_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint32__t_01_4.md)**  |
-| struct | **[cum::datatype_of< std::uint64_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint64__t_01_4.md)**  |
-| struct | **[cum::datatype_of< std::uint8_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint8__t_01_4.md)**  |
-| struct | **[cum::float16](Classes/structcum_1_1float16.md)** <br>Raw 16-bit fallback for half precision float.  |
-| class | **[cum::Matrix](Classes/classcum_1_1Matrix.md)** <br>Templated generic dense matrix.  |
-| class | **[cum::MatrixView](Classes/classcum_1_1MatrixView.md)** <br>Lightweight, non-owning read view over a 2D matrix or existing data buffer.  |
-| class | **[cum::Tensor](Classes/classcum_1_1Tensor.md)** <br>Core N-dimensional array and deep learning tensor.  |
-| class | **[cum::Vector](Classes/classcum_1_1Vector.md)** <br>Templated generic 1D dense vector.  |
+| struct | **[cum::bfloat16](/CUM/api/Classes/structcum_1_1bfloat16/)** <br>Raw 16-bit fallback for [bfloat16]() precision float.  |
+| struct | **[cum::datatype_of](/CUM/api/Classes/structcum_1_1datatype__of/)** <br>Type trait mapping a static C++ type to its runtime [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) enum tag.  |
+| struct | **[cum::datatype_of< cum::bfloat16 >](/CUM/api/Classes/structcum_1_1datatype__of_3_01cum_1_1bfloat16_01_4/)**  |
+| struct | **[cum::datatype_of< cum::float16 >](/CUM/api/Classes/structcum_1_1datatype__of_3_01cum_1_1float16_01_4/)**  |
+| struct | **[cum::datatype_of< cum::float8 >](/CUM/api/Classes/structcum_1_1datatype__of_3_01cum_1_1float8_01_4/)**  |
+| struct | **[cum::datatype_of< double >](/CUM/api/Classes/structcum_1_1datatype__of_3_01double_01_4/)**  |
+| struct | **[cum::datatype_of< float >](/CUM/api/Classes/structcum_1_1datatype__of_3_01float_01_4/)**  |
+| struct | **[cum::datatype_of< std::int16_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int16__t_01_4/)**  |
+| struct | **[cum::datatype_of< std::int32_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int32__t_01_4/)**  |
+| struct | **[cum::datatype_of< std::int64_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int64__t_01_4/)**  |
+| struct | **[cum::datatype_of< std::int8_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int8__t_01_4/)**  |
+| struct | **[cum::datatype_of< std::uint16_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint16__t_01_4/)**  |
+| struct | **[cum::datatype_of< std::uint32_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint32__t_01_4/)**  |
+| struct | **[cum::datatype_of< std::uint64_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint64__t_01_4/)**  |
+| struct | **[cum::datatype_of< std::uint8_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint8__t_01_4/)**  |
+| struct | **[cum::float16](/CUM/api/Classes/structcum_1_1float16/)** <br>Raw 16-bit fallback for half precision float.  |
+| class | **[cum::Matrix](/CUM/api/Classes/classcum_1_1Matrix/)** <br>Templated generic dense matrix.  |
+| class | **[cum::MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/)** <br>Lightweight, non-owning read view over a 2D matrix or existing data buffer.  |
+| class | **[cum::Tensor](/CUM/api/Classes/classcum_1_1Tensor/)** <br>Core N-dimensional array and deep learning tensor.  |
+| class | **[cum::Vector](/CUM/api/Classes/classcum_1_1Vector/)** <br>Templated generic 1D dense vector.  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
-| enum class| **[DEVICE](Namespaces/namespacecum.md#enum-device)** { AUTO, CPU, GPU}<br>Target compute hardware accelerator or processing unit.  |
-| enum class uint8_t | **[datatype](Namespaces/namespacecum.md#enum-datatype)** { FP64, FP32, FP16, BF16, FP8, S64, S32, S16, S8, U64, U32, U16, U8, UNDEF}<br>Runtime enumeration tags for supported numeric types.  |
-| enum class unsigned char | **[layout](Namespaces/namespacecum.md#enum-layout)** { UNDEF, ANY, A, AB, BA, ABC, ACB, BAC, BCA, CBA, ABCD, ABDC, ACBD, ACDB, ADBC, BACD, BCDA, CDBA, DCAB, ABCDE, ABDEC, ACBDE, ACDEB, BACDE, BCDEA, CDEBA, DECAB, ABCED, ABCDEF, ABDFCE, ACBDEF, ABDEFC, DEFCAB, ABCDFE, ABCDEFG, ABCDEGF, ABCDEFGH, ABCDEFHG, ABCDEFGHI, ABCDEFGIH, ABCDEFGHIJ, ABCDEFGHJI, ABCDEFGHIJK, ABCDEFGHIKJ, ABCDEFGHIJKL, ABCDEFGHIJLK, X = A, NC = AB, CN = BA, NCW = ABC, NWC = ACB, NCHW = ABCD, NHWC = ACDB, CHWN = BCDA, NCDHW = ABCDE, NDHWC = ACDEB, OI = AB, IO = BA, OIW = ABC, OWI = ACB, WIO = CBA, IWO = BCA, OIHW = ABCD, HWIO = CDBA, OHWI = ACDB, IHWO = BCDA, IOHW = BACD, OIDHW = ABCDE, DHWIO = CDEBA, ODHWI = ACDEB, IODHW = BACDE, IDHWO = BCDEA, GOIW = ABCD, GOWI = ABDC, WIGO = DCAB, GOHWI = ABDEC, GOIHW = ABCDE, HWIGO = DECAB, GIOHW = ACBDE, GOIDHW = ABCDEF, GIODHW = ACBDEF, GODHWI = ABDEFC, DHWIGO = DEFCAB, TN = AB, NT = BA, TNC = ABC, NTC = BAC, LDNC = ABCD, LDIGO = ABCDE, LDGOI = ABDEC, LDIO = ABCD, LDOI = ABDC, LDGO = ABCD}<br>Memory layout and dimension permutation tags for multi-dimensional tensors.  |
-| enum| **[MemoryAlingment](Namespaces/namespacecum.md#enum-memoryalingment)** { RowMajor, ColMajor}<br>Memory storage ordering (RowMajor vs ColMajor).  |
-| using [experimental::__event__](Classes/classcum_1_1experimental_1_1____event____.md) | **[__event__](Namespaces/namespacecum.md#using---event--)** <br>Asynchronous execution event handle alias.  |
-| using std::vector< std::reference_wrapper< [__event__](Namespaces/namespacecum.md#using---event--) > > | **[__events__](Namespaces/namespacecum.md#using---events--)** <br>Collection of references to dependent asynchronous events.  |
-| using std::int64_t | **[dim_t](Namespaces/namespacecum.md#using-dim-t)** <br>Fundamental signed integer type for dimensions, sizes, and indexing.  |
-| using std::vector< [dim_t](Namespaces/namespacecum.md#using-dim-t) > | **[Shape](Namespaces/namespacecum.md#using-shape)** <br>[Shape]() vector representing multi-dimensional tensor dimensions.  |
-| using std::vector< [dim_t](Namespaces/namespacecum.md#using-dim-t) > | **[Dims](Namespaces/namespacecum.md#using-dims)** <br>Dimension vector alias for [Shape](Namespaces/namespacecum.md#using-shape).  |
-| using double | **[float64](Namespaces/namespacecum.md#using-float64)** <br>64-bit double precision float alias.  |
-| using float | **[float32](Namespaces/namespacecum.md#using-float32)** <br>32-bit single precision float alias.  |
-| using [fp8_e4_3m_impl](Classes/structfp8__e4__3m__impl.md) | **[float8](Namespaces/namespacecum.md#using-float8)** <br>8-bit floating point alias.  |
-| using signed long long | **[int64](Namespaces/namespacecum.md#using-int64)** <br>Signed 64-bit integer alias.  |
-| using signed int | **[int32](Namespaces/namespacecum.md#using-int32)** <br>Signed 32-bit integer alias.  |
-| using signed short | **[int16](Namespaces/namespacecum.md#using-int16)** <br>Signed 16-bit integer alias.  |
-| using signed char | **[int8](Namespaces/namespacecum.md#using-int8)** <br>Signed 8-bit integer alias.  |
-| using unsigned long long | **[uint64](Namespaces/namespacecum.md#using-uint64)** <br>Unsigned 64-bit integer alias.  |
-| using unsigned int | **[uint32](Namespaces/namespacecum.md#using-uint32)** <br>Unsigned 32-bit integer alias.  |
-| using unsigned short | **[uint16](Namespaces/namespacecum.md#using-uint16)** <br>Unsigned 16-bit integer alias.  |
-| using unsigned char | **[uint8](Namespaces/namespacecum.md#using-uint8)** <br>Unsigned 8-bit integer alias.  |
-| using [float64](Namespaces/namespacecum.md#using-float64) | **[f64](Namespaces/namespacecum.md#using-f64)** <br>Short alias for [float64](Namespaces/namespacecum.md#using-float64).  |
-| using [float32](Namespaces/namespacecum.md#using-float32) | **[f32](Namespaces/namespacecum.md#using-f32)** <br>Short alias for [float32](Namespaces/namespacecum.md#using-float32).  |
-| using [float16](Classes/structcum_1_1float16.md) | **[f16](Namespaces/namespacecum.md#using-f16)** <br>Short alias for [float16]().  |
-| using [bfloat16](Classes/structcum_1_1bfloat16.md) | **[bf16](Namespaces/namespacecum.md#using-bf16)** <br>Short alias for [bfloat16]().  |
-| using [float8](Namespaces/namespacecum.md#using-float8) | **[f8](Namespaces/namespacecum.md#using-f8)** <br>Short alias for [float8](Namespaces/namespacecum.md#using-float8).  |
-| using [int64](Namespaces/namespacecum.md#using-int64) | **[i64](Namespaces/namespacecum.md#using-i64)** <br>Short alias for [int64](Namespaces/namespacecum.md#using-int64).  |
-| using [int32](Namespaces/namespacecum.md#using-int32) | **[i32](Namespaces/namespacecum.md#using-i32)** <br>Short alias for [int32](Namespaces/namespacecum.md#using-int32).  |
-| using [int16](Namespaces/namespacecum.md#using-int16) | **[i16](Namespaces/namespacecum.md#using-i16)** <br>Short alias for [int16](Namespaces/namespacecum.md#using-int16).  |
-| using [int8](Namespaces/namespacecum.md#using-int8) | **[i8](Namespaces/namespacecum.md#using-i8)** <br>Short alias for [int8](Namespaces/namespacecum.md#using-int8).  |
-| using [uint64](Namespaces/namespacecum.md#using-uint64) | **[u64](Namespaces/namespacecum.md#using-u64)** <br>Short alias for [uint64](Namespaces/namespacecum.md#using-uint64).  |
-| using [uint32](Namespaces/namespacecum.md#using-uint32) | **[u32](Namespaces/namespacecum.md#using-u32)** <br>Short alias for [uint32](Namespaces/namespacecum.md#using-uint32).  |
-| using [uint16](Namespaces/namespacecum.md#using-uint16) | **[u16](Namespaces/namespacecum.md#using-u16)** <br>Short alias for [uint16](Namespaces/namespacecum.md#using-uint16).  |
-| using [uint8](Namespaces/namespacecum.md#using-uint8) | **[u8](Namespaces/namespacecum.md#using-u8)** <br>Short alias for [uint8](Namespaces/namespacecum.md#using-uint8).  |
-| using [uint8](Namespaces/namespacecum.md#using-uint8) | **[byte](Namespaces/namespacecum.md#using-byte)** <br>8-bit byte alias.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< int, 2 > | **[ivec2](Namespaces/namespacecum.md#using-ivec2)** <br>2-element integer vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< int, 3 > | **[ivec3](Namespaces/namespacecum.md#using-ivec3)** <br>3-element integer vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< int, 4 > | **[ivec4](Namespaces/namespacecum.md#using-ivec4)** <br>4-element integer vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float32](Namespaces/namespacecum.md#using-float32), 2 > | **[fvec2](Namespaces/namespacecum.md#using-fvec2)** <br>2-element single-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float32](Namespaces/namespacecum.md#using-float32), 3 > | **[fvec3](Namespaces/namespacecum.md#using-fvec3)** <br>3-element single-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float32](Namespaces/namespacecum.md#using-float32), 4 > | **[fvec4](Namespaces/namespacecum.md#using-fvec4)** <br>4-element single-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float64](Namespaces/namespacecum.md#using-float64), 2 > | **[dvec2](Namespaces/namespacecum.md#using-dvec2)** <br>2-element double-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float64](Namespaces/namespacecum.md#using-float64), 3 > | **[dvec3](Namespaces/namespacecum.md#using-dvec3)** <br>3-element double-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float64](Namespaces/namespacecum.md#using-float64), 4 > | **[dvec4](Namespaces/namespacecum.md#using-dvec4)** <br>4-element double-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float16](Classes/structcum_1_1float16.md), 2 > | **[hvec2](Namespaces/namespacecum.md#using-hvec2)** <br>2-element half-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float16](Classes/structcum_1_1float16.md), 3 > | **[hvec3](Namespaces/namespacecum.md#using-hvec3)** <br>3-element half-precision float vector.  |
-| using [Vector](Classes/classcum_1_1Vector.md)< [float16](Classes/structcum_1_1float16.md), 4 > | **[hvec4](Namespaces/namespacecum.md#using-hvec4)** <br>4-element half-precision float vector.  |
+| enum class| **[DEVICE](/CUM/api/Namespaces/namespacecum/#enum-device)** { AUTO, CPU, GPU}<br>Target compute hardware accelerator or processing unit.  |
+| enum class uint8_t | **[datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype)** { FP64, FP32, FP16, BF16, FP8, S64, S32, S16, S8, U64, U32, U16, U8, UNDEF}<br>Runtime enumeration tags for supported numeric types.  |
+| enum class unsigned char | **[layout](/CUM/api/Namespaces/namespacecum/#enum-layout)** { UNDEF, ANY, A, AB, BA, ABC, ACB, BAC, BCA, CBA, ABCD, ABDC, ACBD, ACDB, ADBC, BACD, BCDA, CDBA, DCAB, ABCDE, ABDEC, ACBDE, ACDEB, BACDE, BCDEA, CDEBA, DECAB, ABCED, ABCDEF, ABDFCE, ACBDEF, ABDEFC, DEFCAB, ABCDFE, ABCDEFG, ABCDEGF, ABCDEFGH, ABCDEFHG, ABCDEFGHI, ABCDEFGIH, ABCDEFGHIJ, ABCDEFGHJI, ABCDEFGHIJK, ABCDEFGHIKJ, ABCDEFGHIJKL, ABCDEFGHIJLK, X = A, NC = AB, CN = BA, NCW = ABC, NWC = ACB, NCHW = ABCD, NHWC = ACDB, CHWN = BCDA, NCDHW = ABCDE, NDHWC = ACDEB, OI = AB, IO = BA, OIW = ABC, OWI = ACB, WIO = CBA, IWO = BCA, OIHW = ABCD, HWIO = CDBA, OHWI = ACDB, IHWO = BCDA, IOHW = BACD, OIDHW = ABCDE, DHWIO = CDEBA, ODHWI = ACDEB, IODHW = BACDE, IDHWO = BCDEA, GOIW = ABCD, GOWI = ABDC, WIGO = DCAB, GOHWI = ABDEC, GOIHW = ABCDE, HWIGO = DECAB, GIOHW = ACBDE, GOIDHW = ABCDEF, GIODHW = ACBDEF, GODHWI = ABDEFC, DHWIGO = DEFCAB, TN = AB, NT = BA, TNC = ABC, NTC = BAC, LDNC = ABCD, LDIGO = ABCDE, LDGOI = ABDEC, LDIO = ABCD, LDOI = ABDC, LDGO = ABCD}<br>Memory layout and dimension permutation tags for multi-dimensional tensors.  |
+| enum| **[MemoryAlingment](/CUM/api/Namespaces/namespacecum/#enum-memoryalingment)** { RowMajor, ColMajor}<br>Memory storage ordering (RowMajor vs ColMajor).  |
+| using [experimental::__event__](/CUM/api/Classes/classcum_1_1experimental_1_1____event____/) | **[__event__](/CUM/api/Namespaces/namespacecum/#using---event--)** <br>Asynchronous execution event handle alias.  |
+| using std::vector< std::reference_wrapper< [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) > > | **[__events__](/CUM/api/Namespaces/namespacecum/#using---events--)** <br>Collection of references to dependent asynchronous events.  |
+| using std::int64_t | **[dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t)** <br>Fundamental signed integer type for dimensions, sizes, and indexing.  |
+| using std::vector< [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) > | **[Shape](/CUM/api/Namespaces/namespacecum/#using-shape)** <br>[Shape]() vector representing multi-dimensional tensor dimensions.  |
+| using std::vector< [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) > | **[Dims](/CUM/api/Namespaces/namespacecum/#using-dims)** <br>Dimension vector alias for [Shape](/CUM/api/Namespaces/namespacecum/#using-shape).  |
+| using double | **[float64](/CUM/api/Namespaces/namespacecum/#using-float64)** <br>64-bit double precision float alias.  |
+| using float | **[float32](/CUM/api/Namespaces/namespacecum/#using-float32)** <br>32-bit single precision float alias.  |
+| using [fp8_e4_3m_impl](/CUM/api/Classes/structfp8__e4__3m__impl/) | **[float8](/CUM/api/Namespaces/namespacecum/#using-float8)** <br>8-bit floating point alias.  |
+| using signed long long | **[int64](/CUM/api/Namespaces/namespacecum/#using-int64)** <br>Signed 64-bit integer alias.  |
+| using signed int | **[int32](/CUM/api/Namespaces/namespacecum/#using-int32)** <br>Signed 32-bit integer alias.  |
+| using signed short | **[int16](/CUM/api/Namespaces/namespacecum/#using-int16)** <br>Signed 16-bit integer alias.  |
+| using signed char | **[int8](/CUM/api/Namespaces/namespacecum/#using-int8)** <br>Signed 8-bit integer alias.  |
+| using unsigned long long | **[uint64](/CUM/api/Namespaces/namespacecum/#using-uint64)** <br>Unsigned 64-bit integer alias.  |
+| using unsigned int | **[uint32](/CUM/api/Namespaces/namespacecum/#using-uint32)** <br>Unsigned 32-bit integer alias.  |
+| using unsigned short | **[uint16](/CUM/api/Namespaces/namespacecum/#using-uint16)** <br>Unsigned 16-bit integer alias.  |
+| using unsigned char | **[uint8](/CUM/api/Namespaces/namespacecum/#using-uint8)** <br>Unsigned 8-bit integer alias.  |
+| using [float64](/CUM/api/Namespaces/namespacecum/#using-float64) | **[f64](/CUM/api/Namespaces/namespacecum/#using-f64)** <br>Short alias for [float64](/CUM/api/Namespaces/namespacecum/#using-float64).  |
+| using [float32](/CUM/api/Namespaces/namespacecum/#using-float32) | **[f32](/CUM/api/Namespaces/namespacecum/#using-f32)** <br>Short alias for [float32](/CUM/api/Namespaces/namespacecum/#using-float32).  |
+| using [float16](/CUM/api/Classes/structcum_1_1float16/) | **[f16](/CUM/api/Namespaces/namespacecum/#using-f16)** <br>Short alias for [float16]().  |
+| using [bfloat16](/CUM/api/Classes/structcum_1_1bfloat16/) | **[bf16](/CUM/api/Namespaces/namespacecum/#using-bf16)** <br>Short alias for [bfloat16]().  |
+| using [float8](/CUM/api/Namespaces/namespacecum/#using-float8) | **[f8](/CUM/api/Namespaces/namespacecum/#using-f8)** <br>Short alias for [float8](/CUM/api/Namespaces/namespacecum/#using-float8).  |
+| using [int64](/CUM/api/Namespaces/namespacecum/#using-int64) | **[i64](/CUM/api/Namespaces/namespacecum/#using-i64)** <br>Short alias for [int64](/CUM/api/Namespaces/namespacecum/#using-int64).  |
+| using [int32](/CUM/api/Namespaces/namespacecum/#using-int32) | **[i32](/CUM/api/Namespaces/namespacecum/#using-i32)** <br>Short alias for [int32](/CUM/api/Namespaces/namespacecum/#using-int32).  |
+| using [int16](/CUM/api/Namespaces/namespacecum/#using-int16) | **[i16](/CUM/api/Namespaces/namespacecum/#using-i16)** <br>Short alias for [int16](/CUM/api/Namespaces/namespacecum/#using-int16).  |
+| using [int8](/CUM/api/Namespaces/namespacecum/#using-int8) | **[i8](/CUM/api/Namespaces/namespacecum/#using-i8)** <br>Short alias for [int8](/CUM/api/Namespaces/namespacecum/#using-int8).  |
+| using [uint64](/CUM/api/Namespaces/namespacecum/#using-uint64) | **[u64](/CUM/api/Namespaces/namespacecum/#using-u64)** <br>Short alias for [uint64](/CUM/api/Namespaces/namespacecum/#using-uint64).  |
+| using [uint32](/CUM/api/Namespaces/namespacecum/#using-uint32) | **[u32](/CUM/api/Namespaces/namespacecum/#using-u32)** <br>Short alias for [uint32](/CUM/api/Namespaces/namespacecum/#using-uint32).  |
+| using [uint16](/CUM/api/Namespaces/namespacecum/#using-uint16) | **[u16](/CUM/api/Namespaces/namespacecum/#using-u16)** <br>Short alias for [uint16](/CUM/api/Namespaces/namespacecum/#using-uint16).  |
+| using [uint8](/CUM/api/Namespaces/namespacecum/#using-uint8) | **[u8](/CUM/api/Namespaces/namespacecum/#using-u8)** <br>Short alias for [uint8](/CUM/api/Namespaces/namespacecum/#using-uint8).  |
+| using [uint8](/CUM/api/Namespaces/namespacecum/#using-uint8) | **[byte](/CUM/api/Namespaces/namespacecum/#using-byte)** <br>8-bit byte alias.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< int, 2 > | **[ivec2](/CUM/api/Namespaces/namespacecum/#using-ivec2)** <br>2-element integer vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< int, 3 > | **[ivec3](/CUM/api/Namespaces/namespacecum/#using-ivec3)** <br>3-element integer vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< int, 4 > | **[ivec4](/CUM/api/Namespaces/namespacecum/#using-ivec4)** <br>4-element integer vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float32](/CUM/api/Namespaces/namespacecum/#using-float32), 2 > | **[fvec2](/CUM/api/Namespaces/namespacecum/#using-fvec2)** <br>2-element single-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float32](/CUM/api/Namespaces/namespacecum/#using-float32), 3 > | **[fvec3](/CUM/api/Namespaces/namespacecum/#using-fvec3)** <br>3-element single-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float32](/CUM/api/Namespaces/namespacecum/#using-float32), 4 > | **[fvec4](/CUM/api/Namespaces/namespacecum/#using-fvec4)** <br>4-element single-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float64](/CUM/api/Namespaces/namespacecum/#using-float64), 2 > | **[dvec2](/CUM/api/Namespaces/namespacecum/#using-dvec2)** <br>2-element double-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float64](/CUM/api/Namespaces/namespacecum/#using-float64), 3 > | **[dvec3](/CUM/api/Namespaces/namespacecum/#using-dvec3)** <br>3-element double-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float64](/CUM/api/Namespaces/namespacecum/#using-float64), 4 > | **[dvec4](/CUM/api/Namespaces/namespacecum/#using-dvec4)** <br>4-element double-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float16](/CUM/api/Classes/structcum_1_1float16/), 2 > | **[hvec2](/CUM/api/Namespaces/namespacecum/#using-hvec2)** <br>2-element half-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float16](/CUM/api/Classes/structcum_1_1float16/), 3 > | **[hvec3](/CUM/api/Namespaces/namespacecum/#using-hvec3)** <br>3-element half-precision float vector.  |
+| using [Vector](/CUM/api/Classes/classcum_1_1Vector/)< [float16](/CUM/api/Classes/structcum_1_1float16/), 4 > | **[hvec4](/CUM/api/Namespaces/namespacecum/#using-hvec4)** <br>4-element half-precision float vector.  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| template <typename T ,typename F \> <br>decltype(auto) | **[invoke_or_ub](Namespaces/namespacecum.md#function-invoke-or-ub)**(F && f)<br>Invokes a generic functor instantiated with type `T`, or triggers undefined behavior path.  |
-| template <typename F \> <br>decltype(auto) | **[dispatch_datatype](Namespaces/namespacecum.md#function-dispatch-datatype)**([datatype](Namespaces/namespacecum.md#enum-datatype) dt, F && f)<br>Runtime-to-compile-time datatype dispatcher.  |
-| void | **[cum](Namespaces/namespacecum.md#function-cum)**([DEVICE](Namespaces/namespacecum.md#enum-device) device =[DEVICE::AUTO](Namespaces/namespacecum.md#enumvalue-auto))<br>Initializes the CUM library context for the specified compute device.  |
-| void | **[recum](Namespaces/namespacecum.md#function-recum)**([DEVICE](Namespaces/namespacecum.md#enum-device) device =[DEVICE::AUTO](Namespaces/namespacecum.md#enumvalue-auto))<br>Reinitializes or switches the CUM library context to another compute device.  |
-| void | **[decum](Namespaces/namespacecum.md#function-decum)**()<br>Finalizes and cleans up the CUM library runtime and allocated context resources.  |
-| std::size_t | **[datatype_size](Namespaces/namespacecum.md#function-datatype-size)**([datatype](Namespaces/namespacecum.md#enum-datatype) type)<br>Computes the byte size of a specified runtime datatype tag.  |
-| template <typename T \> <br>[datatype](Namespaces/namespacecum.md#enum-datatype) | **[type_tag](Namespaces/namespacecum.md#function-type-tag)**()<br>Resolves the runtime datatype tag corresponding to compile-time type `T`.  |
-| dnnl::algorithm | **[dnnl_algorithm](Namespaces/namespacecum.md#function-dnnl-algorithm)**([functions::function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) id)<br>Converts CUM [functions::function_id]() to oneDNN algorithm enumeration.  |
-| dnnl::memory::data_type | **[dnnl_data_type](Namespaces/namespacecum.md#function-dnnl-data-type)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype)<br>Converts CUM [datatype](Namespaces/namespacecum.md#enum-datatype) tag to oneDNN memory data_type.  |
-| [datatype](Namespaces/namespacecum.md#enum-datatype) | **[cum_data_type](Namespaces/namespacecum.md#function-cum-data-type)**(dnnl::memory::data_type dtype)<br>Converts oneDNN memory data_type to CUM [datatype](Namespaces/namespacecum.md#enum-datatype) tag.  |
-| dnnl::memory::format_tag | **[dnnl_format_tag](Namespaces/namespacecum.md#function-dnnl-format-tag)**([layout](Namespaces/namespacecum.md#enum-layout) format)<br>Converts CUM [layout](Namespaces/namespacecum.md#enum-layout) tag to oneDNN format_tag.  |
-| [layout](Namespaces/namespacecum.md#enum-layout) | **[cum_format_tag](Namespaces/namespacecum.md#function-cum-format-tag)**(dnnl::memory::format_tag format)<br>Converts oneDNN format_tag to CUM [layout](Namespaces/namespacecum.md#enum-layout) tag.  |
-| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > | **[operator+](Namespaces/namespacecum.md#function-operator+)**(const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > rhs) const |
-| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > | **[operator-](Namespaces/namespacecum.md#function-operator-)**(const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > rhs) const |
-| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > | **[operator*](Namespaces/namespacecum.md#function-operator*)**(const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > rhs) const |
-| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > | **[operator/](Namespaces/namespacecum.md#function-operator/)**(const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md)< T, rows_, cols_ > rhs) const |
-| template <typename T ,dim_t length_\> <br>[Vector](Classes/classcum_1_1Vector.md)< T, length_ > | **[operator+](Namespaces/namespacecum.md#function-operator+)**(const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & lhs, const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & rhs) |
-| template <typename T ,dim_t length_\> <br>[Vector](Classes/classcum_1_1Vector.md)< T, length_ > | **[operator-](Namespaces/namespacecum.md#function-operator-)**(const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & lhs, const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & rhs) |
-| template <typename T ,dim_t length_\> <br>[Vector](Classes/classcum_1_1Vector.md)< T, length_ > | **[operator*](Namespaces/namespacecum.md#function-operator*)**(const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & lhs, const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & rhs) |
-| template <typename T ,dim_t length_\> <br>[Vector](Classes/classcum_1_1Vector.md)< T, length_ > | **[operator/](Namespaces/namespacecum.md#function-operator/)**(const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & lhs, const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & rhs) |
-| template <typename T ,dim_t length_\> <br>[Vector](Classes/classcum_1_1Vector.md)< T, length_ > | **[operator*](Namespaces/namespacecum.md#function-operator*)**(const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & lhs, const std::type_identity_t< T > scalar) |
-| template <typename T ,dim_t length_\> <br>[Vector](Classes/classcum_1_1Vector.md)< T, length_ > | **[operator/](Namespaces/namespacecum.md#function-operator/)**(const [Vector](Classes/classcum_1_1Vector.md)< T, length_ > & lhs, const std::type_identity_t< T > scalar) |
+| template <typename T ,typename F \> <br>decltype(auto) | **[invoke_or_ub](/CUM/api/Namespaces/namespacecum/#function-invoke-or-ub)**(F && f)<br>Invokes a generic functor instantiated with type `T`, or triggers undefined behavior path.  |
+| template <typename F \> <br>decltype(auto) | **[dispatch_datatype](/CUM/api/Namespaces/namespacecum/#function-dispatch-datatype)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dt, F && f)<br>Runtime-to-compile-time datatype dispatcher.  |
+| void | **[cum](/CUM/api/Namespaces/namespacecum/#function-cum)**([DEVICE](/CUM/api/Namespaces/namespacecum/#enum-device) device =[DEVICE::AUTO](/CUM/api/Namespaces/namespacecum/#enumvalue-auto))<br>Initializes the CUM library context for the specified compute device.  |
+| void | **[recum](/CUM/api/Namespaces/namespacecum/#function-recum)**([DEVICE](/CUM/api/Namespaces/namespacecum/#enum-device) device =[DEVICE::AUTO](/CUM/api/Namespaces/namespacecum/#enumvalue-auto))<br>Reinitializes or switches the CUM library context to another compute device.  |
+| void | **[decum](/CUM/api/Namespaces/namespacecum/#function-decum)**()<br>Finalizes and cleans up the CUM library runtime and allocated context resources.  |
+| std::size_t | **[datatype_size](/CUM/api/Namespaces/namespacecum/#function-datatype-size)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) type)<br>Computes the byte size of a specified runtime datatype tag.  |
+| template <typename T \> <br>[datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) | **[type_tag](/CUM/api/Namespaces/namespacecum/#function-type-tag)**()<br>Resolves the runtime datatype tag corresponding to compile-time type `T`.  |
+| dnnl::algorithm | **[dnnl_algorithm](/CUM/api/Namespaces/namespacecum/#function-dnnl-algorithm)**([functions::function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) id)<br>Converts CUM [functions::function_id]() to oneDNN algorithm enumeration.  |
+| dnnl::memory::data_type | **[dnnl_data_type](/CUM/api/Namespaces/namespacecum/#function-dnnl-data-type)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype)<br>Converts CUM [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) tag to oneDNN memory data_type.  |
+| [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) | **[cum_data_type](/CUM/api/Namespaces/namespacecum/#function-cum-data-type)**(dnnl::memory::data_type dtype)<br>Converts oneDNN memory data_type to CUM [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) tag.  |
+| dnnl::memory::format_tag | **[dnnl_format_tag](/CUM/api/Namespaces/namespacecum/#function-dnnl-format-tag)**([layout](/CUM/api/Namespaces/namespacecum/#enum-layout) format)<br>Converts CUM [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) tag to oneDNN format_tag.  |
+| [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) | **[cum_format_tag](/CUM/api/Namespaces/namespacecum/#function-cum-format-tag)**(dnnl::memory::format_tag format)<br>Converts oneDNN format_tag to CUM [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) tag.  |
+| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > | **[operator+](/CUM/api/Namespaces/namespacecum/#function-operator+)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > rhs) const |
+| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > | **[operator-](/CUM/api/Namespaces/namespacecum/#function-operator-)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > rhs) const |
+| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > | **[operator*](/CUM/api/Namespaces/namespacecum/#function-operator*)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > rhs) const |
+| template <typename T ,dim_t rows_,dim_t cols_\> <br>[Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > | **[operator/](/CUM/api/Namespaces/namespacecum/#function-operator/)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)< T, rows_, cols_ > rhs) const |
+| template <typename T ,dim_t length_\> <br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > | **[operator+](/CUM/api/Namespaces/namespacecum/#function-operator+)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & lhs, const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & rhs) |
+| template <typename T ,dim_t length_\> <br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > | **[operator-](/CUM/api/Namespaces/namespacecum/#function-operator-)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & lhs, const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & rhs) |
+| template <typename T ,dim_t length_\> <br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > | **[operator*](/CUM/api/Namespaces/namespacecum/#function-operator*)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & lhs, const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & rhs) |
+| template <typename T ,dim_t length_\> <br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > | **[operator/](/CUM/api/Namespaces/namespacecum/#function-operator/)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & lhs, const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & rhs) |
+| template <typename T ,dim_t length_\> <br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > | **[operator*](/CUM/api/Namespaces/namespacecum/#function-operator*)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & lhs, const std::type_identity_t< T > scalar) |
+| template <typename T ,dim_t length_\> <br>[Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > | **[operator/](/CUM/api/Namespaces/namespacecum/#function-operator/)**(const [Vector](/CUM/api/Classes/classcum_1_1Vector/)< T, length_ > & lhs, const std::type_identity_t< T > scalar) |
 
 ## Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[Dynamic](Namespaces/namespacecum.md#variable-dynamic)** <br>Sentinel constant indicating dynamic (runtime) dimension sizing.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[Dynamic](/CUM/api/Namespaces/namespacecum/#variable-dynamic)** <br>Sentinel constant indicating dynamic (runtime) dimension sizing.  |
 
 ## Types Documentation
 
@@ -319,7 +319,7 @@ using cum::Shape = std::vector<dim_t>;
 using cum::Dims = std::vector<dim_t>;
 ```
 
-Dimension vector alias for [Shape](Namespaces/namespacecum.md#using-shape). 
+Dimension vector alias for [Shape](/CUM/api/Namespaces/namespacecum/#using-shape). 
 
 ### using float64
 
@@ -415,7 +415,7 @@ Unsigned 8-bit integer alias.
 using cum::f64 = float64;
 ```
 
-Short alias for [float64](Namespaces/namespacecum.md#using-float64). 
+Short alias for [float64](/CUM/api/Namespaces/namespacecum/#using-float64). 
 
 ### using f32
 
@@ -423,7 +423,7 @@ Short alias for [float64](Namespaces/namespacecum.md#using-float64).
 using cum::f32 = float32;
 ```
 
-Short alias for [float32](Namespaces/namespacecum.md#using-float32). 
+Short alias for [float32](/CUM/api/Namespaces/namespacecum/#using-float32). 
 
 ### using f16
 
@@ -447,7 +447,7 @@ Short alias for [bfloat16]().
 using cum::f8 = float8;
 ```
 
-Short alias for [float8](Namespaces/namespacecum.md#using-float8). 
+Short alias for [float8](/CUM/api/Namespaces/namespacecum/#using-float8). 
 
 ### using i64
 
@@ -455,7 +455,7 @@ Short alias for [float8](Namespaces/namespacecum.md#using-float8).
 using cum::i64 = int64;
 ```
 
-Short alias for [int64](Namespaces/namespacecum.md#using-int64). 
+Short alias for [int64](/CUM/api/Namespaces/namespacecum/#using-int64). 
 
 ### using i32
 
@@ -463,7 +463,7 @@ Short alias for [int64](Namespaces/namespacecum.md#using-int64).
 using cum::i32 = int32;
 ```
 
-Short alias for [int32](Namespaces/namespacecum.md#using-int32). 
+Short alias for [int32](/CUM/api/Namespaces/namespacecum/#using-int32). 
 
 ### using i16
 
@@ -471,7 +471,7 @@ Short alias for [int32](Namespaces/namespacecum.md#using-int32).
 using cum::i16 = int16;
 ```
 
-Short alias for [int16](Namespaces/namespacecum.md#using-int16). 
+Short alias for [int16](/CUM/api/Namespaces/namespacecum/#using-int16). 
 
 ### using i8
 
@@ -479,7 +479,7 @@ Short alias for [int16](Namespaces/namespacecum.md#using-int16).
 using cum::i8 = int8;
 ```
 
-Short alias for [int8](Namespaces/namespacecum.md#using-int8). 
+Short alias for [int8](/CUM/api/Namespaces/namespacecum/#using-int8). 
 
 ### using u64
 
@@ -487,7 +487,7 @@ Short alias for [int8](Namespaces/namespacecum.md#using-int8).
 using cum::u64 = uint64;
 ```
 
-Short alias for [uint64](Namespaces/namespacecum.md#using-uint64). 
+Short alias for [uint64](/CUM/api/Namespaces/namespacecum/#using-uint64). 
 
 ### using u32
 
@@ -495,7 +495,7 @@ Short alias for [uint64](Namespaces/namespacecum.md#using-uint64).
 using cum::u32 = uint32;
 ```
 
-Short alias for [uint32](Namespaces/namespacecum.md#using-uint32). 
+Short alias for [uint32](/CUM/api/Namespaces/namespacecum/#using-uint32). 
 
 ### using u16
 
@@ -503,7 +503,7 @@ Short alias for [uint32](Namespaces/namespacecum.md#using-uint32).
 using cum::u16 = uint16;
 ```
 
-Short alias for [uint16](Namespaces/namespacecum.md#using-uint16). 
+Short alias for [uint16](/CUM/api/Namespaces/namespacecum/#using-uint16). 
 
 ### using u8
 
@@ -511,7 +511,7 @@ Short alias for [uint16](Namespaces/namespacecum.md#using-uint16).
 using cum::u8 = uint8;
 ```
 
-Short alias for [uint8](Namespaces/namespacecum.md#using-uint8). 
+Short alias for [uint8](/CUM/api/Namespaces/namespacecum/#using-uint8). 
 
 ### using byte
 
@@ -685,7 +685,7 @@ Initializes the CUM library context for the specified compute device.
 
 **Parameters**: 
 
-  * **device** The target compute device ([DEVICE::AUTO](Namespaces/namespacecum.md#enumvalue-auto), [DEVICE::CPU](Namespaces/namespacecum.md#enumvalue-cpu), or [DEVICE::GPU](Namespaces/namespacecum.md#enumvalue-gpu)). Default is [DEVICE::AUTO](Namespaces/namespacecum.md#enumvalue-auto). 
+  * **device** The target compute device ([DEVICE::AUTO](/CUM/api/Namespaces/namespacecum/#enumvalue-auto), [DEVICE::CPU](/CUM/api/Namespaces/namespacecum/#enumvalue-cpu), or [DEVICE::GPU](/CUM/api/Namespaces/namespacecum/#enumvalue-gpu)). Default is [DEVICE::AUTO](/CUM/api/Namespaces/namespacecum/#enumvalue-auto). 
 
 
 ### function recum
@@ -700,7 +700,7 @@ Reinitializes or switches the CUM library context to another compute device.
 
 **Parameters**: 
 
-  * **device** The target compute device to switch to. Default is [DEVICE::AUTO](Namespaces/namespacecum.md#enumvalue-auto). 
+  * **device** The target compute device to switch to. Default is [DEVICE::AUTO](/CUM/api/Namespaces/namespacecum/#enumvalue-auto). 
 
 
 ### function decum
@@ -742,7 +742,7 @@ Resolves the runtime datatype tag corresponding to compile-time type `T`.
   * **T** The static C++ type. 
 
 
-**Return**: The corresponding [datatype](Namespaces/namespacecum.md#enum-datatype) enum value. 
+**Return**: The corresponding [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) enum value. 
 
 ### function dnnl_algorithm
 
@@ -769,7 +769,7 @@ dnnl::memory::data_type dnnl_data_type(
 )
 ```
 
-Converts CUM [datatype](Namespaces/namespacecum.md#enum-datatype) tag to oneDNN memory data_type. 
+Converts CUM [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) tag to oneDNN memory data_type. 
 
 **Parameters**: 
 
@@ -786,7 +786,7 @@ datatype cum_data_type(
 )
 ```
 
-Converts oneDNN memory data_type to CUM [datatype](Namespaces/namespacecum.md#enum-datatype) tag. 
+Converts oneDNN memory data_type to CUM [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) tag. 
 
 **Parameters**: 
 
@@ -803,7 +803,7 @@ dnnl::memory::format_tag dnnl_format_tag(
 )
 ```
 
-Converts CUM [layout](Namespaces/namespacecum.md#enum-layout) tag to oneDNN format_tag. 
+Converts CUM [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) tag to oneDNN format_tag. 
 
 **Parameters**: 
 
@@ -820,7 +820,7 @@ layout cum_format_tag(
 )
 ```
 
-Converts oneDNN format_tag to CUM [layout](Namespaces/namespacecum.md#enum-layout) tag. 
+Converts oneDNN format_tag to CUM [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) tag. 
 
 **Parameters**: 
 
@@ -1001,4 +1001,4 @@ Sentinel constant indicating dynamic (runtime) dimension sizing.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

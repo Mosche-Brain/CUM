@@ -12,13 +12,13 @@ Dynamic 1D dense vector class with BLAS operations and matrix interoperability.
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::Vector](Classes/classcum_1_1Vector.md)** <br>Templated generic 1D dense vector.  |
+| class | **[cum::Vector](/CUM/api/Classes/classcum_1_1Vector/)** <br>Templated generic 1D dense vector.  |
 
 
 
@@ -27,4 +27,4 @@ Dynamic 1D dense vector class with BLAS operations and matrix interoperability.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

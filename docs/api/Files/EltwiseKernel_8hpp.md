@@ -12,14 +12,14 @@ Elementwise kernel wrapper executing compiled neural primitives.  [More...](#det
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::neural_primitives::EltwiseKernel](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md)** <br>Pre-compiled elementwise neural operation kernel for repeated forward/backward execution.  |
+| class | **[cum::neural_primitives::EltwiseKernel](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/)** <br>Pre-compiled elementwise neural operation kernel for repeated forward/backward execution.  |
 
 ## Detailed Description
 
@@ -37,4 +37,4 @@ Supports forward and backward passes on Tensor and Memory objects with warmup ca
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

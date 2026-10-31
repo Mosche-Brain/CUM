@@ -12,13 +12,13 @@ Templated generic 2D matrix class with fixed compile-time or dynamic dimensions.
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::Matrix](Classes/classcum_1_1Matrix.md)** <br>Templated generic dense matrix.  |
+| class | **[cum::Matrix](/CUM/api/Classes/classcum_1_1Matrix/)** <br>Templated generic dense matrix.  |
 
 ## Detailed Description
 
@@ -36,4 +36,4 @@ Implements arithmetic, transposition, reshaping, flattening, and matrix multipli
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

@@ -11,51 +11,51 @@ title: cum::internal
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::internal::Context](Classes/structcum_1_1internal_1_1Context.md)** <br>Singleton hardware and runtime execution context for oneAPI / SYCL / oneDNN backends.  |
-| struct | **[cum::internal::scalar_buffer](Classes/structcum_1_1internal_1_1scalar__buffer.md)**  |
-| struct | **[cum::internal::sycl_type_map](Classes/structcum_1_1internal_1_1sycl__type__map.md)**  |
-| struct | **[cum::internal::sycl_type_map< bfloat16 >](Classes/structcum_1_1internal_1_1sycl__type__map_3_01bfloat16_01_4.md)**  |
-| struct | **[cum::internal::sycl_type_map< float16 >](Classes/structcum_1_1internal_1_1sycl__type__map_3_01float16_01_4.md)**  |
+| struct | **[cum::internal::Context](/CUM/api/Classes/structcum_1_1internal_1_1Context/)** <br>Singleton hardware and runtime execution context for oneAPI / SYCL / oneDNN backends.  |
+| struct | **[cum::internal::scalar_buffer](/CUM/api/Classes/structcum_1_1internal_1_1scalar__buffer/)**  |
+| struct | **[cum::internal::sycl_type_map](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map/)**  |
+| struct | **[cum::internal::sycl_type_map< bfloat16 >](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map_3_01bfloat16_01_4/)**  |
+| struct | **[cum::internal::sycl_type_map< float16 >](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map_3_01float16_01_4/)**  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
-| template <typename T \> <br>using typename [sycl_type_map](Classes/structcum_1_1internal_1_1sycl__type__map.md)< T >::type | **[sycl_type_t](Namespaces/namespacecum_1_1internal.md#using-sycl-type-t)**  |
-| template <typename SyclT \> <br>using std::conditional_t< std::is_same_v< SyclT, double >, double, float > | **[math_compute_t](Namespaces/namespacecum_1_1internal.md#using-math-compute-t)**  |
-| template <typename SyclT \> <br>using std::conditional_t< std::is_integral_v< SyclT >, SyclT, std::conditional_t< std::is_same_v< SyclT, double >, double, float > > | **[blas_compute_t](Namespaces/namespacecum_1_1internal.md#using-blas-compute-t)**  |
+| template <typename T \> <br>using typename [sycl_type_map](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map/)< T >::type | **[sycl_type_t](/CUM/api/Namespaces/namespacecum_1_1internal/#using-sycl-type-t)**  |
+| template <typename SyclT \> <br>using std::conditional_t< std::is_same_v< SyclT, double >, double, float > | **[math_compute_t](/CUM/api/Namespaces/namespacecum_1_1internal/#using-math-compute-t)**  |
+| template <typename SyclT \> <br>using std::conditional_t< std::is_integral_v< SyclT >, SyclT, std::conditional_t< std::is_same_v< SyclT, double >, double, float > > | **[blas_compute_t](/CUM/api/Namespaces/namespacecum_1_1internal/#using-blas-compute-t)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| [Context](Classes/structcum_1_1internal_1_1Context.md) & | **[context](Namespaces/namespacecum_1_1internal.md#function-context)**([DEVICE](Namespaces/namespacecum.md#enum-device) device =[DEVICE::AUTO](Namespaces/namespacecum.md#enumvalue-auto))<br>Returns reference to thread-safe global context instance.  |
-| sycl::context & | **[getSyclContext](Namespaces/namespacecum_1_1internal.md#function-getsyclcontext)**() |
-| sycl::device & | **[device](Namespaces/namespacecum_1_1internal.md#function-device)**() |
-| sycl::queue & | **[getQueue](Namespaces/namespacecum_1_1internal.md#function-getqueue)**() |
-| dnnl::engine & | **[getEngine](Namespaces/namespacecum_1_1internal.md#function-getengine)**() |
-| dnnl::stream & | **[getStream](Namespaces/namespacecum_1_1internal.md#function-getstream)**() |
-| oneapi::mkl::rng::device::philox4x32x10< 1 > & | **[getRNG](Namespaces/namespacecum_1_1internal.md#function-getrng)**() |
-| cumeric_t * | **[getZeros](Namespaces/namespacecum_1_1internal.md#function-getzeros)**() |
-| cumeric_t * | **[getOnes](Namespaces/namespacecum_1_1internal.md#function-getones)**() |
-| const cumeric_t * | **[zeros](Namespaces/namespacecum_1_1internal.md#function-zeros)**() |
-| const cumeric_t * | **[ones](Namespaces/namespacecum_1_1internal.md#function-ones)**() |
-| cumeric_t * | **[cache](Namespaces/namespacecum_1_1internal.md#function-cache)**() |
-| sycl::context & | **[sycl_context](Namespaces/namespacecum_1_1internal.md#function-sycl-context)**() |
-| sycl::queue & | **[queue](Namespaces/namespacecum_1_1internal.md#function-queue)**() |
-| dnnl::engine & | **[engine](Namespaces/namespacecum_1_1internal.md#function-engine)**() |
-| dnnl::stream & | **[stream](Namespaces/namespacecum_1_1internal.md#function-stream)**() |
-| template <typename F \> <br>decltype(auto) | **[dispatch_sycl_datatype](Namespaces/namespacecum_1_1internal.md#function-dispatch-sycl-datatype)**([datatype](Namespaces/namespacecum.md#enum-datatype) dt, F && f)<br>Dispatches runtime datatype to compile-time SYCL mapped type.  |
-| template <typename MklCall ,typename FallbackOp \> <br>[__event__](Namespaces/namespacecum.md#using---event--) | **[dispatch_vm_binary](Namespaces/namespacecum_1_1internal.md#function-dispatch-vm-binary)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, const void * u, const [dim_t](Namespaces/namespacecum.md#using-dim-t) n, MklCall && mkl_call, FallbackOp && fallback_op)<br>Dispatches binary vector-matrix or elementwise operations to oneMKL or SYCL fallback kernel.  |
-| template <typename MklCall ,typename FallbackOp \> <br>[__event__](Namespaces/namespacecum.md#using---event--) | **[dispatch_vm_binary_batch](Namespaces/namespacecum_1_1internal.md#function-dispatch-vm-binary-batch)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const [dim_t](Namespaces/namespacecum.md#using-dim-t) stride_r, const void * v, const [dim_t](Namespaces/namespacecum.md#using-dim-t) stride_v, const void * u, const [dim_t](Namespaces/namespacecum.md#using-dim-t) stride_u, const [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const [dim_t](Namespaces/namespacecum.md#using-dim-t) batch_size, MklCall && mkl_call, FallbackOp && fallback_op)<br>Dispatches batched binary operations to oneMKL or 2D parallel_for SYCL fallback kernel.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[blas_vec_index](Namespaces/namespacecum_1_1internal.md#function-blas-vec-index)**([dim_t](Namespaces/namespacecum.md#using-dim-t) i, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, [dim_t](Namespaces/namespacecum.md#using-dim-t) inc) |
-| [scalar_buffer](Classes/structcum_1_1internal_1_1scalar__buffer.md) | **[to_scalar_buffer](Namespaces/namespacecum_1_1internal.md#function-to-scalar-buffer)**([datatype](Namespaces/namespacecum.md#enum-datatype) dt, cumeric_t val) |
-| oneapi::mkl::transpose | **[to_mkl_transpose](Namespaces/namespacecum_1_1internal.md#function-to-mkl-transpose)**(char c) |
-| oneapi::mkl::uplo | **[to_mkl_uplo](Namespaces/namespacecum_1_1internal.md#function-to-mkl-uplo)**(char c) |
-| oneapi::mkl::diag | **[to_mkl_diag](Namespaces/namespacecum_1_1internal.md#function-to-mkl-diag)**(char c) |
-| oneapi::mkl::side | **[to_mkl_side](Namespaces/namespacecum_1_1internal.md#function-to-mkl-side)**(char c) |
-| template <typename MklCall ,typename FallbackOp \> <br>[__event__](Namespaces/namespacecum.md#using---event--) | **[dispatch_vm_unary](Namespaces/namespacecum_1_1internal.md#function-dispatch-vm-unary)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, const std::size_t n, MklCall && mkl_call, FallbackOp && fallback_op)<br>Dispatches unary vector operations to oneMKL or 1D parallel_for SYCL fallback kernel.  |
-| template <typename Op \> <br>[__event__](Namespaces/namespacecum.md#using---event--) | **[dispatch_unary_math](Namespaces/namespacecum_1_1internal.md#function-dispatch-unary-math)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, const std::size_t n, Op && op)<br>Dispatches generic unary mathematical functor across array elements using SYCL parallel_for.  |
+| [Context](/CUM/api/Classes/structcum_1_1internal_1_1Context/) & | **[context](/CUM/api/Namespaces/namespacecum_1_1internal/#function-context)**([DEVICE](/CUM/api/Namespaces/namespacecum/#enum-device) device =[DEVICE::AUTO](/CUM/api/Namespaces/namespacecum/#enumvalue-auto))<br>Returns reference to thread-safe global context instance.  |
+| sycl::context & | **[getSyclContext](/CUM/api/Namespaces/namespacecum_1_1internal/#function-getsyclcontext)**() |
+| sycl::device & | **[device](/CUM/api/Namespaces/namespacecum_1_1internal/#function-device)**() |
+| sycl::queue & | **[getQueue](/CUM/api/Namespaces/namespacecum_1_1internal/#function-getqueue)**() |
+| dnnl::engine & | **[getEngine](/CUM/api/Namespaces/namespacecum_1_1internal/#function-getengine)**() |
+| dnnl::stream & | **[getStream](/CUM/api/Namespaces/namespacecum_1_1internal/#function-getstream)**() |
+| oneapi::mkl::rng::device::philox4x32x10< 1 > & | **[getRNG](/CUM/api/Namespaces/namespacecum_1_1internal/#function-getrng)**() |
+| cumeric_t * | **[getZeros](/CUM/api/Namespaces/namespacecum_1_1internal/#function-getzeros)**() |
+| cumeric_t * | **[getOnes](/CUM/api/Namespaces/namespacecum_1_1internal/#function-getones)**() |
+| const cumeric_t * | **[zeros](/CUM/api/Namespaces/namespacecum_1_1internal/#function-zeros)**() |
+| const cumeric_t * | **[ones](/CUM/api/Namespaces/namespacecum_1_1internal/#function-ones)**() |
+| cumeric_t * | **[cache](/CUM/api/Namespaces/namespacecum_1_1internal/#function-cache)**() |
+| sycl::context & | **[sycl_context](/CUM/api/Namespaces/namespacecum_1_1internal/#function-sycl-context)**() |
+| sycl::queue & | **[queue](/CUM/api/Namespaces/namespacecum_1_1internal/#function-queue)**() |
+| dnnl::engine & | **[engine](/CUM/api/Namespaces/namespacecum_1_1internal/#function-engine)**() |
+| dnnl::stream & | **[stream](/CUM/api/Namespaces/namespacecum_1_1internal/#function-stream)**() |
+| template <typename F \> <br>decltype(auto) | **[dispatch_sycl_datatype](/CUM/api/Namespaces/namespacecum_1_1internal/#function-dispatch-sycl-datatype)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dt, F && f)<br>Dispatches runtime datatype to compile-time SYCL mapped type.  |
+| template <typename MklCall ,typename FallbackOp \> <br>[__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[dispatch_vm_binary](/CUM/api/Namespaces/namespacecum_1_1internal/#function-dispatch-vm-binary)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, const void * u, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, MklCall && mkl_call, FallbackOp && fallback_op)<br>Dispatches binary vector-matrix or elementwise operations to oneMKL or SYCL fallback kernel.  |
+| template <typename MklCall ,typename FallbackOp \> <br>[__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[dispatch_vm_binary_batch](/CUM/api/Namespaces/namespacecum_1_1internal/#function-dispatch-vm-binary-batch)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) stride_r, const void * v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) stride_v, const void * u, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) stride_u, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) batch_size, MklCall && mkl_call, FallbackOp && fallback_op)<br>Dispatches batched binary operations to oneMKL or 2D parallel_for SYCL fallback kernel.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[blas_vec_index](/CUM/api/Namespaces/namespacecum_1_1internal/#function-blas-vec-index)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) i, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) inc) |
+| [scalar_buffer](/CUM/api/Classes/structcum_1_1internal_1_1scalar__buffer/) | **[to_scalar_buffer](/CUM/api/Namespaces/namespacecum_1_1internal/#function-to-scalar-buffer)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dt, cumeric_t val) |
+| oneapi::mkl::transpose | **[to_mkl_transpose](/CUM/api/Namespaces/namespacecum_1_1internal/#function-to-mkl-transpose)**(char c) |
+| oneapi::mkl::uplo | **[to_mkl_uplo](/CUM/api/Namespaces/namespacecum_1_1internal/#function-to-mkl-uplo)**(char c) |
+| oneapi::mkl::diag | **[to_mkl_diag](/CUM/api/Namespaces/namespacecum_1_1internal/#function-to-mkl-diag)**(char c) |
+| oneapi::mkl::side | **[to_mkl_side](/CUM/api/Namespaces/namespacecum_1_1internal/#function-to-mkl-side)**(char c) |
+| template <typename MklCall ,typename FallbackOp \> <br>[__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[dispatch_vm_unary](/CUM/api/Namespaces/namespacecum_1_1internal/#function-dispatch-vm-unary)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, const std::size_t n, MklCall && mkl_call, FallbackOp && fallback_op)<br>Dispatches unary vector operations to oneMKL or 1D parallel_for SYCL fallback kernel.  |
+| template <typename Op \> <br>[__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[dispatch_unary_math](/CUM/api/Namespaces/namespacecum_1_1internal/#function-dispatch-unary-math)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, const std::size_t n, Op && op)<br>Dispatches generic unary mathematical functor across array elements using SYCL parallel_for.  |
 
 ## Types Documentation
 
@@ -104,7 +104,7 @@ Returns reference to thread-safe global context instance.
   * **device** Target device. 
 
 
-**Return**: [Context](Classes/structcum_1_1internal_1_1Context.md) reference. 
+**Return**: [Context](/CUM/api/Classes/structcum_1_1internal_1_1Context/) reference. 
 
 ### function getSyclContext
 
@@ -371,4 +371,4 @@ Dispatches generic unary mathematical functor across array elements using SYCL p
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

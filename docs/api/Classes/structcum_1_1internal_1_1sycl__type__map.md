@@ -16,7 +16,7 @@ title: cum::internal::sycl_type_map
 
 |                | Name           |
 | -------------- | -------------- |
-| using T | **[type](Classes/structcum_1_1internal_1_1sycl__type__map.md#using-type)**  |
+| using T | **[type](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map/#using-type)**  |
 
 ## Detailed Description
 
@@ -36,4 +36,4 @@ using cum::internal::sycl_type_map< T >::type = T;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

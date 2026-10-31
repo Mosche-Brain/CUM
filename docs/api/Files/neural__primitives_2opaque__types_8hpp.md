@@ -12,9 +12,9 @@ Forward declarations of backend-specific opaque handle types for neural primitiv
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
-| **[cum::neural_primitives::handles](Namespaces/namespacecum_1_1neural__primitives_1_1handles.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
+| **[cum::neural_primitives::handles](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1handles/)**  |
 
 ## Detailed Description
 
@@ -28,4 +28,4 @@ Forward declarations of backend-specific opaque handle types for neural primitiv
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

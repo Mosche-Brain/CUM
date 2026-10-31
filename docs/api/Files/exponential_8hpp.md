@@ -12,9 +12,9 @@ Exponential and logarithmic functions and their derivatives.  [More...](#detaile
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::functions](Namespaces/namespacecum_1_1functions.md)**  |
-| **[cum::functions::exponential](Namespaces/namespacecum_1_1functions_1_1exponential.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::functions](/CUM/api/Namespaces/namespacecum_1_1functions/)**  |
+| **[cum::functions::exponential](/CUM/api/Namespaces/namespacecum_1_1functions_1_1exponential/)**  |
 
 ## Detailed Description
 
@@ -32,4 +32,4 @@ Implements exp (base e, 2, 10) and log (natural, base 2, base 10) for scalar val
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

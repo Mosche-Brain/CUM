@@ -12,8 +12,8 @@ Asynchronous parallel reductions for matrices and vectors.  [More...](#detailed-
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::lara](Namespaces/namespacecum_1_1lara.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::lara](/CUM/api/Namespaces/namespacecum_1_1lara/)**  |
 
 ## Detailed Description
 
@@ -31,4 +31,4 @@ Implements row-wise/column-wise matrix reductions to vectors, and vector reducti
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

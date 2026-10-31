@@ -17,15 +17,15 @@ summary: 8-bit floating point emulation structure (E4M3 format representation).
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[fp8_e4_3m_impl](Classes/structfp8__e4__3m__impl.md#function-fp8-e4-3m-impl)**(float val)<br>Constructs an FP8 value from float.  |
-| | **[operator float](Classes/structfp8__e4__3m__impl.md#function-operator-float)**() const<br>Conversion operator to float (const).  |
-| | **[operator float](Classes/structfp8__e4__3m__impl.md#function-operator-float)**()<br>Non-const conversion operator to float.  |
+| | **[fp8_e4_3m_impl](/CUM/api/Classes/structfp8__e4__3m__impl/#function-fp8-e4-3m-impl)**(float val)<br>Constructs an FP8 value from float.  |
+| | **[operator float](/CUM/api/Classes/structfp8__e4__3m__impl/#function-operator-float)**() const<br>Conversion operator to float (const).  |
+| | **[operator float](/CUM/api/Classes/structfp8__e4__3m__impl/#function-operator-float)**()<br>Non-const conversion operator to float.  |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| unsigned char | **[data](Classes/structfp8__e4__3m__impl.md#variable-data)** <br>Raw 8-bit byte representation.  |
+| unsigned char | **[data](/CUM/api/Classes/structfp8__e4__3m__impl/#variable-data)** <br>Raw 8-bit byte representation.  |
 
 ## Public Functions Documentation
 
@@ -76,4 +76,4 @@ Raw 8-bit byte representation.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

@@ -17,136 +17,136 @@ Templated generic dense matrix.  [More...](#detailed-description)
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**()<br>Default constructor.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols)<br>Constructs dynamic matrix of given dimensions.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**(std::span< T > data)<br>Constructs matrix by copying data from a span view.  |
-| | **[~Matrix](Classes/classcum_1_1Matrix.md#function-~matrix)**() |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[rows](Classes/classcum_1_1Matrix.md#function-rows)**() const<br>Returns number of rows.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[cols](Classes/classcum_1_1Matrix.md#function-cols)**() const<br>Returns number of columns.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[elements](Classes/classcum_1_1Matrix.md#function-elements)**() const<br>Returns total number of elements.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, cols_, rows_ > | **[transpose](Classes/classcum_1_1Matrix.md#function-transpose)**() const<br>Transposes matrix out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, [Dynamic](Namespaces/namespacecum.md#variable-dynamic), [Dynamic](Namespaces/namespacecum.md#variable-dynamic) > | **[reshape](Classes/classcum_1_1Matrix.md#function-reshape)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols) const<br>Reshapes matrix into dynamic dimensions.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, [Dynamic](Namespaces/namespacecum.md#variable-dynamic), [Dynamic](Namespaces/namespacecum.md#variable-dynamic) > | **[flatten](Classes/classcum_1_1Matrix.md#function-flatten)**() const<br>Flattens matrix into 1 x elements row matrix.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & | **[operator+=](Classes/classcum_1_1Matrix.md#function-operator+=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & | **[operator-=](Classes/classcum_1_1Matrix.md#function-operator-=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & | **[operator*=](Classes/classcum_1_1Matrix.md#function-operator*=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & | **[operator/=](Classes/classcum_1_1Matrix.md#function-operator/=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & | **[operator*=](Classes/classcum_1_1Matrix.md#function-operator*=)**(T scalar) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, cols_ > & | **[operator/=](Classes/classcum_1_1Matrix.md#function-operator/=)**(T scalar) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, rows_, [Dynamic](Namespaces/namespacecum.md#variable-dynamic) > | **[matmul](Classes/classcum_1_1Matrix.md#function-matmul)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< T, cols_, [Dynamic](Namespaces/namespacecum.md#variable-dynamic) > & other) const<br>Multiplies with another matrix: `result` = *this * other.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols)<br>Constructs an uninitialized matrix of given dimensions.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, cumeric_t value)<br>Constructs a matrix of given dimensions filled with an initial scalar value.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, cumeric_t * source)<br>Constructs a matrix and copies data from a raw source buffer.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, const cumeric_t * source)<br>Constructs a matrix and copies data from a const raw source buffer.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, std::initializer_list< cumeric_t > elements)<br>Constructs a matrix from an initializer list of elements.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**(const Matrix & other)<br>Copy constructor performing deep copy of underlying buffer.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**(Matrix && other)<br>Move constructor transferring ownership of data buffer.  |
-| | **[Matrix](Classes/classcum_1_1Matrix.md#function-matrix)**() =default<br>Default constructor creating an empty 0x0 matrix.  |
-| | **[~Matrix](Classes/classcum_1_1Matrix.md#function-~matrix)**()<br>Destructor deallocating memory buffer.  |
-| | **[operator Vector](Classes/classcum_1_1Matrix.md#function-operator-vector)**() const<br>Conversion operator from [Matrix](Classes/classcum_1_1Matrix.md) to [Vector]() (flattens into 1D vector).  |
-| void | **[fill](Classes/classcum_1_1Matrix.md#function-fill)**(cumeric_t value)<br>Fills all matrix elements with a scalar value.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[rows](Classes/classcum_1_1Matrix.md#function-rows)**() const<br>Returns the number of rows.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[cols](Classes/classcum_1_1Matrix.md#function-cols)**() const<br>Returns the number of columns.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[row](Classes/classcum_1_1Matrix.md#function-row)**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) i) const<br>Extracts a row as a 1 x cols [Matrix](Classes/classcum_1_1Matrix.md).  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[col](Classes/classcum_1_1Matrix.md#function-col)**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) i) const<br>Extracts a column as a rows x 1 [Matrix](Classes/classcum_1_1Matrix.md).  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[size](Classes/classcum_1_1Matrix.md#function-size)**() const<br>Returns total number of elements (rows * cols).  |
-| cumeric_t * | **[data](Classes/classcum_1_1Matrix.md#function-data)**()<br>Returns raw data pointer.  |
-| const cumeric_t * | **[data](Classes/classcum_1_1Matrix.md#function-data)**() const<br>Returns const raw data pointer.  |
-| cumeric_t & | **[at](Classes/classcum_1_1Matrix.md#function-at)**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) row, const [dim_t](Namespaces/namespacecum.md#using-dim-t) col)<br>Indexed element access (lvalue reference).  |
-| const cumeric_t & | **[at](Classes/classcum_1_1Matrix.md#function-at)**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) row, const [dim_t](Namespaces/namespacecum.md#using-dim-t) col) const<br>Indexed element access (const reference).  |
-| cumeric_t & | **[operator()](Classes/classcum_1_1Matrix.md#function-operator())**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) row, const [dim_t](Namespaces/namespacecum.md#using-dim-t) col)<br>Function call operator for indexed element access (lvalue reference).  |
-| const cumeric_t & | **[operator()](Classes/classcum_1_1Matrix.md#function-operator())**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) row, const [dim_t](Namespaces/namespacecum.md#using-dim-t) col) const<br>Function call operator for indexed element access (const reference).  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[slice](Classes/classcum_1_1Matrix.md#function-slice)**([dim_t](Namespaces/namespacecum.md#using-dim-t) i, [dim_t](Namespaces/namespacecum.md#using-dim-t) j, [dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols) const<br>Extracts a submatrix block starting at (i, j).  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[set](Classes/classcum_1_1Matrix.md#function-set)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other)<br>Deep-copies data from another matrix into `*this`.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator=](Classes/classcum_1_1Matrix.md#function-operator=)**([Matrix](Classes/classcum_1_1Matrix.md#function-matrix) other)<br>Copy/move assignment operator via copy-and-swap idiom.  |
-| void | **[swap](Classes/classcum_1_1Matrix.md#function-swap)**([Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other)<br>Swaps internal state with another matrix.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator+=](Classes/classcum_1_1Matrix.md#function-operator+=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator+=](Classes/classcum_1_1Matrix.md#function-operator+=)**(const cumeric_t & scalar) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator-=](Classes/classcum_1_1Matrix.md#function-operator-=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator-=](Classes/classcum_1_1Matrix.md#function-operator-=)**(const cumeric_t & scalar) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator*=](Classes/classcum_1_1Matrix.md#function-operator*=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator*=](Classes/classcum_1_1Matrix.md#function-operator*=)**(const cumeric_t & scalar) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator/=](Classes/classcum_1_1Matrix.md#function-operator/=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[operator/=](Classes/classcum_1_1Matrix.md#function-operator/=)**(const cumeric_t & scalar) |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[transpose](Classes/classcum_1_1Matrix.md#function-transpose)**() const<br>Computes matrix transpose out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[transposeInPlace](Classes/classcum_1_1Matrix.md#function-transposeinplace)**()<br>Transposes matrix in-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[flatten](Classes/classcum_1_1Matrix.md#function-flatten)**() const<br>Flattens matrix into 1 x (rows*cols) row matrix.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[reshape](Classes/classcum_1_1Matrix.md#function-reshape)**(const [dim_t](Namespaces/namespacecum.md#using-dim-t) rows, const [dim_t](Namespaces/namespacecum.md#using-dim-t) cols) const<br>Reshapes matrix into given dimensions out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[reshapeInPlace](Classes/classcum_1_1Matrix.md#function-reshapeinplace)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols)<br>Reshapes matrix in-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[cwiseProduct](Classes/classcum_1_1Matrix.md#function-cwiseproduct)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other)<br>Computes Hadamard (component-wise) product out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[cwiseProductInPlace](Classes/classcum_1_1Matrix.md#function-cwiseproductinplace)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & other)<br>Computes component-wise product in-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[transform](Classes/classcum_1_1Matrix.md#function-transform)**(void(*)(cumeric_t *[data](Classes/classcum_1_1Matrix.md#function-data), const [dim_t](Namespaces/namespacecum.md#using-dim-t)[size](Classes/classcum_1_1Matrix.md#function-size)) func) const<br>Applies an elementwise array operation function out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[transformInPlace](Classes/classcum_1_1Matrix.md#function-transforminplace)**(void(*)(cumeric_t *[data](Classes/classcum_1_1Matrix.md#function-data), const [dim_t](Namespaces/namespacecum.md#using-dim-t)[size](Classes/classcum_1_1Matrix.md#function-size)) func)<br>Applies an elementwise array operation function in-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[transform](Classes/classcum_1_1Matrix.md#function-transform)**(cumeric_t(*)(cumeric_t x) func) const<br>Applies a scalar transformation function to each element out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[transformInPlace](Classes/classcum_1_1Matrix.md#function-transforminplace)**(cumeric_t(*)(cumeric_t x) func)<br>Applies a scalar transformation function to each element in-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[sin](Classes/classcum_1_1Matrix.md#function-sin)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[sinInPlace](Classes/classcum_1_1Matrix.md#function-sininplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[cos](Classes/classcum_1_1Matrix.md#function-cos)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[cosInPlace](Classes/classcum_1_1Matrix.md#function-cosinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[tan](Classes/classcum_1_1Matrix.md#function-tan)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[tanInPlace](Classes/classcum_1_1Matrix.md#function-taninplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[sinh](Classes/classcum_1_1Matrix.md#function-sinh)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[sinhInPlace](Classes/classcum_1_1Matrix.md#function-sinhinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[cosh](Classes/classcum_1_1Matrix.md#function-cosh)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[coshInPlace](Classes/classcum_1_1Matrix.md#function-coshinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[tanh](Classes/classcum_1_1Matrix.md#function-tanh)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[tanhInPlace](Classes/classcum_1_1Matrix.md#function-tanhinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[sqrt](Classes/classcum_1_1Matrix.md#function-sqrt)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[sqrtInPlace](Classes/classcum_1_1Matrix.md#function-sqrtinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[square](Classes/classcum_1_1Matrix.md#function-square)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[squareInPlace](Classes/classcum_1_1Matrix.md#function-squareinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[exp](Classes/classcum_1_1Matrix.md#function-exp)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[expInPlace](Classes/classcum_1_1Matrix.md#function-expinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[log](Classes/classcum_1_1Matrix.md#function-log)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[logInPlace](Classes/classcum_1_1Matrix.md#function-loginplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[relu](Classes/classcum_1_1Matrix.md#function-relu)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[reluInPlace](Classes/classcum_1_1Matrix.md#function-reluinplace)**() |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[rowwiseOpInPlace](Classes/classcum_1_1Matrix.md#function-rowwiseopinplace)**(void(*)(cumeric_t *[row](Classes/classcum_1_1Matrix.md#function-row), const cumeric_t *v, const [dim_t](Namespaces/namespacecum.md#using-dim-t)[cols](Classes/classcum_1_1Matrix.md#function-cols)) op, const cumeric_t * arr)<br>Applies an in-place row-wise vector operation across each row.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[colwiseOpInPlace](Classes/classcum_1_1Matrix.md#function-colwiseopinplace)**(void(*)(cumeric_t *[col](Classes/classcum_1_1Matrix.md#function-col), const cumeric_t *v, const [dim_t](Namespaces/namespacecum.md#using-dim-t)[rows](Classes/classcum_1_1Matrix.md#function-rows)) op, const cumeric_t * arr)<br>Applies an in-place column-wise vector operation across each column.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[clip](Classes/classcum_1_1Matrix.md#function-clip)**(const cumeric_t min, const cumeric_t max) const<br>Clamps all elements to [min, max] range out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[clipInPlace](Classes/classcum_1_1Matrix.md#function-clipinplace)**(const cumeric_t min, const cumeric_t max)<br>Clamps all elements to [min, max] range in-place.  |
-| cumeric_t | **[norm](Classes/classcum_1_1Matrix.md#function-norm)**()<br>Computes Frobenius / L2 Euclidean norm.  |
-| cumeric_t | **[squaredNorm](Classes/classcum_1_1Matrix.md#function-squarednorm)**()<br>Computes squared Frobenius norm.  |
-| cumeric_t | **[sum](Classes/classcum_1_1Matrix.md#function-sum)**() const<br>Computes sum of all matrix elements.  |
-| cumeric_t | **[sumAbs](Classes/classcum_1_1Matrix.md#function-sumabs)**() const<br>Computes sum of absolute values of all elements (L1 norm).  |
-| cumeric_t | **[mean](Classes/classcum_1_1Matrix.md#function-mean)**() const<br>Computes arithmetic mean of all matrix elements.  |
-| cumeric_t | **[amean](Classes/classcum_1_1Matrix.md#function-amean)**() const<br>Computes mean of absolute values of all matrix elements.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[colwiseSum](Classes/classcum_1_1Matrix.md#function-colwisesum)**()<br>Computes column-wise sums, returning a 1 x cols [Matrix](Classes/classcum_1_1Matrix.md).  |
-| [Vector](Classes/classcum_1_1Vector.md) | **[colwiseSum2vec](Classes/classcum_1_1Matrix.md#function-colwisesum2vec)**()<br>Computes column-wise sums, returning a [Vector]().  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[rowwiseSum](Classes/classcum_1_1Matrix.md#function-rowwisesum)**()<br>Computes row-wise sums, returning a rows x 1 [Matrix](Classes/classcum_1_1Matrix.md).  |
-| [Vector](Classes/classcum_1_1Vector.md) | **[rowwiseSum2vec](Classes/classcum_1_1Matrix.md#function-rowwisesum2vec)**()<br>Computes row-wise sums, returning a [Vector]().  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[shuffleRows](Classes/classcum_1_1Matrix.md#function-shufflerows)**() const<br>Shuffles rows randomly out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & | **[shuffleRowsInPlace](Classes/classcum_1_1Matrix.md#function-shufflerowsinplace)**()<br>Shuffles rows randomly in-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[Random](Classes/classcum_1_1Matrix.md#function-random)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, cumeric_t min =-1_c, cumeric_t max =1_c)<br>Creates a matrix initialized with uniformly distributed random numbers.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[Zeros](Classes/classcum_1_1Matrix.md#function-zeros)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols)<br>Creates a matrix filled with zeros.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[Ones](Classes/classcum_1_1Matrix.md#function-ones)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols)<br>Creates a matrix filled with ones.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[Linspace](Classes/classcum_1_1Matrix.md#function-linspace)**(cumeric_t start, cumeric_t end, [dim_t](Namespaces/namespacecum.md#using-dim-t) num)<br>Creates a 1 x num row vector matrix with values linearly spaced between start and end.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[Copy](Classes/classcum_1_1Matrix.md#function-copy)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat)<br>Creates an explicit deep copy of a matrix.  |
-| const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[View](Classes/classcum_1_1Matrix.md#function-view)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat)<br>Creates a non-owning read view of an existing matrix.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**()<br>Default constructor.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols)<br>Constructs dynamic matrix of given dimensions.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**(std::span< T > data)<br>Constructs matrix by copying data from a span view.  |
+| | **[~Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-~matrix)**() |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[rows](/CUM/api/Classes/classcum_1_1Matrix/#function-rows)**() const<br>Returns number of rows.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[cols](/CUM/api/Classes/classcum_1_1Matrix/#function-cols)**() const<br>Returns number of columns.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[elements](/CUM/api/Classes/classcum_1_1Matrix/#function-elements)**() const<br>Returns total number of elements.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, cols_, rows_ > | **[transpose](/CUM/api/Classes/classcum_1_1Matrix/#function-transpose)**() const<br>Transposes matrix out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, [Dynamic](/CUM/api/Namespaces/namespacecum/#variable-dynamic), [Dynamic](/CUM/api/Namespaces/namespacecum/#variable-dynamic) > | **[reshape](/CUM/api/Classes/classcum_1_1Matrix/#function-reshape)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols) const<br>Reshapes matrix into dynamic dimensions.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, [Dynamic](/CUM/api/Namespaces/namespacecum/#variable-dynamic), [Dynamic](/CUM/api/Namespaces/namespacecum/#variable-dynamic) > | **[flatten](/CUM/api/Classes/classcum_1_1Matrix/#function-flatten)**() const<br>Flattens matrix into 1 x elements row matrix.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & | **[operator+=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator+=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & | **[operator-=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator-=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & | **[operator*=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator*=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & | **[operator/=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator/=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & | **[operator*=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator*=)**(T scalar) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, cols_ > & | **[operator/=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator/=)**(T scalar) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, rows_, [Dynamic](/CUM/api/Namespaces/namespacecum/#variable-dynamic) > | **[matmul](/CUM/api/Classes/classcum_1_1Matrix/#function-matmul)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< T, cols_, [Dynamic](/CUM/api/Namespaces/namespacecum/#variable-dynamic) > & other) const<br>Multiplies with another matrix: `result` = *this * other.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols)<br>Constructs an uninitialized matrix of given dimensions.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, cumeric_t value)<br>Constructs a matrix of given dimensions filled with an initial scalar value.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, cumeric_t * source)<br>Constructs a matrix and copies data from a raw source buffer.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, const cumeric_t * source)<br>Constructs a matrix and copies data from a const raw source buffer.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, std::initializer_list< cumeric_t > elements)<br>Constructs a matrix from an initializer list of elements.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**(const Matrix & other)<br>Copy constructor performing deep copy of underlying buffer.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**(Matrix && other)<br>Move constructor transferring ownership of data buffer.  |
+| | **[Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)**() =default<br>Default constructor creating an empty 0x0 matrix.  |
+| | **[~Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-~matrix)**()<br>Destructor deallocating memory buffer.  |
+| | **[operator Vector](/CUM/api/Classes/classcum_1_1Matrix/#function-operator-vector)**() const<br>Conversion operator from [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to [Vector]() (flattens into 1D vector).  |
+| void | **[fill](/CUM/api/Classes/classcum_1_1Matrix/#function-fill)**(cumeric_t value)<br>Fills all matrix elements with a scalar value.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[rows](/CUM/api/Classes/classcum_1_1Matrix/#function-rows)**() const<br>Returns the number of rows.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[cols](/CUM/api/Classes/classcum_1_1Matrix/#function-cols)**() const<br>Returns the number of columns.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[row](/CUM/api/Classes/classcum_1_1Matrix/#function-row)**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) i) const<br>Extracts a row as a 1 x cols [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[col](/CUM/api/Classes/classcum_1_1Matrix/#function-col)**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) i) const<br>Extracts a column as a rows x 1 [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[size](/CUM/api/Classes/classcum_1_1Matrix/#function-size)**() const<br>Returns total number of elements (rows * cols).  |
+| cumeric_t * | **[data](/CUM/api/Classes/classcum_1_1Matrix/#function-data)**()<br>Returns raw data pointer.  |
+| const cumeric_t * | **[data](/CUM/api/Classes/classcum_1_1Matrix/#function-data)**() const<br>Returns const raw data pointer.  |
+| cumeric_t & | **[at](/CUM/api/Classes/classcum_1_1Matrix/#function-at)**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) row, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) col)<br>Indexed element access (lvalue reference).  |
+| const cumeric_t & | **[at](/CUM/api/Classes/classcum_1_1Matrix/#function-at)**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) row, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) col) const<br>Indexed element access (const reference).  |
+| cumeric_t & | **[operator()](/CUM/api/Classes/classcum_1_1Matrix/#function-operator())**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) row, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) col)<br>Function call operator for indexed element access (lvalue reference).  |
+| const cumeric_t & | **[operator()](/CUM/api/Classes/classcum_1_1Matrix/#function-operator())**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) row, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) col) const<br>Function call operator for indexed element access (const reference).  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[slice](/CUM/api/Classes/classcum_1_1Matrix/#function-slice)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) i, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) j, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols) const<br>Extracts a submatrix block starting at (i, j).  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[set](/CUM/api/Classes/classcum_1_1Matrix/#function-set)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other)<br>Deep-copies data from another matrix into `*this`.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator=)**([Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) other)<br>Copy/move assignment operator via copy-and-swap idiom.  |
+| void | **[swap](/CUM/api/Classes/classcum_1_1Matrix/#function-swap)**([Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other)<br>Swaps internal state with another matrix.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator+=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator+=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator+=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator+=)**(const cumeric_t & scalar) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator-=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator-=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator-=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator-=)**(const cumeric_t & scalar) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator*=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator*=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator*=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator*=)**(const cumeric_t & scalar) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator/=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator/=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[operator/=](/CUM/api/Classes/classcum_1_1Matrix/#function-operator/=)**(const cumeric_t & scalar) |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[transpose](/CUM/api/Classes/classcum_1_1Matrix/#function-transpose)**() const<br>Computes matrix transpose out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[transposeInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-transposeinplace)**()<br>Transposes matrix in-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[flatten](/CUM/api/Classes/classcum_1_1Matrix/#function-flatten)**() const<br>Flattens matrix into 1 x (rows*cols) row matrix.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[reshape](/CUM/api/Classes/classcum_1_1Matrix/#function-reshape)**(const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols) const<br>Reshapes matrix into given dimensions out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[reshapeInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-reshapeinplace)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols)<br>Reshapes matrix in-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[cwiseProduct](/CUM/api/Classes/classcum_1_1Matrix/#function-cwiseproduct)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other)<br>Computes Hadamard (component-wise) product out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[cwiseProductInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-cwiseproductinplace)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & other)<br>Computes component-wise product in-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[transform](/CUM/api/Classes/classcum_1_1Matrix/#function-transform)**(void(*)(cumeric_t *[data](/CUM/api/Classes/classcum_1_1Matrix/#function-data), const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t)[size](/CUM/api/Classes/classcum_1_1Matrix/#function-size)) func) const<br>Applies an elementwise array operation function out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[transformInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-transforminplace)**(void(*)(cumeric_t *[data](/CUM/api/Classes/classcum_1_1Matrix/#function-data), const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t)[size](/CUM/api/Classes/classcum_1_1Matrix/#function-size)) func)<br>Applies an elementwise array operation function in-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[transform](/CUM/api/Classes/classcum_1_1Matrix/#function-transform)**(cumeric_t(*)(cumeric_t x) func) const<br>Applies a scalar transformation function to each element out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[transformInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-transforminplace)**(cumeric_t(*)(cumeric_t x) func)<br>Applies a scalar transformation function to each element in-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[sin](/CUM/api/Classes/classcum_1_1Matrix/#function-sin)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[sinInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-sininplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[cos](/CUM/api/Classes/classcum_1_1Matrix/#function-cos)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[cosInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-cosinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[tan](/CUM/api/Classes/classcum_1_1Matrix/#function-tan)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[tanInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-taninplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[sinh](/CUM/api/Classes/classcum_1_1Matrix/#function-sinh)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[sinhInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-sinhinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[cosh](/CUM/api/Classes/classcum_1_1Matrix/#function-cosh)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[coshInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-coshinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[tanh](/CUM/api/Classes/classcum_1_1Matrix/#function-tanh)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[tanhInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-tanhinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[sqrt](/CUM/api/Classes/classcum_1_1Matrix/#function-sqrt)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[sqrtInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-sqrtinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[square](/CUM/api/Classes/classcum_1_1Matrix/#function-square)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[squareInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-squareinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[exp](/CUM/api/Classes/classcum_1_1Matrix/#function-exp)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[expInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-expinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[log](/CUM/api/Classes/classcum_1_1Matrix/#function-log)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[logInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-loginplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[relu](/CUM/api/Classes/classcum_1_1Matrix/#function-relu)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[reluInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-reluinplace)**() |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[rowwiseOpInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-rowwiseopinplace)**(void(*)(cumeric_t *[row](/CUM/api/Classes/classcum_1_1Matrix/#function-row), const cumeric_t *v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t)[cols](/CUM/api/Classes/classcum_1_1Matrix/#function-cols)) op, const cumeric_t * arr)<br>Applies an in-place row-wise vector operation across each row.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[colwiseOpInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-colwiseopinplace)**(void(*)(cumeric_t *[col](/CUM/api/Classes/classcum_1_1Matrix/#function-col), const cumeric_t *v, const [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t)[rows](/CUM/api/Classes/classcum_1_1Matrix/#function-rows)) op, const cumeric_t * arr)<br>Applies an in-place column-wise vector operation across each column.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[clip](/CUM/api/Classes/classcum_1_1Matrix/#function-clip)**(const cumeric_t min, const cumeric_t max) const<br>Clamps all elements to [min, max] range out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[clipInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-clipinplace)**(const cumeric_t min, const cumeric_t max)<br>Clamps all elements to [min, max] range in-place.  |
+| cumeric_t | **[norm](/CUM/api/Classes/classcum_1_1Matrix/#function-norm)**()<br>Computes Frobenius / L2 Euclidean norm.  |
+| cumeric_t | **[squaredNorm](/CUM/api/Classes/classcum_1_1Matrix/#function-squarednorm)**()<br>Computes squared Frobenius norm.  |
+| cumeric_t | **[sum](/CUM/api/Classes/classcum_1_1Matrix/#function-sum)**() const<br>Computes sum of all matrix elements.  |
+| cumeric_t | **[sumAbs](/CUM/api/Classes/classcum_1_1Matrix/#function-sumabs)**() const<br>Computes sum of absolute values of all elements (L1 norm).  |
+| cumeric_t | **[mean](/CUM/api/Classes/classcum_1_1Matrix/#function-mean)**() const<br>Computes arithmetic mean of all matrix elements.  |
+| cumeric_t | **[amean](/CUM/api/Classes/classcum_1_1Matrix/#function-amean)**() const<br>Computes mean of absolute values of all matrix elements.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[colwiseSum](/CUM/api/Classes/classcum_1_1Matrix/#function-colwisesum)**()<br>Computes column-wise sums, returning a 1 x cols [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/) | **[colwiseSum2vec](/CUM/api/Classes/classcum_1_1Matrix/#function-colwisesum2vec)**()<br>Computes column-wise sums, returning a [Vector]().  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[rowwiseSum](/CUM/api/Classes/classcum_1_1Matrix/#function-rowwisesum)**()<br>Computes row-wise sums, returning a rows x 1 [Matrix](/CUM/api/Classes/classcum_1_1Matrix/).  |
+| [Vector](/CUM/api/Classes/classcum_1_1Vector/) | **[rowwiseSum2vec](/CUM/api/Classes/classcum_1_1Matrix/#function-rowwisesum2vec)**()<br>Computes row-wise sums, returning a [Vector]().  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[shuffleRows](/CUM/api/Classes/classcum_1_1Matrix/#function-shufflerows)**() const<br>Shuffles rows randomly out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & | **[shuffleRowsInPlace](/CUM/api/Classes/classcum_1_1Matrix/#function-shufflerowsinplace)**()<br>Shuffles rows randomly in-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[Random](/CUM/api/Classes/classcum_1_1Matrix/#function-random)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, cumeric_t min =-1_c, cumeric_t max =1_c)<br>Creates a matrix initialized with uniformly distributed random numbers.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[Zeros](/CUM/api/Classes/classcum_1_1Matrix/#function-zeros)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols)<br>Creates a matrix filled with zeros.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[Ones](/CUM/api/Classes/classcum_1_1Matrix/#function-ones)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols)<br>Creates a matrix filled with ones.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[Linspace](/CUM/api/Classes/classcum_1_1Matrix/#function-linspace)**(cumeric_t start, cumeric_t end, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) num)<br>Creates a 1 x num row vector matrix with values linearly spaced between start and end.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[Copy](/CUM/api/Classes/classcum_1_1Matrix/#function-copy)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat)<br>Creates an explicit deep copy of a matrix.  |
+| const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[View](/CUM/api/Classes/classcum_1_1Matrix/#function-view)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat)<br>Creates a non-owning read view of an existing matrix.  |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > | **[operator+](Classes/classcum_1_1Matrix.md#friend-operator+)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & rhs)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > | **[operator-](Classes/classcum_1_1Matrix.md#friend-operator-)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & rhs)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > | **[operator*](Classes/classcum_1_1Matrix.md#friend-operator*)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & rhs)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > | **[operator/](Classes/classcum_1_1Matrix.md#friend-operator/)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & lhs, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix)< Type, height, width > & rhs)  |
-| void | **[swap](Classes/classcum_1_1Matrix.md#friend-swap)**([Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & A, [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & B) <br>Non-member swap function.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator+](Classes/classcum_1_1Matrix.md#friend-operator+)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & A, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator+](Classes/classcum_1_1Matrix.md#friend-operator+)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat, cumeric_t scalar)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator+](Classes/classcum_1_1Matrix.md#friend-operator+)**(const cumeric_t scalar, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator-](Classes/classcum_1_1Matrix.md#friend-operator-)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & A, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator*](Classes/classcum_1_1Matrix.md#friend-operator*)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & A, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator*](Classes/classcum_1_1Matrix.md#friend-operator*)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat, cumeric_t scalar)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator*](Classes/classcum_1_1Matrix.md#friend-operator*)**(const cumeric_t scalar, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator/](Classes/classcum_1_1Matrix.md#friend-operator/)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & A, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator/](Classes/classcum_1_1Matrix.md#friend-operator/)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat, cumeric_t scalar)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[operator/](Classes/classcum_1_1Matrix.md#friend-operator/)**(const cumeric_t scalar, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat)  |
-| bool | **[operator==](Classes/classcum_1_1Matrix.md#friend-operator==)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & A, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & B)  |
-| bool | **[operator!=](Classes/classcum_1_1Matrix.md#friend-operator!=)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & A, const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & B)  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[activation](Classes/classcum_1_1Matrix.md#friend-activation)**(const [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat, const char * name) <br>Applies named neural activation function out-of-place.  |
-| [Matrix](Classes/classcum_1_1Matrix.md#function-matrix) | **[activationInPlace](Classes/classcum_1_1Matrix.md#friend-activationinplace)**([Matrix](Classes/classcum_1_1Matrix.md#function-matrix) & mat, const char * name) <br>Applies named neural activation function in-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > | **[operator+](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator+)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & rhs)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > | **[operator-](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator-)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & rhs)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > | **[operator*](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator*)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & rhs)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > | **[operator/](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator/)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & lhs, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix)< Type, height, width > & rhs)  |
+| void | **[swap](/CUM/api/Classes/classcum_1_1Matrix/#friend-swap)**([Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & A, [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & B) <br>Non-member swap function.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator+](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator+)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator+](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator+)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat, cumeric_t scalar)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator+](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator+)**(const cumeric_t scalar, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator-](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator-)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator*](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator*)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator*](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator*)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat, cumeric_t scalar)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator*](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator*)**(const cumeric_t scalar, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator/](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator/)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator/](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator/)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat, cumeric_t scalar)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[operator/](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator/)**(const cumeric_t scalar, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat)  |
+| bool | **[operator==](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator==)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & B)  |
+| bool | **[operator!=](/CUM/api/Classes/classcum_1_1Matrix/#friend-operator!=)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & A, const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & B)  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[activation](/CUM/api/Classes/classcum_1_1Matrix/#friend-activation)**(const [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat, const char * name) <br>Applies named neural activation function out-of-place.  |
+| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) | **[activationInPlace](/CUM/api/Classes/classcum_1_1Matrix/#friend-activationinplace)**([Matrix](/CUM/api/Classes/classcum_1_1Matrix/#function-matrix) & mat, const char * name) <br>Applies named neural activation function in-place.  |
 
 ## Detailed Description
 
@@ -258,7 +258,7 @@ Matrix< T, cols_, rows_ > transpose() const
 
 Transposes matrix out-of-place. 
 
-**Return**: Transposed [Matrix](Classes/classcum_1_1Matrix.md) of dimensions cols_ x rows_. 
+**Return**: Transposed [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) of dimensions cols_ x rows_. 
 
 ### function reshape
 
@@ -277,7 +277,7 @@ Reshapes matrix into dynamic dimensions.
   * **cols** New column count. 
 
 
-**Return**: Reshaped dynamic [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: Reshaped dynamic [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function flatten
 
@@ -287,7 +287,7 @@ Matrix< T, Dynamic, Dynamic > flatten() const
 
 Flattens matrix into 1 x elements row matrix. 
 
-**Return**: Flattened dynamic [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: Flattened dynamic [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function operator+=
 
@@ -358,7 +358,7 @@ Multiplies with another matrix: `result` = *this * other.
   * **other** Right matrix operand. 
 
 
-**Return**: Product [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: Product [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function Matrix
 
@@ -465,7 +465,7 @@ Copy constructor performing deep copy of underlying buffer.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) to copy from. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to copy from. 
 
 
 ### function Matrix
@@ -480,7 +480,7 @@ Move constructor transferring ownership of data buffer.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) to move from. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to move from. 
 
 
 ### function Matrix
@@ -505,9 +505,9 @@ Destructor deallocating memory buffer.
 operator Vector() const
 ```
 
-Conversion operator from [Matrix](Classes/classcum_1_1Matrix.md) to [Vector]() (flattens into 1D vector). 
+Conversion operator from [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to [Vector]() (flattens into 1D vector). 
 
-**Return**: [Vector](Classes/classcum_1_1Vector.md) representation. 
+**Return**: [Vector](/CUM/api/Classes/classcum_1_1Vector/) representation. 
 
 ### function fill
 
@@ -552,14 +552,14 @@ Matrix row(
 ) const
 ```
 
-Extracts a row as a 1 x cols [Matrix](Classes/classcum_1_1Matrix.md). 
+Extracts a row as a 1 x cols [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 **Parameters**: 
 
   * **i** Zero-based row index. 
 
 
-**Return**: 1 x cols [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: 1 x cols [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function col
 
@@ -569,14 +569,14 @@ Matrix col(
 ) const
 ```
 
-Extracts a column as a rows x 1 [Matrix](Classes/classcum_1_1Matrix.md). 
+Extracts a column as a rows x 1 [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 **Parameters**: 
 
   * **i** Zero-based column index. 
 
 
-**Return**: rows x 1 [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: rows x 1 [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function size
 
@@ -719,7 +719,7 @@ Deep-copies data from another matrix into `*this`.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) to copy from. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to copy from. 
 
 
 **Return**: Reference to `*this`. 
@@ -736,7 +736,7 @@ Copy/move assignment operator via copy-and-swap idiom.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) passed by value. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) passed by value. 
 
 
 **Return**: Reference to `*this`. 
@@ -753,7 +753,7 @@ Swaps internal state with another matrix.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) to swap with. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to swap with. 
 
 
 ### function operator+=
@@ -836,7 +836,7 @@ Matrix transpose() const
 
 Computes matrix transpose out-of-place. 
 
-**Return**: Transposed cols x rows [Matrix](Classes/classcum_1_1Matrix.md). 
+**Return**: Transposed cols x rows [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
 ### function transposeInPlace
 
@@ -908,7 +908,7 @@ Computes Hadamard (component-wise) product out-of-place.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) of identical dimensions. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) of identical dimensions. 
 
 
 **Return**: Component-wise product matrix. 
@@ -925,7 +925,7 @@ Computes component-wise product in-place.
 
 **Parameters**: 
 
-  * **other** [Matrix](Classes/classcum_1_1Matrix.md) of identical dimensions. 
+  * **other** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) of identical dimensions. 
 
 
 **Return**: Reference to `*this`. 
@@ -1294,9 +1294,9 @@ Computes mean of absolute values of all matrix elements.
 Matrix colwiseSum()
 ```
 
-Computes column-wise sums, returning a 1 x cols [Matrix](Classes/classcum_1_1Matrix.md). 
+Computes column-wise sums, returning a 1 x cols [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
-**Return**: 1 x cols [Matrix](Classes/classcum_1_1Matrix.md) containing sum of each column. 
+**Return**: 1 x cols [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) containing sum of each column. 
 
 ### function colwiseSum2vec
 
@@ -1306,7 +1306,7 @@ Vector colwiseSum2vec()
 
 Computes column-wise sums, returning a [Vector](). 
 
-**Return**: [Vector](Classes/classcum_1_1Vector.md) of column sums. 
+**Return**: [Vector](/CUM/api/Classes/classcum_1_1Vector/) of column sums. 
 
 ### function rowwiseSum
 
@@ -1314,9 +1314,9 @@ Computes column-wise sums, returning a [Vector]().
 Matrix rowwiseSum()
 ```
 
-Computes row-wise sums, returning a rows x 1 [Matrix](Classes/classcum_1_1Matrix.md). 
+Computes row-wise sums, returning a rows x 1 [Matrix](/CUM/api/Classes/classcum_1_1Matrix/). 
 
-**Return**: rows x 1 [Matrix](Classes/classcum_1_1Matrix.md) containing sum of each row. 
+**Return**: rows x 1 [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) containing sum of each row. 
 
 ### function rowwiseSum2vec
 
@@ -1326,7 +1326,7 @@ Vector rowwiseSum2vec()
 
 Computes row-wise sums, returning a [Vector](). 
 
-**Return**: [Vector](Classes/classcum_1_1Vector.md) of row sums. 
+**Return**: [Vector](/CUM/api/Classes/classcum_1_1Vector/) of row sums. 
 
 ### function shuffleRows
 
@@ -1336,7 +1336,7 @@ Matrix shuffleRows() const
 
 Shuffles rows randomly out-of-place. 
 
-**Return**: [Matrix](Classes/classcum_1_1Matrix.md) with shuffled rows. 
+**Return**: [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) with shuffled rows. 
 
 ### function shuffleRowsInPlace
 
@@ -1428,7 +1428,7 @@ Creates a 1 x num row vector matrix with values linearly spaced between start an
   * **num** Number of linearly spaced elements. 
 
 
-**Return**: 1 x num [Matrix](Classes/classcum_1_1Matrix.md) row vector. 
+**Return**: 1 x num [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) row vector. 
 
 ### function Copy
 
@@ -1442,7 +1442,7 @@ Creates an explicit deep copy of a matrix.
 
 **Parameters**: 
 
-  * **mat** [Matrix](Classes/classcum_1_1Matrix.md) to copy. 
+  * **mat** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to copy. 
 
 
 **Return**: Cloned matrix. 
@@ -1694,7 +1694,7 @@ Applies named neural activation function in-place.
 
 **Parameters**: 
 
-  * **mat** [Matrix](Classes/classcum_1_1Matrix.md) to activate in-place. 
+  * **mat** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) to activate in-place. 
   * **name** Activation function name. 
 
 
@@ -1702,4 +1702,4 @@ Applies named neural activation function in-place.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

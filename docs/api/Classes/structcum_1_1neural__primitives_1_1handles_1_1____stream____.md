@@ -17,7 +17,7 @@ Underlying oneDNN stream wrapper.
 
 |                | Name           |
 | -------------- | -------------- |
-| dnnl::stream | **[stream](Classes/structcum_1_1neural__primitives_1_1handles_1_1____stream____.md#variable-stream)**  |
+| dnnl::stream | **[stream](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____stream____/#variable-stream)**  |
 
 ## Public Attributes Documentation
 
@@ -30,4 +30,4 @@ dnnl::stream stream;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

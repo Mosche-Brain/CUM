@@ -17,25 +17,25 @@ Singleton hardware and runtime execution context for oneAPI / SYCL / oneDNN back
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Context](Classes/structcum_1_1internal_1_1Context.md#function-context)**([DEVICE](Namespaces/namespacecum.md#enum-device) device =[DEVICE::AUTO](Namespaces/namespacecum.md#enumvalue-auto))<br>Initializes oneAPI runtime context on the target device.  |
-| | **[~Context](Classes/structcum_1_1internal_1_1Context.md#function-~context)**() |
-| void | **[setDevice](Classes/structcum_1_1internal_1_1Context.md#function-setdevice)**([DEVICE](Namespaces/namespacecum.md#enum-device) device)<br>Switches the active compute hardware device.  |
+| | **[Context](/CUM/api/Classes/structcum_1_1internal_1_1Context/#function-context)**([DEVICE](/CUM/api/Namespaces/namespacecum/#enum-device) device =[DEVICE::AUTO](/CUM/api/Namespaces/namespacecum/#enumvalue-auto))<br>Initializes oneAPI runtime context on the target device.  |
+| | **[~Context](/CUM/api/Classes/structcum_1_1internal_1_1Context/#function-~context)**() |
+| void | **[setDevice](/CUM/api/Classes/structcum_1_1internal_1_1Context/#function-setdevice)**([DEVICE](/CUM/api/Namespaces/namespacecum/#enum-device) device)<br>Switches the active compute hardware device.  |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| std::once_flag | **[initialized](Classes/structcum_1_1internal_1_1Context.md#variable-initialized)**  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[cache_size](Classes/structcum_1_1internal_1_1Context.md#variable-cache-size)**  |
-| cumeric_t * | **[zeros](Classes/structcum_1_1internal_1_1Context.md#variable-zeros)**  |
-| cumeric_t * | **[ones](Classes/structcum_1_1internal_1_1Context.md#variable-ones)**  |
-| cumeric_t * | **[cache](Classes/structcum_1_1internal_1_1Context.md#variable-cache)**  |
-| sycl::queue | **[queue](Classes/structcum_1_1internal_1_1Context.md#variable-queue)** <br>SYCL execution queue.  |
-| sycl::context | **[context](Classes/structcum_1_1internal_1_1Context.md#variable-context)** <br>SYCL compute context.  |
-| sycl::device | **[device](Classes/structcum_1_1internal_1_1Context.md#variable-device)** <br>SYCL selected hardware device.  |
-| dnnl::engine | **[engine](Classes/structcum_1_1internal_1_1Context.md#variable-engine)** <br>oneDNN execution engine.  |
-| dnnl::stream | **[stream](Classes/structcum_1_1internal_1_1Context.md#variable-stream)** <br>oneDNN command stream.  |
-| oneapi::mkl::rng::device::philox4x32x10< 1 > | **[rng](Classes/structcum_1_1internal_1_1Context.md#variable-rng)** <br>[Device](Classes/structDevice.md) Philox random number generator.  |
+| std::once_flag | **[initialized](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-initialized)**  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[cache_size](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-cache-size)**  |
+| cumeric_t * | **[zeros](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-zeros)**  |
+| cumeric_t * | **[ones](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-ones)**  |
+| cumeric_t * | **[cache](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-cache)**  |
+| sycl::queue | **[queue](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-queue)** <br>SYCL execution queue.  |
+| sycl::context | **[context](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-context)** <br>SYCL compute context.  |
+| sycl::device | **[device](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-device)** <br>SYCL selected hardware device.  |
+| dnnl::engine | **[engine](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-engine)** <br>oneDNN execution engine.  |
+| dnnl::stream | **[stream](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-stream)** <br>oneDNN command stream.  |
+| oneapi::mkl::rng::device::philox4x32x10< 1 > | **[rng](/CUM/api/Classes/structcum_1_1internal_1_1Context/#variable-rng)** <br>[Device](/CUM/api/Classes/structDevice/) Philox random number generator.  |
 
 ## Public Functions Documentation
 
@@ -159,8 +159,8 @@ oneDNN command stream.
 oneapi::mkl::rng::device::philox4x32x10< 1 > rng;
 ```
 
-[Device](Classes/structDevice.md) Philox random number generator. 
+[Device](/CUM/api/Classes/structDevice/) Philox random number generator. 
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

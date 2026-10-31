@@ -17,41 +17,41 @@ Encapsulates tensor shape, data type, and memory format layout for neural networ
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**()<br>Constructs an empty (zero) memory descriptor.  |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**([Shape](Namespaces/namespacecum.md#using-shape) dims, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [layout](Namespaces/namespacecum.md#enum-layout) format =[layout::ANY](Namespaces/namespacecum.md#enumvalue-any))<br>Constructs descriptor from dimensions, datatype, and layout format.  |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**([Shape](Namespaces/namespacecum.md#using-shape) dims, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [Shape](Namespaces/namespacecum.md#using-shape) strides)<br>Constructs descriptor with explicit per-dimension strides (in elements).  |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**(const MemoryDescriptor & other)<br>Copy constructor.  |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**(const [handles::__desc__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md) & handle)<br>Constructs descriptor from const backend descriptor handle.  |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**(const [handles::__desc__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md) & handle, [layout](Namespaces/namespacecum.md#enum-layout) format)<br>Constructs descriptor from const backend descriptor handle and layout format.  |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**([handles::__desc__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md) & handle)<br>Constructs descriptor from backend descriptor handle.  |
-| | **[MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor)**(MemoryDescriptor && other)<br>Move constructor.  |
-| [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-operator=)**(const [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) & other) |
-| [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) & | **[operator=](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-operator=)**([MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) && other) |
-| | **[~MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-~memorydescriptor)**() |
-| bool | **[valid](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-valid)**() const<br>Checks whether this descriptor represents a non-empty memory layout.  |
-| | **[operator bool](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-operator-bool)**() const<br>Boolean conversion equivalent to [valid()](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-valid).  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[size](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-size)**() const<br>Returns total memory size in bytes required by descriptor.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[ndims](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-ndims)**() const<br>Returns number of dimensions (rank).  |
-| [Shape](Namespaces/namespacecum.md#using-shape) | **[shape](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-shape)**() const<br>Returns shape dimensions vector.  |
-| [Shape](Namespaces/namespacecum.md#using-shape) | **[strides](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-strides)**() const<br>Returns per-dimension strides vector (empty if layout is opaque or `ANY`).  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[stride](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-stride)**() const<br>Returns leading stride of descriptor (or 0 if empty/unspecified).  |
-| [datatype](Namespaces/namespacecum.md#enum-datatype) | **[type](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-type)**() const<br>Returns element datatype tag.  |
-| [layout](Namespaces/namespacecum.md#enum-layout) | **[format](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-format)**() const<br>Returns memory layout format.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[offset](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-offset)**() const<br>Returns submemory offset.  |
-| [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) | **[reshape](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-reshape)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape) const<br>Reshapes descriptor out-of-place.  |
-| [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) & | **[reshape_in_place](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-reshape-in-place)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape)<br>Reshapes descriptor in-place.  |
-| const [handles::__desc__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md) & | **[handle](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-handle)**() const<br>Returns const reference to backend handle.  |
-| [handles::__desc__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md) & | **[handle](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-handle)**()<br>Returns mutable reference to backend handle.  |
-| bool | **[operator==](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-operator==)**(const [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) & other) const |
-| bool | **[operator!=](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-operator!=)**(const [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) & other) const |
-| [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-memorydescriptor) | **[Any](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-any)**(const [Shape](Namespaces/namespacecum.md#using-shape) & dims, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype)<br>Creates a format-agnostic (`[layout::ANY](Namespaces/namespacecum.md#enumvalue-any)`) descriptor allowing primitives to pick an optimal layout.  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**()<br>Constructs an empty (zero) memory descriptor.  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**([Shape](/CUM/api/Namespaces/namespacecum/#using-shape) dims, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) format =[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any))<br>Constructs descriptor from dimensions, datatype, and layout format.  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**([Shape](/CUM/api/Namespaces/namespacecum/#using-shape) dims, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) strides)<br>Constructs descriptor with explicit per-dimension strides (in elements).  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**(const MemoryDescriptor & other)<br>Copy constructor.  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**(const [handles::__desc__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/) & handle)<br>Constructs descriptor from const backend descriptor handle.  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**(const [handles::__desc__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/) & handle, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) format)<br>Constructs descriptor from const backend descriptor handle and layout format.  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**([handles::__desc__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/) & handle)<br>Constructs descriptor from backend descriptor handle.  |
+| | **[MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor)**(MemoryDescriptor && other)<br>Move constructor.  |
+| [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-operator=)**(const [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) & other) |
+| [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) & | **[operator=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-operator=)**([MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) && other) |
+| | **[~MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-~memorydescriptor)**() |
+| bool | **[valid](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-valid)**() const<br>Checks whether this descriptor represents a non-empty memory layout.  |
+| | **[operator bool](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-operator-bool)**() const<br>Boolean conversion equivalent to [valid()](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-valid).  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[size](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-size)**() const<br>Returns total memory size in bytes required by descriptor.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[ndims](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-ndims)**() const<br>Returns number of dimensions (rank).  |
+| [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) | **[shape](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-shape)**() const<br>Returns shape dimensions vector.  |
+| [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) | **[strides](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-strides)**() const<br>Returns per-dimension strides vector (empty if layout is opaque or `ANY`).  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[stride](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-stride)**() const<br>Returns leading stride of descriptor (or 0 if empty/unspecified).  |
+| [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) | **[type](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-type)**() const<br>Returns element datatype tag.  |
+| [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) | **[format](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-format)**() const<br>Returns memory layout format.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[offset](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-offset)**() const<br>Returns submemory offset.  |
+| [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) | **[reshape](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-reshape)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape) const<br>Reshapes descriptor out-of-place.  |
+| [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) & | **[reshape_in_place](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-reshape-in-place)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape)<br>Reshapes descriptor in-place.  |
+| const [handles::__desc__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/) & | **[handle](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-handle)**() const<br>Returns const reference to backend handle.  |
+| [handles::__desc__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/) & | **[handle](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-handle)**()<br>Returns mutable reference to backend handle.  |
+| bool | **[operator==](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-operator==)**(const [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) & other) const |
+| bool | **[operator!=](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-operator!=)**(const [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) & other) const |
+| [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-memorydescriptor) | **[Any](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-any)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & dims, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype)<br>Creates a format-agnostic (`[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any)`) descriptor allowing primitives to pick an optimal layout.  |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[Memory](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#friend-memory)**  |
-| class | **[PrimitiveDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#friend-primitivedescriptor)**  |
+| class | **[Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#friend-memory)**  |
+| class | **[PrimitiveDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#friend-primitivedescriptor)**  |
 
 ## Public Functions Documentation
 
@@ -77,9 +77,9 @@ Constructs descriptor from dimensions, datatype, and layout format.
 
 **Parameters**: 
 
-  * **dims** [Shape](Namespaces/namespacecum.md#using-shape) vector. 
+  * **dims** [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) vector. 
   * **dtype** Element datatype tag. 
-  * **format** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) layout tag (defaults to [layout::ANY](Namespaces/namespacecum.md#enumvalue-any)). 
+  * **format** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) layout tag (defaults to [layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any)). 
 
 
 ### function MemoryDescriptor
@@ -96,7 +96,7 @@ Constructs descriptor with explicit per-dimension strides (in elements).
 
 **Parameters**: 
 
-  * **dims** [Shape](Namespaces/namespacecum.md#using-shape) vector. 
+  * **dims** [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) vector. 
   * **dtype** Element datatype tag. 
   * **strides** Per-dimension stride vector. 
 
@@ -145,7 +145,7 @@ Constructs descriptor from const backend descriptor handle and layout format.
 **Parameters**: 
 
   * **handle** Backend handle. 
-  * **format** [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) layout format. 
+  * **format** [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) layout format. 
 
 
 ### function MemoryDescriptor
@@ -217,7 +217,7 @@ Checks whether this descriptor represents a non-empty memory layout.
 inline explicit operator bool() const
 ```
 
-Boolean conversion equivalent to [valid()](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md#function-valid). 
+Boolean conversion equivalent to [valid()](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/#function-valid). 
 
 ### function size
 
@@ -247,7 +247,7 @@ Shape shape() const
 
 Returns shape dimensions vector. 
 
-**Return**: [Shape](Namespaces/namespacecum.md#using-shape). 
+**Return**: [Shape](/CUM/api/Namespaces/namespacecum/#using-shape). 
 
 ### function strides
 
@@ -380,11 +380,11 @@ static MemoryDescriptor Any(
 )
 ```
 
-Creates a format-agnostic (`[layout::ANY](Namespaces/namespacecum.md#enumvalue-any)`) descriptor allowing primitives to pick an optimal layout. 
+Creates a format-agnostic (`[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any)`) descriptor allowing primitives to pick an optimal layout. 
 
 **Parameters**: 
 
-  * **dims** [Shape](Namespaces/namespacecum.md#using-shape) vector. 
+  * **dims** [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) vector. 
   * **dtype** Element datatype tag. 
 
 
@@ -412,4 +412,4 @@ friend class PrimitiveDescriptor(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

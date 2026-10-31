@@ -17,7 +17,7 @@ Underlying oneDNN memory descriptor wrapper.
 
 |                | Name           |
 | -------------- | -------------- |
-| dnnl::memory::desc | **[desc](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md#variable-desc)**  |
+| dnnl::memory::desc | **[desc](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/#variable-desc)**  |
 
 ## Public Attributes Documentation
 
@@ -30,4 +30,4 @@ dnnl::memory::desc desc;
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

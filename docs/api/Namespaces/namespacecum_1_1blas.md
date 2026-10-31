@@ -11,58 +11,58 @@ title: cum::blas
 
 |                | Name           |
 | -------------- | -------------- |
-| enum class std::uint64_t | **[compute_mode](Namespaces/namespacecum_1_1blas.md#enum-compute-mode)** { unset = 0x0, float_to_bf16 = 0x1, float_to_bf16x2 = 0x2, float_to_bf16x3 = 0x4, float_to_tf32 = 0x10, complex_3m = 0x10000, any = 0xFFFFFFFF, standard = 0x20000000'00000000, prefer_alternate = 0x40000000'00000000, force_alternate = 0x80000000'00000000}<br>Compute precision and acceleration mode flags for BLAS execution.  |
-| enum class char | **[transpose](Namespaces/namespacecum_1_1blas.md#enum-transpose)** { nontrans = 0, trans = 1, conjtrans = 3, N = 0, T = 1, C = 3}<br>[Matrix](Classes/classcum_1_1Matrix.md) transposition options for BLAS routines.  |
-| enum class char | **[uplo](Namespaces/namespacecum_1_1blas.md#enum-uplo)** { upper = 0, lower = 1, U = 0, L = 1}<br>Specifies whether matrix upper or lower triangular part is stored.  |
-| enum class char | **[diag](Namespaces/namespacecum_1_1blas.md#enum-diag)** { nonunit = 0, unit = 1, N = 0, U = 1}<br>Specifies whether matrix diagonal is unit.  |
-| enum class char | **[side](Namespaces/namespacecum_1_1blas.md#enum-side)** { left = 0, right = 1, L = 0, R = 1}<br>Specifies multiplication side (left or right).  |
-| enum class char | **[offset](Namespaces/namespacecum_1_1blas.md#enum-offset)** { row = 0, column = 1, fix = 2, R = 0, C = 1, F = 2}<br>Storage offset mode for matrices.  |
-| enum class char | **[index_base](Namespaces/namespacecum_1_1blas.md#enum-index-base)** { zero = 0, one = 1}<br>0-based or 1-based indexing convention.  |
+| enum class std::uint64_t | **[compute_mode](/CUM/api/Namespaces/namespacecum_1_1blas/#enum-compute-mode)** { unset = 0x0, float_to_bf16 = 0x1, float_to_bf16x2 = 0x2, float_to_bf16x3 = 0x4, float_to_tf32 = 0x10, complex_3m = 0x10000, any = 0xFFFFFFFF, standard = 0x20000000'00000000, prefer_alternate = 0x40000000'00000000, force_alternate = 0x80000000'00000000}<br>Compute precision and acceleration mode flags for BLAS execution.  |
+| enum class char | **[transpose](/CUM/api/Namespaces/namespacecum_1_1blas/#enum-transpose)** { nontrans = 0, trans = 1, conjtrans = 3, N = 0, T = 1, C = 3}<br>[Matrix](/CUM/api/Classes/classcum_1_1Matrix/) transposition options for BLAS routines.  |
+| enum class char | **[uplo](/CUM/api/Namespaces/namespacecum_1_1blas/#enum-uplo)** { upper = 0, lower = 1, U = 0, L = 1}<br>Specifies whether matrix upper or lower triangular part is stored.  |
+| enum class char | **[diag](/CUM/api/Namespaces/namespacecum_1_1blas/#enum-diag)** { nonunit = 0, unit = 1, N = 0, U = 1}<br>Specifies whether matrix diagonal is unit.  |
+| enum class char | **[side](/CUM/api/Namespaces/namespacecum_1_1blas/#enum-side)** { left = 0, right = 1, L = 0, R = 1}<br>Specifies multiplication side (left or right).  |
+| enum class char | **[offset](/CUM/api/Namespaces/namespacecum_1_1blas/#enum-offset)** { row = 0, column = 1, fix = 2, R = 0, C = 1, F = 2}<br>Storage offset mode for matrices.  |
+| enum class char | **[index_base](/CUM/api/Namespaces/namespacecum_1_1blas/#enum-index-base)** { zero = 0, one = 1}<br>0-based or 1-based indexing convention.  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[axpy](Namespaces/namespacecum_1_1blas.md#function-axpy)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy)<br>Computes vector-scalar multiply and accumulate: `y` = `alpha` * `x` + `y`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[axpy](Namespaces/namespacecum_1_1blas.md#function-axpy)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[axpy](Namespaces/namespacecum_1_1blas.md#function-axpy)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * alpha, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[axpy](Namespaces/namespacecum_1_1blas.md#function-axpy)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t beta, cumeric_t * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy)<br>Computes scaled vector addition: `y` = `alpha` * `x` + `beta` * `y`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[axpy](Namespaces/namespacecum_1_1blas.md#function-axpy)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t beta, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[axpy](Namespaces/namespacecum_1_1blas.md#function-axpy)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * alpha, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, const void * beta, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[dot](Namespaces/namespacecum_1_1blas.md#function-dot)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, const cumeric_t * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy, cumeric_t * result)<br>Computes dot product of two vectors: `result` = `x^T` * `y`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[dot](Namespaces/namespacecum_1_1blas.md#function-dot)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, const void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy, void * result) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asum](Namespaces/namespacecum_1_1blas.md#function-asum)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t * result)<br>Computes sum of magnitudes (L1 norm): `result` = sum(|x_i|).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asum](Namespaces/namespacecum_1_1blas.md#function-asum)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, void * result) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[nrm2](Namespaces/namespacecum_1_1blas.md#function-nrm2)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t * result)<br>Computes Euclidean L2 norm: `result` = ||x||_2.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[nrm2](Namespaces/namespacecum_1_1blas.md#function-nrm2)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, void * result) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[iamax](Namespaces/namespacecum_1_1blas.md#function-iamax)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, [dim_t](Namespaces/namespacecum.md#using-dim-t) * result)<br>Finds the index of the first element having the maximum absolute value.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[iamax](Namespaces/namespacecum_1_1blas.md#function-iamax)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, [dim_t](Namespaces/namespacecum.md#using-dim-t) * result) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[iamin](Namespaces/namespacecum_1_1blas.md#function-iamin)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, [dim_t](Namespaces/namespacecum.md#using-dim-t) * result)<br>Finds the index of the first element having the minimum absolute value.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[iamin](Namespaces/namespacecum_1_1blas.md#function-iamin)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, [dim_t](Namespaces/namespacecum.md#using-dim-t) * result) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[amax](Namespaces/namespacecum_1_1blas.md#function-amax)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t * result)<br>Computes maximum absolute value in vector.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[amax](Namespaces/namespacecum_1_1blas.md#function-amax)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, void * result) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[amin](Namespaces/namespacecum_1_1blas.md#function-amin)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t * result)<br>Computes minimum absolute value in vector.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[amin](Namespaces/namespacecum_1_1blas.md#function-amin)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, void * result) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[scal](Namespaces/namespacecum_1_1blas.md#function-scal)**([dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx)<br>Scales a vector by a scalar: `x` = `alpha` * `x`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[scal](Namespaces/namespacecum_1_1blas.md#function-scal)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[scal](Namespaces/namespacecum_1_1blas.md#function-scal)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * alpha, void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gemv](Namespaces/namespacecum_1_1blas.md#function-gemv)**(char transa, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const cumeric_t * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t beta, cumeric_t * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy)<br>Computes general matrix-vector product (GEMV): `y` = `alpha` * op(A) * `x` + `beta` * `y`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gemv](Namespaces/namespacecum_1_1blas.md#function-gemv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char transa, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const void * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t beta, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gemv](Namespaces/namespacecum_1_1blas.md#function-gemv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char transa, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * alpha, const void * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, const void * beta, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[symv](Namespaces/namespacecum_1_1blas.md#function-symv)**(char vertical, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const cumeric_t * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t beta, cumeric_t * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy)<br>Computes symmetric matrix-vector product (SYMV): `y` = `alpha` * `A` * `x` + `beta` * `y`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[symv](Namespaces/namespacecum_1_1blas.md#function-symv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char vertical, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const void * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, cumeric_t beta, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[symv](Namespaces/namespacecum_1_1blas.md#function-symv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char vertical, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * alpha, const void * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx, const void * beta, void * y, [dim_t](Namespaces/namespacecum.md#using-dim-t) incy) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[trmv](Namespaces/namespacecum_1_1blas.md#function-trmv)**(char vertical, char transa, char diag, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const cumeric_t * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, cumeric_t * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx)<br>Computes triangular matrix-vector product (TRMV): `x` = op(A) * `x`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[trmv](Namespaces/namespacecum_1_1blas.md#function-trmv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char vertical, char transa, char diag, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * A, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, void * x, [dim_t](Namespaces/namespacecum.md#using-dim-t) incx) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gemm](Namespaces/namespacecum_1_1blas.md#function-gemm)**(char transpose_a, char transpose_b, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, [dim_t](Namespaces/namespacecum.md#using-dim-t) k, cumeric_t alpha, const cumeric_t * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const cumeric_t * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb, cumeric_t beta, cumeric_t * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldc)<br>General matrix-matrix multiplication (GEMM): `c` = `alpha` * op(a) * op(b) + `beta` * `c`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gemm](Namespaces/namespacecum_1_1blas.md#function-gemm)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char transpose_a, char transpose_b, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, [dim_t](Namespaces/namespacecum.md#using-dim-t) k, cumeric_t alpha, const void * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb, cumeric_t beta, void * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldc) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[gemm](Namespaces/namespacecum_1_1blas.md#function-gemm)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char transpose_a, char transpose_b, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, [dim_t](Namespaces/namespacecum.md#using-dim-t) k, const void * alpha, const void * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb, const void * beta, void * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldc) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[symm](Namespaces/namespacecum_1_1blas.md#function-symm)**(char horizontal, char vertical, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, [dim_t](Namespaces/namespacecum.md#using-dim-t) k, cumeric_t alpha, const cumeric_t * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const cumeric_t * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb, cumeric_t beta, cumeric_t * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldc)<br>Symmetric matrix-matrix multiplication (SYMM): `c` = `alpha` * `a` * `b` + `beta` * `c`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[symm](Namespaces/namespacecum_1_1blas.md#function-symm)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char horizontal, char vertical, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, [dim_t](Namespaces/namespacecum.md#using-dim-t) k, cumeric_t alpha, const void * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb, cumeric_t beta, void * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldc) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[symm](Namespaces/namespacecum_1_1blas.md#function-symm)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char horizontal, char vertical, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, [dim_t](Namespaces/namespacecum.md#using-dim-t) k, const void * alpha, const void * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb, const void * beta, void * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldc) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[trmm](Namespaces/namespacecum_1_1blas.md#function-trmm)**(char horizontal, char vertical, char transpose_a, char diagonal, cumeric_t * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const cumeric_t * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const cumeric_t * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb)<br>Triangular matrix-matrix multiplication (TRMM): `b` = `alpha` * op(a) * `b`.  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[trmm](Namespaces/namespacecum_1_1blas.md#function-trmm)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char horizontal, char vertical, char transpose_a, char diagonal, void * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, cumeric_t alpha, const void * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[trmm](Namespaces/namespacecum_1_1blas.md#function-trmm)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, char horizontal, char vertical, char transpose_a, char diagonal, void * c, [dim_t](Namespaces/namespacecum.md#using-dim-t) m, [dim_t](Namespaces/namespacecum.md#using-dim-t) n, const void * alpha, const void * a, [dim_t](Namespaces/namespacecum.md#using-dim-t) lda, const void * b, [dim_t](Namespaces/namespacecum.md#using-dim-t) ldb) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[axpy](/CUM/api/Namespaces/namespacecum_1_1blas/#function-axpy)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy)<br>Computes vector-scalar multiply and accumulate: `y` = `alpha` * `x` + `y`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[axpy](/CUM/api/Namespaces/namespacecum_1_1blas/#function-axpy)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[axpy](/CUM/api/Namespaces/namespacecum_1_1blas/#function-axpy)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * alpha, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[axpy](/CUM/api/Namespaces/namespacecum_1_1blas/#function-axpy)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t beta, cumeric_t * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy)<br>Computes scaled vector addition: `y` = `alpha` * `x` + `beta` * `y`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[axpy](/CUM/api/Namespaces/namespacecum_1_1blas/#function-axpy)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t beta, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[axpy](/CUM/api/Namespaces/namespacecum_1_1blas/#function-axpy)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * alpha, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, const void * beta, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[dot](/CUM/api/Namespaces/namespacecum_1_1blas/#function-dot)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, const cumeric_t * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy, cumeric_t * result)<br>Computes dot product of two vectors: `result` = `x^T` * `y`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[dot](/CUM/api/Namespaces/namespacecum_1_1blas/#function-dot)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, const void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy, void * result) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asum](/CUM/api/Namespaces/namespacecum_1_1blas/#function-asum)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t * result)<br>Computes sum of magnitudes (L1 norm): `result` = sum(|x_i|).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asum](/CUM/api/Namespaces/namespacecum_1_1blas/#function-asum)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, void * result) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[nrm2](/CUM/api/Namespaces/namespacecum_1_1blas/#function-nrm2)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t * result)<br>Computes Euclidean L2 norm: `result` = ||x||_2.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[nrm2](/CUM/api/Namespaces/namespacecum_1_1blas/#function-nrm2)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, void * result) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[iamax](/CUM/api/Namespaces/namespacecum_1_1blas/#function-iamax)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) * result)<br>Finds the index of the first element having the maximum absolute value.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[iamax](/CUM/api/Namespaces/namespacecum_1_1blas/#function-iamax)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) * result) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[iamin](/CUM/api/Namespaces/namespacecum_1_1blas/#function-iamin)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) * result)<br>Finds the index of the first element having the minimum absolute value.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[iamin](/CUM/api/Namespaces/namespacecum_1_1blas/#function-iamin)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) * result) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[amax](/CUM/api/Namespaces/namespacecum_1_1blas/#function-amax)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t * result)<br>Computes maximum absolute value in vector.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[amax](/CUM/api/Namespaces/namespacecum_1_1blas/#function-amax)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, void * result) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[amin](/CUM/api/Namespaces/namespacecum_1_1blas/#function-amin)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t * result)<br>Computes minimum absolute value in vector.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[amin](/CUM/api/Namespaces/namespacecum_1_1blas/#function-amin)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, void * result) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[scal](/CUM/api/Namespaces/namespacecum_1_1blas/#function-scal)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx)<br>Scales a vector by a scalar: `x` = `alpha` * `x`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[scal](/CUM/api/Namespaces/namespacecum_1_1blas/#function-scal)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[scal](/CUM/api/Namespaces/namespacecum_1_1blas/#function-scal)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * alpha, void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gemv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-gemv)**(char transa, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const cumeric_t * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t beta, cumeric_t * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy)<br>Computes general matrix-vector product (GEMV): `y` = `alpha` * op(A) * `x` + `beta` * `y`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gemv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-gemv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char transa, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const void * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t beta, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gemv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-gemv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char transa, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * alpha, const void * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, const void * beta, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[symv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-symv)**(char vertical, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const cumeric_t * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t beta, cumeric_t * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy)<br>Computes symmetric matrix-vector product (SYMV): `y` = `alpha` * `A` * `x` + `beta` * `y`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[symv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-symv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char vertical, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const void * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, cumeric_t beta, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[symv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-symv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char vertical, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * alpha, const void * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx, const void * beta, void * y, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incy) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[trmv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-trmv)**(char vertical, char transa, char diag, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const cumeric_t * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, cumeric_t * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx)<br>Computes triangular matrix-vector product (TRMV): `x` = op(A) * `x`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[trmv](/CUM/api/Namespaces/namespacecum_1_1blas/#function-trmv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char vertical, char transa, char diag, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * A, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, void * x, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) incx) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gemm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-gemm)**(char transpose_a, char transpose_b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) k, cumeric_t alpha, const cumeric_t * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const cumeric_t * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb, cumeric_t beta, cumeric_t * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldc)<br>General matrix-matrix multiplication (GEMM): `c` = `alpha` * op(a) * op(b) + `beta` * `c`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gemm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-gemm)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char transpose_a, char transpose_b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) k, cumeric_t alpha, const void * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb, cumeric_t beta, void * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldc) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[gemm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-gemm)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char transpose_a, char transpose_b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) k, const void * alpha, const void * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb, const void * beta, void * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldc) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[symm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-symm)**(char horizontal, char vertical, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) k, cumeric_t alpha, const cumeric_t * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const cumeric_t * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb, cumeric_t beta, cumeric_t * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldc)<br>Symmetric matrix-matrix multiplication (SYMM): `c` = `alpha` * `a` * `b` + `beta` * `c`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[symm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-symm)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char horizontal, char vertical, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) k, cumeric_t alpha, const void * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb, cumeric_t beta, void * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldc) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[symm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-symm)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char horizontal, char vertical, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) k, const void * alpha, const void * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb, const void * beta, void * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldc) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[trmm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-trmm)**(char horizontal, char vertical, char transpose_a, char diagonal, cumeric_t * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const cumeric_t * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const cumeric_t * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb)<br>Triangular matrix-matrix multiplication (TRMM): `b` = `alpha` * op(a) * `b`.  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[trmm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-trmm)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char horizontal, char vertical, char transpose_a, char diagonal, void * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, cumeric_t alpha, const void * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[trmm](/CUM/api/Namespaces/namespacecum_1_1blas/#function-trmm)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, char horizontal, char vertical, char transpose_a, char diagonal, void * c, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) m, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) n, const void * alpha, const void * a, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lda, const void * b, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) ldb) |
 
 ## Types Documentation
 
@@ -98,7 +98,7 @@ Compute precision and acceleration mode flags for BLAS execution.
 
 
 
-[Matrix](Classes/classcum_1_1Matrix.md) transposition options for BLAS routines. 
+[Matrix](/CUM/api/Classes/classcum_1_1Matrix/) transposition options for BLAS routines. 
 
 ### enum uplo
 
@@ -117,8 +117,8 @@ Specifies whether matrix upper or lower triangular part is stored.
 
 | Enumerator | Value | Description |
 | ---------- | ----- | ----------- |
-| nonunit | 0| [Matrix](Classes/classcum_1_1Matrix.md) diagonal elements are not assumed to be 1.   |
-| unit | 1| [Matrix](Classes/classcum_1_1Matrix.md) is assumed to have unit diagonal (elements are 1).   |
+| nonunit | 0| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) diagonal elements are not assumed to be 1.   |
+| unit | 1| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) is assumed to have unit diagonal (elements are 1).   |
 | N | 0| Alias for nonunit.   |
 | U | 1| Alias for unit.   |
 
@@ -130,8 +130,8 @@ Specifies whether matrix diagonal is unit.
 
 | Enumerator | Value | Description |
 | ---------- | ----- | ----------- |
-| left | 0| [Matrix](Classes/classcum_1_1Matrix.md) op on left: op(A) * B.   |
-| right | 1| [Matrix](Classes/classcum_1_1Matrix.md) op on right: B * op(A).   |
+| left | 0| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) op on left: op(A) * B.   |
+| right | 1| [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) op on right: B * op(A).   |
 | L | 0| Alias for left.   |
 | R | 1| Alias for right.   |
 
@@ -344,7 +344,7 @@ Computes sum of magnitudes (L1 norm): `result` = sum(|x_i|).
 **Parameters**: 
 
   * **n** Number of elements. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer. 
   * **incx** Stride of x. 
   * **result** Pointer to output scalar result. 
 
@@ -380,7 +380,7 @@ Computes Euclidean L2 norm: `result` = ||x||_2.
 **Parameters**: 
 
   * **n** Number of elements. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer. 
   * **incx** Stride of x. 
   * **result** Pointer to output scalar result. 
 
@@ -416,7 +416,7 @@ Finds the index of the first element having the maximum absolute value.
 **Parameters**: 
 
   * **n** Number of elements. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer. 
   * **incx** Stride of x. 
   * **result** Pointer to output index. 
 
@@ -452,7 +452,7 @@ Finds the index of the first element having the minimum absolute value.
 **Parameters**: 
 
   * **n** Number of elements. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer. 
   * **incx** Stride of x. 
   * **result** Pointer to output index. 
 
@@ -488,7 +488,7 @@ Computes maximum absolute value in vector.
 **Parameters**: 
 
   * **n** Number of elements. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer. 
   * **incx** Stride of x. 
   * **result** Pointer to output scalar result. 
 
@@ -524,7 +524,7 @@ Computes minimum absolute value in vector.
 **Parameters**: 
 
   * **n** Number of elements. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer. 
   * **incx** Stride of x. 
   * **result** Pointer to output scalar result. 
 
@@ -561,7 +561,7 @@ Scales a vector by a scalar: `x` = `alpha` * `x`.
 
   * **n** Number of elements. 
   * **alpha** Scalar multiplier. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer scaled in place. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer scaled in place. 
   * **incx** Stride of x. 
 
 
@@ -615,11 +615,11 @@ Computes general matrix-vector product (GEMV): `y` = `alpha` * op(A) * `x` + `be
 
 **Parameters**: 
 
-  * **transa** [Matrix](Classes/classcum_1_1Matrix.md) transposition flag ('N' or 'T'). 
+  * **transa** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) transposition flag ('N' or 'T'). 
   * **m** Number of rows of matrix A. 
   * **n** Number of columns of matrix A. 
   * **alpha** Scalar multiplier for op(A)*x. 
-  * **A** [Matrix](Classes/classcum_1_1Matrix.md) buffer of leading dimension `lda`. 
+  * **A** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) buffer of leading dimension `lda`. 
   * **lda** Leading dimension of matrix A. 
   * **x** Input vector buffer. 
   * **incx** Stride of vector x. 
@@ -768,7 +768,7 @@ Computes triangular matrix-vector product (TRMV): `x` = op(A) * `x`.
   * **n** Order of matrix A. 
   * **A** Triangular matrix buffer. 
   * **lda** Leading dimension of A. 
-  * **x** [Vector](Classes/classcum_1_1Vector.md) buffer modified in place. 
+  * **x** [Vector](/CUM/api/Classes/classcum_1_1Vector/) buffer modified in place. 
   * **incx** Stride of vector x. 
 
 
@@ -988,7 +988,7 @@ Triangular matrix-matrix multiplication (TRMM): `b` = `alpha` * op(a) * `b`.
   * **vertical** Triangle specification ('U' or 'L'). 
   * **transpose_a** Transpose flag for A ('N' or 'T'). 
   * **diagonal** Diagonal unit flag ('U' or 'N'). 
-  * **c** [Matrix](Classes/classcum_1_1Matrix.md) buffer. 
+  * **c** [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) buffer. 
   * **m** Rows of C. 
   * **n** Columns of C. 
   * **alpha** Scalar multiplier. 
@@ -1048,4 +1048,4 @@ __event__ trmm(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

@@ -8,30 +8,30 @@ title: Namespaces
 
 
 
-* **namespace [cum](Namespaces/namespacecum.md)** 
-    * **namespace [blas](Namespaces/namespacecum_1_1blas.md)** 
-    * **namespace [detail](Namespaces/namespacecum_1_1detail.md)** 
-    * **namespace [experimental](Namespaces/namespacecum_1_1experimental.md)** 
-    * **namespace [functions](Namespaces/namespacecum_1_1functions.md)** 
-        * **namespace [cyclometric](Namespaces/namespacecum_1_1functions_1_1cyclometric.md)** 
-        * **namespace [exponential](Namespaces/namespacecum_1_1functions_1_1exponential.md)** 
-        * **namespace [hyperbolic](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md)** 
-        * **namespace [linear_units](Namespaces/namespacecum_1_1functions_1_1linear__units.md)** 
-        * **namespace [logistic](Namespaces/namespacecum_1_1functions_1_1logistic.md)** 
-        * **namespace [trigonometric](Namespaces/namespacecum_1_1functions_1_1trigonometric.md)** 
-        * **namespace [various](Namespaces/namespacecum_1_1functions_1_1various.md)** 
-    * **namespace [internal](Namespaces/namespacecum_1_1internal.md)** 
-    * **namespace [lara](Namespaces/namespacecum_1_1lara.md)** 
-    * **namespace [memory](Namespaces/namespacecum_1_1memory.md)** 
-    * **namespace [neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)** 
-        * **namespace [detail](Namespaces/namespacecum_1_1neural__primitives_1_1detail.md)** 
-        * **namespace [handles](Namespaces/namespacecum_1_1neural__primitives_1_1handles.md)** 
-        * **namespace [neural_kernels](Namespaces/namespacecum_1_1neural__primitives_1_1neural__kernels.md)** 
-    * **namespace [random](Namespaces/namespacecum_1_1random.md)** 
-    * **namespace [runtime](Namespaces/namespacecum_1_1runtime.md)** 
+* **namespace [cum](/CUM/api/Namespaces/namespacecum/)** 
+    * **namespace [blas](/CUM/api/Namespaces/namespacecum_1_1blas/)** 
+    * **namespace [detail](/CUM/api/Namespaces/namespacecum_1_1detail/)** 
+    * **namespace [experimental](/CUM/api/Namespaces/namespacecum_1_1experimental/)** 
+    * **namespace [functions](/CUM/api/Namespaces/namespacecum_1_1functions/)** 
+        * **namespace [cyclometric](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/)** 
+        * **namespace [exponential](/CUM/api/Namespaces/namespacecum_1_1functions_1_1exponential/)** 
+        * **namespace [hyperbolic](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/)** 
+        * **namespace [linear_units](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/)** 
+        * **namespace [logistic](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/)** 
+        * **namespace [trigonometric](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/)** 
+        * **namespace [various](/CUM/api/Namespaces/namespacecum_1_1functions_1_1various/)** 
+    * **namespace [internal](/CUM/api/Namespaces/namespacecum_1_1internal/)** 
+    * **namespace [lara](/CUM/api/Namespaces/namespacecum_1_1lara/)** 
+    * **namespace [memory](/CUM/api/Namespaces/namespacecum_1_1memory/)** 
+    * **namespace [neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)** 
+        * **namespace [detail](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1detail/)** 
+        * **namespace [handles](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1handles/)** 
+        * **namespace [neural_kernels](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1neural__kernels/)** 
+    * **namespace [random](/CUM/api/Namespaces/namespacecum_1_1random/)** 
+    * **namespace [runtime](/CUM/api/Namespaces/namespacecum_1_1runtime/)** 
 
 
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

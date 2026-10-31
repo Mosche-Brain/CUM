@@ -12,14 +12,14 @@ Forward elementwise neural activation primitives.  [More...](#detailed-descripti
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::neural_primitives::Tensor](Classes/classcum_1_1neural__primitives_1_1Tensor.md)** <br>Core N-dimensional array and deep learning tensor.  |
+| class | **[cum::neural_primitives::Tensor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Tensor/)** <br>Core N-dimensional array and deep learning tensor.  |
 
 ## Detailed Description
 
@@ -37,4 +37,4 @@ Implements forward propagation primitives (ReLU, Sigmoid, Tanh, GELU, ELU, Leaky
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

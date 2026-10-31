@@ -17,13 +17,13 @@ SYCL kernel handle wrapper.  [More...](#detailed-description)
 
 |                | Name           |
 | -------------- | -------------- |
-| sycl::kernel & | **[operator()](Classes/structcum_1_1experimental_1_1____kernel____.md#function-operator())**()<br>Returns reference to underlying SYCL kernel.  |
+| sycl::kernel & | **[operator()](/CUM/api/Classes/structcum_1_1experimental_1_1____kernel____/#function-operator())**()<br>Returns reference to underlying SYCL kernel.  |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| sycl::kernel | **[kernel](Classes/structcum_1_1experimental_1_1____kernel____.md#variable-kernel)** <br>Underlying SYCL kernel object.  |
+| sycl::kernel | **[kernel](/CUM/api/Classes/structcum_1_1experimental_1_1____kernel____/#variable-kernel)** <br>Underlying SYCL kernel object.  |
 
 ## Detailed Description
 
@@ -59,4 +59,4 @@ Underlying SYCL kernel object.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

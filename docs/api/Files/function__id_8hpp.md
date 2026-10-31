@@ -12,14 +12,14 @@ Function identifier enumeration and activation callback signatures.  [More...](#
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::functions](Namespaces/namespacecum_1_1functions.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::functions](/CUM/api/Namespaces/namespacecum_1_1functions/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cum::functions::activation_t](Classes/structcum_1_1functions_1_1activation__t.md)** <br>Bundles activation function identifier, forward function, and derivative pointers.  |
+| struct | **[cum::functions::activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/)** <br>Bundles activation function identifier, forward function, and derivative pointers.  |
 
 ## Detailed Description
 
@@ -33,4 +33,4 @@ Function identifier enumeration and activation callback signatures.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

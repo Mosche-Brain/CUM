@@ -8,81 +8,81 @@ title: Classes
 
 
 
-* **struct [Device](Classes/structDevice.md)** <br>Opaque handle representing a compute device. 
-* **struct [Queue](Classes/structQueue.md)** <br>Opaque handle representing a command execution queue. 
-* **namespace [cum](Namespaces/namespacecum.md)** 
-    * **class [Matrix](Classes/classcum_1_1Matrix.md)** <br>Templated generic dense matrix. 
-    * **class [MatrixView](Classes/classcum_1_1MatrixView.md)** <br>Lightweight, non-owning read view over a 2D matrix or existing data buffer. 
-    * **class [Tensor](Classes/classcum_1_1Tensor.md)** <br>Core N-dimensional array and deep learning tensor. 
-    * **class [Vector](Classes/classcum_1_1Vector.md)** <br>Templated generic 1D dense vector. 
-    * **struct [bfloat16](Classes/structcum_1_1bfloat16.md)** <br>Raw 16-bit fallback for [bfloat16]() precision float. 
-    * **namespace [blas](Namespaces/namespacecum_1_1blas.md)** 
-    * **struct [datatype_of](Classes/structcum_1_1datatype__of.md)** <br>Type trait mapping a static C++ type to its runtime [datatype](Namespaces/namespacecum.md#enum-datatype) enum tag. 
-    * **struct [datatype_of< cum::bfloat16 >](Classes/structcum_1_1datatype__of_3_01cum_1_1bfloat16_01_4.md)** 
-    * **struct [datatype_of< cum::float16 >](Classes/structcum_1_1datatype__of_3_01cum_1_1float16_01_4.md)** 
-    * **struct [datatype_of< cum::float8 >](Classes/structcum_1_1datatype__of_3_01cum_1_1float8_01_4.md)** 
-    * **struct [datatype_of< double >](Classes/structcum_1_1datatype__of_3_01double_01_4.md)** 
-    * **struct [datatype_of< float >](Classes/structcum_1_1datatype__of_3_01float_01_4.md)** 
-    * **struct [datatype_of< std::int16_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int16__t_01_4.md)** 
-    * **struct [datatype_of< std::int32_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int32__t_01_4.md)** 
-    * **struct [datatype_of< std::int64_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int64__t_01_4.md)** 
-    * **struct [datatype_of< std::int8_t >](Classes/structcum_1_1datatype__of_3_01std_1_1int8__t_01_4.md)** 
-    * **struct [datatype_of< std::uint16_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint16__t_01_4.md)** 
-    * **struct [datatype_of< std::uint32_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint32__t_01_4.md)** 
-    * **struct [datatype_of< std::uint64_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint64__t_01_4.md)** 
-    * **struct [datatype_of< std::uint8_t >](Classes/structcum_1_1datatype__of_3_01std_1_1uint8__t_01_4.md)** 
-    * **namespace [detail](Namespaces/namespacecum_1_1detail.md)** 
-        * **class [event_handler](Classes/classcum_1_1detail_1_1event__handler.md)** <br>Factory and accessor bridging SYCL asynchronous events with CUM's [experimental::__event__](). 
-    * **namespace [experimental](Namespaces/namespacecum_1_1experimental.md)** 
-        * **class [__event__](Classes/classcum_1_1experimental_1_1____event____.md)** <br>Opaque handle representing an in-flight or completed asynchronous device operation. 
-        * **struct [__kernel__](Classes/structcum_1_1experimental_1_1____kernel____.md)** <br>SYCL kernel handle wrapper. 
-    * **struct [float16](Classes/structcum_1_1float16.md)** <br>Raw 16-bit fallback for half precision float. 
-    * **namespace [functions](Namespaces/namespacecum_1_1functions.md)** 
-        * **struct [GELU](Classes/structcum_1_1functions_1_1GELU.md)** <br>Gaussian Error [Linear]() Unit activation functor: f(x) = x * P(X <= x). 
-        * **struct [Linear](Classes/structcum_1_1functions_1_1Linear.md)** <br>[Linear]() / identity activation function functor: f(x) = x. 
-        * **struct [ReLU](Classes/structcum_1_1functions_1_1ReLU.md)** <br>Rectified [Linear](Classes/structcum_1_1functions_1_1Linear.md) Unit activation functor: f(x) = max(0, x). 
-        * **struct [Sigmoid](Classes/structcum_1_1functions_1_1Sigmoid.md)** <br>Logistic sigmoid activation functor: f(x) = 1 / (1 + exp(-x)). 
-        * **struct [Tanh](Classes/structcum_1_1functions_1_1Tanh.md)** <br>Hyperbolic tangent activation functor: f(x) = tanh(x). 
-        * **struct [activation_t](Classes/structcum_1_1functions_1_1activation__t.md)** <br>Bundles activation function identifier, forward function, and derivative pointers. 
-        * **namespace [cyclometric](Namespaces/namespacecum_1_1functions_1_1cyclometric.md)** 
-        * **namespace [exponential](Namespaces/namespacecum_1_1functions_1_1exponential.md)** 
-        * **namespace [hyperbolic](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md)** 
-        * **struct [leaky_ReLU](Classes/structcum_1_1functions_1_1leaky__ReLU.md)** <br>Leaky Rectified [Linear]() Unit activation functor: f(x) = x if x >= 0 else alpha * x. 
-        * **namespace [linear_units](Namespaces/namespacecum_1_1functions_1_1linear__units.md)** 
-        * **namespace [logistic](Namespaces/namespacecum_1_1functions_1_1logistic.md)** 
-        * **namespace [trigonometric](Namespaces/namespacecum_1_1functions_1_1trigonometric.md)** 
-        * **namespace [various](Namespaces/namespacecum_1_1functions_1_1various.md)** 
-    * **namespace [internal](Namespaces/namespacecum_1_1internal.md)** 
-        * **struct [Context](Classes/structcum_1_1internal_1_1Context.md)** <br>Singleton hardware and runtime execution context for oneAPI / SYCL / oneDNN backends. 
-        * **struct [scalar_buffer](Classes/structcum_1_1internal_1_1scalar__buffer.md)** 
-        * **struct [sycl_type_map](Classes/structcum_1_1internal_1_1sycl__type__map.md)** 
-        * **struct [sycl_type_map< bfloat16 >](Classes/structcum_1_1internal_1_1sycl__type__map_3_01bfloat16_01_4.md)** 
-        * **struct [sycl_type_map< float16 >](Classes/structcum_1_1internal_1_1sycl__type__map_3_01float16_01_4.md)** 
-    * **namespace [lara](Namespaces/namespacecum_1_1lara.md)** 
-    * **namespace [memory](Namespaces/namespacecum_1_1memory.md)** 
-    * **namespace [neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)** 
-        * **class [EltwiseKernel](Classes/classcum_1_1neural__primitives_1_1EltwiseKernel.md)** <br>Pre-compiled elementwise neural operation kernel for repeated forward/backward execution. 
-        * **class [Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md)** <br>Compute execution engine encapsulating device accelerator execution context for primitives. 
-        * **class [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md)** <br>Storage buffer managed by neural primitive engine according to a [Descriptor](). 
-        * **class [MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md)** <br>Encapsulates tensor shape, data type, and memory format layout for neural network primitives. 
-        * **class [Primitive](Classes/classcum_1_1neural__primitives_1_1Primitive.md)** <br>Executable compute primitive representing a compiled neural network or tensor operation. 
-            * **struct [ArgBinding](Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding.md)** <br>Zero-copy argument binding pairing an [Argument](Classes/classcum_1_1neural__primitives_1_1Primitive.md#enum-argument) slot with a [Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) or [Tensor]() reference. 
-        * **class [PrimitiveDescriptor](Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor.md)** <br>Backend-resolved operation descriptor specifying shapes, layouts, datatypes, and algorithm parameters. 
-            * **struct [Impl](Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl.md)** <br>Single unified Pimpl definition shared across PrimitiveDescriptor.cpp and Primitive.cpp. 
-        * **class [Tensor](Classes/classcum_1_1neural__primitives_1_1Tensor.md)** <br>Core N-dimensional array and deep learning tensor. 
-        * **namespace [detail](Namespaces/namespacecum_1_1neural__primitives_1_1detail.md)** 
-        * **namespace [handles](Namespaces/namespacecum_1_1neural__primitives_1_1handles.md)** 
-            * **struct [__desc__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____.md)** <br>Underlying oneDNN memory descriptor wrapper. 
-            * **struct [__engine__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____.md)** <br>Underlying oneDNN engine wrapper. 
-            * **struct [__memory__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____.md)** <br>Underlying oneDNN memory wrapper with optional USM shared ownership. 
-            * **struct [__stream__](Classes/structcum_1_1neural__primitives_1_1handles_1_1____stream____.md)** <br>Underlying oneDNN stream wrapper. 
-        * **namespace [neural_kernels](Namespaces/namespacecum_1_1neural__primitives_1_1neural__kernels.md)** 
-    * **namespace [random](Namespaces/namespacecum_1_1random.md)** 
-    * **namespace [runtime](Namespaces/namespacecum_1_1runtime.md)** 
-* **struct [fp8_e4_3m_impl](Classes/structfp8__e4__3m__impl.md)** <br>8-bit floating point emulation structure (E4M3 format representation). 
+* **struct [Device](/CUM/api/Classes/structDevice/)** <br>Opaque handle representing a compute device. 
+* **struct [Queue](/CUM/api/Classes/structQueue/)** <br>Opaque handle representing a command execution queue. 
+* **namespace [cum](/CUM/api/Namespaces/namespacecum/)** 
+    * **class [Matrix](/CUM/api/Classes/classcum_1_1Matrix/)** <br>Templated generic dense matrix. 
+    * **class [MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/)** <br>Lightweight, non-owning read view over a 2D matrix or existing data buffer. 
+    * **class [Tensor](/CUM/api/Classes/classcum_1_1Tensor/)** <br>Core N-dimensional array and deep learning tensor. 
+    * **class [Vector](/CUM/api/Classes/classcum_1_1Vector/)** <br>Templated generic 1D dense vector. 
+    * **struct [bfloat16](/CUM/api/Classes/structcum_1_1bfloat16/)** <br>Raw 16-bit fallback for [bfloat16]() precision float. 
+    * **namespace [blas](/CUM/api/Namespaces/namespacecum_1_1blas/)** 
+    * **struct [datatype_of](/CUM/api/Classes/structcum_1_1datatype__of/)** <br>Type trait mapping a static C++ type to its runtime [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) enum tag. 
+    * **struct [datatype_of< cum::bfloat16 >](/CUM/api/Classes/structcum_1_1datatype__of_3_01cum_1_1bfloat16_01_4/)** 
+    * **struct [datatype_of< cum::float16 >](/CUM/api/Classes/structcum_1_1datatype__of_3_01cum_1_1float16_01_4/)** 
+    * **struct [datatype_of< cum::float8 >](/CUM/api/Classes/structcum_1_1datatype__of_3_01cum_1_1float8_01_4/)** 
+    * **struct [datatype_of< double >](/CUM/api/Classes/structcum_1_1datatype__of_3_01double_01_4/)** 
+    * **struct [datatype_of< float >](/CUM/api/Classes/structcum_1_1datatype__of_3_01float_01_4/)** 
+    * **struct [datatype_of< std::int16_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int16__t_01_4/)** 
+    * **struct [datatype_of< std::int32_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int32__t_01_4/)** 
+    * **struct [datatype_of< std::int64_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int64__t_01_4/)** 
+    * **struct [datatype_of< std::int8_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1int8__t_01_4/)** 
+    * **struct [datatype_of< std::uint16_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint16__t_01_4/)** 
+    * **struct [datatype_of< std::uint32_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint32__t_01_4/)** 
+    * **struct [datatype_of< std::uint64_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint64__t_01_4/)** 
+    * **struct [datatype_of< std::uint8_t >](/CUM/api/Classes/structcum_1_1datatype__of_3_01std_1_1uint8__t_01_4/)** 
+    * **namespace [detail](/CUM/api/Namespaces/namespacecum_1_1detail/)** 
+        * **class [event_handler](/CUM/api/Classes/classcum_1_1detail_1_1event__handler/)** <br>Factory and accessor bridging SYCL asynchronous events with CUM's [experimental::__event__](). 
+    * **namespace [experimental](/CUM/api/Namespaces/namespacecum_1_1experimental/)** 
+        * **class [__event__](/CUM/api/Classes/classcum_1_1experimental_1_1____event____/)** <br>Opaque handle representing an in-flight or completed asynchronous device operation. 
+        * **struct [__kernel__](/CUM/api/Classes/structcum_1_1experimental_1_1____kernel____/)** <br>SYCL kernel handle wrapper. 
+    * **struct [float16](/CUM/api/Classes/structcum_1_1float16/)** <br>Raw 16-bit fallback for half precision float. 
+    * **namespace [functions](/CUM/api/Namespaces/namespacecum_1_1functions/)** 
+        * **struct [GELU](/CUM/api/Classes/structcum_1_1functions_1_1GELU/)** <br>Gaussian Error [Linear]() Unit activation functor: f(x) = x * P(X <= x). 
+        * **struct [Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/)** <br>[Linear]() / identity activation function functor: f(x) = x. 
+        * **struct [ReLU](/CUM/api/Classes/structcum_1_1functions_1_1ReLU/)** <br>Rectified [Linear](/CUM/api/Classes/structcum_1_1functions_1_1Linear/) Unit activation functor: f(x) = max(0, x). 
+        * **struct [Sigmoid](/CUM/api/Classes/structcum_1_1functions_1_1Sigmoid/)** <br>Logistic sigmoid activation functor: f(x) = 1 / (1 + exp(-x)). 
+        * **struct [Tanh](/CUM/api/Classes/structcum_1_1functions_1_1Tanh/)** <br>Hyperbolic tangent activation functor: f(x) = tanh(x). 
+        * **struct [activation_t](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/)** <br>Bundles activation function identifier, forward function, and derivative pointers. 
+        * **namespace [cyclometric](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/)** 
+        * **namespace [exponential](/CUM/api/Namespaces/namespacecum_1_1functions_1_1exponential/)** 
+        * **namespace [hyperbolic](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/)** 
+        * **struct [leaky_ReLU](/CUM/api/Classes/structcum_1_1functions_1_1leaky__ReLU/)** <br>Leaky Rectified [Linear]() Unit activation functor: f(x) = x if x >= 0 else alpha * x. 
+        * **namespace [linear_units](/CUM/api/Namespaces/namespacecum_1_1functions_1_1linear__units/)** 
+        * **namespace [logistic](/CUM/api/Namespaces/namespacecum_1_1functions_1_1logistic/)** 
+        * **namespace [trigonometric](/CUM/api/Namespaces/namespacecum_1_1functions_1_1trigonometric/)** 
+        * **namespace [various](/CUM/api/Namespaces/namespacecum_1_1functions_1_1various/)** 
+    * **namespace [internal](/CUM/api/Namespaces/namespacecum_1_1internal/)** 
+        * **struct [Context](/CUM/api/Classes/structcum_1_1internal_1_1Context/)** <br>Singleton hardware and runtime execution context for oneAPI / SYCL / oneDNN backends. 
+        * **struct [scalar_buffer](/CUM/api/Classes/structcum_1_1internal_1_1scalar__buffer/)** 
+        * **struct [sycl_type_map](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map/)** 
+        * **struct [sycl_type_map< bfloat16 >](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map_3_01bfloat16_01_4/)** 
+        * **struct [sycl_type_map< float16 >](/CUM/api/Classes/structcum_1_1internal_1_1sycl__type__map_3_01float16_01_4/)** 
+    * **namespace [lara](/CUM/api/Namespaces/namespacecum_1_1lara/)** 
+    * **namespace [memory](/CUM/api/Namespaces/namespacecum_1_1memory/)** 
+    * **namespace [neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)** 
+        * **class [EltwiseKernel](/CUM/api/Classes/classcum_1_1neural__primitives_1_1EltwiseKernel/)** <br>Pre-compiled elementwise neural operation kernel for repeated forward/backward execution. 
+        * **class [Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/)** <br>Compute execution engine encapsulating device accelerator execution context for primitives. 
+        * **class [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/)** <br>Storage buffer managed by neural primitive engine according to a [Descriptor](). 
+        * **class [MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/)** <br>Encapsulates tensor shape, data type, and memory format layout for neural network primitives. 
+        * **class [Primitive](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/)** <br>Executable compute primitive representing a compiled neural network or tensor operation. 
+            * **struct [ArgBinding](/CUM/api/Classes/structcum_1_1neural__primitives_1_1Primitive_1_1ArgBinding/)** <br>Zero-copy argument binding pairing an [Argument](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Primitive/#enum-argument) slot with a [Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) or [Tensor]() reference. 
+        * **class [PrimitiveDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1PrimitiveDescriptor/)** <br>Backend-resolved operation descriptor specifying shapes, layouts, datatypes, and algorithm parameters. 
+            * **struct [Impl](/CUM/api/Classes/structcum_1_1neural__primitives_1_1PrimitiveDescriptor_1_1Impl/)** <br>Single unified Pimpl definition shared across PrimitiveDescriptor.cpp and Primitive.cpp. 
+        * **class [Tensor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Tensor/)** <br>Core N-dimensional array and deep learning tensor. 
+        * **namespace [detail](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1detail/)** 
+        * **namespace [handles](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1handles/)** 
+            * **struct [__desc__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____desc____/)** <br>Underlying oneDNN memory descriptor wrapper. 
+            * **struct [__engine__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____engine____/)** <br>Underlying oneDNN engine wrapper. 
+            * **struct [__memory__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____memory____/)** <br>Underlying oneDNN memory wrapper with optional USM shared ownership. 
+            * **struct [__stream__](/CUM/api/Classes/structcum_1_1neural__primitives_1_1handles_1_1____stream____/)** <br>Underlying oneDNN stream wrapper. 
+        * **namespace [neural_kernels](/CUM/api/Namespaces/namespacecum_1_1neural__primitives_1_1neural__kernels/)** 
+    * **namespace [random](/CUM/api/Namespaces/namespacecum_1_1random/)** 
+    * **namespace [runtime](/CUM/api/Namespaces/namespacecum_1_1runtime/)** 
+* **struct [fp8_e4_3m_impl](/CUM/api/Classes/structfp8__e4__3m__impl/)** <br>8-bit floating point emulation structure (E4M3 format representation). 
 
 
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

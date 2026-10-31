@@ -11,42 +11,42 @@ title: cum::functions::cyclometric
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t | **[asin](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin)**(cumeric_t x)<br>Evaluates scalar inverse sine: asin(x).  |
-| cumeric_t | **[acos](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos)**(cumeric_t x)<br>Evaluates scalar inverse cosine: acos(x).  |
-| cumeric_t | **[atan](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan)**(cumeric_t x)<br>Evaluates scalar inverse tangent: atan(x).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| cumeric_t | **[asin_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-deriv)**(cumeric_t x) |
-| cumeric_t | **[acos_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-deriv)**(cumeric_t x) |
-| cumeric_t | **[atan_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-deriv)**(cumeric_t x) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[asin_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-asin-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[acos_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-acos-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan_deriv](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[atan_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1cyclometric.md#function-atan-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
+| cumeric_t | **[asin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin)**(cumeric_t x)<br>Evaluates scalar inverse sine: asin(x).  |
+| cumeric_t | **[acos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos)**(cumeric_t x)<br>Evaluates scalar inverse cosine: acos(x).  |
+| cumeric_t | **[atan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan)**(cumeric_t x)<br>Evaluates scalar inverse tangent: atan(x).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| cumeric_t | **[asin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-deriv)**(cumeric_t x) |
+| cumeric_t | **[acos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-deriv)**(cumeric_t x) |
+| cumeric_t | **[atan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-deriv)**(cumeric_t x) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[asin_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-asin-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[acos_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-acos-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[atan_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1cyclometric/#function-atan-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
 
 
 ## Functions Documentation
@@ -465,4 +465,4 @@ __event__ atan_deriv_in_place(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

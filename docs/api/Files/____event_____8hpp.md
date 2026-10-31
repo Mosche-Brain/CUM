@@ -12,15 +12,15 @@ Opaque asynchronous compute event handle.  [More...](#detailed-description)
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::detail](Namespaces/namespacecum_1_1detail.md)**  |
-| **[cum::experimental](Namespaces/namespacecum_1_1experimental.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::detail](/CUM/api/Namespaces/namespacecum_1_1detail/)**  |
+| **[cum::experimental](/CUM/api/Namespaces/namespacecum_1_1experimental/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::experimental::__event__](Classes/classcum_1_1experimental_1_1____event____.md)** <br>Opaque handle representing an in-flight or completed asynchronous device operation.  |
+| class | **[cum::experimental::__event__](/CUM/api/Classes/classcum_1_1experimental_1_1____event____/)** <br>Opaque handle representing an in-flight or completed asynchronous device operation.  |
 
 ## Detailed Description
 
@@ -38,4 +38,4 @@ Implements moveable, non-copyable asynchronous event wrapper with pimpl pattern 
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

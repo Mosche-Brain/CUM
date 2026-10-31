@@ -11,48 +11,48 @@ title: cum::functions::hyperbolic
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t | **[tanh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh)**(cumeric_t x)<br>Evaluates scalar hyperbolic tangent: tanh(x).  |
-| cumeric_t | **[sinh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh)**(cumeric_t x)<br>Evaluates scalar hyperbolic sine: sinh(x).  |
-| cumeric_t | **[cosh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh)**(cumeric_t x)<br>Evaluates scalar hyperbolic cosine: cosh(x).  |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| cumeric_t | **[tanh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv)**(cumeric_t x) |
-| cumeric_t | **[tanh_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-from-result)**(cumeric_t x) |
-| cumeric_t | **[sinh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-deriv)**(cumeric_t x) |
-| cumeric_t | **[cosh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-deriv)**(cumeric_t x) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv_from_result_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-from-result-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv_from_result](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-from-result)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[tanh_deriv_from_result_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-tanh-deriv-from-result-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[sinh_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-sinh-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-deriv-in-place)**(cumeric_t * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh_deriv](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-deriv)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
-| [__event__](Namespaces/namespacecum.md#using---event--) | **[cosh_deriv_in_place](Namespaces/namespacecum_1_1functions_1_1hyperbolic.md#function-cosh-deriv-in-place)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype, void * v, std::size_t N) |
+| cumeric_t | **[tanh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh)**(cumeric_t x)<br>Evaluates scalar hyperbolic tangent: tanh(x).  |
+| cumeric_t | **[sinh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh)**(cumeric_t x)<br>Evaluates scalar hyperbolic sine: sinh(x).  |
+| cumeric_t | **[cosh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh)**(cumeric_t x)<br>Evaluates scalar hyperbolic cosine: cosh(x).  |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| cumeric_t | **[tanh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv)**(cumeric_t x) |
+| cumeric_t | **[tanh_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-from-result)**(cumeric_t x) |
+| cumeric_t | **[sinh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-deriv)**(cumeric_t x) |
+| cumeric_t | **[cosh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-deriv)**(cumeric_t x) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-from-result)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv_from_result_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-from-result-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv_from_result](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-from-result)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[tanh_deriv_from_result_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-tanh-deriv-from-result-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[sinh_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-sinh-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-deriv)**(cumeric_t * r, const cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-deriv-in-place)**(cumeric_t * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * r, const void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh_deriv](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-deriv)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
+| [__event__](/CUM/api/Namespaces/namespacecum/#using---event--) | **[cosh_deriv_in_place](/CUM/api/Namespaces/namespacecum_1_1functions_1_1hyperbolic/#function-cosh-deriv-in-place)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype, void * v, std::size_t N) |
 
 
 ## Functions Documentation
@@ -535,4 +535,4 @@ __event__ cosh_deriv_in_place(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:41 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

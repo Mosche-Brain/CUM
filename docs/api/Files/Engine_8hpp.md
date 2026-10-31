@@ -12,14 +12,14 @@ Compute engine abstraction for deep learning primitives.  [More...](#detailed-de
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::neural_primitives](Namespaces/namespacecum_1_1neural__primitives.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::neural_primitives](/CUM/api/Namespaces/namespacecum_1_1neural__primitives/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::neural_primitives::Engine](Classes/classcum_1_1neural__primitives_1_1Engine.md)** <br>Compute execution engine encapsulating device accelerator execution context for primitives.  |
+| class | **[cum::neural_primitives::Engine](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Engine/)** <br>Compute execution engine encapsulating device accelerator execution context for primitives.  |
 
 ## Detailed Description
 
@@ -33,4 +33,4 @@ Compute engine abstraction for deep learning primitives.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

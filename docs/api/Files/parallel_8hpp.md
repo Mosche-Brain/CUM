@@ -12,7 +12,7 @@ Generic parallel algorithms and execution primitives.  [More...](#detailed-descr
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
 
 ## Detailed Description
 
@@ -26,4 +26,4 @@ Generic parallel algorithms and execution primitives.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

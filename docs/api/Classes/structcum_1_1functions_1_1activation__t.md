@@ -17,9 +17,9 @@ Bundles activation function identifier, forward function, and derivative pointer
 
 |                | Name           |
 | -------------- | -------------- |
-| [function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) | **[name](Classes/structcum_1_1functions_1_1activation__t.md#variable-name)** <br>Identifier of the activation function.  |
-| [function_t](Namespaces/namespacecum_1_1functions.md#typedef-function-t) | **[function](Classes/structcum_1_1functions_1_1activation__t.md#variable-function)** <br>Forward evaluation function pointer.  |
-| [function_t](Namespaces/namespacecum_1_1functions.md#typedef-function-t) | **[derivative](Classes/structcum_1_1functions_1_1activation__t.md#variable-derivative)** <br>Derivative evaluation function pointer.  |
+| [function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) | **[name](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/#variable-name)** <br>Identifier of the activation function.  |
+| [function_t](/CUM/api/Namespaces/namespacecum_1_1functions/#typedef-function-t) | **[function](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/#variable-function)** <br>Forward evaluation function pointer.  |
+| [function_t](/CUM/api/Namespaces/namespacecum_1_1functions/#typedef-function-t) | **[derivative](/CUM/api/Classes/structcum_1_1functions_1_1activation__t/#variable-derivative)** <br>Derivative evaluation function pointer.  |
 
 ## Public Attributes Documentation
 
@@ -49,4 +49,4 @@ Derivative evaluation function pointer.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

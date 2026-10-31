@@ -17,133 +17,133 @@ Core N-dimensional array and deep learning tensor.  [More...](#detailed-descript
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ANY](Namespaces/namespacecum.md#enumvalue-any)) =default<br>Constructs an uninitialized [Tensor](Classes/classcum_1_1Tensor.md) with the given shape, datatype, and layout.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**() =default<br>Default constructor creating an empty tensor.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**([neural_primitives::MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md) & descriptor)<br>Constructs a [Tensor](Classes/classcum_1_1Tensor.md) backed by an existing neural primitive descriptor.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**(cumeric_t value, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::A](Namespaces/namespacecum.md#enumvalue-a)) =default<br>Constructs a 0D scalar tensor holding a single scalar value.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**([dim_t](Namespaces/namespacecum.md#using-dim-t) lenght, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::A](Namespaces/namespacecum.md#enumvalue-a)) =default<br>Constructs a 1D vector tensor of the given length.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::AB](Namespaces/namespacecum.md#enumvalue-ab)) =default<br>Constructs a 2D matrix tensor.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**([dim_t](Namespaces/namespacecum.md#using-dim-t) axis0, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis1, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis2, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ABC](Namespaces/namespacecum.md#enumvalue-abc)) =default<br>Constructs a 3D rank-3 tensor.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**([dim_t](Namespaces/namespacecum.md#using-dim-t) axis0, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis1, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis2, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis3, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ABCD](Namespaces/namespacecum.md#enumvalue-abcd)) =default<br>Constructs a 4D rank-4 tensor.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**([dim_t](Namespaces/namespacecum.md#using-dim-t) axis0, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis1, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis2, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis3, [dim_t](Namespaces/namespacecum.md#using-dim-t) axis4, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ABCDE](Namespaces/namespacecum.md#enumvalue-abcde)) =default<br>Constructs a 5D rank-5 tensor.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**(const Tensor & tensor)<br>Copy constructor performing deep copy of tensor descriptor and memory buffer.  |
-| | **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**(Tensor && tensor)<br>Move constructor transferring resource ownership without copying memory.  |
-| template <typename T ,dim_t... dims\> <br>| **[Tensor](Classes/classcum_1_1Tensor.md#function-tensor)**(const std::vector< T > & values)<br>Template constructor initializing a multi-dimensional tensor from a flat vector of values.  |
-| | **[~Tensor](Classes/classcum_1_1Tensor.md#function-~tensor)**()<br>Destructor releasing tensor memory.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[cast](Classes/classcum_1_1Tensor.md#function-cast)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype)<br>Converts tensor elements to another datatype in-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[prefetch](Classes/classcum_1_1Tensor.md#function-prefetch)**()<br>Prefetches tensor memory to the active device.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[to_host](Classes/classcum_1_1Tensor.md#function-to-host)**()<br>Migrates tensor memory to host CPU.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[to_device](Classes/classcum_1_1Tensor.md#function-to-device)**()<br>Migrates tensor memory to device accelerator.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[size](Classes/classcum_1_1Tensor.md#function-size)**() const<br>Returns total memory size in bytes.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[rank](Classes/classcum_1_1Tensor.md#function-rank)**() const<br>Returns tensor rank (number of dimensions).  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[dims](Classes/classcum_1_1Tensor.md#function-dims)**() const<br>Returns tensor rank (number of dimensions).  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[lenght](Classes/classcum_1_1Tensor.md#function-lenght)**() const<br>Returns length of first dimension.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[elements](Classes/classcum_1_1Tensor.md#function-elements)**() const<br>Returns total number of elements.  |
-| [Shape](Namespaces/namespacecum.md#using-shape) | **[shape](Classes/classcum_1_1Tensor.md#function-shape)**() const<br>Returns vector of dimension lengths.  |
-| [layout](Namespaces/namespacecum.md#enum-layout) | **[format](Classes/classcum_1_1Tensor.md#function-format)**() const<br>Returns memory layout format.  |
-| [datatype](Namespaces/namespacecum.md#enum-datatype) | **[type](Classes/classcum_1_1Tensor.md#function-type)**() const<br>Returns element datatype.  |
-| bool | **[is_scalar](Classes/classcum_1_1Tensor.md#function-is-scalar)**() const<br>Checks whether tensor is a 0D scalar or 1-element tensor.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[rows](Classes/classcum_1_1Tensor.md#function-rows)**() const<br>Returns height (row count) for 2D+ tensors.  |
-| [dim_t](Namespaces/namespacecum.md#using-dim-t) | **[cols](Classes/classcum_1_1Tensor.md#function-cols)**() const<br>Returns width (column count) for 2D+ tensors.  |
-| std::unique_ptr< [neural_primitives::MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md) > & | **[descriptor](Classes/classcum_1_1Tensor.md#function-descriptor)**()<br>Returns mutable reference to descriptor pointer.  |
-| std::unique_ptr< [neural_primitives::Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) > & | **[memory](Classes/classcum_1_1Tensor.md#function-memory)**()<br>Returns mutable reference to memory object pointer.  |
-| const std::unique_ptr< [neural_primitives::MemoryDescriptor](Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor.md) > & | **[descriptor](Classes/classcum_1_1Tensor.md#function-descriptor)**() const<br>Returns const reference to descriptor pointer.  |
-| const std::unique_ptr< [neural_primitives::Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md) > & | **[memory](Classes/classcum_1_1Tensor.md#function-memory)**() const<br>Returns const reference to memory object pointer.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[clone](Classes/classcum_1_1Tensor.md#function-clone)**() const<br>Creates a deep copy clone of the tensor.  |
-| template <typename T \> <br>T * | **[data](Classes/classcum_1_1Tensor.md#function-data)**()<br>Returns typed pointer to underlying memory buffer.  |
-| template <typename T \> <br>const T * | **[data](Classes/classcum_1_1Tensor.md#function-data)**() const<br>Returns typed const pointer to underlying memory buffer.  |
-| template <typename T \> <br>T & | **[at](Classes/classcum_1_1Tensor.md#function-at)**(const [Shape](Namespaces/namespacecum.md#using-shape) & indices)<br>Accesses element at specified multi-dimensional coordinate with type check.  |
-| template <typename T \> <br>const T & | **[at](Classes/classcum_1_1Tensor.md#function-at)**(const [Shape](Namespaces/namespacecum.md#using-shape) & indices) const<br>Accesses element at specified multi-dimensional coordinate with type check (const).  |
-| const void * | **[data](Classes/classcum_1_1Tensor.md#function-data)**() const<br>Returns raw untyped const data pointer.  |
-| void * | **[data](Classes/classcum_1_1Tensor.md#function-data)**()<br>Returns raw untyped data pointer.  |
-| cumeric_t & | **[at](Classes/classcum_1_1Tensor.md#function-at)**(const [Shape](Namespaces/namespacecum.md#using-shape) & indices)<br>Accesses element as cumeric_t at specified multi-dimensional coordinate.  |
-| const cumeric_t & | **[at](Classes/classcum_1_1Tensor.md#function-at)**(const [Shape](Namespaces/namespacecum.md#using-shape) & indices) const<br>Accesses element as cumeric_t at specified multi-dimensional coordinate (const).  |
-| cumeric_t | **[get_value](Classes/classcum_1_1Tensor.md#function-get-value)**(const [Shape](Namespaces/namespacecum.md#using-shape) & indices) const<br>Reads scalar value at specified coordinate.  |
-| cumeric_t & | **[operator()](Classes/classcum_1_1Tensor.md#function-operator())**(const [Shape](Namespaces/namespacecum.md#using-shape) & indices) |
-| const cumeric_t & | **[operator()](Classes/classcum_1_1Tensor.md#function-operator())**(const [Shape](Namespaces/namespacecum.md#using-shape) & indices) const |
-| cumeric_t | **[operator()](Classes/classcum_1_1Tensor.md#function-operator())**([dim_t](Namespaces/namespacecum.md#using-dim-t) row, [dim_t](Namespaces/namespacecum.md#using-dim-t) col) const |
-| cumeric_t | **[operator()](Classes/classcum_1_1Tensor.md#function-operator())**([dim_t](Namespaces/namespacecum.md#using-dim-t) idx0, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx1, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx2) const |
-| cumeric_t | **[operator()](Classes/classcum_1_1Tensor.md#function-operator())**([dim_t](Namespaces/namespacecum.md#using-dim-t) idx0, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx1, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx2, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx3) const |
-| cumeric_t | **[operator()](Classes/classcum_1_1Tensor.md#function-operator())**([dim_t](Namespaces/namespacecum.md#using-dim-t) idx0, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx1, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx2, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx3, [dim_t](Namespaces/namespacecum.md#using-dim-t) idx4) const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[batch](Classes/classcum_1_1Tensor.md#function-batch)**([dim_t](Namespaces/namespacecum.md#using-dim-t) index) const<br>Extracts a batch slice along axis 0.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[channel](Classes/classcum_1_1Tensor.md#function-channel)**([dim_t](Namespaces/namespacecum.md#using-dim-t) index) const<br>Extracts a channel slice along axis 1.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[row](Classes/classcum_1_1Tensor.md#function-row)**([dim_t](Namespaces/namespacecum.md#using-dim-t) index) const<br>Extracts a row slice.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[col](Classes/classcum_1_1Tensor.md#function-col)**([dim_t](Namespaces/namespacecum.md#using-dim-t) index) const<br>Extracts a column slice.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[slice](Classes/classcum_1_1Tensor.md#function-slice)**(const [Shape](Namespaces/namespacecum.md#using-shape) & offset, const [Shape](Namespaces/namespacecum.md#using-shape) & shape) const<br>Extracts a sub-tensor slice specified by offset and shape.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[reshape](Classes/classcum_1_1Tensor.md#function-reshape)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape) const<br>Returns a reshaped tensor out-of-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[reshape_in_place](Classes/classcum_1_1Tensor.md#function-reshape-in-place)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape)<br>Reshapes tensor in-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[transpose](Classes/classcum_1_1Tensor.md#function-transpose)**() const<br>Transposes tensor dimensions out-of-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[transpose_in_place](Classes/classcum_1_1Tensor.md#function-transpose-in-place)**()<br>Transposes tensor dimensions in-place.  |
-| cumeric_t | **[sum](Classes/classcum_1_1Tensor.md#function-sum)**() const<br>Computes sum of all elements.  |
-| cumeric_t | **[mean](Classes/classcum_1_1Tensor.md#function-mean)**() const<br>Computes arithmetic mean of all elements.  |
-| cumeric_t | **[amean](Classes/classcum_1_1Tensor.md#function-amean)**() const<br>Computes mean of absolute values.  |
-| cumeric_t | **[norm](Classes/classcum_1_1Tensor.md#function-norm)**() const<br>Computes Euclidean L2 norm.  |
-| cumeric_t | **[squaredNorm](Classes/classcum_1_1Tensor.md#function-squarednorm)**() const<br>Computes squared Euclidean L2 norm.  |
-| cumeric_t | **[squared_norm](Classes/classcum_1_1Tensor.md#function-squared-norm)**() const<br>Computes squared Euclidean L2 norm (snake_case alias).  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[sum](Classes/classcum_1_1Tensor.md#function-sum)**([dim_t](Namespaces/namespacecum.md#using-dim-t) axis, bool keed_dims =true) const<br>Computes reduction sum along a specified axis.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[softmax](Classes/classcum_1_1Tensor.md#function-softmax)**([dim_t](Namespaces/namespacecum.md#using-dim-t) axis =-1) const<br>Computes softmax activation along a specified axis.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[colwise_sum](Classes/classcum_1_1Tensor.md#function-colwise-sum)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[rowwise_sum](Classes/classcum_1_1Tensor.md#function-rowwise-sum)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[channelwise_sum](Classes/classcum_1_1Tensor.md#function-channelwise-sum)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[elementwise](Classes/classcum_1_1Tensor.md#function-elementwise)**([functions::function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) function) const<br>Applies elementwise neural activation function out-of-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[elementwise_in_place](Classes/classcum_1_1Tensor.md#function-elementwise-in-place)**([functions::function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) function)<br>Applies elementwise neural activation function in-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[elementwise_diff](Classes/classcum_1_1Tensor.md#function-elementwise-diff)**([functions::function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) function) const<br>Computes elementwise activation derivative out-of-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[elementwise_diff_in_place](Classes/classcum_1_1Tensor.md#function-elementwise-diff-in-place)**([functions::function_id](Namespaces/namespacecum_1_1functions.md#enum-function-id) function)<br>Computes elementwise activation derivative in-place.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[fill](Classes/classcum_1_1Tensor.md#function-fill)**(cumeric_t scalar)<br>Fills all tensor elements with a scalar value.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[multiply](Classes/classcum_1_1Tensor.md#function-multiply)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor) const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[cwiseProduct](Classes/classcum_1_1Tensor.md#function-cwiseproduct)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor) const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[cwise_product_in_place](Classes/classcum_1_1Tensor.md#function-cwise-product-in-place)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & other) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[sqrt](Classes/classcum_1_1Tensor.md#function-sqrt)**() const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[sqrt_in_place](Classes/classcum_1_1Tensor.md#function-sqrt-in-place)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[square](Classes/classcum_1_1Tensor.md#function-square)**() const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[square_in_place](Classes/classcum_1_1Tensor.md#function-square-in-place)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[abs](Classes/classcum_1_1Tensor.md#function-abs)**() const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[abs_in_place](Classes/classcum_1_1Tensor.md#function-abs-in-place)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[clamp](Classes/classcum_1_1Tensor.md#function-clamp)**(cumeric_t min, cumeric_t max) const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[clamp_in_place](Classes/classcum_1_1Tensor.md#function-clamp-in-place)**(cumeric_t min, cumeric_t max) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[log](Classes/classcum_1_1Tensor.md#function-log)**() const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[log_in_place](Classes/classcum_1_1Tensor.md#function-log-in-place)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[scale](Classes/classcum_1_1Tensor.md#function-scale)**(cumeric_t scalar) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[matmul](Classes/classcum_1_1Tensor.md#function-matmul)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & other) const<br>Performs matrix or batched tensor multiplication with another tensor.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator+](Classes/classcum_1_1Tensor.md#function-operator+)**() |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator-](Classes/classcum_1_1Tensor.md#function-operator-)**() const |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[operator+=](Classes/classcum_1_1Tensor.md#function-operator+=)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & other) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[operator-=](Classes/classcum_1_1Tensor.md#function-operator-=)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & other) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[operator*=](Classes/classcum_1_1Tensor.md#function-operator*=)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & other) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[operator/=](Classes/classcum_1_1Tensor.md#function-operator/=)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & other) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[operator/=](Classes/classcum_1_1Tensor.md#function-operator/=)**(cumeric_t scalar) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[operator=](Classes/classcum_1_1Tensor.md#function-operator=)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & other) |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & | **[operator=](Classes/classcum_1_1Tensor.md#function-operator=)**([Tensor](Classes/classcum_1_1Tensor.md#function-tensor) && other) |
-| template <datatype T,layout layout\> <br>[Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[create_tensor](Classes/classcum_1_1Tensor.md#function-create-tensor)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape)<br>Factory creating a tensor with compile-time specified datatype and layout tags.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[take_memory](Classes/classcum_1_1Tensor.md#function-take-memory)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape, void * data, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =[datatype::FP32](Namespaces/namespacecum.md#enumvalue-fp32), [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ANY](Namespaces/namespacecum.md#enumvalue-any))<br>Wraps existing non-owned memory buffer without allocating new storage.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[copy_memory](Classes/classcum_1_1Tensor.md#function-copy-memory)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape, void * data, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =[datatype::FP32](Namespaces/namespacecum.md#enumvalue-fp32), [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ANY](Namespaces/namespacecum.md#enumvalue-any))<br>Creates a tensor by allocating storage and copying data from an external buffer.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[make_cube](Classes/classcum_1_1Tensor.md#function-make-cube)**([dim_t](Namespaces/namespacecum.md#using-dim-t) width, [dim_t](Namespaces/namespacecum.md#using-dim-t) height, [dim_t](Namespaces/namespacecum.md#using-dim-t) deepth, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::OI](Namespaces/namespacecum.md#enumvalue-oi)) =default<br>Creates a 3D cube tensor.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[make_matrix](Classes/classcum_1_1Tensor.md#function-make-matrix)**([dim_t](Namespaces/namespacecum.md#using-dim-t) rows, [dim_t](Namespaces/namespacecum.md#using-dim-t) cols, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::OI](Namespaces/namespacecum.md#enumvalue-oi)) =default<br>Creates a 2D matrix tensor.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[make_vector](Classes/classcum_1_1Tensor.md#function-make-vector)**([dim_t](Namespaces/namespacecum.md#using-dim-t) lenght, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::X](Namespaces/namespacecum.md#enumvalue-x)) =default<br>Creates a 1D vector tensor.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[make_scalar](Classes/classcum_1_1Tensor.md#function-make-scalar)**([datatype](Namespaces/namespacecum.md#enum-datatype) dtype =default_type, [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::X](Namespaces/namespacecum.md#enumvalue-x)) =default<br>Creates a 0D scalar tensor.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[Random](Classes/classcum_1_1Tensor.md#function-random)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape, cumeric_t min =-1_c, cumeric_t max =1_c, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =[datatype::FP32](Namespaces/namespacecum.md#enumvalue-fp32), [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ANY](Namespaces/namespacecum.md#enumvalue-any))<br>Creates a tensor filled with uniformly distributed random numbers.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[Zeros](Classes/classcum_1_1Tensor.md#function-zeros)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =[datatype::FP32](Namespaces/namespacecum.md#enumvalue-fp32), [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ANY](Namespaces/namespacecum.md#enumvalue-any))<br>Creates a tensor filled with zeros.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[Ones](Classes/classcum_1_1Tensor.md#function-ones)**(const [Shape](Namespaces/namespacecum.md#using-shape) & shape, [datatype](Namespaces/namespacecum.md#enum-datatype) dtype =[datatype::FP32](Namespaces/namespacecum.md#enumvalue-fp32), [layout](Namespaces/namespacecum.md#enum-layout) layout =[layout::ANY](Namespaces/namespacecum.md#enumvalue-any))<br>Creates a tensor filled with ones.  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[Linspace](Classes/classcum_1_1Tensor.md#function-linspace)**(cumeric_t start, cumeric_t end, [dim_t](Namespaces/namespacecum.md#using-dim-t) num)<br>Creates a 1D vector tensor with linearly spaced values.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any)) =default<br>Constructs an uninitialized [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) with the given shape, datatype, and layout.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**() =default<br>Default constructor creating an empty tensor.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**([neural_primitives::MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/) & descriptor)<br>Constructs a [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) backed by an existing neural primitive descriptor.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**(cumeric_t value, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::A](/CUM/api/Namespaces/namespacecum/#enumvalue-a)) =default<br>Constructs a 0D scalar tensor holding a single scalar value.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lenght, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::A](/CUM/api/Namespaces/namespacecum/#enumvalue-a)) =default<br>Constructs a 1D vector tensor of the given length.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::AB](/CUM/api/Namespaces/namespacecum/#enumvalue-ab)) =default<br>Constructs a 2D matrix tensor.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis0, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis1, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis2, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ABC](/CUM/api/Namespaces/namespacecum/#enumvalue-abc)) =default<br>Constructs a 3D rank-3 tensor.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis0, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis1, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis2, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis3, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ABCD](/CUM/api/Namespaces/namespacecum/#enumvalue-abcd)) =default<br>Constructs a 4D rank-4 tensor.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis0, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis1, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis2, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis3, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis4, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ABCDE](/CUM/api/Namespaces/namespacecum/#enumvalue-abcde)) =default<br>Constructs a 5D rank-5 tensor.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**(const Tensor & tensor)<br>Copy constructor performing deep copy of tensor descriptor and memory buffer.  |
+| | **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**(Tensor && tensor)<br>Move constructor transferring resource ownership without copying memory.  |
+| template <typename T ,dim_t... dims\> <br>| **[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor)**(const std::vector< T > & values)<br>Template constructor initializing a multi-dimensional tensor from a flat vector of values.  |
+| | **[~Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-~tensor)**()<br>Destructor releasing tensor memory.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[cast](/CUM/api/Classes/classcum_1_1Tensor/#function-cast)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype)<br>Converts tensor elements to another datatype in-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[prefetch](/CUM/api/Classes/classcum_1_1Tensor/#function-prefetch)**()<br>Prefetches tensor memory to the active device.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[to_host](/CUM/api/Classes/classcum_1_1Tensor/#function-to-host)**()<br>Migrates tensor memory to host CPU.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[to_device](/CUM/api/Classes/classcum_1_1Tensor/#function-to-device)**()<br>Migrates tensor memory to device accelerator.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[size](/CUM/api/Classes/classcum_1_1Tensor/#function-size)**() const<br>Returns total memory size in bytes.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[rank](/CUM/api/Classes/classcum_1_1Tensor/#function-rank)**() const<br>Returns tensor rank (number of dimensions).  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[dims](/CUM/api/Classes/classcum_1_1Tensor/#function-dims)**() const<br>Returns tensor rank (number of dimensions).  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[lenght](/CUM/api/Classes/classcum_1_1Tensor/#function-lenght)**() const<br>Returns length of first dimension.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[elements](/CUM/api/Classes/classcum_1_1Tensor/#function-elements)**() const<br>Returns total number of elements.  |
+| [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) | **[shape](/CUM/api/Classes/classcum_1_1Tensor/#function-shape)**() const<br>Returns vector of dimension lengths.  |
+| [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) | **[format](/CUM/api/Classes/classcum_1_1Tensor/#function-format)**() const<br>Returns memory layout format.  |
+| [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) | **[type](/CUM/api/Classes/classcum_1_1Tensor/#function-type)**() const<br>Returns element datatype.  |
+| bool | **[is_scalar](/CUM/api/Classes/classcum_1_1Tensor/#function-is-scalar)**() const<br>Checks whether tensor is a 0D scalar or 1-element tensor.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[rows](/CUM/api/Classes/classcum_1_1Tensor/#function-rows)**() const<br>Returns height (row count) for 2D+ tensors.  |
+| [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) | **[cols](/CUM/api/Classes/classcum_1_1Tensor/#function-cols)**() const<br>Returns width (column count) for 2D+ tensors.  |
+| std::unique_ptr< [neural_primitives::MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/) > & | **[descriptor](/CUM/api/Classes/classcum_1_1Tensor/#function-descriptor)**()<br>Returns mutable reference to descriptor pointer.  |
+| std::unique_ptr< [neural_primitives::Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) > & | **[memory](/CUM/api/Classes/classcum_1_1Tensor/#function-memory)**()<br>Returns mutable reference to memory object pointer.  |
+| const std::unique_ptr< [neural_primitives::MemoryDescriptor](/CUM/api/Classes/classcum_1_1neural__primitives_1_1MemoryDescriptor/) > & | **[descriptor](/CUM/api/Classes/classcum_1_1Tensor/#function-descriptor)**() const<br>Returns const reference to descriptor pointer.  |
+| const std::unique_ptr< [neural_primitives::Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/) > & | **[memory](/CUM/api/Classes/classcum_1_1Tensor/#function-memory)**() const<br>Returns const reference to memory object pointer.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[clone](/CUM/api/Classes/classcum_1_1Tensor/#function-clone)**() const<br>Creates a deep copy clone of the tensor.  |
+| template <typename T \> <br>T * | **[data](/CUM/api/Classes/classcum_1_1Tensor/#function-data)**()<br>Returns typed pointer to underlying memory buffer.  |
+| template <typename T \> <br>const T * | **[data](/CUM/api/Classes/classcum_1_1Tensor/#function-data)**() const<br>Returns typed const pointer to underlying memory buffer.  |
+| template <typename T \> <br>T & | **[at](/CUM/api/Classes/classcum_1_1Tensor/#function-at)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & indices)<br>Accesses element at specified multi-dimensional coordinate with type check.  |
+| template <typename T \> <br>const T & | **[at](/CUM/api/Classes/classcum_1_1Tensor/#function-at)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & indices) const<br>Accesses element at specified multi-dimensional coordinate with type check (const).  |
+| const void * | **[data](/CUM/api/Classes/classcum_1_1Tensor/#function-data)**() const<br>Returns raw untyped const data pointer.  |
+| void * | **[data](/CUM/api/Classes/classcum_1_1Tensor/#function-data)**()<br>Returns raw untyped data pointer.  |
+| cumeric_t & | **[at](/CUM/api/Classes/classcum_1_1Tensor/#function-at)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & indices)<br>Accesses element as cumeric_t at specified multi-dimensional coordinate.  |
+| const cumeric_t & | **[at](/CUM/api/Classes/classcum_1_1Tensor/#function-at)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & indices) const<br>Accesses element as cumeric_t at specified multi-dimensional coordinate (const).  |
+| cumeric_t | **[get_value](/CUM/api/Classes/classcum_1_1Tensor/#function-get-value)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & indices) const<br>Reads scalar value at specified coordinate.  |
+| cumeric_t & | **[operator()](/CUM/api/Classes/classcum_1_1Tensor/#function-operator())**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & indices) |
+| const cumeric_t & | **[operator()](/CUM/api/Classes/classcum_1_1Tensor/#function-operator())**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & indices) const |
+| cumeric_t | **[operator()](/CUM/api/Classes/classcum_1_1Tensor/#function-operator())**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) row, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) col) const |
+| cumeric_t | **[operator()](/CUM/api/Classes/classcum_1_1Tensor/#function-operator())**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx0, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx1, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx2) const |
+| cumeric_t | **[operator()](/CUM/api/Classes/classcum_1_1Tensor/#function-operator())**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx0, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx1, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx2, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx3) const |
+| cumeric_t | **[operator()](/CUM/api/Classes/classcum_1_1Tensor/#function-operator())**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx0, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx1, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx2, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx3, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) idx4) const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[batch](/CUM/api/Classes/classcum_1_1Tensor/#function-batch)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) index) const<br>Extracts a batch slice along axis 0.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[channel](/CUM/api/Classes/classcum_1_1Tensor/#function-channel)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) index) const<br>Extracts a channel slice along axis 1.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[row](/CUM/api/Classes/classcum_1_1Tensor/#function-row)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) index) const<br>Extracts a row slice.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[col](/CUM/api/Classes/classcum_1_1Tensor/#function-col)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) index) const<br>Extracts a column slice.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[slice](/CUM/api/Classes/classcum_1_1Tensor/#function-slice)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & offset, const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape) const<br>Extracts a sub-tensor slice specified by offset and shape.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[reshape](/CUM/api/Classes/classcum_1_1Tensor/#function-reshape)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape) const<br>Returns a reshaped tensor out-of-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[reshape_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-reshape-in-place)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape)<br>Reshapes tensor in-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[transpose](/CUM/api/Classes/classcum_1_1Tensor/#function-transpose)**() const<br>Transposes tensor dimensions out-of-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[transpose_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-transpose-in-place)**()<br>Transposes tensor dimensions in-place.  |
+| cumeric_t | **[sum](/CUM/api/Classes/classcum_1_1Tensor/#function-sum)**() const<br>Computes sum of all elements.  |
+| cumeric_t | **[mean](/CUM/api/Classes/classcum_1_1Tensor/#function-mean)**() const<br>Computes arithmetic mean of all elements.  |
+| cumeric_t | **[amean](/CUM/api/Classes/classcum_1_1Tensor/#function-amean)**() const<br>Computes mean of absolute values.  |
+| cumeric_t | **[norm](/CUM/api/Classes/classcum_1_1Tensor/#function-norm)**() const<br>Computes Euclidean L2 norm.  |
+| cumeric_t | **[squaredNorm](/CUM/api/Classes/classcum_1_1Tensor/#function-squarednorm)**() const<br>Computes squared Euclidean L2 norm.  |
+| cumeric_t | **[squared_norm](/CUM/api/Classes/classcum_1_1Tensor/#function-squared-norm)**() const<br>Computes squared Euclidean L2 norm (snake_case alias).  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[sum](/CUM/api/Classes/classcum_1_1Tensor/#function-sum)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis, bool keed_dims =true) const<br>Computes reduction sum along a specified axis.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[softmax](/CUM/api/Classes/classcum_1_1Tensor/#function-softmax)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) axis =-1) const<br>Computes softmax activation along a specified axis.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[colwise_sum](/CUM/api/Classes/classcum_1_1Tensor/#function-colwise-sum)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[rowwise_sum](/CUM/api/Classes/classcum_1_1Tensor/#function-rowwise-sum)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[channelwise_sum](/CUM/api/Classes/classcum_1_1Tensor/#function-channelwise-sum)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[elementwise](/CUM/api/Classes/classcum_1_1Tensor/#function-elementwise)**([functions::function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) function) const<br>Applies elementwise neural activation function out-of-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[elementwise_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-elementwise-in-place)**([functions::function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) function)<br>Applies elementwise neural activation function in-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[elementwise_diff](/CUM/api/Classes/classcum_1_1Tensor/#function-elementwise-diff)**([functions::function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) function) const<br>Computes elementwise activation derivative out-of-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[elementwise_diff_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-elementwise-diff-in-place)**([functions::function_id](/CUM/api/Namespaces/namespacecum_1_1functions/#enum-function-id) function)<br>Computes elementwise activation derivative in-place.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[fill](/CUM/api/Classes/classcum_1_1Tensor/#function-fill)**(cumeric_t scalar)<br>Fills all tensor elements with a scalar value.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[multiply](/CUM/api/Classes/classcum_1_1Tensor/#function-multiply)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor) const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[cwiseProduct](/CUM/api/Classes/classcum_1_1Tensor/#function-cwiseproduct)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor) const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[cwise_product_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-cwise-product-in-place)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & other) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[sqrt](/CUM/api/Classes/classcum_1_1Tensor/#function-sqrt)**() const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[sqrt_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-sqrt-in-place)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[square](/CUM/api/Classes/classcum_1_1Tensor/#function-square)**() const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[square_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-square-in-place)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[abs](/CUM/api/Classes/classcum_1_1Tensor/#function-abs)**() const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[abs_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-abs-in-place)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[clamp](/CUM/api/Classes/classcum_1_1Tensor/#function-clamp)**(cumeric_t min, cumeric_t max) const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[clamp_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-clamp-in-place)**(cumeric_t min, cumeric_t max) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[log](/CUM/api/Classes/classcum_1_1Tensor/#function-log)**() const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[log_in_place](/CUM/api/Classes/classcum_1_1Tensor/#function-log-in-place)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[scale](/CUM/api/Classes/classcum_1_1Tensor/#function-scale)**(cumeric_t scalar) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[matmul](/CUM/api/Classes/classcum_1_1Tensor/#function-matmul)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & other) const<br>Performs matrix or batched tensor multiplication with another tensor.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator+](/CUM/api/Classes/classcum_1_1Tensor/#function-operator+)**() |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator-](/CUM/api/Classes/classcum_1_1Tensor/#function-operator-)**() const |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[operator+=](/CUM/api/Classes/classcum_1_1Tensor/#function-operator+=)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & other) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[operator-=](/CUM/api/Classes/classcum_1_1Tensor/#function-operator-=)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & other) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[operator*=](/CUM/api/Classes/classcum_1_1Tensor/#function-operator*=)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & other) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[operator/=](/CUM/api/Classes/classcum_1_1Tensor/#function-operator/=)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & other) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[operator/=](/CUM/api/Classes/classcum_1_1Tensor/#function-operator/=)**(cumeric_t scalar) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[operator=](/CUM/api/Classes/classcum_1_1Tensor/#function-operator=)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & other) |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & | **[operator=](/CUM/api/Classes/classcum_1_1Tensor/#function-operator=)**([Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) && other) |
+| template <datatype T,layout layout\> <br>[Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[create_tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-create-tensor)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape)<br>Factory creating a tensor with compile-time specified datatype and layout tags.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[take_memory](/CUM/api/Classes/classcum_1_1Tensor/#function-take-memory)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape, void * data, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =[datatype::FP32](/CUM/api/Namespaces/namespacecum/#enumvalue-fp32), [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any))<br>Wraps existing non-owned memory buffer without allocating new storage.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[copy_memory](/CUM/api/Classes/classcum_1_1Tensor/#function-copy-memory)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape, void * data, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =[datatype::FP32](/CUM/api/Namespaces/namespacecum/#enumvalue-fp32), [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any))<br>Creates a tensor by allocating storage and copying data from an external buffer.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[make_cube](/CUM/api/Classes/classcum_1_1Tensor/#function-make-cube)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) width, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) height, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) deepth, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::OI](/CUM/api/Namespaces/namespacecum/#enumvalue-oi)) =default<br>Creates a 3D cube tensor.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[make_matrix](/CUM/api/Classes/classcum_1_1Tensor/#function-make-matrix)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) rows, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) cols, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::OI](/CUM/api/Namespaces/namespacecum/#enumvalue-oi)) =default<br>Creates a 2D matrix tensor.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[make_vector](/CUM/api/Classes/classcum_1_1Tensor/#function-make-vector)**([dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) lenght, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::X](/CUM/api/Namespaces/namespacecum/#enumvalue-x)) =default<br>Creates a 1D vector tensor.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[make_scalar](/CUM/api/Classes/classcum_1_1Tensor/#function-make-scalar)**([datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =default_type, [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::X](/CUM/api/Namespaces/namespacecum/#enumvalue-x)) =default<br>Creates a 0D scalar tensor.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[Random](/CUM/api/Classes/classcum_1_1Tensor/#function-random)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape, cumeric_t min =-1_c, cumeric_t max =1_c, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =[datatype::FP32](/CUM/api/Namespaces/namespacecum/#enumvalue-fp32), [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any))<br>Creates a tensor filled with uniformly distributed random numbers.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[Zeros](/CUM/api/Classes/classcum_1_1Tensor/#function-zeros)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =[datatype::FP32](/CUM/api/Namespaces/namespacecum/#enumvalue-fp32), [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any))<br>Creates a tensor filled with zeros.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[Ones](/CUM/api/Classes/classcum_1_1Tensor/#function-ones)**(const [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) & shape, [datatype](/CUM/api/Namespaces/namespacecum/#enum-datatype) dtype =[datatype::FP32](/CUM/api/Namespaces/namespacecum/#enumvalue-fp32), [layout](/CUM/api/Namespaces/namespacecum/#enum-layout) layout =[layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any))<br>Creates a tensor filled with ones.  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[Linspace](/CUM/api/Classes/classcum_1_1Tensor/#function-linspace)**(cumeric_t start, cumeric_t end, [dim_t](/CUM/api/Namespaces/namespacecum/#using-dim-t) num)<br>Creates a 1D vector tensor with linearly spaced values.  |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator+](Classes/classcum_1_1Tensor.md#friend-operator+)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & A, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & B)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator-](Classes/classcum_1_1Tensor.md#friend-operator-)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & A, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & B)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator*](Classes/classcum_1_1Tensor.md#friend-operator*)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & A, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & B)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator/](Classes/classcum_1_1Tensor.md#friend-operator/)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & A, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & B)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator+](Classes/classcum_1_1Tensor.md#friend-operator+)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor, cumeric_t scalar)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator+](Classes/classcum_1_1Tensor.md#friend-operator+)**(cumeric_t scalar, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator-](Classes/classcum_1_1Tensor.md#friend-operator-)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor, cumeric_t scalar)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator-](Classes/classcum_1_1Tensor.md#friend-operator-)**(cumeric_t scalar, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator*](Classes/classcum_1_1Tensor.md#friend-operator*)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor, cumeric_t scalar)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator*](Classes/classcum_1_1Tensor.md#friend-operator*)**(cumeric_t scalar, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator/](Classes/classcum_1_1Tensor.md#friend-operator/)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor, cumeric_t scalar)  |
-| [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) | **[operator/](Classes/classcum_1_1Tensor.md#friend-operator/)**(cumeric_t scalar, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & tensor)  |
-| bool | **[operator==](Classes/classcum_1_1Tensor.md#friend-operator==)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & A, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & B)  |
-| bool | **[operator!=](Classes/classcum_1_1Tensor.md#friend-operator!=)**(const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & A, const [Tensor](Classes/classcum_1_1Tensor.md#function-tensor) & B)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator+](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator+)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & A, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & B)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator-](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator-)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & A, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & B)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator*](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator*)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & A, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & B)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator/](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator/)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & A, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & B)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator+](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator+)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor, cumeric_t scalar)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator+](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator+)**(cumeric_t scalar, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator-](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator-)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor, cumeric_t scalar)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator-](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator-)**(cumeric_t scalar, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator*](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator*)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor, cumeric_t scalar)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator*](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator*)**(cumeric_t scalar, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator/](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator/)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor, cumeric_t scalar)  |
+| [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) | **[operator/](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator/)**(cumeric_t scalar, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & tensor)  |
+| bool | **[operator==](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator==)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & A, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & B)  |
+| bool | **[operator!=](/CUM/api/Classes/classcum_1_1Tensor/#friend-operator!=)**(const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & A, const [Tensor](/CUM/api/Classes/classcum_1_1Tensor/#function-tensor) & B)  |
 
 ## Detailed Description
 
@@ -167,13 +167,13 @@ Tensor(
 ) =default
 ```
 
-Constructs an uninitialized [Tensor](Classes/classcum_1_1Tensor.md) with the given shape, datatype, and layout. 
+Constructs an uninitialized [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) with the given shape, datatype, and layout. 
 
 **Parameters**: 
 
-  * **shape** [Tensor](Classes/classcum_1_1Tensor.md) dimensions vector. 
+  * **shape** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) dimensions vector. 
   * **dtype** Element datatype tag (default is default_type). 
-  * **layout** Memory layout tag (default is [layout::ANY](Namespaces/namespacecum.md#enumvalue-any)). 
+  * **layout** Memory layout tag (default is [layout::ANY](/CUM/api/Namespaces/namespacecum/#enumvalue-any)). 
 
 
 ### function Tensor
@@ -192,7 +192,7 @@ Tensor(
 )
 ```
 
-Constructs a [Tensor](Classes/classcum_1_1Tensor.md) backed by an existing neural primitive descriptor. 
+Constructs a [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) backed by an existing neural primitive descriptor. 
 
 **Parameters**: 
 
@@ -345,7 +345,7 @@ Copy constructor performing deep copy of tensor descriptor and memory buffer.
 
 **Parameters**: 
 
-  * **tensor** [Tensor](Classes/classcum_1_1Tensor.md) to copy from. 
+  * **tensor** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) to copy from. 
 
 
 ### function Tensor
@@ -360,7 +360,7 @@ Move constructor transferring resource ownership without copying memory.
 
 **Parameters**: 
 
-  * **tensor** [Tensor](Classes/classcum_1_1Tensor.md) to move from. 
+  * **tensor** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) to move from. 
 
 
 ### function Tensor
@@ -499,7 +499,7 @@ Shape shape() const
 
 Returns vector of dimension lengths. 
 
-**Return**: [Shape](Namespaces/namespacecum.md#using-shape) vector. 
+**Return**: [Shape](/CUM/api/Namespaces/namespacecum/#using-shape) vector. 
 
 ### function format
 
@@ -569,7 +569,7 @@ std::unique_ptr< neural_primitives::Memory > & memory()
 
 Returns mutable reference to memory object pointer. 
 
-**Return**: Unique pointer reference to [neural_primitives::Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md). 
+**Return**: Unique pointer reference to [neural_primitives::Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/). 
 
 ### function descriptor
 
@@ -589,7 +589,7 @@ const std::unique_ptr< neural_primitives::Memory > & memory() const
 
 Returns const reference to memory object pointer. 
 
-**Return**: Const unique pointer reference to [neural_primitives::Memory](Classes/classcum_1_1neural__primitives_1_1Memory.md). 
+**Return**: Const unique pointer reference to [neural_primitives::Memory](/CUM/api/Classes/classcum_1_1neural__primitives_1_1Memory/). 
 
 ### function clone
 
@@ -599,7 +599,7 @@ Tensor clone() const
 
 Creates a deep copy clone of the tensor. 
 
-**Return**: Cloned [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Cloned [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function data
 
@@ -916,7 +916,7 @@ Returns a reshaped tensor out-of-place.
   * **shape** New shape. 
 
 
-**Return**: Reshaped [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Reshaped [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function reshape_in_place
 
@@ -943,7 +943,7 @@ Tensor transpose() const
 
 Transposes tensor dimensions out-of-place. 
 
-**Return**: Transposed [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Transposed [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function transpose_in_place
 
@@ -1032,7 +1032,7 @@ Computes reduction sum along a specified axis.
   * **keed_dims** Whether to retain reduced dimension with length 1. 
 
 
-**Return**: Reduced [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Reduced [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function softmax
 
@@ -1049,7 +1049,7 @@ Computes softmax activation along a specified axis.
   * **axis** Axis along which softmax is applied (-1 for last axis). 
 
 
-**Return**: Softmax [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Softmax [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function colwise_sum
 
@@ -1087,7 +1087,7 @@ Applies elementwise neural activation function out-of-place.
   * **function** Activation function identifier enum. 
 
 
-**Return**: Activated [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Activated [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function elementwise_in_place
 
@@ -1121,7 +1121,7 @@ Computes elementwise activation derivative out-of-place.
   * **function** Activation function identifier enum. 
 
 
-**Return**: Derivative [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Derivative [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function elementwise_diff_in_place
 
@@ -1284,7 +1284,7 @@ Performs matrix or batched tensor multiplication with another tensor.
   * **other** Right-hand side tensor operand. 
 
 
-**Return**: [Matrix](Classes/classcum_1_1Matrix.md) multiplication result [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: [Matrix](/CUM/api/Classes/classcum_1_1Matrix/) multiplication result [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function operator+
 
@@ -1377,16 +1377,16 @@ Factory creating a tensor with compile-time specified datatype and layout tags.
 
 **Parameters**: 
 
-  * **shape** [Tensor](Classes/classcum_1_1Tensor.md) dimensions. 
+  * **shape** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) dimensions. 
 
 
 **Template Parameters**: 
 
   * **T** Runtime datatype enum value. 
-  * **[layout](Namespaces/namespacecum.md#enum-layout)** Layout tag enum value. 
+  * **[layout](/CUM/api/Namespaces/namespacecum/#enum-layout)** Layout tag enum value. 
 
 
-**Return**: Newly created [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Newly created [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function take_memory
 
@@ -1403,13 +1403,13 @@ Wraps existing non-owned memory buffer without allocating new storage.
 
 **Parameters**: 
 
-  * **shape** [Tensor](Classes/classcum_1_1Tensor.md) dimensions. 
+  * **shape** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) dimensions. 
   * **data** Pointer to external memory. 
   * **dtype** Datatype tag. 
   * **layout** Memory layout tag. 
 
 
-**Return**: [Tensor](Classes/classcum_1_1Tensor.md) viewing external memory. 
+**Return**: [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) viewing external memory. 
 
 ### function copy_memory
 
@@ -1426,13 +1426,13 @@ Creates a tensor by allocating storage and copying data from an external buffer.
 
 **Parameters**: 
 
-  * **shape** [Tensor](Classes/classcum_1_1Tensor.md) dimensions. 
+  * **shape** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) dimensions. 
   * **data** Pointer to external source memory. 
   * **dtype** Datatype tag. 
   * **layout** Memory layout tag. 
 
 
-**Return**: Newly allocated [Tensor](Classes/classcum_1_1Tensor.md) with copied contents. 
+**Return**: Newly allocated [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) with copied contents. 
 
 ### function make_cube
 
@@ -1457,7 +1457,7 @@ Creates a 3D cube tensor.
   * **layout** Memory layout tag. 
 
 
-**Return**: 3D [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: 3D [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function make_matrix
 
@@ -1480,7 +1480,7 @@ Creates a 2D matrix tensor.
   * **layout** Memory layout tag. 
 
 
-**Return**: 2D [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: 2D [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function make_vector
 
@@ -1501,7 +1501,7 @@ Creates a 1D vector tensor.
   * **layout** Memory layout tag. 
 
 
-**Return**: 1D [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: 1D [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function make_scalar
 
@@ -1520,7 +1520,7 @@ Creates a 0D scalar tensor.
   * **layout** Memory layout tag. 
 
 
-**Return**: 0D scalar [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: 0D scalar [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function Random
 
@@ -1538,14 +1538,14 @@ Creates a tensor filled with uniformly distributed random numbers.
 
 **Parameters**: 
 
-  * **shape** [Tensor](Classes/classcum_1_1Tensor.md) dimensions. 
+  * **shape** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) dimensions. 
   * **min** Minimum random bound (default -1.0). 
   * **max** Maximum random bound (default 1.0). 
   * **dtype** Element datatype tag. 
   * **layout** Memory layout tag. 
 
 
-**Return**: Randomly initialized [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Randomly initialized [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function Zeros
 
@@ -1561,12 +1561,12 @@ Creates a tensor filled with zeros.
 
 **Parameters**: 
 
-  * **shape** [Tensor](Classes/classcum_1_1Tensor.md) dimensions. 
+  * **shape** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) dimensions. 
   * **dtype** Element datatype tag. 
   * **layout** Memory layout tag. 
 
 
-**Return**: Zero-filled [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Zero-filled [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function Ones
 
@@ -1582,12 +1582,12 @@ Creates a tensor filled with ones.
 
 **Parameters**: 
 
-  * **shape** [Tensor](Classes/classcum_1_1Tensor.md) dimensions. 
+  * **shape** [Tensor](/CUM/api/Classes/classcum_1_1Tensor/) dimensions. 
   * **dtype** Element datatype tag. 
   * **layout** Memory layout tag. 
 
 
-**Return**: Ones-filled [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: Ones-filled [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ### function Linspace
 
@@ -1608,7 +1608,7 @@ Creates a 1D vector tensor with linearly spaced values.
   * **num** Number of values. 
 
 
-**Return**: 1D vector [Tensor](Classes/classcum_1_1Tensor.md). 
+**Return**: 1D vector [Tensor](/CUM/api/Classes/classcum_1_1Tensor/). 
 
 ## Friends
 
@@ -1768,4 +1768,4 @@ friend bool operator!=(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

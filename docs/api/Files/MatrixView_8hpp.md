@@ -12,13 +12,13 @@ Non-owning read-only view class over 2D matrix memory buffers.  [More...](#detai
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cum::MatrixView](Classes/classcum_1_1MatrixView.md)** <br>Lightweight, non-owning read view over a 2D matrix or existing data buffer.  |
+| class | **[cum::MatrixView](/CUM/api/Classes/classcum_1_1MatrixView/)** <br>Lightweight, non-owning read view over a 2D matrix or existing data buffer.  |
 
 ## Detailed Description
 
@@ -32,4 +32,4 @@ Non-owning read-only view class over 2D matrix memory buffers.
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

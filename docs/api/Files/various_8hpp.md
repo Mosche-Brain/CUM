@@ -12,9 +12,9 @@ Miscellaneous elementwise mathematical utilities (fill, clamp, clip, abs, min, m
 
 | Name           |
 | -------------- |
-| **[cum](Namespaces/namespacecum.md)**  |
-| **[cum::functions](Namespaces/namespacecum_1_1functions.md)**  |
-| **[cum::functions::various](Namespaces/namespacecum_1_1functions_1_1various.md)**  |
+| **[cum](/CUM/api/Namespaces/namespacecum/)**  |
+| **[cum::functions](/CUM/api/Namespaces/namespacecum_1_1functions/)**  |
+| **[cum::functions::various](/CUM/api/Namespaces/namespacecum_1_1functions_1_1various/)**  |
 
 ## Detailed Description
 
@@ -28,4 +28,4 @@ Miscellaneous elementwise mathematical utilities (fill, clamp, clip, abs, min, m
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:42 +0100
+Updated on 2026-10-31 at 18:51:12 +0100

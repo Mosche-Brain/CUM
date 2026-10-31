@@ -17,7 +17,7 @@ Leaky Rectified [Linear]() Unit activation functor: f(x) = x if x >= 0 else alph
 
 |                | Name           |
 | -------------- | -------------- |
-| cumeric_t | **[operator()](Classes/structcum_1_1functions_1_1leaky__ReLU.md#function-operator())**(cumeric_t x) const |
+| cumeric_t | **[operator()](/CUM/api/Classes/structcum_1_1functions_1_1leaky__ReLU/#function-operator())**(cumeric_t x) const |
 
 ## Public Functions Documentation
 
@@ -32,4 +32,4 @@ cumeric_t operator()(
 
 -------------------------------
 
-Updated on 2026-10-31 at 18:07:40 +0100
+Updated on 2026-10-31 at 18:51:12 +0100
