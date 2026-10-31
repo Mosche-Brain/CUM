@@ -113,9 +113,14 @@ jobs:
         shell: python
         run: |
           import os, subprocess
+          from pathlib import Path
 
-          cmd = r'call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" >nul && set'
-          out = subprocess.check_output(["cmd.exe", "/d", "/c", cmd], text=True)
+          bat = Path(os.environ["RUNNER_TEMP"]) / "init_oneapi.bat"
+          bat.write_text(
+              '@call "C:\\Program Files (x86)\\Intel\\oneAPI\\setvars.bat" >nul\r\n@set\r\n',
+              encoding="ascii",
+          )
+          out = subprocess.check_output(["cmd.exe", "/d", "/c", str(bat)], text=True)
           skip_prefixes = ("GITHUB_", "RUNNER_", "ACTIONS_", "PROMPT")
           before = {k.upper(): v for k, v in os.environ.items()}
 
