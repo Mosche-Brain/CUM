@@ -16,10 +16,38 @@ CUM_C_API cum_status_t cum_tensor_create(
     cum_layout_t layout
 );
 CUM_C_API cum_status_t cum_tensor_create_zeros(cum_tensor_t** tensor, cum_shape_t shape);
+CUM_C_API cum_status_t cum_tensor_create_zeros_ex(
+    cum_tensor_t** tensor,
+    cum_shape_t shape,
+    cum_datatype_t datatype,
+    cum_layout_t layout
+);
 CUM_C_API cum_status_t cum_tensor_create_ones(cum_tensor_t** tensor, cum_shape_t shape);
+CUM_C_API cum_status_t cum_tensor_create_ones_ex(
+    cum_tensor_t** tensor,
+    cum_shape_t shape,
+    cum_datatype_t datatype,
+    cum_layout_t layout
+);
 CUM_C_API cum_status_t cum_tensor_create_random(cum_tensor_t** tensor, cum_shape_t shape, cumeric_t min, cumeric_t max);
+CUM_C_API cum_status_t cum_tensor_create_random_ex(
+    cum_tensor_t** tensor,
+    cum_shape_t shape,
+    cumeric_t min,
+    cumeric_t max,
+    cum_datatype_t datatype,
+    cum_layout_t layout
+);
 /* Creates an FP32 tensor and copies `shape` elements worth of `data` (row-major) into it. */
 CUM_C_API cum_status_t cum_tensor_create_from_data(cum_tensor_t** tensor, cum_shape_t shape, const cumeric_t* data);
+/* Creates a tensor with (`shape`, `datatype`, `layout`) and copies `tensor.size()` bytes from `data`. */
+CUM_C_API cum_status_t cum_tensor_create_from_buffer(
+    cum_tensor_t** tensor,
+    cum_shape_t shape,
+    const void* data,
+    cum_datatype_t datatype,
+    cum_layout_t layout
+);
 /* Allocates a tensor whose shape, datatype, and physical layout match `desc`. */
 CUM_C_API cum_status_t cum_tensor_create_from_desc(cum_tensor_t** tensor, const cum_memory_desc_t* desc);
 CUM_C_API cum_status_t cum_tensor_destroy(cum_tensor_t* tensor);
@@ -27,6 +55,10 @@ CUM_C_API cum_status_t cum_tensor_destroy(cum_tensor_t* tensor);
 CUM_C_API cum_status_t cum_tensor_copy(cum_tensor_t* dst, const cum_tensor_t* src);
 /* Deep copy of `src` into a newly created tensor. */
 CUM_C_API cum_status_t cum_tensor_clone(cum_tensor_t** dst, const cum_tensor_t* src);
+/* Converts `src` elements to `datatype` (preserving shape and layout) into a newly allocated tensor `*dst`. */
+CUM_C_API cum_status_t cum_tensor_cast(cum_tensor_t** dst, const cum_tensor_t* src, cum_datatype_t datatype);
+/* Converts `tensor` elements to `datatype` in-place. */
+CUM_C_API cum_status_t cum_tensor_cast_in_place(cum_tensor_t* tensor, cum_datatype_t datatype);
 
 /* Neural-primitive descriptor and memory handle extraction (caller owns returned handle). */
 CUM_C_API cum_status_t cum_tensor_memory_desc(const cum_tensor_t* tensor, cum_memory_desc_t** desc);

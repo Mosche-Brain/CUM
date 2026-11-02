@@ -237,6 +237,90 @@ class TestCumPy(unittest.TestCase):
         # Physical buffer in BA (column-major for 2x3): [1, 4, 2, 5, 3, 6]
         self.assertEqual(reord_s32.to_list(), [1, 4, 2, 5, 3, 6])
 
+    def test_tensor_factories_dtype_layout_and_cast(self) -> None:
+        # zeros / ones / random with explicit dtype & layout (positional and keyword)
+        z = cp.Tensor.zeros((2, 3), cp.DataType.S32, cp.Layout.BA)
+        self.assertEqual(z.shape, (2, 3))
+        self.assertEqual(z.dtype, cp.DataType.S32)
+        self.assertEqual(z.layout, cp.Layout.BA)
+        self.assertEqual(z.to_list(), [0, 0, 0, 0, 0, 0])
+
+        o = cp.Tensor.ones((2, 2, 3, 4), dtype=cp.DataType.FP16, layout=cp.Layout.NHWC)
+        self.assertEqual(o.dtype, cp.DataType.FP16)
+        self.assertEqual(o.layout, cp.Layout.NHWC)
+        self.assertListAlmostEqual(o.to_list(), [1.0] * 48, places=3)
+
+        rnd = cp.Tensor.random((3, 4), -2.0, 2.0, dtype=cp.DataType.BF16, layout=cp.Layout.BA)
+        self.assertEqual(rnd.dtype, cp.DataType.BF16)
+        self.assertEqual(rnd.layout, cp.Layout.BA)
+        self.assertTrue(all(-2.1 <= v <= 2.1 for v in rnd.to_list()))
+
+        # from_data across FP64, S64, FP16, BF16, S8, U8 and custom layouts
+        f64 = cp.Tensor.from_data(
+            (2, 3),
+            [1.25, -2.5, 3.125, 100000.5, 0.0, -7.75],
+            dtype=cp.DataType.FP64,
+            layout=cp.Layout.BA,
+        )
+        self.assertEqual(f64.dtype, cp.DataType.FP64)
+        self.assertEqual(f64.layout, cp.Layout.BA)
+        self.assertListAlmostEqual(
+            f64.to_list(), [1.25, -2.5, 3.125, 100000.5, 0.0, -7.75], places=7
+        )
+
+        s64 = cp.Tensor.from_data((4,), [-10**11, 0, 42, 10**11], dtype=cp.DataType.S64)
+        self.assertEqual(s64.dtype, cp.DataType.S64)
+        self.assertEqual(s64.to_list(), [-10**11, 0, 42, 10**11])
+
+        bf16 = cp.Tensor.from_data((3,), [-1.5, 0.25, 8.0], dtype=cp.DataType.BF16)
+        self.assertEqual(bf16.dtype, cp.DataType.BF16)
+        self.assertListAlmostEqual(bf16.to_list(), [-1.5, 0.25, 8.0], places=2)
+
+        # Out-of-place .cast(dtype): preserves layout & original tensor unchanged
+        as_f16 = f64.cast(cp.DataType.FP16)
+        self.assertIsNot(as_f16, f64)
+        self.assertEqual(f64.dtype, cp.DataType.FP64)
+        self.assertEqual(as_f16.dtype, cp.DataType.FP16)
+        self.assertEqual(as_f16.layout, cp.Layout.BA)
+
+        src = cp.Tensor.from_data((2, 3), [-3.0, -1.5, 0.0, 2.5, 4.0, 7.0], layout=cp.Layout.BA)
+        for target_dt in (
+            cp.DataType.FP64,
+            cp.DataType.FP16,
+            cp.DataType.BF16,
+            cp.DataType.S64,
+            cp.DataType.S32,
+            cp.DataType.S8,
+        ):
+            casted = src.cast(target_dt)
+            self.assertEqual(casted.dtype, target_dt)
+            self.assertEqual(casted.layout, cp.Layout.BA)
+            self.assertEqual(casted.shape, (2, 3))
+
+        self.assertEqual(src.cast(cp.DataType.S32).to_list(), [-3, -1, 0, 2, 4, 7])
+        self.assertEqual(src.cast(cp.DataType.S64).to_list(), [-3, -1, 0, 2, 4, 7])
+        self.assertListAlmostEqual(
+            src.cast(cp.DataType.FP16).cast(cp.DataType.FP32).to_list(),
+            [-3.0, -1.5, 0.0, 2.5, 4.0, 7.0],
+            places=3,
+        )
+
+        # Same-dtype cast returns an independent copy (out-of-place)
+        same = src.cast(cp.DataType.FP32)
+        self.assertIsNot(same, src)
+        same.fill(99.0)
+        self.assertListAlmostEqual(src.to_list(), [-3.0, -1.5, 0.0, 2.5, 4.0, 7.0])
+
+        # Invalid dtype / layout raise ValueError
+        with self.assertRaises(ValueError):
+            cp.Tensor.zeros((2, 3), dtype=cp.DataType.UNDEF)
+        with self.assertRaises(ValueError):
+            cp.Tensor.ones((2, 3), layout=cp.Layout.UNDEF)
+        with self.assertRaises(ValueError):
+            cp.Tensor.zeros((2, 3), layout=cp.Layout.ABCD)
+        with self.assertRaises(ValueError):
+            src.cast(cp.DataType.UNDEF)
+
 
 if __name__ == "__main__":
     unittest.main()

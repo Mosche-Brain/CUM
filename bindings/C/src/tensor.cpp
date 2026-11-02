@@ -44,6 +44,24 @@ extern "C"
         return guard([&] { emplace(tensor, cum::Tensor::Zeros(cum_c::to_shape(shape))); });
     }
 
+    cum_status_t cum_tensor_create_zeros_ex(
+        cum_tensor_t** tensor,
+        cum_shape_t shape,
+        cum_datatype_t datatype,
+        cum_layout_t layout
+    )
+    {
+        if(tensor == nullptr)
+            return invalid_argument("null output pointer");
+        return guard([&] {
+            emplace(tensor, cum::Tensor::Zeros(
+                cum_c::to_shape(shape),
+                cum_c::to_datatype(datatype),
+                cum_c::to_layout(layout)
+            ));
+        });
+    }
+
     cum_status_t cum_tensor_create_ones(cum_tensor_t** tensor, cum_shape_t shape)
     {
         if(tensor == nullptr)
@@ -51,11 +69,51 @@ extern "C"
         return guard([&] { emplace(tensor, cum::Tensor::Ones(cum_c::to_shape(shape))); });
     }
 
+    cum_status_t cum_tensor_create_ones_ex(
+        cum_tensor_t** tensor,
+        cum_shape_t shape,
+        cum_datatype_t datatype,
+        cum_layout_t layout
+    )
+    {
+        if(tensor == nullptr)
+            return invalid_argument("null output pointer");
+        return guard([&] {
+            emplace(tensor, cum::Tensor::Ones(
+                cum_c::to_shape(shape),
+                cum_c::to_datatype(datatype),
+                cum_c::to_layout(layout)
+            ));
+        });
+    }
+
     cum_status_t cum_tensor_create_random(cum_tensor_t** tensor, cum_shape_t shape, cumeric_t min, cumeric_t max)
     {
         if(tensor == nullptr)
             return invalid_argument("null output pointer");
         return guard([&] { emplace(tensor, cum::Tensor::Random(cum_c::to_shape(shape), min, max)); });
+    }
+
+    cum_status_t cum_tensor_create_random_ex(
+        cum_tensor_t** tensor,
+        cum_shape_t shape,
+        cumeric_t min,
+        cumeric_t max,
+        cum_datatype_t datatype,
+        cum_layout_t layout
+    )
+    {
+        if(tensor == nullptr)
+            return invalid_argument("null output pointer");
+        return guard([&] {
+            emplace(tensor, cum::Tensor::Random(
+                cum_c::to_shape(shape),
+                min,
+                max,
+                cum_c::to_datatype(datatype),
+                cum_c::to_layout(layout)
+            ));
+        });
     }
 
     cum_status_t cum_tensor_create_from_data(cum_tensor_t** tensor, cum_shape_t shape, const cumeric_t* data)
@@ -66,6 +124,26 @@ extern "C"
             cum::Tensor created(cum_c::to_shape(shape), cum::datatype::FP32, cum::layout::ANY);
             std::memcpy(created.data(), data, static_cast<size_t>(created.size()));
             emplace(tensor, std::move(created));
+        });
+    }
+
+    cum_status_t cum_tensor_create_from_buffer(
+        cum_tensor_t** tensor,
+        cum_shape_t shape,
+        const void* data,
+        cum_datatype_t datatype,
+        cum_layout_t layout
+    )
+    {
+        if(tensor == nullptr || data == nullptr)
+            return invalid_argument("null output pointer or data");
+        return guard([&] {
+            emplace(tensor, cum::Tensor::copy_memory(
+                cum_c::to_shape(shape),
+                const_cast<void*>(data),
+                cum_c::to_datatype(datatype),
+                cum_c::to_layout(layout)
+            ));
         });
     }
 
@@ -99,6 +177,20 @@ extern "C"
         if(dst == nullptr || src == nullptr)
             return invalid_argument(null_tensor);
         return guard([&] { emplace(dst, src->tensor.clone()); });
+    }
+
+    cum_status_t cum_tensor_cast(cum_tensor_t** dst, const cum_tensor_t* src, cum_datatype_t datatype)
+    {
+        if(dst == nullptr || src == nullptr)
+            return invalid_argument(null_tensor);
+        return guard([&] { emplace(dst, src->tensor.cast_to(cum_c::to_datatype(datatype))); });
+    }
+
+    cum_status_t cum_tensor_cast_in_place(cum_tensor_t* tensor, cum_datatype_t datatype)
+    {
+        if(tensor == nullptr)
+            return invalid_argument(null_tensor);
+        return guard([&] { tensor->tensor.cast(cum_c::to_datatype(datatype)); });
     }
 
     cum_status_t cum_tensor_memory_desc(const cum_tensor_t* tensor, cum_memory_desc_t** desc)

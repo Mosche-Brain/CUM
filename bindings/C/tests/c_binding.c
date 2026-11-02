@@ -77,6 +77,44 @@ static int test_tensor(void)
 
     CHECK(cum_tensor_add(NULL, a, b) == CUM_STATUS_INVALID_ARGUMENT);
 
+    {
+        cum_tensor_t *z_s32 = NULL, *o_f64 = NULL, *from_buf = NULL, *casted = NULL;
+        const int32_t s32_in[4] = {-3, 0, 5, 12};
+        const int32_t* s32_ptr = NULL;
+        const double* f64_ptr = NULL;
+        cum_layout_t ly = CUM_LAYOUT_UNDEF;
+
+        OK(cum_tensor_create_zeros_ex(&z_s32, shape, CUM_DATATYPE_S32, CUM_LAYOUT_BA));
+        OK(cum_tensor_datatype(z_s32, &datatype));
+        OK(cum_tensor_layout(z_s32, &ly));
+        CHECK(datatype == CUM_DATATYPE_S32 && ly == CUM_LAYOUT_BA);
+        OK(cum_tensor_data(z_s32, (const void**)&s32_ptr));
+        CHECK(s32_ptr[0] == 0 && s32_ptr[3] == 0);
+
+        OK(cum_tensor_create_ones_ex(&o_f64, shape, CUM_DATATYPE_FP64, CUM_LAYOUT_AB));
+        OK(cum_tensor_data(o_f64, (const void**)&f64_ptr));
+        CHECK(f64_ptr[0] == 1.0 && f64_ptr[3] == 1.0);
+
+        OK(cum_tensor_create_from_buffer(&from_buf, shape, s32_in, CUM_DATATYPE_S32, CUM_LAYOUT_BA));
+        OK(cum_tensor_cast(&casted, from_buf, CUM_DATATYPE_FP64));
+        OK(cum_tensor_datatype(casted, &datatype));
+        OK(cum_tensor_layout(casted, &ly));
+        CHECK(datatype == CUM_DATATYPE_FP64 && ly == CUM_LAYOUT_BA);
+        OK(cum_tensor_data(casted, (const void**)&f64_ptr));
+        CHECK(f64_ptr[0] == -3.0 && f64_ptr[2] == 5.0 && f64_ptr[3] == 12.0);
+
+        OK(cum_tensor_cast_in_place(casted, CUM_DATATYPE_FP32));
+        OK(cum_tensor_datatype(casted, &datatype));
+        CHECK(datatype == CUM_DATATYPE_FP32);
+        OK(cum_tensor_data(casted, (const void**)&out));
+        CHECK(NEAR(out[0], -3.0f) && NEAR(out[3], 12.0f));
+
+        OK(cum_tensor_destroy(casted));
+        OK(cum_tensor_destroy(from_buf));
+        OK(cum_tensor_destroy(o_f64));
+        OK(cum_tensor_destroy(z_s32));
+    }
+
     OK(cum_tensor_destroy(a));
     OK(cum_tensor_destroy(b));
     OK(cum_tensor_destroy(c));

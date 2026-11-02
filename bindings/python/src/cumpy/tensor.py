@@ -40,6 +40,28 @@ _CTYPE_BY_DTYPE = {
 }
 
 
+def _float_to_bf16_bits(val: float) -> int:
+    u32 = struct.unpack("<I", struct.pack("<f", float(val)))[0]
+    if (u32 & 0x7F800000) == 0x7F800000 and (u32 & 0x007FFFFF) != 0:
+        return ((u32 >> 16) | 0x0040) & 0xFFFF
+    rounding_bias = 0x00007FFF + ((u32 >> 16) & 1)
+    return ((u32 + rounding_bias) >> 16) & 0xFFFF
+
+
+def _pack_typed_buffer(values: Sequence[float | int], dtype: DataType) -> ctypes.Array:
+    count = len(values)
+    entry = _CTYPE_BY_DTYPE.get(dtype)
+    if entry is not None:
+        c_t, py_cast = entry
+        return (c_t * count)(*(py_cast(x) for x in values))
+    if dtype == DataType.FP16:
+        raw = struct.pack(f"<{count}e", *(float(x) for x in values))
+        return ctypes.create_string_buffer(raw, len(raw))
+    if dtype == DataType.BF16:
+        return (ctypes.c_uint16 * count)(*(_float_to_bf16_bits(float(x)) for x in values))
+    raise ValueError(f"Unsupported datatype for from_data: {dtype!r}")
+
+
 def _read_typed_buffer(raw: c_void_p, count: int, dtype: DataType) -> list[float | int]:
     if count <= 0 or not raw.value:
         return []
@@ -64,6 +86,20 @@ def _prod(dims: Sequence[int]) -> int:
     return reduce(operator.mul, dims, 1)
 
 
+def _coerce_dtype(dtype: DataType | int) -> DataType:
+    dt = DataType(int(dtype))
+    if dt == DataType.UNDEF:
+        raise ValueError("DataType.UNDEF is not a valid tensor datatype")
+    return dt
+
+
+def _coerce_layout(layout: Layout | int) -> Layout:
+    ly = Layout(int(layout))
+    if ly == Layout.UNDEF:
+        raise ValueError("Layout.UNDEF is not a valid tensor layout")
+    return ly
+
+
 class Tensor:
     __slots__ = ("_ptr", "_finalizer", "__weakref__")
 
@@ -80,9 +116,11 @@ class Tensor:
             self._finalizer = weakref.finalize(self, lib.cum_tensor_destroy, _ptr)
             return
 
-        c_shape, _buf = make_shape(tuple(shape))
+        dt = _coerce_dtype(dtype)
+        ly = _coerce_layout(layout)
+        c_shape, _buf = make_shape(tuple(int(d) for d in shape))
         ptr = cum_tensor_p()
-        check(lib.cum_tensor_create(byref(ptr), c_shape, int(dtype), int(layout)))
+        check(lib.cum_tensor_create(byref(ptr), c_shape, int(dt), int(ly)))
         self._ptr = ptr
         self._finalizer = weakref.finalize(self, lib.cum_tensor_destroy, ptr)
 
@@ -91,37 +129,79 @@ class Tensor:
         return cls((), _ptr=ptr)
 
     @classmethod
-    def zeros(cls, shape: Sequence[int]) -> Tensor:
-        c_shape, _buf = make_shape(tuple(shape))
+    def zeros(
+        cls,
+        shape: Sequence[int],
+        dtype: DataType | int = DataType.FP32,
+        layout: Layout | int = Layout.ANY,
+    ) -> Tensor:
+        dt = _coerce_dtype(dtype)
+        ly = _coerce_layout(layout)
+        c_shape, _buf = make_shape(tuple(int(d) for d in shape))
         ptr = cum_tensor_p()
-        check(lib.cum_tensor_create_zeros(byref(ptr), c_shape))
+        check(lib.cum_tensor_create_zeros_ex(byref(ptr), c_shape, int(dt), int(ly)))
         return cls._from_ptr(ptr)
 
     @classmethod
-    def ones(cls, shape: Sequence[int]) -> Tensor:
-        c_shape, _buf = make_shape(tuple(shape))
+    def ones(
+        cls,
+        shape: Sequence[int],
+        dtype: DataType | int = DataType.FP32,
+        layout: Layout | int = Layout.ANY,
+    ) -> Tensor:
+        dt = _coerce_dtype(dtype)
+        ly = _coerce_layout(layout)
+        c_shape, _buf = make_shape(tuple(int(d) for d in shape))
         ptr = cum_tensor_p()
-        check(lib.cum_tensor_create_ones(byref(ptr), c_shape))
+        check(lib.cum_tensor_create_ones_ex(byref(ptr), c_shape, int(dt), int(ly)))
         return cls._from_ptr(ptr)
 
     @classmethod
-    def random(cls, shape: Sequence[int], low: float = -1.0, high: float = 1.0) -> Tensor:
-        c_shape, _buf = make_shape(tuple(shape))
+    def random(
+        cls,
+        shape: Sequence[int],
+        low: float = -1.0,
+        high: float = 1.0,
+        dtype: DataType | int = DataType.FP32,
+        layout: Layout | int = Layout.ANY,
+    ) -> Tensor:
+        dt = _coerce_dtype(dtype)
+        ly = _coerce_layout(layout)
+        c_shape, _buf = make_shape(tuple(int(d) for d in shape))
         ptr = cum_tensor_p()
-        check(lib.cum_tensor_create_random(byref(ptr), c_shape, cumeric_t(low), cumeric_t(high)))
+        check(
+            lib.cum_tensor_create_random_ex(
+                byref(ptr), c_shape, cumeric_t(low), cumeric_t(high), int(dt), int(ly)
+            )
+        )
         return cls._from_ptr(ptr)
 
     @classmethod
-    def from_data(cls, shape: Sequence[int], data: Iterable[float]) -> Tensor:
+    def from_data(
+        cls,
+        shape: Sequence[int],
+        data: Iterable[float | int],
+        dtype: DataType | int = DataType.FP32,
+        layout: Layout | int = Layout.ANY,
+    ) -> Tensor:
+        dt = _coerce_dtype(dtype)
+        ly = _coerce_layout(layout)
         dims = tuple(int(d) for d in shape)
-        flat = [float(x) for x in data]
+        flat = list(data)
         expected = _prod(dims)
         if len(flat) != expected:
             raise ValueError(f"data length {len(flat)} does not match shape {dims} ({expected})")
-        arr = (cumeric_t * expected)(*flat)
+        if dt == DataType.FP8:
+            fp32_tensor = cls.from_data(dims, flat, dtype=DataType.FP32, layout=ly)
+            return fp32_tensor.cast(DataType.FP8)
+        arr = _pack_typed_buffer(flat, dt)
         c_shape, _buf = make_shape(dims)
         ptr = cum_tensor_p()
-        check(lib.cum_tensor_create_from_data(byref(ptr), c_shape, arr))
+        check(
+            lib.cum_tensor_create_from_buffer(
+                byref(ptr), c_shape, ctypes.cast(arr, c_void_p), int(dt), int(ly)
+            )
+        )
         return cls._from_ptr(ptr)
 
     @classmethod
@@ -155,6 +235,13 @@ class Tensor:
     def clone(self) -> Tensor:
         ptr = cum_tensor_p()
         check(lib.cum_tensor_clone(byref(ptr), self._ptr))
+        return Tensor._from_ptr(ptr)
+
+    def cast(self, dtype: DataType | int) -> Tensor:
+        """Returns a new Tensor with elements converted to `dtype` (preserving shape and layout)."""
+        dt = _coerce_dtype(dtype)
+        ptr = cum_tensor_p()
+        check(lib.cum_tensor_cast(byref(ptr), self._ptr, int(dt)))
         return Tensor._from_ptr(ptr)
 
     def copy_from(self, other: Tensor) -> Tensor:
@@ -212,9 +299,12 @@ class Tensor:
         return int(raw.value or 0)
 
     def to_list(self) -> list[float | int]:
+        dt = self.dtype
+        if dt == DataType.FP8:
+            return self.cast(DataType.FP32).to_list()
         raw = c_void_p()
         check(lib.cum_tensor_data(self._ptr, byref(raw)))
-        return _read_typed_buffer(raw, self.length, self.dtype)
+        return _read_typed_buffer(raw, self.length, dt)
 
     def fill(self, value: float) -> Tensor:
         check(lib.cum_tensor_fill(self._ptr, cumeric_t(value)))

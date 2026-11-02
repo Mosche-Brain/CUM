@@ -267,6 +267,13 @@ namespace cum
         Tensor& cast(datatype dtype);
 
         /**
+         * @brief Returns a newly allocated tensor converted to @p dtype (preserving shape and layout).
+         * @param dtype Target datatype.
+         * @return Converted Tensor.
+         */
+        Tensor cast_to(datatype dtype) const;
+
+        /**
          * @brief Prefetches tensor memory to the active device.
          * @return Reference to `*this`.
          */

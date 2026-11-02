@@ -55,22 +55,172 @@ namespace cum
 			case 5: return layout::ABCDE;
 			case 6: return layout::ABCDEF;
 			case 7: return layout::ABCDEFG;
+			case 8: return layout::ABCDEFGH;
+			case 9: return layout::ABCDEFGHI;
+			case 10: return layout::ABCDEFGHIJ;
+			case 11: return layout::ABCDEFGHIJK;
+			case 12: return layout::ABCDEFGHIJKL;
 			default: return layout::ANY;
 		}
 	}
 
 	layout concrete_layout(std::size_t rank, layout requested)
 	{
-		if(requested != layout::ANY)
+		if(requested != layout::ANY && requested != layout::UNDEF)
 			return requested;
-		switch(rank)
+		const layout resolved = default_layout_from_rank(static_cast<dim_t>(rank));
+		if(resolved == layout::ANY)
+			throw std::invalid_argument("unsupported tensor rank");
+		return resolved;
+	}
+
+	namespace
+	{
+		template <typename DstT, typename SrcT>
+		DstT convert_sycl_scalar(const SrcT& val)
 		{
-			case 1: return layout::A;
-			case 2: return layout::AB;
-			case 3: return layout::ABC;
-			case 4: return layout::ABCD;
-			case 5: return layout::ABCDE;
-			default: throw std::invalid_argument("unsupported tensor rank");
+			if constexpr (std::is_same_v<DstT, SrcT>)
+			{
+				return val;
+			}
+			else if constexpr (std::is_arithmetic_v<DstT> && std::is_arithmetic_v<SrcT>)
+			{
+				return static_cast<DstT>(val);
+			}
+			else
+			{
+				const float as_float = static_cast<float>(val);
+				if constexpr (std::is_arithmetic_v<DstT>)
+					return static_cast<DstT>(as_float);
+				else
+					return DstT(as_float);
+			}
+		}
+
+		struct StridedCastMap
+		{
+			int rank = 0;
+			dim_t dims[12]{};
+			dim_t src_strides[12]{};
+			dim_t dst_strides[12]{};
+		};
+
+		constexpr bool is_floating_datatype(datatype dt) noexcept
+		{
+			return dt == datatype::FP64 || dt == datatype::FP32 ||
+			       dt == datatype::FP16 || dt == datatype::BF16 || dt == datatype::FP8;
+		}
+
+		constexpr bool is_integer_datatype(datatype dt) noexcept
+		{
+			return dt == datatype::S64 || dt == datatype::S32 || dt == datatype::S16 || dt == datatype::S8 ||
+			       dt == datatype::U64 || dt == datatype::U32 || dt == datatype::U16 || dt == datatype::U8;
+		}
+
+		void copy_or_convert_tensor(Tensor& dst, const Tensor& src)
+		{
+			const auto& src_md = src.descriptor();
+			const auto& dst_md = dst.descriptor();
+
+			if (dst.type() == src.type() && *dst_md == *src_md && src_md->offset() == 0)
+			{
+				internal::queue().memcpy(
+					dst.data(),
+					src.data(),
+					static_cast<std::size_t>(dst.size())
+				).wait();
+				return;
+			}
+
+			// oneDNN reorder uses round-to-nearest-even for float->int; skip it there so
+			// Tensor::cast matches C++ static_cast / NumPy / PyTorch truncation across all int widths.
+			if (!(is_floating_datatype(src.type()) && is_integer_datatype(dst.type())))
+			{
+				try
+				{
+					dnnl::reorder::primitive_desc pd(
+						internal::engine(),
+						src_md->handle().desc,
+						internal::engine(),
+						dst_md->handle().desc
+					);
+					dnnl::reorder(pd).execute(
+						internal::stream(),
+						{
+							{DNNL_ARG_SRC, src.memory()->handle().memory},
+							{DNNL_ARG_DST, dst.memory()->handle().memory}
+						}
+					);
+					internal::stream().wait();
+					return;
+				}
+				catch (const dnnl::error&)
+				{
+					// Fallback to SYCL strided elementwise conversion (e.g. FP64 / S64 conversions).
+				}
+			}
+
+			const Shape dims = src.shape();
+			const Shape src_strides = src_md->strides();
+			const Shape dst_strides = dst_md->strides();
+			if (src_strides.empty() || dst_strides.empty() || dims.size() > 12)
+				throw std::runtime_error("Tensor::cast unsupported blocked layout for this datatype pair");
+
+			dim_t total = 1;
+			for (dim_t d : dims)
+				total *= d;
+			if (total <= 0)
+				return;
+
+			const void* src_raw = src.data();
+			void* dst_raw = dst.data();
+
+			const bool dense_matching_strides =
+				(src_strides == dst_strides) &&
+				(src.size() == total * static_cast<dim_t>(datatype_size(src.type()))) &&
+				(dst.size() == total * static_cast<dim_t>(datatype_size(dst.type())));
+
+			StridedCastMap map{};
+			map.rank = static_cast<int>(dims.size());
+			for (int i = 0; i < map.rank; ++i)
+			{
+				map.dims[i] = dims[i];
+				map.src_strides[i] = src_strides[i];
+				map.dst_strides[i] = dst_strides[i];
+			}
+
+			auto& q = internal::queue();
+			const std::size_t n = static_cast<std::size_t>(total);
+
+			internal::dispatch_sycl_datatype(src.type(), [&]<typename SrcT>() {
+				internal::dispatch_sycl_datatype(dst.type(), [&]<typename DstT>() {
+					const auto* s_ptr = static_cast<const SrcT*>(src_raw);
+					auto* d_ptr = static_cast<DstT*>(dst_raw);
+
+					if (dense_matching_strides)
+					{
+						q.parallel_for(sycl::range<1>(n), [=](sycl::id<1> idx) {
+							d_ptr[idx] = convert_sycl_scalar<DstT>(s_ptr[idx]);
+						}).wait();
+					}
+					else
+					{
+						q.parallel_for(sycl::range<1>(n), [=](sycl::id<1> idx) {
+							dim_t lin = static_cast<dim_t>(idx[0]);
+							dim_t s_off = 0;
+							dim_t d_off = 0;
+							for (int axis = map.rank - 1; axis >= 0; --axis)
+							{
+								const dim_t coord = lin % map.dims[axis];
+								lin /= map.dims[axis];
+								s_off += coord * map.src_strides[axis];
+								d_off += coord * map.dst_strides[axis];
+							}
+							d_ptr[d_off] = convert_sycl_scalar<DstT>(s_ptr[s_off]);
+						}).wait();
+					}
+				});
+			});
 		}
 	}
 
@@ -113,17 +263,7 @@ namespace cum
 			throw std::bad_alloc();
 
 		_memr_ = std::make_unique<Memory>(*_desc_, _data);
-
-		dnnl::reorder(
-			tensor.memory()->handle().memory,
-			_memr_->handle().memory
-		).execute(
-			internal::stream(),
-			tensor.memory()->handle().memory,
-			_memr_->handle().memory
-		);
-
-		internal::stream().wait();
+		copy_or_convert_tensor(*this, tensor);
 	}
 
 	Tensor::Tensor(Tensor&& tensor) noexcept
@@ -197,7 +337,7 @@ namespace cum
 	Tensor Tensor::Random(const Shape& shape, cumeric_t min, cumeric_t max, datatype dtype, layout layout)
 	{
 		Tensor tensor;
-		tensor._desc_ = std::make_unique<MemoryDescriptor>(shape, dtype, layout == layout::ANY ? default_layout_from_rank(shape.size()) : layout);
+		tensor._desc_ = std::make_unique<Memory::Descriptor>(shape, dtype, layout == layout::ANY ? default_layout_from_rank(shape.size()) : layout);
 		tensor._data = sycl::malloc_shared<std::byte>(
 			tensor._desc_->size(), internal::device(), internal::sycl_context());
 		if(tensor._data == nullptr)
@@ -296,8 +436,29 @@ namespace cum
 	 *                                         Memory
 	 *------------------------------------------------------------------------------------------------**/
 
+	Tensor Tensor::cast_to(datatype dtype) const
+	{
+		if (!_desc_ || !_desc_->valid())
+			throw std::invalid_argument("Tensor::cast_to requires a valid tensor");
+		if (dnnl_data_type(dtype) == dnnl::memory::data_type::undef)
+			throw std::invalid_argument("Unsupported target datatype for Tensor::cast");
+
+		const layout target_layout = concrete_layout(rank(), format());
+		Tensor converted(shape(), dtype, target_layout);
+		copy_or_convert_tensor(converted, *this);
+		return converted;
+	}
+
 	Tensor& Tensor::cast(datatype dtype)
 	{
+		if (!_desc_ || !_desc_->valid())
+			throw std::invalid_argument("Tensor::cast requires a valid tensor");
+		if (dnnl_data_type(dtype) == dnnl::memory::data_type::undef)
+			throw std::invalid_argument("Unsupported target datatype for Tensor::cast");
+		if (dtype == type())
+			return *this;
+
+		*this = cast_to(dtype);
 		return *this;
 	}
 

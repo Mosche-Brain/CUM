@@ -63,16 +63,42 @@ namespace cum::neural_primitives
 
     MemoryDescriptor::MemoryDescriptor(Shape dims, datatype dtype, layout format) : fmt(format)
     {
-        handle_ = std::make_unique<handles::__desc__>(
-            handles::__desc__{dnnl::memory::desc(dims, dnnl_data_type(dtype), dnnl_format_tag(format))}
-        );
+        if (dnnl_data_type(dtype) == dnnl::memory::data_type::undef)
+            throw std::invalid_argument("Unsupported or undefined datatype for MemoryDescriptor");
+        if (format == layout::UNDEF)
+            throw std::invalid_argument("Undefined layout for MemoryDescriptor");
+
+        try
+        {
+            handle_ = std::make_unique<handles::__desc__>(
+                handles::__desc__{dnnl::memory::desc(dims, dnnl_data_type(dtype), dnnl_format_tag(format))}
+            );
+        }
+        catch (const dnnl::error& err)
+        {
+            if (err.status == dnnl_invalid_arguments)
+                throw std::invalid_argument(err.what());
+            throw;
+        }
     }
 
     MemoryDescriptor::MemoryDescriptor(Shape dims, datatype dtype, Shape strides)
     {
-        dnnl::memory::desc md(dims, dnnl_data_type(dtype), strides);
-        fmt = infer_cum_layout(md);
-        handle_ = std::make_unique<handles::__desc__>(handles::__desc__{std::move(md)});
+        if (dnnl_data_type(dtype) == dnnl::memory::data_type::undef)
+            throw std::invalid_argument("Unsupported or undefined datatype for MemoryDescriptor");
+
+        try
+        {
+            dnnl::memory::desc md(dims, dnnl_data_type(dtype), strides);
+            fmt = infer_cum_layout(md);
+            handle_ = std::make_unique<handles::__desc__>(handles::__desc__{std::move(md)});
+        }
+        catch (const dnnl::error& err)
+        {
+            if (err.status == dnnl_invalid_arguments)
+                throw std::invalid_argument(err.what());
+            throw;
+        }
     }
 
     MemoryDescriptor MemoryDescriptor::Any(const Shape& dims, datatype dtype)

@@ -153,3 +153,57 @@ TEST_CASE("Tensor static factories Zeros, Ones, Linspace and equality")
 
     cum::decum();
 }
+
+TEST_CASE("Tensor cast and cast_to convert datatypes and preserve layout")
+{
+    cum::cum(cum::DEVICE::CPU);
+
+    cum::Tensor src({2, 3}, cum::datatype::FP32, cum::layout::BA);
+    const float vals[6] = {-2.0f, 1.5f, 0.0f, 4.0f, 7.25f, -3.5f};
+    for (cum::dim_t i = 0; i < 6; ++i)
+        src.data<float>()[i] = vals[i];
+
+    // Out-of-place cast_to: FP32 -> S32 -> FP64 -> FP16 -> BF16 -> FP32
+    auto as_s32 = src.cast_to(cum::datatype::S32);
+    REQUIRE(as_s32.type() == cum::datatype::S32);
+    REQUIRE(as_s32.format() == cum::layout::BA);
+    REQUIRE(as_s32.shape() == cum::Shape{2, 3});
+    REQUIRE(as_s32.data<std::int32_t>()[0] == -2);
+    REQUIRE(as_s32.data<std::int32_t>()[3] == 4);
+
+    auto as_f64 = src.cast_to(cum::datatype::FP64);
+    REQUIRE(as_f64.type() == cum::datatype::FP64);
+    REQUIRE(as_f64.format() == cum::layout::BA);
+    REQUIRE_THAT(as_f64.data<double>()[1], Catch::Matchers::WithinAbs(1.5, 1e-9));
+    REQUIRE_THAT(as_f64.data<double>()[4], Catch::Matchers::WithinAbs(7.25, 1e-9));
+
+    auto as_s64 = as_f64.cast_to(cum::datatype::S64);
+    REQUIRE(as_s64.type() == cum::datatype::S64);
+    REQUIRE(as_s64.data<std::int64_t>()[4] == 7);
+
+    // In-place cast: FP32 -> FP16 -> FP32
+    cum::Tensor inplace = src.clone();
+    inplace.cast(cum::datatype::FP16);
+    REQUIRE(inplace.type() == cum::datatype::FP16);
+    REQUIRE(inplace.format() == cum::layout::BA);
+    inplace.cast(cum::datatype::FP32);
+    REQUIRE(inplace.type() == cum::datatype::FP32);
+    for (cum::dim_t i = 0; i < 6; ++i)
+        REQUIRE_THAT(inplace.data<float>()[i], Catch::Matchers::WithinAbs(vals[i], 1e-2f));
+
+    // Slice cast compacts into dense tensor
+    cum::Tensor mat({3, 4}, cum::datatype::FP32, cum::layout::AB);
+    for (cum::dim_t i = 0; i < 12; ++i)
+        mat.data<float>()[i] = static_cast<float>(i);
+    auto sl = mat.slice({1, 1}, {2, 2});
+    auto sl_f64 = sl.cast_to(cum::datatype::FP64);
+    REQUIRE(sl_f64.shape() == cum::Shape{2, 2});
+    REQUIRE_THAT(sl_f64.data<double>()[0], Catch::Matchers::WithinAbs(5.0, 1e-9));
+    REQUIRE_THAT(sl_f64.data<double>()[1], Catch::Matchers::WithinAbs(6.0, 1e-9));
+    REQUIRE_THAT(sl_f64.data<double>()[2], Catch::Matchers::WithinAbs(9.0, 1e-9));
+    REQUIRE_THAT(sl_f64.data<double>()[3], Catch::Matchers::WithinAbs(10.0, 1e-9));
+
+    REQUIRE_THROWS_AS(src.cast_to(cum::datatype::UNDEF), std::invalid_argument);
+
+    cum::decum();
+}
