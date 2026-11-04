@@ -15,6 +15,8 @@
 
 #include "cum/neural_primitives/PrimitiveDescriptor.hpp"
 
+#include "cum/neural_primitives/Primitive.hpp"
+
 namespace cum::neural_primitives
 {
     struct PrimitiveDescriptorBuilder
@@ -144,6 +146,31 @@ namespace cum::neural_primitives
                 dst.handle().desc
             );
             return make_pd(std::move(pd), PrimitiveDescriptor::Kind::matmul, Purpose::forward, Algo::undef, /*has_bias=*/false);
+        }
+
+        PrimitiveDescriptor create_conv2d_fwd(
+            const dnnl::engine& eng,
+            Algo alg,
+            const MemoryDescriptor& dst,
+            const MemoryDescriptor& src,
+            const MemoryDescriptor& weights,
+            const MemoryDescriptor& bias,
+            const Shape& strides,
+            const Shape& padding,
+            Purpose purpose)
+        {
+            dnnl::convolution_forward::primitive_desc pd(
+                eng,
+                detail::dnnl_prop_kind(purpose),
+                detail::dnnl_algorithm(alg),
+                src.handle().desc,
+                weights.handle().desc,
+                bias.handle().desc,
+                dst.handle().desc,
+                strides, padding, padding
+            );
+
+            return make_pd(std::move(pd), Primitive::Descriptor::Kind::conv2d, purpose, alg, true);
         }
 
         PrimitiveDescriptor create_softmax_fwd(
@@ -534,6 +561,19 @@ namespace cum::neural_primitives
     {
         return create_matmul(engine.handle->engine, dst, src, weights, &bias);
     }
+
+    /* 2D Convolution */
+
+    Primitive::Descriptor Primitive::Descriptor::Conv2D(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, const Memory::Descriptor& weights, const Memory::Descriptor& bias, const Shape& strides, const Shape& padding, Purpose purpose)
+    {
+        return create_conv2d_fwd(internal::engine(), alg, dst, src, weights, bias, strides, padding, purpose);
+    }
+
+    Primitive::Descriptor Primitive::Descriptor::Conv2D(Engine& engine, Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, const Memory::Descriptor& weights, const Memory::Descriptor& bias, const Shape& strides, const Shape& padding, Purpose purpose)
+    {
+        return create_conv2d_fwd(engine.native_handle().engine, alg, dst, src, weights, bias, strides, padding, purpose);
+    }
+
 
     /* Softmax */
 

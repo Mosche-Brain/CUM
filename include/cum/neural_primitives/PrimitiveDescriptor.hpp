@@ -104,6 +104,10 @@ namespace cum::neural_primitives
         reduction_norm_lp_power_p_max,
         reduction_norm_lp_power_p_sum,
 
+        /* Convolution operations */
+        convolution,
+        convolution_backward,
+
         /* Ergonomic elementwise aliases (kept last so auto-numbered enumerators never collide) */
         eltwise_leaky_relu = eltwise_relu,
         eltwise_sigmoid    = eltwise_logistic,
@@ -138,6 +142,7 @@ namespace cum::neural_primitives
             binary,
             elementwise,
             matmul,
+            conv2d,
             softmax,
             reduction,
             reorder,
@@ -381,6 +386,16 @@ namespace cum::neural_primitives
             const MemoryDescriptor& weights,
             const MemoryDescriptor& bias
         );
+
+        /* Static Factories: Conv2D (Forward & Backward) */
+
+        /**
+         * @brief Creates a 2D convolution primitive descriptor
+         */
+        static PrimitiveDescriptor Conv2D(Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, const Memory::Descriptor& weights, const Memory::Descriptor& bias, const Shape& strides, const Shape& padding, Purpose purpose = Purpose::forward);
+
+        static PrimitiveDescriptor Conv2D(Engine& engine, Algo alg, const Memory::Descriptor& dst, const Memory::Descriptor& src, const Memory::Descriptor& weights, const Memory::Descriptor& bias, const Shape& strides, const Shape& padding, Purpose purpose = Purpose::forward);
+
 
         /* Static Factories: Softmax (Forward & Backward) */
 

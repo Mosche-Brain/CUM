@@ -102,11 +102,12 @@ typedef enum cum_primitive_kind_t
     CUM_PRIMITIVE_BINARY = 1,
     CUM_PRIMITIVE_ELEMENTWISE = 2,
     CUM_PRIMITIVE_MATMUL = 3,
-    CUM_PRIMITIVE_SOFTMAX = 4,
-    CUM_PRIMITIVE_REDUCTION = 5,
-    CUM_PRIMITIVE_REORDER = 6,
-    CUM_PRIMITIVE_SUM = 7,
-    CUM_PRIMITIVE_CONCAT = 8
+    CUM_PRIMITIVE_CONV2D = 4,
+    CUM_PRIMITIVE_SOFTMAX = 5,
+    CUM_PRIMITIVE_REDUCTION = 6,
+    CUM_PRIMITIVE_REORDER = 7,
+    CUM_PRIMITIVE_SUM = 8,
+    CUM_PRIMITIVE_CONCAT = 9
 } cum_primitive_kind_t;
 
 /* Named argument slots mirroring cum::neural_primitives::Primitive::Argument. */

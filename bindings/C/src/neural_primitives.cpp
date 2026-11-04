@@ -86,6 +86,7 @@ static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::undef) == CUM_PRIM
 static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::binary) == CUM_PRIMITIVE_BINARY, "cum_primitive_kind_t mismatch");
 static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::elementwise) == CUM_PRIMITIVE_ELEMENTWISE, "cum_primitive_kind_t mismatch");
 static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::matmul) == CUM_PRIMITIVE_MATMUL, "cum_primitive_kind_t mismatch");
+static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::conv2d) == CUM_PRIMITIVE_CONV2D, "cum_primitive_kind_t mismatch");
 static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::softmax) == CUM_PRIMITIVE_SOFTMAX, "cum_primitive_kind_t mismatch");
 static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::reduction) == CUM_PRIMITIVE_REDUCTION, "cum_primitive_kind_t mismatch");
 static_assert(static_cast<int>(np::PrimitiveDescriptor::Kind::reorder) == CUM_PRIMITIVE_REORDER, "cum_primitive_kind_t mismatch");
